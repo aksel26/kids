@@ -7,12 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lab.spring.dao.DataDAO;
-import lab.spring.model.ClassAreaVO;
 import lab.spring.model.CommentVO;
-import lab.spring.model.EnvironVO;
 import lab.spring.model.KinderInfoVO;
 import lab.spring.model.SafetyVO;
-import lab.spring.model.SanitaryVO;
 import lab.spring.model.UserVO;
 
 
@@ -60,24 +57,4 @@ public class MapSeviceImpl implements MapService{
 		// TODO Auto-generated method stub
 		return dao.getSafetyList(safety_arr);
 	}
-
-	@Override
-	public List<SanitaryVO> getSanitaryList(HashMap<String, String> sanitary_arr) {
-		// TODO Auto-generated method stub
-		return dao.getSanitaryList(sanitary_arr);
-	}
-
-	@Override
-	public List<ClassAreaVO> getBuildinfoList(HashMap<String, String> build_arr) {
-		// TODO Auto-generated method stub
-		return dao.getBuildinfoList(build_arr);
-	}
-
-	@Override
-	public List<EnvironVO> getEnvironList(HashMap<String, String> env_arr) {
-		// TODO Auto-generated method stub
-		return dao.getEnvironList(env_arr);
-	}
-	
-	
 }

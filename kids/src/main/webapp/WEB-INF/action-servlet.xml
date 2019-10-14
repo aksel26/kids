@@ -34,8 +34,8 @@ class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	<bean id="dataSource"
 	  class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 	  p:driverClassName="oracle.jdbc.OracleDriver"
-	  p:url="jdbc:oracle:thin:@localhost:1521:xe"
-	  p:username="momsmap"
+	  p:url="jdbc:oracle:thin:@localhost:1521:orcl"
+	  p:username="local_momsmap"
 	  p:password="1234"/>
 
 
