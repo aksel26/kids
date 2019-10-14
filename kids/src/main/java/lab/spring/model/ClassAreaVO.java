@@ -103,6 +103,7 @@ public class ClassAreaVO {
 	}
 	public void setEstablish(String establish) {
 		this.establish = establish;
+
 	}
 	public String getClsrarea() {
 		return clsrarea;
@@ -134,5 +135,14 @@ public class ClassAreaVO {
 	public void setOtsparea(String otsparea) {
 		this.otsparea = otsparea;
 	}
+
+
+	@Override
+	public String toString() {
+		return "ClassAreaVO [classId=" + classId + ", key=" + key + ", crcnt=" + crcnt + ", clsrarea=" + clsrarea
+				+ ", phgrindrarea=" + phgrindrarea + ", hlsparea=" + hlsparea + ", ktchmssparea=" + ktchmssparea
+				+ ", otsparea=" + otsparea + "]";
+	}
+
 	
 }

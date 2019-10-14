@@ -13,6 +13,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
+
+
 <link rel="stylesheet"
 	href="resources/vendors/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -127,6 +129,7 @@
 
 <body>
 	<!-- Left Panel -->
+	<script src="resources/assets/js/index_modules/search_map.js"></script>
 
 	<aside id="left-panel" class="left-panel">
 		<nav class="navbar navbar-expand-sm navbar-default">
@@ -141,6 +144,7 @@
 					<!-- /.menu-title -->
 
 <script>
+
 	function selectVal(flag){
 		if(flag==1){
 			
@@ -155,6 +159,9 @@
 		}
 		else if(flag==4){
 			$('#drop_val').val('4')
+
+
+
 		}
 		
 		
@@ -162,10 +169,12 @@
 
 </script>
 
+
 				<li class="menu-item-has-children dropdown">
 					<input id=drop_val type="hidden" value="" />
 					<a href="#" onclick="selectVal(1)"
 						class="dropdown-toggle" data-toggle="dropdown"
+
 						aria-haspopup="true" aria-expanded="false"> <i
 							class="menu-icon fa fa-table"></i>안전
 					</a>
@@ -192,19 +201,20 @@
 										name="safety" value="plyg_ck_dt"> <label
 										class="custom-control-label" for="customCheck4">놀이 시설
 											검사</label></li>
-								
 								</ul></li>
 					</form>
 				</ul>
 				</li>
 
 				<li class="menu-item-has-children dropdown">
+
 				<input id=drop_val type="hidden" value="" />
 				<a href="#" onclick="selectVal(2)"
 					class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> <i class="menu-icon fa fa-table"></i>위생
 				</a>
 					<ul class="sub-menu children dropdown-menu">
+
 						<form method="post" name="multiple_check">
 							<ul style="font-family: 'Hanna'";>
 								<li class="custom-control custom-checkbox mb-3"><input
@@ -225,6 +235,7 @@
 									name="sanitary" value=ilmn_chk_dt"> <label
 									class="custom-control-label" for="customCheck9">조도관리</label></li>
 
+
 							</ul>
 						</form>
 
@@ -233,6 +244,7 @@
 				<input id=drop_val type="hidden" value="" />
 				<a href="#" onclick="selectVal(3)"
 					class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+
 					aria-expanded="false"> <i class="menu-icon fa fa-table"></i>시설정보
 				</a>
 					<ul class="sub-menu children dropdown-menu">
@@ -241,6 +253,7 @@
 							<ul style="font-family: 'Hanna'";>
 								<li class="custom-control custom-checkbox mb-3"><input
 									type="checkbox" class="custom-control-input" id="customCheck10"
+
 									name="buildinfo" value="big_clsrarea"> <label
 									class="custom-control-label" for="customCheck10">대규모 유치원</label></li>
 
@@ -271,6 +284,7 @@
 				<input id=drop_val type="hidden" value="" />
 				<a href="#" onclick="selectVal(4)"
 					class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+
 					aria-expanded="false"> <i class="menu-icon fa fa-table"></i>교육환경
 				</a>
 					<ul class="sub-menu children dropdown-menu">
@@ -298,7 +312,6 @@
 							</ul></li>
 				</ul>
 				</li>
-
 				<h3 class="menu-title">유치원 순위</h3>
 				<!-- /.menu-title -->
 				<li class="menu-item-has-children dropdown"><a href="#"
@@ -385,14 +398,6 @@
 		        <ul id="placesList"></ul>
 		        <div id="pagination"></div>
 		    </div>
-			
-			
-			
-			<!-- ****************************************************************************************** -->
-					
-		   	
-			<!-- ****************************************************************************************** -->
-			
 			<div id="clickLatlng"></div>
 			<script type="text/javascript"
 				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=048d3839f2032025c0d6225330618498&libraries=services,clusterer"></script>
@@ -401,7 +406,6 @@
 
 $(document).ready(function(){
 	getSafetyArr(1,map);
-	console.log("ready");
 })	
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -454,18 +458,7 @@ var AddList=[];
 var TelList=[];
 var HomeList=[];
 var TimeList=[];
-
 var message = {};
-
-
-//marker cluster**************************************************************************************************************************************
-// 마커 클러스터러를 생성합니다 
-   var clusterer = new kakao.maps.MarkerClusterer({
-       map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
-       //averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-       minLevel: 10 // 클러스터 할 최소 지도 레벨 
-   });
-//marker cluster**************************************************************************************************************************************
 
 function infoFunction(n){//정보보기
 	
@@ -602,8 +595,6 @@ function setMarkerList(map) {
 	        markerList[i].setMap(map);
 	    }   		
 }
-
-
 // "마커 감추기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
 function hideMarkers() {
     setMarkerList(null);    
@@ -619,18 +610,20 @@ function imageChange(n){
 
 function getSafetyArr(select,map){
 	
+
+	var realData = JSON.stringify(message);
 	
 	if(select==1){
-		console.log("select1");
 		var sevletDo = './allSearch.do';	
-		 
+		
 	}
+	
 	else if(select == 2){
-		//var sevletDo = './search.do';
 		message={};
+
 		hideMarkers();
 		
-		
+		var sevletDo = './search.do';
 		
 		if($('#drop_val').val()==1){
 			var sevletDo = './search.do/safety.do';
@@ -672,19 +665,34 @@ function getSafetyArr(select,map){
 			       
 			    }); // 체크된 것만 뽑아 배열에 push
 		   }
-	}
-		var realData = JSON.stringify(message);
 		
+		
+	}
+	else if(select == 3){
+		
+		hideMarkers();
+		
+		var keyword = document.getElementById('keyword').value;
+		
+		message["keyword"]=  keyword;
+		
+		var sevletDo = 'keywordSearch.do';
+		
+		realData = JSON.stringify(message);
+	
+	}
+	
+	realData = JSON.stringify(message);
+	
     $.ajax({
         type: 'POST',
         url:sevletDo,
         dataType: 'json',
         contentType:'application/json',
+        traditional : true,
+        async:false,
         data: realData, //메시지에 셀렉트 된 인자 정보를 받아서 컨트롤러단으로 넘김. 
         success: function(data) {
-        	console.log("성공");
-        	
-        	
         	markerList = []; // 마커 보이기,숨기기용 배열
 			count=0;
 	
@@ -733,12 +741,10 @@ function getSafetyArr(select,map){
        count++;
        
        if($('#drop_val').val()==1){
-           
            var fire_avd_dt='';
            var gas_ck_dt='';
            var elect_ck_dt='';
            var plyg_ck_dt='';
-           
     
            if(value["fire_avd_dt"] = 'null'){
               fire_avd_dt='준비중입니다.';
@@ -865,13 +871,11 @@ function getSafetyArr(select,map){
             
           });
   },
-
     error:function(request,status,error){
         alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
     }
     });
 }
-
 
 function getiwContent(count,value){//인포 윈도우 얻어오기
 	return '<div style="padding:5px; width : 360px; height : 380px;">' +
@@ -926,6 +930,7 @@ function getiwContent(count,value){//인포 윈도우 얻어오기
      '</div>' +
     '</div>'
 }
+
 
 //좌측 검색창************************************************************************************************************************************************
 //var ps = new kakao.maps.services.Places();
@@ -1157,8 +1162,6 @@ function removeAllChildNods(el) {
 //************************************************************************************************************************************************
 
 
-
-
 </script>
 		</div>
 
@@ -1176,6 +1179,7 @@ function removeAllChildNods(el) {
    <script
       src="resources/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
    <script src="resources/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+
 </body>
 
 </html>

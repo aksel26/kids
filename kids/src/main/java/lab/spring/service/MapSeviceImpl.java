@@ -75,6 +75,4 @@ public class MapSeviceImpl implements MapService{
 		// TODO Auto-generated method stub
 		return dao.getEnvironList(env_arr);
 	}
-	
-	
 }

@@ -48,3 +48,6 @@ target/
 # Icon must end with two \r
 Icon
 kids/.springBeans
+kids/.project
+
+kids/src/main/webapp/WEB-INF/action-servlet.xml

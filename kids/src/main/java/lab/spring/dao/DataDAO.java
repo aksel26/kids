@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import lab.spring.model.BuildingVO;
+
 import lab.spring.model.ClassAreaVO;
 import lab.spring.model.CommentVO;
 import lab.spring.model.EnvironVO;
@@ -22,6 +23,11 @@ import lab.spring.model.KinderInfoVO;
 import lab.spring.model.MealVO;
 import lab.spring.model.SafetyVO;
 import lab.spring.model.SanitaryVO;
+
+import lab.spring.model.CommentVO;
+import lab.spring.model.KinderInfoVO;
+import lab.spring.model.MealVO;
+import lab.spring.model.SafetyVO;
 import lab.spring.model.TeacherVO;
 import lab.spring.model.UserVO;
 
@@ -67,6 +73,7 @@ public class DataDAO {
 	
 	public List<SafetyVO> getSafetyList(HashMap<String, String> safety_arr){
 		List<SafetyVO> safetyList = null;
+
 		safetyList = sqlSession.selectList("lab.mybatis.user.UserMapper.getSafetyList", safety_arr);
 		return safetyList;
 	}
@@ -90,4 +97,5 @@ public class DataDAO {
 		return envList;
 
 	}
+
 }
