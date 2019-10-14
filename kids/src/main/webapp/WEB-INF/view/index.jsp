@@ -129,7 +129,6 @@
 
 <body>
 	<!-- Left Panel -->
-	<script src="resources/assets/js/index_modules/search_map.js"></script>
 
 	<aside id="left-panel" class="left-panel">
 		<nav class="navbar navbar-expand-sm navbar-default">
@@ -610,20 +609,17 @@ function imageChange(n){
 
 function getSafetyArr(select,map){
 	
-
-	var realData = JSON.stringify(message);
-	
 	if(select==1){
-		var sevletDo = './allSearch.do';	
+		console.log("select1");
+		var sevletDo = './search.do/allSearch.do';	
 		
 	}
 	
 	else if(select == 2){
 		message={};
-
 		hideMarkers();
 		
-		var sevletDo = './search.do';
+		//var sevletDo = './search.do';
 		
 		if($('#drop_val').val()==1){
 			var sevletDo = './search.do/safety.do';
@@ -677,25 +673,23 @@ function getSafetyArr(select,map){
 		message["keyword"]=  keyword;
 		
 		var sevletDo = 'keywordSearch.do';
-		
-		realData = JSON.stringify(message);
 	
 	}
 	
-	realData = JSON.stringify(message);
+	var realData = JSON.stringify(message);
 	
     $.ajax({
         type: 'POST',
         url:sevletDo,
         dataType: 'json',
         contentType:'application/json',
+        data: realData, //메시지에 셀렉트 된 인자 정보를 받아서 컨트롤러단으로 넘김.
         traditional : true,
         async:false,
-        data: realData, //메시지에 셀렉트 된 인자 정보를 받아서 컨트롤러단으로 넘김. 
         success: function(data) {
         	markerList = []; // 마커 보이기,숨기기용 배열
 			count=0;
-	
+	console.log
 			$.each(data, function(key, value){
 				
 			NameList.push(value["kindername"]);
@@ -1159,7 +1153,6 @@ function removeAllChildNods(el) {
         el.removeChild (el.lastChild);
     }
 }
-//************************************************************************************************************************************************
 
 
 </script>

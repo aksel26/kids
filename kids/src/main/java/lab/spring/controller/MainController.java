@@ -36,31 +36,4 @@ public class MainController {
 			
 	}
 
-	@RequestMapping(value="/allSearch.do", method = RequestMethod.POST)
-	@ResponseBody
-	public List<KinderInfoVO>  findAll(@RequestBody HashMap<String, String> message){	  
-
-		
-		List<KinderInfoVO> KinderList = null;
-		KinderList = service.findKinderList();
-		
-		System.out.println(KinderList.size());
-		
-		
-		return KinderList;
-	}
-	
-	@RequestMapping(value="/keywordSearch.do")
-	@ResponseBody
-	public List<KinderInfoVO> findKeyword(String keyword){	  
-		
-		//System.out.println(keyword);
-		
-		List<KinderInfoVO> KinderList = null;
-		KinderList = service.findSerachList(keyword);
-		
-		
-		
-		return KinderList;
-	}
 	}

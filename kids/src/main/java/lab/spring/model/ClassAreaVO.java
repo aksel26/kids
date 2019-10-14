@@ -136,13 +136,5 @@ public class ClassAreaVO {
 		this.otsparea = otsparea;
 	}
 
-
-	@Override
-	public String toString() {
-		return "ClassAreaVO [classId=" + classId + ", key=" + key + ", crcnt=" + crcnt + ", clsrarea=" + clsrarea
-				+ ", phgrindrarea=" + phgrindrarea + ", hlsparea=" + hlsparea + ", ktchmssparea=" + ktchmssparea
-				+ ", otsparea=" + otsparea + "]";
-	}
-
 	
 }
