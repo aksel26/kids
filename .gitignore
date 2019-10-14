@@ -17,6 +17,8 @@ kids/.settings/
 .settings
 */META-INF/*
 kids/pom.xml
+kids/.project
+kids/dbinfo.properties
 
 # Created by https://www.gitignore.io/api/java,macos,java-web
 # Edit at https://www.gitignore.io/?templates=java,macos,java-web
