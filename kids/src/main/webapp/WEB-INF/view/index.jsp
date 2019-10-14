@@ -401,6 +401,7 @@
 
 $(document).ready(function(){
 	getSafetyArr(1,map);
+	console.log("ready");
 })	
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -602,11 +603,6 @@ function setMarkerList(map) {
 	    }   		
 }
 
-// "마커 보이기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에 표시하는 함수입니다
-function showMarkers() {
-	hideMarkers();
-	markerList = getSafetyArr(map);
-}
 
 // "마커 감추기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
 function hideMarkers() {
@@ -622,14 +618,16 @@ function imageChange(n){
 }
 
 function getSafetyArr(select,map){
-	message = {};
+	
+	
 	if(select==1){
+		console.log("select1");
 		var sevletDo = './allSearch.do';	
-		
+		 
 	}
 	else if(select == 2){
 		//var sevletDo = './search.do';
-		
+		message={};
 		hideMarkers();
 		
 		
@@ -674,15 +672,17 @@ function getSafetyArr(select,map){
 			       
 			    }); // 체크된 것만 뽑아 배열에 push
 		   }
-	
+	}
+		var realData = JSON.stringify(message);
+		
     $.ajax({
         type: 'POST',
         url:sevletDo,
         dataType: 'json',
         contentType:'application/json',
-        data: JSON.stringify(message), //메시지에 셀렉트 된 인자 정보를 받아서 컨트롤러단으로 넘김. 
+        data: realData, //메시지에 셀렉트 된 인자 정보를 받아서 컨트롤러단으로 넘김. 
         success: function(data) {
-        	
+        	console.log("성공");
         	
         	
         	markerList = []; // 마커 보이기,숨기기용 배열
@@ -871,7 +871,7 @@ function getSafetyArr(select,map){
     }
     });
 }
-}
+
 
 function getiwContent(count,value){//인포 윈도우 얻어오기
 	return '<div style="padding:5px; width : 360px; height : 380px;">' +
@@ -1167,11 +1167,15 @@ function removeAllChildNods(el) {
 	<!-- /#right-panel -->
 
 	<!-- Right Panel -->
+   <script src="resources/vendors/jquery/dist/jquery.min.js"></script>
+   <script src="resources/vendors/popper.js/dist/umd/popper.min.js"></script>
+   <script src="resources/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+   <script src="resources/assets/js/main.js"></script>
 
-	<script src="resources/vendors/jquery/dist/jquery.min.js"></script>
-	<script src="resources/vendors/popper.js/dist/umd/popper.min.js"></script>
-	<script src="resources/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="resources/assets/js/main.js"></script>
+   <script src="resources/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+   <script
+      src="resources/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+   <script src="resources/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 </body>
 
 </html>

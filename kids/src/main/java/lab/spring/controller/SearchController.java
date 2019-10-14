@@ -91,6 +91,7 @@ public class SearchController {
 		List<KinderInfoVO> KinderList = null;
 		KinderList = service.findKinderList();
 		
+		System.out.println(KinderList.size());
 		
 		
 		return KinderList;

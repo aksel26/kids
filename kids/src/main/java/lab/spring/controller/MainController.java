@@ -16,7 +16,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import lab.spring.model.CommentVO;
 import lab.spring.model.KinderInfoVO;
-import lab.spring.model.SafetyVO;
 import lab.spring.service.MapService;
 
 
@@ -36,5 +35,32 @@ public class MainController {
 		return mav;
 			
 	}
+
+	@RequestMapping(value="/allSearch.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<KinderInfoVO>  findAll(@RequestBody HashMap<String, String> message){	  
+
+		
+		List<KinderInfoVO> KinderList = null;
+		KinderList = service.findKinderList();
+		
+		System.out.println(KinderList.size());
+		
+		
+		return KinderList;
+	}
 	
+	@RequestMapping(value="/keywordSearch.do")
+	@ResponseBody
+	public List<KinderInfoVO> findKeyword(String keyword){	  
+		
+		//System.out.println(keyword);
+		
+		List<KinderInfoVO> KinderList = null;
+		KinderList = service.findSerachList(keyword);
+		
+		
+		
+		return KinderList;
+	}
 	}
