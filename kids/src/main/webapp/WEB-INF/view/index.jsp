@@ -626,6 +626,7 @@ function getSafetyArr(select,map){
 		 
 	}
 	else if(select == 2){
+		//var sevletDo = './search.do';
 		message={};
 		hideMarkers();
 		

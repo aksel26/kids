@@ -48,3 +48,7 @@ target/
 # Icon must end with two \r
 Icon
 kids/.springBeans
+<<<<<<< HEAD
+=======
+kids/.project
+>>>>>>> 4ca0b8f7a4d85ba472a3167b97461c7d77fc4d06
