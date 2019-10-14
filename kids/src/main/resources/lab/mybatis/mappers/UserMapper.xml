@@ -51,19 +51,8 @@
   
   
    <select id="getSafetyList" resultType="lab.spring.model.SafetyVO" parameterType = "hashmap">
-     select   a.kinderinfoId, 
-     a.officeedu, 
-     a.subofficeedu, 
-     a.kindername, 
-     a.establish, 
-     a.edate, 
-     a.odate,
-     a.addr,
-     a.telno,
-     a.hpaddr,
-     a.opertime,
-     a.POINT_X, a.POINT_Y,
-     b.fire_avd_dt, b.gas_ck_dt, b.elect_ck_dt, b.PLYG_CK_RS_CD, b.PLYG_CK_DT
+     select   a.kinderinfoId, a.officeedu, a.subofficeedu, a.kindername, a.establish, a.edate, a.odate,a.addr,a.telno,a.hpaddr,a.opertime,a.POINT_X, a.POINT_Y,
+      		b.fire_avd_dt, b.gas_ck_dt, b.elect_ck_dt, b.PLYG_CK_RS_CD, b.PLYG_CK_DT
       		
    from KINDERINFO a, SAFETY b
    where a.kinderinfoid = b.safetyid
@@ -85,7 +74,8 @@
    </if>
   </select>
   
-    <select id="getSanitaryList" resultType="lab.spring.model.SanitaryVO" parameterType = "hashmap">
+  
+   <select id="getSanitaryList" resultType="lab.spring.model.SanitaryVO" parameterType = "hashmap">
      select   a.kinderinfoId,
 	 a.officeedu,
 	 a.subofficeedu,
@@ -98,88 +88,28 @@
 	 a.hpaddr,
 	 a.opertime,
      a.POINT_X, a.POINT_Y, b.arql_chk_dt, b.fxtm_dsnf_chk_dt,
-      b.mdst_chk_dt, b.ilmn_chk_dt
+      b.mdst_chk_dt, b.PLYG_CK_RS_CD,
+   b.PLYG_CK_DT
    from KINDERINFO a, SANITARY b
-   where a.kindername=b.kindername
+   where a.kinderinfoid = b.sanitaryid
+   
    <!-- <if test="fire_avd_dt != null"> -->
-   <if test="arql_chk_dt != null">
-     	and b.arql_chk_dt like '2019%'
+   <if test="fire_avd_dt != null">
+      and b.fire_avd_dt like '2019%'
    </if>
    
-   <if test="fxtm_dsnf_chk_dt != null">
-      	and b.fxtm_dsnf_chk_dt like '2019%'
+   <if test="gas_ck_dt != null">
+      and b.gas_ck_dt like '2019%'
+
    </if>
-   <if test="mdst_chk_dt != null">
-      	and b.mdst_chk_dt like '2019%'
+   <if test="elect_ck_dt != null">
+      and b.elect_ck_dt like '2019%'
    </if>
-   <if test="ilmn_chk_dt != null">
-      	and b.ilmn_chk_dt like '2019%'
-   </if>
-  </select>
-   <select id="getBuildinfoList" resultType="lab.spring.model.ClassAreaVO" parameterType = "hashmap">
-     select a.kinderinfoId,
-	 a.officeedu,
-	 a.subofficeedu,
-	 a.kindername,
-	 a.establish,
-	 a.edate,
-	 a.odate,
-	 a.addr,
-	 a.telno,
-	 a.hpaddr,
-	 a.opertime,
-     a.POINT_X, a.POINT_Y, b.clsrarea, b.phgrindrarea,
-      b.hlsparea, b.ktchmssparea
-   from KINDERINFO a, CLASSAREA b
-   where a.kindername=b.kindername
-   <if test="big_clsrarea != null">
-     	and TO_NUMBER(SUBSTR(b.clsrarea, 0, length(b.clsrarea)-1),'9999' ) >= 379
-   </if>
-    <if test="small_clsrarea != null">
-     	and TO_NUMBER(SUBSTR(b.clsrarea, 0, length(b.clsrarea)-1),'9999' ) &lt; 379
-   </if>
-   
-   <if test="phgrindrarea != null">
-      	and TO_NUMBER(SUBSTR(b.phgrindrarea , 0, length(b.phgrindrarea)-1),'9999') > 1
-   </if>
-   <if test="hlsparea != null">
-      	and TO_NUMBER(SUBSTR(b.hlsparea , 0, length(b.hlsparea)-1),'9999') > 1
-   </if>
-   <if test="ktchmssparea != null">
-      	and TO_NUMBER(SUBSTR(b.ktchmssparea , 0, length(b.ktchmssparea)-1),'9999') > 1
+   <if test="plyg_ck_dt != null">
+      and b.plyg_ck_rs_cd = '적합' and plyg_ck_dt like '2019%'
    </if>
   </select>
   
- <select id="getEnvironList" resultType="lab.spring.model.EnvironVO" parameterType = "hashmap">
-     select a.kinderinfoId,
-	 a.officeedu,
-	 a.subofficeedu,
-	 a.kindername,
-	 a.establish,
-	 a.edate,
-	 a.odate,
-	 a.addr,
-	 a.telno,
-	 a.hpaddr,
-	 a.opertime,
-     a.POINT_X, a.POINT_Y, b.spcn_thcnt, b.ntcnt,
-      b.ntrt_thcnt, c.vhcl_oprn_yn
-   from KINDERINFO a,TEACHER b, SCHOOLBUS c
-   where a.kindername=b.kindername
-  and a.kindername=c.kindername
   
-   <if test="vhcl_oprn_yn != null">
-     	and vhcl_oprn_yn like 'Y'
-   </if>
-    <if test="spcn_thcnt != null">
-     	and spcn_thcnt >= 1
-   </if>
-   <if test="ntcnt != null">
-      and ntcnt >= 1
-   </if>
-   <if test="ntrt_thcnt != null">
-      and ntrt_thcnt >= 1
-   </if>
-  </select>
 
 </mapper>

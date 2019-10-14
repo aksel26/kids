@@ -10,8 +10,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>엄마의지도</title>
+<meta name="description" content="Sufee Admin - HTML5 Admin Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<link rel="apple-touch-icon" href="apple-icon.png">
+<link rel="shortcut icon" href="favicon.ico">
 
 <link rel="stylesheet"
 	href="resources/vendors/bootstrap/dist/css/bootstrap.min.css">
@@ -127,6 +130,7 @@
 
 <body>
 	<!-- Left Panel -->
+	<script src="resources/assets/js/index_modules/search_map.js"></script>
 
 	<aside id="left-panel" class="left-panel">
 		<nav class="navbar navbar-expand-sm navbar-default">
@@ -141,20 +145,20 @@
 					<!-- /.menu-title -->
 
 <script>
-	function selectVal(flag){
+	function selector(flag){
 		if(flag==1){
 			
-			$('#drop_val').val('1')
+			$('#drop_value').val('1')
 			
 		}
 		else if(flag==2){
-			$('#drop_val').val('2')
+			$('#drop_value').val('2')
 		}
 		else if(flag==3){
-			$('#drop_val').val('3')
+			$('#drop_value').val('3')
 		}
 		else if(flag==4){
-			$('#drop_val').val('4')
+			$('#drop_value').val('4')
 		}
 		
 		
@@ -162,10 +166,11 @@
 
 </script>
 
-				<li class="menu-item-has-children dropdown">
-					<input id=drop_val type="hidden" value="" />
-					<a href="#" onclick="selectVal(1)"
-						class="dropdown-toggle" data-toggle="dropdown"
+					<li class="menu-item-has-children dropdown">
+					<input id=drop_value type="hidden" value="" />
+					
+					<a href="#"
+						class="dropdown-toggle" data-toggle="dropdown"  onclick='selector(1)'
 						aria-haspopup="true" aria-expanded="false"> <i
 							class="menu-icon fa fa-table"></i>안전
 					</a>
@@ -192,19 +197,42 @@
 										name="safety" value="plyg_ck_dt"> <label
 										class="custom-control-label" for="customCheck4">놀이 시설
 											검사</label></li>
-								
+									<li class="custom-control custom-checkbox mb-3"><input
+										type="checkbox" class="custom-control-input" id="customCheck5"
+										name="safety" value="cctv여부"> <label
+										class="custom-control-label" for="customCheck5">CCTV
+											여부</label></li>
+									<li class="custom-control custom-checkbox mb-3"><input
+										type="checkbox" class="custom-control-input" id="customCheck1"
+										name="safety" value="plyg_ck_dt"> <label
+										class="custom-control-label" for="customCheck4">통학버스
+											보험</label></li>
+									<li class="custom-control custom-checkbox mb-3"><input
+										type="checkbox" class="custom-control-input" id="customCheck2"
+										name="safety" value="plyg_ck_dt"> <label
+										class="custom-control-label" for="customCheck4">영유아상해
+											보험</label></li>
+									<li class="custom-control custom-checkbox mb-3"><input
+										type="checkbox" class="custom-control-input" id="customCheck3"
+										name="safety" value="plyg_ck_dt"> <label
+										class="custom-control-label" for="customCheck4">유아종합보험</label>
+									</li>
+									<li class="custom-control custom-checkbox mb-3"><input
+										type="checkbox" class="custom-control-input" id="customCheck4"
+										name="safety" value="plyg_ck_dt"> <label
+										class="custom-control-label" for="customCheck4">화재보험</label>
 								</ul></li>
 					</form>
 				</ul>
 				</li>
 
 				<li class="menu-item-has-children dropdown">
-				<input id=drop_val type="hidden" value="" />
-				<a href="#" onclick="selectVal(2)"
-					class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+				<a href="#"
+					class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" onclick='selector(2)'
 					aria-expanded="false"> <i class="menu-icon fa fa-table"></i>위생
 				</a>
 					<ul class="sub-menu children dropdown-menu">
+
 						<form method="post" name="multiple_check">
 							<ul style="font-family: 'Hanna'";>
 								<li class="custom-control custom-checkbox mb-3"><input
@@ -222,17 +250,16 @@
 									class="custom-control-label" for="customCheck8">미세먼지</label></li>
 								<li class="custom-control custom-checkbox mb-3"><input
 									type="checkbox" class="custom-control-input" id="customCheck9"
-									name="sanitary" value=ilmn_chk_dt"> <label
-									class="custom-control-label" for="customCheck9">조도관리</label></li>
+									name="sanitary" value="mas_mspl_dclr_yn"> <label
+									class="custom-control-label" for="customCheck9">집단급식소</label></li>
 
 							</ul>
 						</form>
 
 					</ul></li>
 				<li class="menu-item-has-children dropdown">
-				<input id=drop_val type="hidden" value="" />
-				<a href="#" onclick="selectVal(3)"
-					class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+				<a href="#"
+					class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"  onclick='selector(3)'
 					aria-expanded="false"> <i class="menu-icon fa fa-table"></i>시설정보
 				</a>
 					<ul class="sub-menu children dropdown-menu">
@@ -241,25 +268,21 @@
 							<ul style="font-family: 'Hanna'";>
 								<li class="custom-control custom-checkbox mb-3"><input
 									type="checkbox" class="custom-control-input" id="customCheck10"
-									name="buildinfo" value="big_clsrarea"> <label
-									class="custom-control-label" for="customCheck10">대규모 유치원</label></li>
+									name="example1" value="crcnt"> <label
+									class="custom-control-label" for="customCheck11">교실 수</label></li>
 
 								<li class="custom-control custom-checkbox mb-3"><input
 									type="checkbox" class="custom-control-input" id="customCheck11"
-									name="buildinfo" value="small_clsrarea"> <label class="custom-control-label"
-									for="customCheck11">소규모 유치원</label></li>
+									name="example1"> <label class="custom-control-label"
+									for="customCheck12" value="hlsparea">보건/위생공간</label></li>
 								<li class="custom-control custom-checkbox mb-3"><input
 									type="checkbox" class="custom-control-input" id="customCheck12"
-									name="buildinfo" value="phgrindrarea"> <label
-									class="custom-control-label" for="customCheck12">체육장</label></li>
+									name="example1" value="phgrindrarea"> <label
+									class="custom-control-label" for="customCheck13">체육장</label></li>
 								<li class="custom-control custom-checkbox mb-3"><input
 									type="checkbox" class="custom-control-input" id="customCheck13"
-									name="buildinfo" value="ktchmssparea"> <label
-									class="custom-control-label" for="customCheck13">조리실/급식공간</label></li>
-									<li class="custom-control custom-checkbox mb-3"><input
-									type="checkbox" class="custom-control-input" id="customCheck14"
-									name="buildinfo" value="hlsparea"> <label
-									class="custom-control-label" for="customCheck14">보건/위생공간</label></li>
+									name="example1" value="ktchmssparea"> <label
+									class="custom-control-label" for="customCheck14">조리실/급식공간</label></li>
 
 							</ul></li>
 				</form>
@@ -268,9 +291,8 @@
 				</li>
 
 				<li class="menu-item-has-children dropdown">
-				<input id=drop_val type="hidden" value="" />
-				<a href="#" onclick="selectVal(4)"
-					class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+				<a href="#"
+					class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" onclick='selector(4)'
 					aria-expanded="false"> <i class="menu-icon fa fa-table"></i>교육환경
 				</a>
 					<ul class="sub-menu children dropdown-menu">
@@ -278,27 +300,29 @@
 						<form method="post" name="multiple_check">
 							<ul style="font-family: 'Hanna'";>
 								<li class="custom-control custom-checkbox mb-3"><input
-									type="checkbox" class="custom-control-input" id="customCheck15"
-									name="environment" value="spcn_thcnt"> <label
-									class="custom-control-label" for="customCheck15">특수 교사</label></li>
+									type="checkbox" class="custom-control-input" id="customCheck14"
+									name="example1" value="spcn_thcnt"> <label
+									class="custom-control-label" for="customCheck14">특수 교사</label></li>
 
 								<li class="custom-control custom-checkbox mb-3"><input
+									type="checkbox" class="custom-control-input" id="customCheck15"
+									name="example1" value="ntcnt"> <label
+									class="custom-control-label" for="customCheck15">보건 교사</label></li>
+								<li class="custom-control custom-checkbox mb-3"><input
 									type="checkbox" class="custom-control-input" id="customCheck16"
-									name="environment" value="ntcnt"> <label
-									class="custom-control-label" for="customCheck16">보건 교사</label></li>
+									name="example1" value="ntrt_thcnt"> <label
+									class="custom-control-label" for="customCheck16">영양교사</label></li>
 								<li class="custom-control custom-checkbox mb-3"><input
 									type="checkbox" class="custom-control-input" id="customCheck17"
-									name="environment" value="ntrt_thcnt"> <label
-									class="custom-control-label" for="customCheck17">영양 교사</label></li>
+									name="example1" value="vhcl_oprn_yn"> <label
+									class="custom-control-label" for="customCheck17">통학버스운영</label></li>
 								<li class="custom-control custom-checkbox mb-3"><input
 									type="checkbox" class="custom-control-input" id="customCheck18"
-									name="environment" value="vhcl_oprn_yn"> <label
-									class="custom-control-label" for="customCheck18">통학버스운영</label></li>
-								
+									name="example1" value="dclr_vhcnt"> <label
+									class="custom-control-label" for="customCheck18">신고차량여부</label>
 							</ul></li>
 				</ul>
 				</li>
-
 				<h3 class="menu-title">유치원 순위</h3>
 				<!-- /.menu-title -->
 				<li class="menu-item-has-children dropdown"><a href="#"
@@ -385,14 +409,6 @@
 		        <ul id="placesList"></ul>
 		        <div id="pagination"></div>
 		    </div>
-			
-			
-			
-			<!-- ****************************************************************************************** -->
-					
-		   	
-			<!-- ****************************************************************************************** -->
-			
 			<div id="clickLatlng"></div>
 			<script type="text/javascript"
 				src="//dapi.kakao.com/v2/maps/sdk.js?appkey=048d3839f2032025c0d6225330618498&libraries=services,clusterer"></script>
@@ -401,7 +417,6 @@
 
 $(document).ready(function(){
 	getSafetyArr(1,map);
-	console.log("ready");
 })	
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -454,18 +469,8 @@ var AddList=[];
 var TelList=[];
 var HomeList=[];
 var TimeList=[];
-
 var message = {};
 
-
-//marker cluster**************************************************************************************************************************************
-// 마커 클러스터러를 생성합니다 
-   var clusterer = new kakao.maps.MarkerClusterer({
-       map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
-       //averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-       minLevel: 10 // 클러스터 할 최소 지도 레벨 
-   });
-//marker cluster**************************************************************************************************************************************
 
 function infoFunction(n){//정보보기
 	
@@ -603,6 +608,11 @@ function setMarkerList(map) {
 	    }   		
 }
 
+// "마커 보이기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에 표시하는 함수입니다
+function showMarkers() {
+	hideMarkers();
+	markerList = getSafetyArr(map);
+}
 
 // "마커 감추기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
 function hideMarkers() {
@@ -619,70 +629,56 @@ function imageChange(n){
 
 function getSafetyArr(select,map){
 	
+	var realData = JSON.stringify(message);
 	
 	if(select==1){
-		console.log("select1");
 		var sevletDo = './allSearch.do';	
-		 
+		
 	}
+	
 	else if(select == 2){
-		//var sevletDo = './search.do';
-		message={};
+		
 		hideMarkers();
 		
+		var sevletDo = './search.do';
 		
-		
-		if($('#drop_val').val()==1){
-			var sevletDo = './search.do/safety.do';
+		if($('#drop_value').val()==1){
 		    $('input:checkbox[name=safety]:checked').each(function(i){
-		      
-		        var key = $(this).val()
-		         message[key]=  key;
-		        
-		       
+		 	  
+		    	 var key = $(this).val()
+		    	 message[key]=  key;
+		    	 
 		    }); // 체크된 것만 뽑아 배열에 push
 		    }
-		    else  if($('#drop_val').val()==2){
-		    	var sevletDo = './search.do/sanitary.do';
-		    	 $('input:checkbox[name=sanitary]:checked').each(function(i){
-		    	      
-		    	        var key = $(this).val()
-		    	         message[key]=  key;
-		    	        
-		    	       
-		    	    }); // 체크된 것만 뽑아 배열에 push
-		    }
-		   else  if($('#drop_val').val()==3){
-			   var sevletDo = './search.do/build.do';
-			   $('input:checkbox[name=buildinfo]:checked').each(function(i){
-				      
-			        var key = $(this).val()
-			         message[key]=  key;
-			        
-			       
-			    }); // 체크된 것만 뽑아 배열에 push
-		       }
-		   else  if($('#drop_val').val()==4){
-			   var sevletDo = './search.do/environment.do';
-			   $('input:checkbox[name=environment]:checked').each(function(i){
-				      
-			        var key = $(this).val()
-			         message[key]=  key;
-			        
-			       
-			    }); // 체크된 것만 뽑아 배열에 push
-		   }
-	}
-		var realData = JSON.stringify(message);
 		
+		realData = JSON.stringify(message);
+	}
+	else if(select == 3){
+		
+		hideMarkers();
+		
+		var keyword = document.getElementById('keyword').value;
+		
+		message["keyword"]=  keyword;
+		
+		var sevletDo = 'keywordSearch.do';
+		
+		realData = JSON.stringify(message);
+	
+	}
+	
+	
+	
     $.ajax({
         type: 'POST',
         url:sevletDo,
         dataType: 'json',
         contentType:'application/json',
-        data: realData, //메시지에 셀렉트 된 인자 정보를 받아서 컨트롤러단으로 넘김. 
+        data: realData,
+        traditional : true,
+        async:false,
         success: function(data) {
-        	console.log("성공");
+        	
         	
         	
         	markerList = []; // 마커 보이기,숨기기용 배열
@@ -732,146 +728,54 @@ function getSafetyArr(select,map){
        markerList.push(marker);
        count++;
        
-       if($('#drop_val').val()==1){
-           
+       if($('#drop_value').val()==1){
+    	   var point_x='';
            var fire_avd_dt='';
            var gas_ck_dt='';
            var elect_ck_dt='';
            var plyg_ck_dt='';
            
-    
            if(value["fire_avd_dt"] = 'null'){
-              fire_avd_dt='준비중입니다.';
+        	   fire_avd_dt='준비중입니다.';
            } else {
-              fire_avd_dt = value["fire_avd_dt"];
+        	   fire_avd_dt = value["fire_avd_dt"];
            }
            
            if(value["gas_ck_dt"] = 'null'){
-              gas_ck_dt='준비중입니다.';
+        	   gas_ck_dt='준비중입니다.';
            } else {
-              gas_ck_dt = value["gas_ck_dt"];
+        	   gas_ck_dt = value["gas_ck_dt"];
            }
            
            if(value["elect_ck_dt"] = 'null'){
-              elect_ck_dt='준비중입니다.';
+        	   elect_ck_dt='준비중입니다.';
            } else {
-              elect_ck_dt = value["elect_ck_dt"];
+        	   elect_ck_dt = value["elect_ck_dt"];
            }
            if(value["plyg_ck_dt"] = 'null'){
-              plyg_ck_dt='준비중입니다.';
+        	   plyg_ck_dt='준비중입니다.';
            } else {
-              plyg_ck_dt = value["plyg_ck_dt"];
+        	   plyg_ck_dt = value["plyg_ck_dt"];
            }
        }
        
-       else  if($('#drop_val').val()==2){
+       else  if($('#drop_value').val()==2){
+       	
+           }
+       	else  if($('#drop_value').val()==3){
+       	    	
+       	    }
+       	else  if($('#drop_value').val()==4){
+       	
+       	}
        
-           var arql_chk_dt='';
-           var fxtm_dsnf_chk_dt='';
-           var mdst_chk_dt='';
-           var ilmn_chk_dt='';
-           
-           
-           if(value["arql_chk_dt"] = 'null'){
-           	arql_chk_dt='준비중입니다.';
-           } else {
-           	arql_chk_dt = value["arql_chk_dt"];
-           }
-           
-           if(value["fxtm_dsnf_chk_dt"] = 'null'){
-           	fxtm_dsnf_chk_dt='준비중입니다.';
-           } else {
-           	fxtm_dsnf_chk_dt = value["fxtm_dsnf_chk_dt"];
-           }
-           
-           if(value["mdst_chk_dt"] = 'null'){
-           	mdst_chk_dt='준비중입니다.';
-           } else {
-           	mdst_chk_dt = value["mdst_chk_dt"];
-           }
-           if(value["ilmn_chk_dt"] = 'null'){
-           	ilmn_chk_dt='준비중입니다.';
-           } else {
-           	ilmn_chk_dt = value["ilmn_chk_dt"];
-           }
-       }
-        
-         else  if($('#drop_val').val()==3){
-        	 var big_clsrarea='';
-        	 var small_clsrarea='';
-        	 var phgrindrarea='';
-        	 var hlsparea='';
-        	 var ktchmssparea='';
-        	 
-        	 if(value["big_clsrarea"] = 'null'){
-        		 big_clsrarea='준비중입니다.';
-                } else {
-                	big_clsrarea = value["big_clsrarea"];
-                }
-                
-                if(value["small_clsrarea"] = 'null'){
-                	small_clsrarea='준비중입니다.';
-                } else {
-                	small_clsrarea = value["small_clsrarea"];
-                }
-                
-                if(value["phgrindrarea"] = 'null'){
-                	phgrindrarea='준비중입니다.';
-                } else {
-                	phgrindrarea = value["phgrindrarea"];
-                }
-                if(value["hlsparea"] = 'null'){
-                	hlsparea='준비중입니다.';
-                } else {
-                	hlsparea = value["hlsparea"];
-                }
-                if(value["ktchmssparea"] = 'null'){
-                	ktchmssparea='준비중입니다.';
-                } else {
-                	ktchmssparea = value["ktchmssparea"];
-                }
-            }
-        	 
-         else  if($('#drop_val').val()==4){
-        	 var vhcl_oprn_yn='';
-        	 var spcn_thcnt='';
-        	 var ntcnt='';
-        	 var ntrt_thcnt='';
-        	 
-        	 if(value["vhcl_oprn_yn"] = 'null'){
-        		 vhcl_oprn_yn='준비중입니다.';
-                } else {
-                	vhcl_oprn_yn = value["vhcl_oprn_yn"];
-                }
-                
-                
-                if(value["spcn_thcnt"] = 'null'){
-                	spcn_thcnt='준비중입니다.';
-                } else {
-                	spcn_thcnt = value["spcn_thcnt"];
-                }
-                if(value["ntcnt"] = 'null'){
-                	ntcnt='준비중입니다.';
-                } else {
-                	ntcnt = value["ntcnt"];
-                }
-                if(value["ntrt_thcnt"] = 'null'){
-                	ntrt_thcnt='준비중입니다.';
-                } else {
-                	ntrt_thcnt = value["ntrt_thcnt"];
-                }
-        	};
-            
-            
-          });
-  },
-
+		});	
+    },
     error:function(request,status,error){
         alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
     }
     });
 }
-
 
 function getiwContent(count,value){//인포 윈도우 얻어오기
 	return '<div style="padding:5px; width : 360px; height : 380px;">' +
@@ -927,237 +831,6 @@ function getiwContent(count,value){//인포 윈도우 얻어오기
     '</div>'
 }
 
-//좌측 검색창************************************************************************************************************************************************
-//var ps = new kakao.maps.services.Places();
-
-searchPlaces();
-
-//키워드 검색을 요청하는 함수입니다
-function searchPlaces() {
-
-    var keyword = document.getElementById('keyword').value;
-
-    if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        //alert('키워드를 입력해주세요!');
-        return false;
-    }
-	
-    keywordSearch(keyword);
-    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-    //ps.keywordSearch( keyword, placesSearchCB); 
-}
-
-//********************************만든함수
-function keywordSearch(keyword){
-	
-	$.ajax({
-		method:"GET",
-        url:"keywordSearch.do",
-        dataType: 'json',
-        contentType:'application/json',
-        traditional : true,
-        async:false,
-        data:{
-			'keyword':keyword
-		},
-        success: function(data) {
-        	
-        	console.log(data)
-        	
-    },
-    error:function(request,status,error){
-        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-    }
-    });
-	
-}
-
-//********************************
-
-//장소검색이 완료됐을 때 호출되는 콜백함수 입니다
-function placesSearchCB(data, status, pagination) {
-    if (status === kakao.maps.services.Status.OK) {
-        // 정상적으로 검색이 완료됐으면
-        
-        // 검색 목록과 마커를 표출합니다
-        displayPlaces(data);
-
-        // 페이지 번호를 표출합니다
-        displayPagination(pagination);
-
-    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
-
-        alert('검색 결과가 존재하지 않습니다.');
-        return;
-
-    } else if (status === kakao.maps.services.Status.ERROR) {
-
-        alert('검색 결과 중 오류가 발생했습니다.');
-        return;
-
-    }
-}
-
-function displayPlaces(places) {
-
-    var listEl = document.getElementById('placesList'), 
-    menuEl = document.getElementById('menu_wrap'),
-    fragment = document.createDocumentFragment(), 
-    bounds = new kakao.maps.LatLngBounds(), 
-    listStr = '';
-    
-    // 검색 결과 목록에 추가된 항목들을 제거합니다
-    removeAllChildNods(listEl);
-
-    // 지도에 표시되고 있는 마커를 제거합니다
-    removeMarker();
-    
-    for ( var i=0; i<places.length; i++ ) {
-
-        // 마커를 생성하고 지도에 표시합니다
-        var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
-            marker = addMarker(placePosition, i), 
-            itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
-	
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-        
-        // LatLngBounds 객체에 좌표를 추가합니다
-        bounds.extend(placePosition);
-
-        // 마커와 검색결과 항목에 mouseover 했을때
-        // 해당 장소에 인포윈도우에 장소명을 표시합니다
-        // mouseout 했을 때는 인포윈도우를 닫습니다
-        (function(marker, title) {
-            kakao.maps.event.addListener(marker, 'mouseover', function() {
-                displayInfowindow(marker, title);
-            });
-
-            kakao.maps.event.addListener(marker, 'mouseout', function() {
-                infowindow.close();
-            });
-
-            itemEl.onmouseover =  function () {
-                displayInfowindow(marker, title);
-            };
-
-            itemEl.onmouseout =  function () {
-                infowindow.close();
-            };
-        })(marker, places[i].place_name);
-
-        fragment.appendChild(itemEl);
-    }
-
-    // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
-    listEl.appendChild(fragment);
-    menuEl.scrollTop = 0;
-
-    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-    //map.setBounds(bounds);
-}
-
-// 검색결과 항목을 Element로 반환하는 함수입니다
-function getListItem(index, places) {
-
-    var el = document.createElement('li'),
-    itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-                '<div class="info">' +
-                '   <h5>' + places.place_name + '</h5>';
-
-    if (places.road_address_name) {
-        itemStr += '    <span>' + places.road_address_name + '</span>' +
-                    '   <span class="jibun gray">' +  places.address_name  + '</span>';
-    } else {
-        itemStr += '    <span>' +  places.address_name  + '</span>'; 
-    }
-                 
-      itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-                '</div>';           
-
-    el.innerHTML = itemStr;
-    el.className = 'item';
-
-    return el;
-}
-
-function addMarker(position, idx, title) {
-    var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-        imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
-        imgOptions =  {
-            spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
-            spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-            offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
-        },
-        markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
-            marker = new kakao.maps.Marker({
-            position: position, // 마커의 위치
-            image: markerImage 
-        });
-    
-    clusterer.addMarkers(marker);
-    marker.setMap(map); // 지도 위에 마커를 표출합니다
-    markers.push(marker);  // 배열에 생성된 마커를 추가합니다
-    
-
-    return marker;
-}
-
-// 지도 위에 표시되고 있는 마커를 모두 제거합니다
-function removeMarker() {
-    for ( var i = 0; i < markers.length; i++ ) {
-        markers[i].setMap(null);
-    }   
-    markers = [];
-}
-
-// 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
-function displayPagination(pagination) {
-    var paginationEl = document.getElementById('pagination'),
-        fragment = document.createDocumentFragment(),
-        i; 
-
-    // 기존에 추가된 페이지번호를 삭제합니다
-    while (paginationEl.hasChildNodes()) {
-        paginationEl.removeChild (paginationEl.lastChild);
-    }
-
-    for (i=1; i<=pagination.last; i++) {
-        var el = document.createElement('a');
-        el.href = "#";
-        el.innerHTML = i;
-
-        if (i===pagination.current) {
-            el.className = 'on';
-        } else {
-            el.onclick = (function(i) {
-                return function() {
-                    pagination.gotoPage(i);
-                }
-            })(i);
-        }
-
-        fragment.appendChild(el);
-    }
-    paginationEl.appendChild(fragment);
-}
-
-function displayInfowindow(marker, title) {
-    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
-
-    infowindow.setContent(content);
-    infowindow.open(map, marker);
-}
-
- // 검색결과 목록의 자식 Element를 제거하는 함수입니다
-function removeAllChildNods(el) {   
-    while (el.hasChildNodes()) {
-        el.removeChild (el.lastChild);
-    }
-}
-//************************************************************************************************************************************************
-
-
-
 
 </script>
 		</div>
@@ -1167,15 +840,42 @@ function removeAllChildNods(el) {
 	<!-- /#right-panel -->
 
 	<!-- Right Panel -->
-   <script src="resources/vendors/jquery/dist/jquery.min.js"></script>
-   <script src="resources/vendors/popper.js/dist/umd/popper.min.js"></script>
-   <script src="resources/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-   <script src="resources/assets/js/main.js"></script>
 
-   <script src="resources/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
-   <script
-      src="resources/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-   <script src="resources/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+	<script src="resources/vendors/jquery/dist/jquery.min.js"></script>
+	<script src="resources/vendors/popper.js/dist/umd/popper.min.js"></script>
+	<script src="resources/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="resources/assets/js/main.js"></script>
+
+
+	<script src="resources/vendors/chart.js/dist/Chart.bundle.min.js"></script>
+	<script src="resources/assets/js/dashboard.js"></script>
+	<script src="resources/assets/js/widgets.js"></script>
+	<script src="resources/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
+	<script
+		src="resources/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+	<script src="resources/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+	<script>
+        (function($) {
+            "use strict";
+
+            jQuery('#vmap').vectorMap({
+                map: 'world_en',
+                backgroundColor: null,
+                color: '#ffffff',
+                hoverOpacity: 0.7,
+                selectedColor: '#1de9b6',
+                enableZoom: true,
+                showTooltip: true,
+                values: sample_data,
+                scaleColors: ['#1de9b6', '#03a9f5'],
+                normalizeFunction: 'polynomial'
+            });
+        })(jQuery);
+        
+        
+    </script>
+
+
 </body>
 
 </html>

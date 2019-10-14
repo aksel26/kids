@@ -1,78 +1,26 @@
 package lab.spring.model;
 
 public class ClassAreaVO {
-	private String kinderinfoId;
-	private String edate;
-	private String odate;
-	private String addr;
-	private String telno;
-	private String hpaddr;
-	private String opertime;	
-	private String POINT_Y;
-	private String POINT_X;
+	private String classId; //½Ã¼³ id
 	private String key;
-	private String officeedu;
-	private String  subofficeedu;
-	private String  kindername;
-	private String  establish;
-	private String clsrarea;//êµì‹¤ë©´ì 
-	private String phgrindrarea; //ì²´ìœ¡ì‹œì„¤
-	private String hlsparea; //ë³´ê±´ì‹œì„¤
-	private String ktchmssparea; //ì¡°ë¦¬ì‹œì„¤
-	private String otsparea; //ê¸°íƒ€ì‹œì„¤
-	public String getKinderinfoId() {
-		return kinderinfoId;
+	private String crcnt;//±³½Ç¼ö
+	private String clsrarea;//Ã¼À°Àå
+	private String phgrindrarea; //°Ç¹°Àü¿ë¸éÀû
+	private String hlsparea; //º¸°Ç,À§»ı°ø°£
+	private String ktchmssparea; //Á¶¸®½Ç,±Ş½Ä°ø°£
+	private String otsparea; //±âÅ¸°ø°£
+	
+	
+	
+	public ClassAreaVO() {
+		super();
 	}
-	public void setKinderinfoId(String kinderinfoId) {
-		this.kinderinfoId = kinderinfoId;
+	
+	public String getClassId() {
+		return classId;
 	}
-	public String getEdate() {
-		return edate;
-	}
-	public void setEdate(String edate) {
-		this.edate = edate;
-	}
-	public String getOdate() {
-		return odate;
-	}
-	public void setOdate(String odate) {
-		this.odate = odate;
-	}
-	public String getAddr() {
-		return addr;
-	}
-	public void setAddr(String addr) {
-		this.addr = addr;
-	}
-	public String getTelno() {
-		return telno;
-	}
-	public void setTelno(String telno) {
-		this.telno = telno;
-	}
-	public String getHpaddr() {
-		return hpaddr;
-	}
-	public void setHpaddr(String hpaddr) {
-		this.hpaddr = hpaddr;
-	}
-	public String getOpertime() {
-		return opertime;
-	}
-	public void setOpertime(String opertime) {
-		this.opertime = opertime;
-	}
-	public String getPOINT_Y() {
-		return POINT_Y;
-	}
-	public void setPOINT_Y(String pOINT_Y) {
-		POINT_Y = pOINT_Y;
-	}
-	public String getPOINT_X() {
-		return POINT_X;
-	}
-	public void setPOINT_X(String pOINT_X) {
-		POINT_X = pOINT_X;
+	public void setClassId(String classId) {
+		this.classId = classId;
 	}
 	public String getKey() {
 		return key;
@@ -80,29 +28,11 @@ public class ClassAreaVO {
 	public void setKey(String key) {
 		this.key = key;
 	}
-	public String getOfficeedu() {
-		return officeedu;
+	public String getCrcnt() {
+		return crcnt;
 	}
-	public void setOfficeedu(String officeedu) {
-		this.officeedu = officeedu;
-	}
-	public String getSubofficeedu() {
-		return subofficeedu;
-	}
-	public void setSubofficeedu(String subofficeedu) {
-		this.subofficeedu = subofficeedu;
-	}
-	public String getKindername() {
-		return kindername;
-	}
-	public void setKindername(String kindername) {
-		this.kindername = kindername;
-	}
-	public String getEstablish() {
-		return establish;
-	}
-	public void setEstablish(String establish) {
-		this.establish = establish;
+	public void setCrcnt(String crcnt) {
+		this.crcnt = crcnt;
 	}
 	public String getClsrarea() {
 		return clsrarea;
@@ -134,5 +64,14 @@ public class ClassAreaVO {
 	public void setOtsparea(String otsparea) {
 		this.otsparea = otsparea;
 	}
+	@Override
+	public String toString() {
+		return "ClassAreaVO [classId=" + classId + ", key=" + key + ", crcnt=" + crcnt + ", clsrarea=" + clsrarea
+				+ ", phgrindrarea=" + phgrindrarea + ", hlsparea=" + hlsparea + ", ktchmssparea=" + ktchmssparea
+				+ ", otsparea=" + otsparea + "]";
+	}
+ 
+
+	
 	
 }
