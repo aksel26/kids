@@ -31,7 +31,16 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.setViewName("index");
+		return mav;
+			
+	}
 	
+	
+	@RequestMapping(value="/newinfo.do", method = RequestMethod.GET)
+	public ModelAndView newinfo() {
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("newInfo");
 		return mav;
 			
 	}
