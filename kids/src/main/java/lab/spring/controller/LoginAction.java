@@ -38,15 +38,10 @@ public class LoginAction {
 		ModelAndView mav = new ModelAndView();
 		UserVO vo = null;
 		vo = service.login(uid, upwd);
-		session.setAttribute("authInfo", vo); //session authInfo�� ����.
+		
 		
 		if(vo!=null) {
-			List<KinderInfoVO> KinderList = null;
-			List<CommentVO> CommentList = null;
-				KinderList = service.findKinderList();
-				mav.addObject("kinders",KinderList);
-				mav.addObject("user", vo);
-				
+			session.setAttribute("authInfo", vo);
 			mav.setViewName("index");
 		}else {
 			mav.setViewName("page-register");
