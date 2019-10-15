@@ -1,10 +1,18 @@
 package lab.spring.controller;
 
 
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.HashMap;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,19 +35,27 @@ public class MainController {
 	MapService service;
 	
 	@RequestMapping(value="/index.do", method = RequestMethod.GET)
-	public ModelAndView sayHello() {
+	public ModelAndView sayHello(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
-		
 		mav.setViewName("index");
+		
+		
+		
+		
 		return mav;
 			
 	}
 	
 	
 	@RequestMapping(value="/newinfo.do", method = RequestMethod.GET)
-	public ModelAndView newinfo() {
+	public ModelAndView newinfo() throws IOException {
 		ModelAndView mav = new ModelAndView();
 		
+		Document doc = Jsoup.connect("https://www.ipipipip.net/index.php?ln=ko").get();
+		Elements item = doc.select(".yourip span");
+		String ip = item.text();
+		
+		mav.addObject("ip",ip);
 		mav.setViewName("newInfo");
 		return mav;
 			

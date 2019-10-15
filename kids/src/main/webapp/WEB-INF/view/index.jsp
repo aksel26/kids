@@ -11,10 +11,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>엄마의지도</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-
-
 <link rel="stylesheet"
 	href="resources/vendors/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -128,6 +124,7 @@
 </head>
 
 <body>
+
 	<!-- Left Panel -->
 
 	<aside id="left-panel" class="left-panel">
@@ -142,13 +139,12 @@
 					<h3 class="menu-title">카테고리</h3>
 					<!-- /.menu-title -->
 
-<script>
 
+
+<script>
 	function selectVal(flag){
 		if(flag==1){
-			
 			$('#drop_val').val('1')
-			
 		}
 		else if(flag==2){
 			$('#drop_val').val('2')
@@ -158,14 +154,8 @@
 		}
 		else if(flag==4){
 			$('#drop_val').val('4')
-
-
-
 		}
-		
-		
 	}
-
 </script>
 
 
@@ -175,7 +165,7 @@
 						class="dropdown-toggle" data-toggle="dropdown"
 
 						aria-haspopup="true" aria-expanded="false"> <i
-							class="menu-icon fa fa-plus-square"></i>안전
+							class="menu-icon fa fa-table"></i>안전
 					</a>
 						<ul class="sub-menu children dropdown-menu">
 							<form method="post" name="multiple_check">
@@ -210,7 +200,7 @@
 				<input id=drop_val type="hidden" value="" />
 				<a href="#" onclick="selectVal(2)"
 					class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> <i class="menu-icon fa fa-tint"></i>위생
+					aria-expanded="false"> <i class="menu-icon fa fa-table"></i>위생
 				</a>
 					<ul class="sub-menu children dropdown-menu">
 
@@ -244,7 +234,7 @@
 				<a href="#" onclick="selectVal(3)"
 					class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
 
-					aria-expanded="false"> <i class="menu-icon fa fa-building"></i>시설정보
+					aria-expanded="false"> <i class="menu-icon fa fa-table"></i>시설정보
 				</a>
 					<ul class="sub-menu children dropdown-menu">
 
@@ -406,10 +396,23 @@ $(document).ready(function(){
 	getSafetyArr(1,map);
 })	
 
+var default_x = 37.53403829266374;
+var default_y = 126.98904795128267;
+var default_level = 8;
+
+
+if("${authInfo.userid}"!=""){
+	var userlocation = "${authInfo.location}"
+		userlocation = userlocation.split(',');
+		default_x = userlocation[0];
+		default_y = userlocation[1];
+		default_level = 6
+}
+
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 mapOption = { 
-    center: new kakao.maps.LatLng(37.491171, 127.074508), // 지도의 중심좌표
-    level: 3 // 지도의 확대 레벨
+    center: new kakao.maps.LatLng(default_x, default_y), // 지도의 중심좌표
+    level: default_level // 지도의 확대 레벨
 };
 
 var markers = [];
