@@ -4,7 +4,8 @@ package lab.java.jdbc;
 	import java.io.FileInputStream;
 	import java.sql.*;
 	import java.util.ArrayList;
-	import java.util.Properties;
+import java.util.Iterator;
+import java.util.Properties;
 
 import lab.java.model.ClassAreaVO;
 import lab.java.model.SafetyVO;
@@ -166,67 +167,77 @@ import lab.java.model.SanitaryVO;
 			return buildArr;
 	}
 	
+	public ArrayList<Integer> safetyScore() {
+		ArrayList<SafetyVO> sfArr = selectSafetyinfo();
+		ArrayList<Integer> sfscore = new ArrayList<Integer>();
+		Iterator<Integer> itr = sfscore.iterator();
+		for(int i =0;i<sfArr.size();i++) {	
+			if(sfArr.get(i).getFire_safe_dt().contains("2019")){
+				sfscore.add(30);
+			}else if(sfArr.get(i).getFire_safe_dt().contains("2018") || sfArr.get(i).getFire_safe_dt().contains("2017")) {
+				sfscore.add(20);
+			}else if(sfArr.get(i).getFire_safe_dt().contains("2016") || sfArr.get(i).getFire_safe_dt().contains("2015")) {
+				sfscore.add(10);
+			}else {
+				sfscore.add(5);
+			}
+			
+			if(sfArr.get(i).getGas_ck_dt().contains("2019")){
+				sfscore.add(30);
+			}else if(sfArr.get(i).getGas_ck_dt().contains("2018") || sfArr.get(i).getGas_ck_dt().contains("2017")) {
+				sfscore.add(20);
+			}else if(sfArr.get(i).getGas_ck_dt().contains("2016") || sfArr.get(i).getGas_ck_dt().contains("2015")) {
+				sfscore.add(10);
+			}else {
+				sfscore.add(5);
+			}
+			
+			if(sfArr.get(i).getElect_ck_dt().contains("2019")){
+				sfscore.add(30);
+			}else if(sfArr.get(i).getElect_ck_dt().contains("2018") || sfArr.get(i).getElect_ck_dt().contains("2017")) {
+				sfscore.add(20);
+			}else if(sfArr.get(i).getElect_ck_dt().contains("2016") || sfArr.get(i).getElect_ck_dt().contains("2015")) {
+				sfscore.add(10);
+			}else {
+				sfscore.add(5);
+			}
+			
+//			if(sfArr.get(i).getPlyg_ck_dt().contains("2019")){
+//				sfscore += 30;
+//			}else if(sfArr.get(i).getPlyg_ck_dt().contains("2018") || sfArr.get(i).getPlyg_ck_dt().contains("2017")) {
+//				sfscore += 20;
+//			}else if(sfArr.get(i).getPlyg_ck_dt().contains("2016") || sfArr.get(i).getPlyg_ck_dt().contains("2015")) {
+//				sfscore += 10;
+//			}else {
+//				sfscore += 5;
+//			}
+//			System.out.println("유치원 아이디: "+sfArr.get(i).getKindername());
+//			System.out.println("소방 안전 날짜: "+sfArr.get(i).getFire_safe_dt());
+//			System.out.println("가스 점검 날짜: "+sfArr.get(i).getGas_ck_dt());
+//			System.out.println("전기 점검 날짜 : "+sfArr.get(i).getElect_ck_dt());
+//			System.out.println("놀이시설 점검 날짜 : "+sfArr.get(i).getPlyg_ck_dt());
+//			System.out.println("총점 : "+sfscore);
+//			System.out.println("-----------------------------------");
+			
+		}
+			while(itr.hasNext()) {
+				sfscore.get(itr.next());
+			}
+			return sfscore;
+	}
+	
 public static void main(String[] args) {
-				int sfscore=0;
+				
 				int snscore=0;
 				int bscore=0;
 				ScoreTest st = new ScoreTest();
-				ArrayList<SafetyVO> sfArr = st.selectSafetyinfo();
+				
 				ArrayList<SanitaryVO> snArr = st.selectSanitaryinfo();
 				ArrayList<ClassAreaVO> buildArr = st.selectBuildinfo();
+				//ArrayList<KinderinfoVO> kinderArr = st.insertKinderscore();
 				
-				for(int i =0;i<sfArr.size();i++) {	
-					sfscore=0;
-					if(sfArr.get(i).getFire_safe_dt().contains("2019")){
-						sfscore += 30;
-					}else if(sfArr.get(i).getFire_safe_dt().contains("2018") || sfArr.get(i).getFire_safe_dt().contains("2017")) {
-						sfscore += 20;
-					}else if(sfArr.get(i).getFire_safe_dt().contains("2016") || sfArr.get(i).getFire_safe_dt().contains("2015")) {
-						sfscore += 10;
-					}else {
-						sfscore += 5;
-					}
-					
-					if(sfArr.get(i).getGas_ck_dt().contains("2019")){
-						sfscore += 30;
-					}else if(sfArr.get(i).getGas_ck_dt().contains("2018") || sfArr.get(i).getGas_ck_dt().contains("2017")) {
-						sfscore += 20;
-					}else if(sfArr.get(i).getGas_ck_dt().contains("2016") || sfArr.get(i).getGas_ck_dt().contains("2015")) {
-						sfscore += 10;
-					}else {
-						sfscore += 5;
-					}
-					
-					if(sfArr.get(i).getElect_ck_dt().contains("2019")){
-						sfscore += 30;
-					}else if(sfArr.get(i).getElect_ck_dt().contains("2018") || sfArr.get(i).getElect_ck_dt().contains("2017")) {
-						sfscore += 20;
-					}else if(sfArr.get(i).getElect_ck_dt().contains("2016") || sfArr.get(i).getElect_ck_dt().contains("2015")) {
-						sfscore += 10;
-					}else {
-						sfscore += 5;
-					}
-					
-					if(sfArr.get(i).getPlyg_ck_dt().contains("2019")){
-						sfscore += 30;
-					}else if(sfArr.get(i).getPlyg_ck_dt().contains("2018") || sfArr.get(i).getPlyg_ck_dt().contains("2017")) {
-						sfscore += 20;
-					}else if(sfArr.get(i).getPlyg_ck_dt().contains("2016") || sfArr.get(i).getPlyg_ck_dt().contains("2015")) {
-						sfscore += 10;
-					}else {
-						sfscore += 5;
-					}
-					
-//					System.out.println("유치원 아이디: "+sfArr.get(i).getKindername());
-//					System.out.println("소방 안전 날짜: "+sfArr.get(i).getFire_safe_dt());
-//					System.out.println("가스 점검 날짜: "+sfArr.get(i).getGas_ck_dt());
-//					System.out.println("전기 점검 날짜 : "+sfArr.get(i).getElect_ck_dt());
-//					System.out.println("놀이시설 점검 날짜 : "+sfArr.get(i).getPlyg_ck_dt());
-//					System.out.println("총점 : "+sfscore);
-//					System.out.println("-----------------------------------");
-				}
-
-	
+				
+	System.out.println(st.safetyScore());
 			
 			for(int i =0;i<snArr.size();i++) {	
 				snscore=0;
