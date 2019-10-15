@@ -96,19 +96,6 @@ public class SearchController {
 		
 		return KinderList;
 	}
-	
-	@RequestMapping(value="/keywordSearch.do")
-	@ResponseBody
-	public List<KinderInfoVO> findKeyword(String keyword){	  
-		
-		//System.out.println(keyword);
-		
-		List<KinderInfoVO> KinderList = null;
-		KinderList = service.findSerachList(keyword);
-		
-		
-		
-		return KinderList;
-	}
+
 		
 }
