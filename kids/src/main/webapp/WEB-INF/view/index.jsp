@@ -175,7 +175,7 @@
 						class="dropdown-toggle" data-toggle="dropdown"
 
 						aria-haspopup="true" aria-expanded="false"> <i
-							class="menu-icon fa fa-table"></i>안전
+							class="menu-icon fa fa-plus-square"></i>안전
 					</a>
 						<ul class="sub-menu children dropdown-menu">
 							<form method="post" name="multiple_check">
@@ -210,7 +210,7 @@
 				<input id=drop_val type="hidden" value="" />
 				<a href="#" onclick="selectVal(2)"
 					class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false"> <i class="menu-icon fa fa-table"></i>위생
+					aria-expanded="false"> <i class="menu-icon fa fa-tint"></i>위생
 				</a>
 					<ul class="sub-menu children dropdown-menu">
 
@@ -244,7 +244,7 @@
 				<a href="#" onclick="selectVal(3)"
 					class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
 
-					aria-expanded="false"> <i class="menu-icon fa fa-table"></i>시설정보
+					aria-expanded="false"> <i class="menu-icon fa fa-building"></i>시설정보
 				</a>
 					<ul class="sub-menu children dropdown-menu">
 
@@ -408,8 +408,8 @@ $(document).ready(function(){
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 mapOption = { 
-    center: new kakao.maps.LatLng(37.53403829266374, 126.98904795128267), // 지도의 중심좌표
-    level: 8 // 지도의 확대 레벨
+    center: new kakao.maps.LatLng(37.491171, 127.074508), // 지도의 중심좌표
+    level: 3 // 지도의 확대 레벨
 };
 
 var markers = [];

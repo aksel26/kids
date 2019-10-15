@@ -1,4 +1,4 @@
-package lab.spring.model;
+package lab.java.model;
 
 public class SafetyVO {
 	private String kinderinfoId;
