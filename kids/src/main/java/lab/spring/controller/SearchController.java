@@ -38,7 +38,7 @@ public class SearchController {
 		List<SafetyVO> safL = null;
 
 		safL = service.getSafetyList(safetyArr);
-		System.out.println("안전 데이터 수:" + safL.size());
+		
 
 		return safL;
 
@@ -51,8 +51,7 @@ public class SearchController {
 		List<SanitaryVO> sanL = null;
 
 		sanL = service.getSanitaryList(sanitaryArr);
-		System.out.println(sanitaryArr.keySet());
-		System.out.println("위생 데이터 수:" + sanL.size());
+		
 
 		return sanL;
 	}
@@ -64,8 +63,6 @@ public class SearchController {
 		List<ClassAreaVO> buildL = null;
 
 		buildL = service.getBuildinfoList(buildArr);
-		System.out.println(buildArr.keySet());
-		System.out.println("시설 데이터 수:" + buildL.size());
 
 		return buildL;
 	}
@@ -77,9 +74,6 @@ public class SearchController {
 		List<EnvironVO> envL = null;
 
 		envL = service.getEnvironList(envArr);
-		System.out.println(envArr.keySet());
-		System.out.println("환경 데이터 수:" + envL.size());
-
 		return envL;
 	}
 
@@ -91,24 +85,19 @@ public class SearchController {
 		List<KinderInfoVO> KinderList = null;
 		KinderList = service.findKinderList();
 		
-		System.out.println(KinderList.size());
 		
 		
 		return KinderList;
 	}
 	
-	@RequestMapping(value="/keywordSearch.do")
+	@RequestMapping(value="/keywordSearch.do",method = RequestMethod.POST)
 	@ResponseBody
-	public List<KinderInfoVO> findKeyword(String keyword){	  
-		
-		//System.out.println(keyword);
+	public List<KinderInfoVO> findKeyword(@RequestBody HashMap<String, String> keyword){	  
 		
 		List<KinderInfoVO> KinderList = null;
-		KinderList = service.findSerachList(keyword);
+		KinderList = service.findSerachList(keyword.get("keyword"));
 		
-		
-		
-		return KinderList;
+		return KinderList;		
 	}
 		
 }

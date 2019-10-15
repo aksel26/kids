@@ -374,7 +374,6 @@
 					<input type="submit" id="logout" value="로그아웃" />
 					</form>
 				</c:if>
-				<a href="#" onclick="hideMarkers();">숨기기</a>
 			</div>
       </header>
 
@@ -469,36 +468,36 @@ function infoFunction(n){//정보보기
     '<td align=center bgcolor="ffffff" >'+NameList[n]+'</td>'+
     '</tr>'+ 
     '<tr>'+
-    '<td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">교육청명</td>'+
-    '<td width=240 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">'+EduList[n]+'</td>'+
+    '<td width=100 align=center bgcolor= "E6ECDE" height ="35">교육청명</td>'+
+    '<td width=240 align=center bgcolor= "ffffff" style="padding-left:10">'+EduList[n]+'</td>'+
     '</tr>'+
     '<tr>'+
-    '<td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">교육지원청명</td>'+
-    '<td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">'+SubEduList[n]+'</td>'+
+    '<td width=100 align=center bgcolor= "E6ECDE" height ="35">교육지원청명</td>'+
+    '<td width=100 align=center bgcolor= "ffffff" style="padding-left:10">'+SubEduList[n]+'</td>'+
     '</tr>'+
     '<tr>'+
-    '<td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">설립일</td>'+
-    '<td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">'+EdateList[n]+'</td>'+
+    '<td width=100 align=center bgcolor= "E6ECDE" height ="35">설립일</td>'+
+    '<td width=100 align=center bgcolor= "ffffff" style="padding-left:10">'+EdateList[n]+'</td>'+
     '</tr>'+
     '<tr>'+
-    '<td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">개원일</td>'+
-    '<td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">'+OdateList[n]+'</td>'+
+    '<td width=100 align=center bgcolor= "E6ECDE" height ="35">개원일</td>'+
+    '<td width=100 align=center bgcolor= "ffffff" style="padding-left:10">'+OdateList[n]+'</td>'+
     '</tr>'+
     '<tr>'+
-    '<td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">주소</td>'+
-    '<td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">'+AddList[n]+'</td>'+
+    '<td width=100 align=center bgcolor= "E6ECDE" height ="35">주소</td>'+
+    '<td width=100 align=center bgcolor= "ffffff" style="padding-left:10">'+AddList[n]+'</td>'+
     '</tr>'+
     '<tr>'+
-    '<td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">전화번호</td>'+
-    '<td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">'+TelList[n]+'</td>'+
+    '<td width=100 align=center bgcolor= "E6ECDE" height ="35">전화번호</td>'+
+    '<td width=100 align=center bgcolor= "ffffff" style="padding-left:10">'+TelList[n]+'</td>'+
     '</tr>'+
     '<tr>'+
-    '<td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">홈페이지</td>'+
-    '<td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10"><a href='+HomeList[n] +'>'+HomeList[n] +'</a>'+'</td>'+
+    '<td width=100 align=center bgcolor= "E6ECDE" height ="35">홈페이지</td>'+
+    '<td width=100 align=center bgcolor= "ffffff" style="padding-left:10"><a href='+HomeList[n] +'>'+HomeList[n] +'</a>'+'</td>'+
     '</tr>'+
     '<tr>'+
-    '<td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">운영시간</td>'+
-    '<td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">'+TimeList[n]+'</td>'+
+    '<td width=100 align=center bgcolor= "E6ECDE" height ="35">운영시간</td>'+
+    '<td width=100 align=center bgcolor= "ffffff" style="padding-left:10">'+TimeList[n]+'</td>'+
     '</tr>'+
      ' </table>'
 }
@@ -610,7 +609,7 @@ function imageChange(n){
 function getSafetyArr(select,map){
 	
 	if(select==1){
-		console.log("select1");
+		
 		var sevletDo = './search.do/allSearch.do';	
 		
 	}
@@ -672,7 +671,7 @@ function getSafetyArr(select,map){
 		
 		message["keyword"]=  keyword;
 		
-		var sevletDo = 'keywordSearch.do';
+		var sevletDo = './search.do/keywordSearch.do';
 	
 	}
 	
@@ -689,7 +688,6 @@ function getSafetyArr(select,map){
         success: function(data) {
         	markerList = []; // 마커 보이기,숨기기용 배열
 			count=0;
-	console.log
 			$.each(data, function(key, value){
 				
 			NameList.push(value["kindername"]);
@@ -876,7 +874,7 @@ function getiwContent(count,value){//인포 윈도우 얻어오기
     '<table border=0 cellpadding=0 cellspacing=0>'+'<tr>'+'<td>'+
     '<img src="resources/images/navi350.png" alt="" usemap="#Map1"/> '+
 	'<map name="Map1">' +
-	'<area shape = "rect" coords = "7,10,110,40" onclick="infoFunction(' + count+ ');" border = "0" />' +
+	'<area shape = "rect" coords = "7,10,110,40" onclick="infoFunction(' + count+ ');" border = "0" />' +//상세보기
 	'<area alt = "카페" onclick="reviewFunction(' + count+ ');" shape = "rect" border = "0" coords="125,10,230,40" />' +//리뷰보기
 	'<area alt = "블로그" onclick="scoreFunction(' + count+ ');" shape = "rect" border = "0" coords="245,10,342,40" />' +//정보보기
 	'</map>'+  
@@ -926,7 +924,7 @@ function getiwContent(count,value){//인포 윈도우 얻어오기
 }
 
 
-//좌측 검색창************************************************************************************************************************************************
+//좌측 검색창***********************************************************************************************************************************************
 //var ps = new kakao.maps.services.Places();
 
 searchPlaces();
@@ -934,225 +932,127 @@ searchPlaces();
 //키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
 
-    var keyword = document.getElementById('keyword').value;
+  var keyword = document.getElementById('keyword').value;
 
-    if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        //alert('키워드를 입력해주세요!');
-        return false;
-    }
+  if (!keyword.replace(/^\s+|\s+$/g, '')) {
+      //alert('키워드를 입력해주세요!');
+      return false;
+  }
 	
-    keywordSearch(keyword);
-    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-    //ps.keywordSearch( keyword, placesSearchCB); 
+  keywordSearch(keyword);
+  getSafetyArr(3,map)
+  // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+  //ps.keywordSearch( keyword, placesSearchCB); 
 }
 
 //********************************만든함수
 function keywordSearch(keyword){
+
+	
+	
+	message["keyword"]=  keyword;
+	realData = JSON.stringify(message);
 	
 	$.ajax({
-		method:"GET",
-        url:"keywordSearch.do",
-        dataType: 'json',
-        contentType:'application/json',
-        traditional : true,
-        async:false,
-        data:{
-			'keyword':keyword
-		},
-        success: function(data) {
-        	
-        	console.log(data)
-        	
-    },
-    error:function(request,status,error){
-        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-    }
-    });
+      type: 'POST',
+      url:"./search.do/keywordSearch.do",
+      dataType: 'json',
+      contentType:'application/json',
+      data:realData,
+      traditional : true,
+      async:false,
+      success: function(data) {
+      	displayPlaces(data);
+  },
+  error:function(request,status,error){
+      alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+  }
+  });
 	
 }
 
-//********************************
-
+//************************************************************************************************************
 //장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
-    if (status === kakao.maps.services.Status.OK) {
-        // 정상적으로 검색이 완료됐으면
-        
-        // 검색 목록과 마커를 표출합니다
-        displayPlaces(data);
+  if (status === kakao.maps.services.Status.OK) {
+      // 정상적으로 검색이 완료됐으면
+      
+      // 검색 목록과 마커를 표출합니다
+      displayPlaces(data);
+     
 
-        // 페이지 번호를 표출합니다
-        displayPagination(pagination);
+  } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 
-    } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+      alert('검색 결과가 존재하지 않습니다.');
+      return;
 
-        alert('검색 결과가 존재하지 않습니다.');
-        return;
+  } else if (status === kakao.maps.services.Status.ERROR) {
 
-    } else if (status === kakao.maps.services.Status.ERROR) {
+      alert('검색 결과 중 오류가 발생했습니다.');
+      return;
 
-        alert('검색 결과 중 오류가 발생했습니다.');
-        return;
-
-    }
+  }
 }
 
 function displayPlaces(places) {
 
-    var listEl = document.getElementById('placesList'), 
-    menuEl = document.getElementById('menu_wrap'),
-    fragment = document.createDocumentFragment(), 
-    bounds = new kakao.maps.LatLngBounds(), 
-    listStr = '';
-    
-    // 검색 결과 목록에 추가된 항목들을 제거합니다
-    removeAllChildNods(listEl);
+  var listEl = document.getElementById('placesList'), 
+  menuEl = document.getElementById('menu_wrap'),
+  fragment = document.createDocumentFragment(), 
+  bounds = new kakao.maps.LatLngBounds(), 
+  listStr = '';
+  
+  // 검색 결과 목록에 추가된 항목들을 제거합니다
+  removeAllChildNods(listEl);
 
-    // 지도에 표시되고 있는 마커를 제거합니다
-    removeMarker();
-    
-    for ( var i=0; i<places.length; i++ ) {
+  for ( var i=0; i<places.length; i++ ) {
 
-        // 마커를 생성하고 지도에 표시합니다
-        var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
-            marker = addMarker(placePosition, i), 
-            itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+      // 마커를 생성하고 지도에 표시합니다
+      var placePosition = new kakao.maps.LatLng(places[i]["point_Y"], places[i]["point_X"]),
+          itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
 	
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-        
-        // LatLngBounds 객체에 좌표를 추가합니다
-        bounds.extend(placePosition);
+      // LatLngBounds 객체에 좌표를 추가합니다
+      bounds.extend(placePosition);
+      fragment.appendChild(itemEl);
+  }
 
-        // 마커와 검색결과 항목에 mouseover 했을때
-        // 해당 장소에 인포윈도우에 장소명을 표시합니다
-        // mouseout 했을 때는 인포윈도우를 닫습니다
-        (function(marker, title) {
-            kakao.maps.event.addListener(marker, 'mouseover', function() {
-                displayInfowindow(marker, title);
-            });
+  // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
+  listEl.appendChild(fragment);
+  menuEl.scrollTop = 0;
 
-            kakao.maps.event.addListener(marker, 'mouseout', function() {
-                infowindow.close();
-            });
-
-            itemEl.onmouseover =  function () {
-                displayInfowindow(marker, title);
-            };
-
-            itemEl.onmouseout =  function () {
-                infowindow.close();
-            };
-        })(marker, places[i].place_name);
-
-        fragment.appendChild(itemEl);
-    }
-
-    // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
-    listEl.appendChild(fragment);
-    menuEl.scrollTop = 0;
-
-    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-    //map.setBounds(bounds);
 }
 
-// 검색결과 항목을 Element로 반환하는 함수입니다
+//검색결과 항목을 Element로 반환하는 함수입니다
 function getListItem(index, places) {
 
-    var el = document.createElement('li'),
-    itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-                '<div class="info">' +
-                '   <h5>' + places.place_name + '</h5>';
+  var el = document.createElement('li'),
+  itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
+              '<div class="info">' +
+              '   <h5>' + places["kindername"] + '</h5>';
 
-    if (places.road_address_name) {
-        itemStr += '    <span>' + places.road_address_name + '</span>' +
-                    '   <span class="jibun gray">' +  places.address_name  + '</span>';
-    } else {
-        itemStr += '    <span>' +  places.address_name  + '</span>'; 
-    }
-                 
-      itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-                '</div>';           
+  if (places.road_address_name) {
+      itemStr += '    <span>' + places["addr"] + '</span>' +
+                  '   <span class="jibun gray">' +  places["addr"]  + '</span>';
+  } else {
+      itemStr += '    <span>' +  places["addr"]  + '</span>'; 
+  }
+               
+    itemStr += '  <span class="tel">' + places["telno"]  + '</span>' +
+              '</div>';           
 
-    el.innerHTML = itemStr;
-    el.className = 'item';
+  el.innerHTML = itemStr;
+  el.className = 'item';
 
-    return el;
+  return el;
 }
-
-function addMarker(position, idx, title) {
-    var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-        imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
-        imgOptions =  {
-            spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
-            spriteOrigin : new kakao.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-            offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
-        },
-        markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
-            marker = new kakao.maps.Marker({
-            position: position, // 마커의 위치
-            image: markerImage 
-        });
-    
-    clusterer.addMarkers(marker);
-    marker.setMap(map); // 지도 위에 마커를 표출합니다
-    markers.push(marker);  // 배열에 생성된 마커를 추가합니다
-    
-
-    return marker;
-}
-
-// 지도 위에 표시되고 있는 마커를 모두 제거합니다
-function removeMarker() {
-    for ( var i = 0; i < markers.length; i++ ) {
-        markers[i].setMap(null);
-    }   
-    markers = [];
-}
-
-// 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
-function displayPagination(pagination) {
-    var paginationEl = document.getElementById('pagination'),
-        fragment = document.createDocumentFragment(),
-        i; 
-
-    // 기존에 추가된 페이지번호를 삭제합니다
-    while (paginationEl.hasChildNodes()) {
-        paginationEl.removeChild (paginationEl.lastChild);
-    }
-
-    for (i=1; i<=pagination.last; i++) {
-        var el = document.createElement('a');
-        el.href = "#";
-        el.innerHTML = i;
-
-        if (i===pagination.current) {
-            el.className = 'on';
-        } else {
-            el.onclick = (function(i) {
-                return function() {
-                    pagination.gotoPage(i);
-                }
-            })(i);
-        }
-
-        fragment.appendChild(el);
-    }
-    paginationEl.appendChild(fragment);
-}
-
-function displayInfowindow(marker, title) {
-    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
-
-    infowindow.setContent(content);
-    infowindow.open(map, marker);
-}
-
- // 검색결과 목록의 자식 Element를 제거하는 함수입니다
+// 검색결과 목록의 자식 Element를 제거하는 함수입니다
 function removeAllChildNods(el) {   
-    while (el.hasChildNodes()) {
-        el.removeChild (el.lastChild);
-    }
+  while (el.hasChildNodes()) {
+      el.removeChild (el.lastChild);
+  }
 }
+
+//************************************************************************************************************************************************
 
 
 </script>
