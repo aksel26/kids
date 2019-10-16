@@ -4,7 +4,7 @@ package lab.spring.controller;
 
 import java.util.List;
 
-
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger; 
