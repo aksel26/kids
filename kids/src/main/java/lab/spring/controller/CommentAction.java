@@ -27,8 +27,7 @@ import lab.spring.service.MapService;
 
 
 @Controller
-public class CommentAction {
-	
+public class CommentAction extends HttpServlet  {
 	
 	@Autowired
 	MapService service;
@@ -74,5 +73,10 @@ public class CommentAction {
 		service.addComment(comment);
 	}
 
+
+	
+
+
+	
 
 }

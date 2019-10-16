@@ -40,11 +40,7 @@ public class UserVO {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	@Override
-	public String toString() {
-		return "UserVO [userid=" + userid + ", userpwd=" + userpwd + ", username=" + username + ", email=" + email
-				+ ", loacation=" + location + "]";
-	}
+	
 	
 	
 }

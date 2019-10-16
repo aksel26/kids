@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import lab.spring.model.BuildingVO;
+import lab.spring.model.ClassAreaVO;
+import lab.spring.model.EnvironVO;
+import lab.spring.model.KinderInfoVO;
 import lab.spring.model.SafetyVO;
 import lab.spring.model.SanitaryVO;
 import lab.spring.model.SchoolBusVO;
@@ -22,40 +25,79 @@ import lab.spring.model.TeacherVO;
 import lab.spring.service.MapService;
 
 @Controller
-//@RequestMapping(value="/search.do", method = RequestMethod.POST)
+@RequestMapping(value = "/search.do", method = RequestMethod.POST)
 public class SearchController {
 
 	@Autowired
 	MapService service;
-	
-	//@RequestMapping(value="/search.do", method = RequestMethod.POST)
-	@ResponseBody //json 데이터 사용할 때, json->문자열로 자동변환 시켜주는 어노테이션
-	public List<SafetyVO> safetySort(@RequestBody HashMap<String, String> safetyArr){
-	    // ModelAndView mav = new ModelAndView();	  
-		 	 
-		    List<SafetyVO> s_list = null;
 
-		   s_list = service.getSafetyList(safetyArr);
-//		   for(SafetyVO vo : s_list){
-//			   System.out.println(vo.getPOINT_X()+","+vo.getPOINT_Y());
-//		   }
-	
-		   System.out.println("데이터 수:"+s_list.size());
-	
-				//mav.addObject("kinders",s_list);
-			//	mav.setViewName("index");
+	@RequestMapping(value = "/safety.do", method = RequestMethod.POST)
+	@ResponseBody // json 데이터 사용할 때, json->문자열로 자동변환 시켜주는 어노테이션
+	public List<SafetyVO> safetySort(@RequestBody HashMap<String, String> safetyArr) {
+
+		List<SafetyVO> safL = null;
+
+		safL = service.getSafetyList(safetyArr);
 		
-			return s_list;
-		  
+
+		return safL;
+
 	}
-	@RequestMapping(value="/search.do", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/sanitary.do", method = RequestMethod.POST)
 	@ResponseBody
-	public List<SanitaryVO>  sanitarySort(@RequestBody HashMap<String, String> sanitaryArr){	  
+	public List<SanitaryVO> sanitarySort(@RequestBody HashMap<String, String> sanitaryArr) {
 
 		List<SanitaryVO> sanL = null;
-		
+
 		sanL = service.getSanitaryList(sanitaryArr);
-		System.out.println(sanL.size());
+		
+
 		return sanL;
 	}
+
+	@RequestMapping(value = "/build.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<ClassAreaVO> buildSort(@RequestBody HashMap<String, String> buildArr) {
+
+		List<ClassAreaVO> buildL = null;
+
+		buildL = service.getBuildinfoList(buildArr);
+
+		return buildL;
+	}
+
+	@RequestMapping(value = "/environment.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<EnvironVO> envSort(@RequestBody HashMap<String, String> envArr) {
+
+		List<EnvironVO> envL = null;
+
+		envL = service.getEnvironList(envArr);
+		return envL;
+	}
+
+	@RequestMapping(value="/allSearch.do", method = RequestMethod.POST)
+	@ResponseBody
+	public List<KinderInfoVO>  findAll(@RequestBody HashMap<String, String> message){	  
+
+		
+		List<KinderInfoVO> KinderList = null;
+		KinderList = service.findKinderList();
+		
+		
+		
+		return KinderList;
+	}
+	
+	@RequestMapping(value="/keywordSearch.do",method = RequestMethod.POST)
+	@ResponseBody
+	public List<KinderInfoVO> findKeyword(@RequestBody HashMap<String, String> keyword){	  
+		
+		List<KinderInfoVO> KinderList = null;
+		KinderList = service.findSerachList(keyword.get("keyword"));
+		
+		return KinderList;		
+	}
+		
 }
