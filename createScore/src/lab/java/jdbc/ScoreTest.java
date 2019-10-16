@@ -172,7 +172,6 @@ import lab.java.model.SanitaryVO;
 		ArrayList<Integer> sfsum = new ArrayList<Integer>();
 		//ArrayList<KinderinfoVO> kinderArr = selectKinderinfo();
 		int sfscore;
-		int cnt=0;
 		
 		for(int i =0;i<sfArr.size();i++) {	
 			sfscore=0;
@@ -217,121 +216,134 @@ import lab.java.model.SanitaryVO;
 			}else {
 				sfscore += 5;
 			}
-		sfsum.add(sfscore);
 			
-			System.out.println("유치원 아이디: "+sfArr.get(i).getKindername());
-			System.out.println("소방 안전 날짜: "+sfArr.get(i).getFire_safe_dt());
-			System.out.println("가스 점검 날짜: "+sfArr.get(i).getGas_ck_dt());
-			System.out.println("전기 점검 날짜 : "+sfArr.get(i).getElect_ck_dt());
-			System.out.println("놀이시설 점검 날짜 : "+sfArr.get(i).getPlyg_ck_dt());
-			System.out.println("총점 : "+sfscore);
-			System.out.println("-----------------------------------");
+			sfsum.add(sfscore);
+//			
+//			System.out.println("유치원 아이디: "+sfArr.get(i).getKindername());
+//			System.out.println("소방 안전 날짜: "+sfArr.get(i).getFire_safe_dt());
+//			System.out.println("가스 점검 날짜: "+sfArr.get(i).getGas_ck_dt());
+//			System.out.println("전기 점검 날짜 : "+sfArr.get(i).getElect_ck_dt());
+//			System.out.println("놀이시설 점검 날짜 : "+sfArr.get(i).getPlyg_ck_dt());
+//			System.out.println("총점 : "+sfscore);
+//			System.out.println("-----------------------------------");
 
 		}
 		return sfsum;
 	}
 	
-public static void main(String[] args) {
-				
-				int snscore=0;
-				int bscore=0;
+	public ArrayList<Integer> sumSanitary() {
+		ArrayList<SanitaryVO> snArr = selectSanitaryinfo();
+		ArrayList<Integer> snsum = new ArrayList<Integer>();
+		//ArrayList<KinderinfoVO> kinderArr = selectKinderinfo();
+		int snscore;
+		
+		for(int i =0;i<snArr.size();i++) {	
+			snscore=0;
+			if(snArr.get(i).getArql_chk_dt().contains("2019")){
+				snscore += 30;
+			}else if(snArr.get(i).getArql_chk_dt().contains("2018") || snArr.get(i).getArql_chk_dt().contains("2017")) {
+				snscore += 20;
+			}else if(snArr.get(i).getArql_chk_dt().contains("2016") || snArr.get(i).getArql_chk_dt().contains("2015")) {
+				snscore += 10;
+			}else {
+				snscore += 5;
+			}
+			
+			if(snArr.get(i).getFxtm_dsnf_chk_dt().contains("2019")){
+				snscore += 30;
+			}else if(snArr.get(i).getFxtm_dsnf_chk_dt().contains("2018") || snArr.get(i).getFxtm_dsnf_chk_dt().contains("2017")) {
+				snscore += 20;
+			}else if(snArr.get(i).getFxtm_dsnf_chk_dt().contains("2016") || snArr.get(i).getFxtm_dsnf_chk_dt().contains("2015")) {
+				snscore += 10;
+			}else {
+				snscore += 5;
+			}
+			
+			if(snArr.get(i).getMdst_chk_dt().contains("2019")){
+				snscore += 30;
+			}else if(snArr.get(i).getMdst_chk_dt().contains("2018") || snArr.get(i).getMdst_chk_dt().contains("2017")) {
+				snscore += 20;
+			}else if(snArr.get(i).getMdst_chk_dt().contains("2016") || snArr.get(i).getMdst_chk_dt().contains("2015")) {
+				snscore += 10;
+			}else {
+				snscore += 5;
+			}
+			
+			if(snArr.get(i).getIlmn_chk_dt().contains("2019")){
+				snscore += 30;
+			}else if(snArr.get(i).getIlmn_chk_dt().contains("2018") || snArr.get(i).getIlmn_chk_dt().contains("2017")) {
+				snscore += 20;
+			}else if(snArr.get(i).getIlmn_chk_dt().contains("2016") || snArr.get(i).getIlmn_chk_dt().contains("2015")) {
+				snscore += 10;
+			}else {
+				snscore += 5;
+			}
+			
+			snsum.add(snscore);
+//			System.out.println("유치원 아이디: "+snArr.get(i).getKindername());
+//			System.out.println("실내공기질 점검일자: "+snArr.get(i).getArql_chk_dt());
+//			System.out.println("정기소독 점검일자: "+snArr.get(i).getFxtm_dsnf_chk_dt());
+//			System.out.println("미세먼지 검사일자 : "+snArr.get(i).getMdst_chk_dt());
+//			System.out.println("조도관리 검사일자 : "+snArr.get(i).getIlmn_chk_dt());
+//			System.out.println("총점 : "+snscore);
+//			System.out.println("-----------------------------------");
+		}
+			
+		return snsum;
+	}
+	
+	public ArrayList<Integer> sumBuild() {
+		ArrayList<ClassAreaVO> buildArr = selectBuildinfo();
+		ArrayList<Integer> buildsum = new ArrayList<Integer>();
+		//ArrayList<KinderinfoVO> kinderArr = selectKinderinfo();
+		int bscore;
+		
+		for(int i =0;i<buildArr.size();i++) {	
+			bscore=0;
+			if(!buildArr.get(i).getPhgrindrarea().equals("0")){
+				bscore += 40;
+			
+			}else {
+				bscore += 5;
+			}
+			
+			if(!buildArr.get(i).getHlsparea().equals("0")){
+				bscore += 40;
+			}else {
+				bscore += 5;
+			}
+			
+			if(!buildArr.get(i).getKtchmssparea().equals("0")){
+				bscore += 40;
+			}else {
+				bscore += 5;
+			}
+			
+			buildsum.add(bscore);
+//			System.out.println("유치원 아이디: "+buildArr.get(i).getKindername());
+//			System.out.println("체육장 보유여부: "+buildArr.get(i).getPhgrindrarea());
+//			System.out.println("보건/위생시설 보유여부: "+buildArr.get(i).getHlsparea());
+//			System.out.println("조리실/급식공간 보유여부 : "+buildArr.get(i).getKtchmssparea());
+//			System.out.println("총점 : "+bscore);
+//			System.out.println("-----------------------------------");
+		}
+		return buildsum;
+	}
+	
+//	public int insertTotal() {
+//		int total = 0;
+//		
+//		for(int i=0; i<523; i++) {
+//		total = sumSafety().get(i)+sumSanitary().get(i)+sumBuild().get(i);
+//	}
+//	}
+		
+	public static void main(String[] args) {
+		
 				ScoreTest st = new ScoreTest();
-				
-				ArrayList<SafetyVO> sfArr = st.selectSafetyinfo();
-				ArrayList<SanitaryVO> snArr = st.selectSanitaryinfo();
-				ArrayList<ClassAreaVO> buildArr = st.selectBuildinfo();
 			
 				//ArrayList<KinderinfoVO> kinderArr = st.insertKinderscore();
-				
-				
-				st.sumSafety();
-		
-				
-			for(int i =0;i<snArr.size();i++) {	
-				snscore=0;
-				if(snArr.get(i).getArql_chk_dt().contains("2019")){
-					snscore += 30;
-				}else if(snArr.get(i).getArql_chk_dt().contains("2018") || snArr.get(i).getArql_chk_dt().contains("2017")) {
-					snscore += 20;
-				}else if(snArr.get(i).getArql_chk_dt().contains("2016") || snArr.get(i).getArql_chk_dt().contains("2015")) {
-					snscore += 10;
-				}else {
-					snscore += 5;
-				}
-				
-				if(snArr.get(i).getFxtm_dsnf_chk_dt().contains("2019")){
-					snscore += 30;
-				}else if(snArr.get(i).getFxtm_dsnf_chk_dt().contains("2018") || snArr.get(i).getFxtm_dsnf_chk_dt().contains("2017")) {
-					snscore += 20;
-				}else if(snArr.get(i).getFxtm_dsnf_chk_dt().contains("2016") || snArr.get(i).getFxtm_dsnf_chk_dt().contains("2015")) {
-					snscore += 10;
-				}else {
-					snscore += 5;
-				}
-				
-				if(snArr.get(i).getMdst_chk_dt().contains("2019")){
-					snscore += 30;
-				}else if(snArr.get(i).getMdst_chk_dt().contains("2018") || snArr.get(i).getMdst_chk_dt().contains("2017")) {
-					snscore += 20;
-				}else if(snArr.get(i).getMdst_chk_dt().contains("2016") || snArr.get(i).getMdst_chk_dt().contains("2015")) {
-					snscore += 10;
-				}else {
-					snscore += 5;
-				}
-				
-				if(snArr.get(i).getIlmn_chk_dt().contains("2019")){
-					snscore += 30;
-				}else if(snArr.get(i).getIlmn_chk_dt().contains("2018") || snArr.get(i).getIlmn_chk_dt().contains("2017")) {
-					snscore += 20;
-				}else if(snArr.get(i).getIlmn_chk_dt().contains("2016") || snArr.get(i).getIlmn_chk_dt().contains("2015")) {
-					snscore += 10;
-				}else {
-					snscore += 5;
-				}
-				
-//				System.out.println("유치원 아이디: "+snArr.get(i).getKindername());
-//				System.out.println("실내공기질 점검일자: "+snArr.get(i).getArql_chk_dt());
-//				System.out.println("정기소독 점검일자: "+snArr.get(i).getFxtm_dsnf_chk_dt());
-//				System.out.println("미세먼지 검사일자 : "+snArr.get(i).getMdst_chk_dt());
-//				System.out.println("조도관리 검사일자 : "+snArr.get(i).getIlmn_chk_dt());
-//				System.out.println("총점 : "+snscore);
-//				System.out.println("-----------------------------------");
-			}
-			
 
-			//System.out.println(buildArr.get(1).getPhgrindrarea());
-			for(int i =0;i<buildArr.size();i++) {	
-				bscore=0;
-				if(!buildArr.get(i).getPhgrindrarea().equals("0")){
-					bscore += 40;
-				
-				}else {
-					bscore += 5;
-				}
-				
-				if(!buildArr.get(i).getHlsparea().equals("0")){
-					bscore += 40;
-				}else {
-					bscore += 5;
-				}
-				
-				if(!buildArr.get(i).getKtchmssparea().equals("0")){
-					bscore += 40;
-				}else {
-					bscore += 5;
-				}
-				
-				
-//				System.out.println("유치원 아이디: "+buildArr.get(i).getKindername());
-//				System.out.println("체육장 보유여부: "+buildArr.get(i).getPhgrindrarea());
-//				System.out.println("보건/위생시설 보유여부: "+buildArr.get(i).getHlsparea());
-//				System.out.println("조리실/급식공간 보유여부 : "+buildArr.get(i).getKtchmssparea());
-//				System.out.println("총점 : "+bscore);
-//				System.out.println("-----------------------------------");
-			}
-			
-
-			
 	}
 			
 			}
