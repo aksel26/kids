@@ -51,3 +51,9 @@ kids/.springBeans
 kids/.project
 
 kids/src/main/webapp/WEB-INF/action-servlet.xml
+src/main/webapp/WEB-INF/web.xml
+src/main/webapp/WEB-INF/action-servlet.xml
+pom.xml
+dbinfo.properties
+.springBeans
+.project
