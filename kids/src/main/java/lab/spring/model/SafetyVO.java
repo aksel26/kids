@@ -14,31 +14,24 @@ public class SafetyVO {
 	private String opertime;
 	private String POINT_Y;
 	private String POINT_X;
-	private String safetyid;
-   private String fire_avd_yn; //ï¿½Ò¹ï¿½ï¿½ï¿½ï¿½ï¿½Æ·Ã¿ï¿½ï¿½ï¿½
-   private String fire_avd_dt; //ï¿½Ò¹ï¿½ï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½
-   private String gas_ck_yn; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½ï¿½
-   private String gas_ck_dt; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-   private String fire_safe_yn; //ï¿½Ò¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½ï¿½
-   private String fire_safe_dt; //ï¿½Ò¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-   private String elect_ck_yn; //ï¿½ï¿½ï¿½â¼³ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½ï¿½ï¿½
-   private String elect_ck_dt; //ï¿½ï¿½ï¿½â¼³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-   private String plyg_ck_yn; //ï¿½ï¿½ï¿½Ì½Ã¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ ï¿½ï¿½ó¿©ºï¿½     
-   private String plyg_ck_dt; //ï¿½ï¿½ï¿½Ì½Ã¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-   private String plyg_ck_rs_cd; //ï¿½ï¿½ï¿½Ì½Ã¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½Ë°ï¿½ï¿½
-   private String cctv_ist_yn; //CCTV ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½
-   private String cctv_ist_total; // CCTV ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½
-   private String cctv_ist_in; //CCTV ï¿½Ç¹ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½
+   private String fire_avd_yn; //¼Ò¹æ´ëÇÇÈÆ·Ã¿©ºÎ
+   private String fire_avd_dt; //¼Ò¹æ´ëÇÇÈÆ·ÃÀÏÀÚ
+   private String gas_ck_yn; //°¡½ºÁ¡°Ë¿©ºÎ
+   private String gas_ck_dt; //°¡½ºÁ¡°ËÀÏÀÚ
+   private String fire_safe_yn; //¼Ò¹æ¾ÈÀüÁ¡°Ë¿©ºÎ
+   private String fire_safe_dt; //¼Ò¹æ¾ÈÀüÁ¡°ËÀÏÀÚ
+   private String elect_ck_yn; //Àü±â¼³ºñÁ¡°Ë¿©ºÎ
+   private String elect_ck_dt; //Àü±â¼³ºñÁ¡°ËÀÏÀÚ
+   private String plyg_ck_yn; //³îÀÌ½Ã¼³ ¾ÈÀü°Ë»ç ´ë»ó¿©ºÎ     
+   private String plyg_ck_dt; //³îÀÌ½Ã¼³ ¾ÈÀü°Ë»ç Á¡°ËÀÏÀÚ
+   private String plyg_ck_rs_cd; //³îÀÌ½Ã¼³ ¾ÈÀü°Ë»ç Á¡°Ë°á°ú
+   private String cctv_ist_yn; //CCTV ¼³Ä¡¿©ºÎ
+   private String cctv_ist_total; // CCTV ÃÑ ¼³Ä¡¼ö
+   private String cctv_ist_in; //CCTV °Ç¹° ¾È ¼³Ä¡¼ö
    private String cctv_ist_out;
    
    
-   public String getSafetyid() {
-	return safetyid;
-}
-public void setSafetyid(String safetyid) {
-	this.safetyid = safetyid;
-}
-public String getPOINT_Y() {
+   public String getPOINT_Y() {
 	return POINT_Y;
 }
 public void setPOINT_Y(String pOINT_Y) {
@@ -205,7 +198,7 @@ public String getFire_avd_yn() {
    }
    public void setCctv_ist_out(String cctv_ist_out) {
       this.cctv_ist_out = cctv_ist_out;
-   } //CCTV ï¿½Ç¹ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½
+   } //CCTV °Ç¹° ¹Û ¼³Ä¡¼ö
    
    
    

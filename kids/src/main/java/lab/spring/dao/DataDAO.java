@@ -15,19 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import lab.spring.model.BuildingVO;
-
-import lab.spring.model.ClassAreaVO;
 import lab.spring.model.CommentVO;
-import lab.spring.model.EnvironVO;
 import lab.spring.model.KinderInfoVO;
 import lab.spring.model.MealVO;
 import lab.spring.model.SafetyVO;
 import lab.spring.model.SanitaryVO;
-
-import lab.spring.model.CommentVO;
-import lab.spring.model.KinderInfoVO;
-import lab.spring.model.MealVO;
-import lab.spring.model.SafetyVO;
 import lab.spring.model.TeacherVO;
 import lab.spring.model.UserVO;
 
@@ -60,42 +52,21 @@ public class DataDAO {
 		return sqlSession.selectList("lab.mybatis.user.UserMapper.getKinderList");
 	}
 	
-	public List<KinderInfoVO> findSearchList(String keyword){
-		return sqlSession.selectList("lab.mybatis.user.UserMapper.getSearchList","%"+keyword+"%");
-	}
-	
-	
-	
-	
 	public List<SafetyVO> findSafety(List<String> safety_arr){
 		return sqlSession.selectList("lab.mybatis.user.UserMapper.findSafety");
 	}
 	
 	public List<SafetyVO> getSafetyList(HashMap<String, String> safety_arr){
 		List<SafetyVO> safetyList = null;
-
+		 
 		safetyList = sqlSession.selectList("lab.mybatis.user.UserMapper.getSafetyList", safety_arr);
 		return safetyList;
 	}
 	
 	public List<SanitaryVO> getSanitaryList(HashMap<String, String> sanitary_arr){
 		List<SanitaryVO> sanitaryList = null;
+		 
 		sanitaryList = sqlSession.selectList("lab.mybatis.user.UserMapper.getSanitaryList", sanitary_arr);
 		return sanitaryList;
 	}
-	
-	public List<ClassAreaVO> getBuildinfoList(HashMap<String, String> build_arr){
-		List<ClassAreaVO> buildList = null;
-		buildList = sqlSession.selectList("lab.mybatis.user.UserMapper.getBuildinfoList", build_arr);
-		return buildList;
-
-	}
-	
-	public List<EnvironVO> getEnvironList(HashMap<String, String> env_arr){
-		List<EnvironVO> envList = null;
-		envList = sqlSession.selectList("lab.mybatis.user.UserMapper.getEnvironList", env_arr);
-		return envList;
-
-	}
-
 }
