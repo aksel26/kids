@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.Properties;
 
 import lab.java.model.ClassAreaVO;
+import lab.java.model.KinderInfoVO;
 import lab.java.model.SafetyVO;
 import lab.java.model.SanitaryVO;
 
@@ -167,11 +168,15 @@ import lab.java.model.SanitaryVO;
 			return buildArr;
 	}
 
-	public ArrayList<Integer> sumSafety() {
+	public int insertSafety() throws SQLException, InterruptedException {
 		ArrayList<SafetyVO> sfArr = selectSafetyinfo();
 		ArrayList<Integer> sfsum = new ArrayList<Integer>();
 		//ArrayList<KinderinfoVO> kinderArr = selectKinderinfo();
 		int sfscore;
+		
+		
+		
+		
 		
 		for(int i =0;i<sfArr.size();i++) {	
 			sfscore=0;
@@ -218,17 +223,42 @@ import lab.java.model.SanitaryVO;
 			}
 			
 			sfsum.add(sfscore);
+			
+		
+			String sql = "update safety set score1="+sfsum.get(i)+" where kindername='"+sfArr.get(i).getKindername()+"'";
+		
+			try {
+				con=dbCon();
+				stat = con.createStatement(); 
+				stat.executeUpdate(sql);	
+				System.out.println(sfsum.size());
+
+	         
+			} catch (Exception e) {
+			e.getMessage();
+			}  try {
+		        if (con != null && !con.isClosed())
+	            {
+	            con.close();
+	            Thread.sleep(1000);
+	             }
+	        }
+	    catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
 //			
 //			System.out.println("유치원 아이디: "+sfArr.get(i).getKindername());
 //			System.out.println("소방 안전 날짜: "+sfArr.get(i).getFire_safe_dt());
 //			System.out.println("가스 점검 날짜: "+sfArr.get(i).getGas_ck_dt());
 //			System.out.println("전기 점검 날짜 : "+sfArr.get(i).getElect_ck_dt());
 //			System.out.println("놀이시설 점검 날짜 : "+sfArr.get(i).getPlyg_ck_dt());
-//			System.out.println("총점 : "+sfscore);
+//			System.out.println(sfsum.size()+"총점 : "+sfsum.get(i));
 //			System.out.println("-----------------------------------");
 
 		}
-		return sfsum;
+	
+		return 0;
 	}
 	
 	public ArrayList<Integer> sumSanitary() {
@@ -330,18 +360,76 @@ import lab.java.model.SanitaryVO;
 		return buildsum;
 	}
 	
-//	public int insertTotal() {
-//		int total = 0;
+	
+	public int insertSafety(SafetyVO vo) {
+				int rsint=0;
+				ArrayList<SafetyVO> sfArr = selectSafetyinfo();
+				int sum;
+				String sql = "insert into safety(score1)"
+						+ " values (?)";
+			
+				try {
+					for(int i =0; i<sfArr.size();i++) {
+				//	sum = insertSafety().get(i);
+					con=dbCon();
+					pstat = con.prepareStatement(sql);
+					
+					//pstat.setInt(1, sum);
+					
+					rsint = pstat.executeUpdate();
+					
+					if (rsint > 0) {
+						return 1;
+					}
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					dbClose(con, pstat, rs);
+				}
+
+				return 0;
+			}
+//	public int updateTotal() {
+//		int sum = 0;
+//		int rsint = 0;
 //		
-//		for(int i=0; i<523; i++) {
-//		total = sumSafety().get(i)+sumSanitary().get(i)+sumBuild().get(i);
+//		for(int i=0; i<=525; i++) {
+//			
+//		sum = sumSafety().get(i);
+//	
+//		String sql = "UPDATE kinderinfo a" + 
+//				"SET a.total =" +sum+ 
+//				"WHERE a.kindername=(" + 
+//				"                   SELECT" + 
+//				"                    b.kindername" + 
+//				"                   FROM safety b" + 
+//				"                   WHERE b.kindername=a.kindername" + 
+//				"                    );";
+//		try {
+//			con = dbCon();
+//			stat = con.createStatement();
+//			rs=stat.executeQuery(sql);
+//			
+//		
+//				KinderInfoVO kinder = new KinderInfoVO();
+//            
+//             rsint= kinder.setTotal(sum);
+//		
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			dbClose(con, pstat, rs);
+//		}
+//
+//		return 0;
 //	}
 //	}
 		
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException, InterruptedException {
 		
 				ScoreTest st = new ScoreTest();
-			
+			st.insertSafety();
 				//ArrayList<KinderinfoVO> kinderArr = st.insertKinderscore();
 
 	}

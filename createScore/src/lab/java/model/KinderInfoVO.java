@@ -24,14 +24,14 @@ public class KinderInfoVO {
 	private String shppcnt;
 	private String POINT_Y;
 	private String POINT_X;
-	private String total;
+	private int total;
 	
 	
 	
-	public String getTotal() {
+	public int getTotal() {
 		return total;
 	}
-	public void setTotal(String total) {
+	public void setTotal(int total) {
 		this.total = total;
 	}
 	public String getPOINT_Y() {
@@ -186,6 +186,7 @@ public class KinderInfoVO {
 				+ ", ppcnt3=" + ppcnt3 + ", ppcnt4=" + ppcnt4 + ", ppcnt5=" + ppcnt5 + ", mixppcnt=" + mixppcnt
 				+ ", shppcnt=" + shppcnt + "]";
 	}
+
 	
 	
 }
