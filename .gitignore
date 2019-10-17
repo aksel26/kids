@@ -57,3 +57,4 @@ pom.xml
 dbinfo.properties
 .springBeans
 .project
+kids/src/main/webapp/WEB-INF/web.xml

@@ -1,5 +1,14 @@
+<%@page import="lab.spring.service.MemberDAO"%>
+<%@page import="lab.spring.service.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<META http-equiv="Expires" content="-1">
+<META http-equiv="Pragma" content="no-cache">
+<META http-equiv="Cache-Control" content="No-Cache">
+
+   
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,8 +43,46 @@
 function moveJoin(){
 	document.form1.submit();
 }
+
 </script>
 <body>
+
+	   <%
+        // 인코딩 처리
+        request.setCharacterEncoding("euc-kr"); 
+        
+        // 로그인 화면에 입력된 아이디와 비밀번호를 가져온다
+        String id= request.getParameter("userid");
+        String pw = request.getParameter("userpwd");
+        
+        // DB에서 아이디, 비밀번호 확인
+        MemberDAO dao = MemberDAO.getInstance();
+        int check = dao.loginCheck(id,pw);
+        
+        // URL 및 로그인관련 전달 메시지
+        String msg = "";
+        
+        if(check == 1)    // 로그인 성공
+        { 
+            // 세션에 현재 아이디 세팅
+            session.setAttribute("sessionID", id);
+            msg = "../../index.jsp";
+        }
+        else if(check == 0) // 비밀번호가 틀릴경우
+        {
+            msg = "../view/page-login.jsp?msg=0";
+        }
+        else    // 아이디가 틀릴경우
+        {
+            msg = "../view/page-login.jsp?msg=-1";
+        }
+         
+        // sendRedirect(String URL) : 해당 URL로 이동
+        // URL뒤에 get방식 처럼 데이터를 전달가능
+        response.sendRedirect(msg);
+    %>
+
+
     <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-50 p-b-90">
@@ -44,14 +91,14 @@ function moveJoin(){
 
 <h4>로그인</h4>
 </span>
-<form method='post' action='./login.do'>
+<form method='post' action='./login.do' >
 <div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
-    <input class="input100" type="text" id="userid" name="userid" placeholder="Userid">
+    <input class="input100" type="text" id="userid" name="userid"  placeholder="Userid"> 
     <span class="focus-input100"></span>
 </div>
 <br>
 <div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-    <input class="input100" type="password" id="userpwd" name="userpwd" placeholder="Password">
+    <input class="input100" type="password" id="userpwd" name="userpwd" placeholder="Password"> 
     <span class="focus-input100"></span>
 </div>
     <div class="container-login100-form-btn m-t-17">

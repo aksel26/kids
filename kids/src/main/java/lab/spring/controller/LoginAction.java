@@ -1,7 +1,10 @@
 package lab.spring.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.w3c.dom.Document;
 
 import lab.spring.model.CommentVO;
 import lab.spring.model.KinderInfoVO;
@@ -34,18 +38,31 @@ public class LoginAction {
 	@RequestMapping(value = "/login.do",method=RequestMethod.POST)
 	public ModelAndView login(@RequestParam(value ="userid",required=false)String uid,
 								@RequestParam(value = "userpwd", required=false)String upwd,
-								HttpSession session) {
+								HttpSession session, HttpServletResponse response) throws IOException {
 		ModelAndView mav = new ModelAndView();
 		UserVO vo = null;
 		vo = service.login(uid, upwd);
 		
 		
 		if(vo!=null) {
+			PrintWriter out = response.getWriter();
 			session.setAttribute("authInfo", vo);
+			
 			mav.setViewName("index");
-		}else {
-			mav.setViewName("page-register");
+			response.sendRedirect("index.do");
+			
 		}
+		
+		else {
+			
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('다시 입력해 주세요'); document.location.href=\"index.do\";</script>");  					     
+			out.close();	
+			mav.setViewName("index");
+			response.sendRedirect("index.do");
+		} 
+			
+		
 		return mav;
 	}
 	
