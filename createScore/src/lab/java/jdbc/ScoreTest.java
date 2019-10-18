@@ -4,6 +4,7 @@ package lab.java.jdbc;
 	import java.io.FileInputStream;
 	import java.sql.*;
 	import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Properties;
 
@@ -49,6 +50,41 @@ import lab.java.model.SanitaryVO;
 			}
 		}
 		
+		
+		
+	private ArrayList<KinderInfoVO> selectKinderinfo() {
+		ArrayList<KinderInfoVO> kinderArr = new ArrayList<KinderInfoVO>();
+		con = dbCon();
+		String sql = null;
+		Statement stat = null;
+	
+		
+		sql = "select kindername, total from kinderinfo";
+
+		try {
+			stat=con.createStatement();
+			rs = stat.executeQuery(sql);
+
+
+            while(rs.next()){ 
+            	  KinderInfoVO vo = new KinderInfoVO();
+                   String kindername = rs.getString(1);
+                   int total=rs.getInt(2);
+                   
+                   vo.setKindername(kindername);
+                   vo.setTotal(total);
+                   
+                   kinderArr.add(vo);
+              
+            }
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dbClose(con, stat, rs);
+		}
+			return kinderArr;
+	}
+	
 	public ArrayList<SafetyVO> selectSafetyinfo() {
 			ArrayList<SafetyVO> sfArr = new ArrayList<SafetyVO>();
 			con = dbCon();
@@ -56,7 +92,7 @@ import lab.java.model.SanitaryVO;
 			Statement stat = null;
 		
 			
-			sql = "select kindername, nvl(fire_safe_dt,0), nvl(gas_ck_dt,0), nvl(elect_ck_dt,0), nvl(plyg_ck_dt,0)"
+			sql = "select kindername, nvl(fire_safe_dt,0), nvl(gas_ck_dt,0), nvl(elect_ck_dt,0), nvl(plyg_ck_dt,0), score1"
 					+ " from safety";
 
 			try {
@@ -71,12 +107,14 @@ import lab.java.model.SanitaryVO;
 	                   String  gas_ck_dt = rs.getString(3);
 	                   String elect_ck_dt = rs.getString(4);
 	                   String plyg_ck_dt = rs.getString(5);
+	                   int score1=rs.getInt(6);
 	                   
 	                   sf.setKindername(kindername);
 	                   sf.setFire_safe_dt(fire_safe_dt);
 	                   sf.setGas_ck_dt(gas_ck_dt);
 	                   sf.setElect_ck_dt(elect_ck_dt);
 	                   sf.setPlyg_ck_dt(plyg_ck_dt);
+	                   sf.setScore1(score1);
 	                   
 	                   sfArr.add(sf);
 	              
@@ -96,7 +134,7 @@ import lab.java.model.SanitaryVO;
 		Statement stat = null;
 	
 		
-		sql = "select kindername, nvl(arql_chk_dt,0), nvl(fxtm_dsnf_chk_dt,0), nvl(mdst_chk_dt,0), nvl(ilmn_chk_dt,0)"
+		sql = "select kindername, nvl(arql_chk_dt,0), nvl(fxtm_dsnf_chk_dt,0), nvl(mdst_chk_dt,0), nvl(ilmn_chk_dt,0), score2"
 				+ " from sanitary";
 
 		try {
@@ -111,12 +149,14 @@ import lab.java.model.SanitaryVO;
                    String  fxtm_dsnf_chk_dt = rs.getString(3);
                    String mdst_chk_dt = rs.getString(4);
                    String ilmn_chk_dt = rs.getString(5);
+                   int score2=rs.getInt(6);
                    
                    sn.setKindername(kindername);
                    sn.setArql_chk_dt(arql_chk_dt);
                    sn.setFxtm_dsnf_chk_dt(fxtm_dsnf_chk_dt);
                    sn.setMdst_chk_dt(mdst_chk_dt);
                    sn.setIlmn_chk_dt(ilmn_chk_dt);
+                   sn.setScore2(score2);
                    
                    snArr.add(sn);
               
@@ -137,7 +177,7 @@ import lab.java.model.SanitaryVO;
 	
 		
 		sql = "select kindername, nvl(SUBSTR(phgrindrarea , 0, length(phgrindrarea)-1) ,0), nvl(SUBSTR(hlsparea , 0, length(hlsparea)-1) ,0),"
-				+ "nvl(SUBSTR(ktchmssparea , 0, length(ktchmssparea)-1) ,0) from classarea";
+				+ "nvl(SUBSTR(ktchmssparea , 0, length(ktchmssparea)-1) ,0), score3 from classarea";
 
 		try {
 			stat=con.createStatement();
@@ -150,12 +190,14 @@ import lab.java.model.SanitaryVO;
                    String phgrindrarea = rs.getString(2);
                    String  hlsparea = rs.getString(3);
                    String ktchmssparea = rs.getString(4);
+                   int score3=rs.getInt(5);
             
                    
                    build.setKindername(kindername);
                    build.setPhgrindrarea(phgrindrarea);
                    build.setHlsparea(hlsparea);
                    build.setKtchmssparea(ktchmssparea);
+                   build.setScore3(score3);
                    
                    buildArr.add(build);
               
@@ -174,10 +216,7 @@ import lab.java.model.SanitaryVO;
 		//ArrayList<KinderinfoVO> kinderArr = selectKinderinfo();
 		int sfscore;
 		
-		
-		
-		
-		
+
 		for(int i =0;i<sfArr.size();i++) {	
 			sfscore=0;
 			
@@ -247,21 +286,12 @@ import lab.java.model.SanitaryVO;
 	        e.printStackTrace();
 	    }
 
-//			
-//			System.out.println("유치원 아이디: "+sfArr.get(i).getKindername());
-//			System.out.println("소방 안전 날짜: "+sfArr.get(i).getFire_safe_dt());
-//			System.out.println("가스 점검 날짜: "+sfArr.get(i).getGas_ck_dt());
-//			System.out.println("전기 점검 날짜 : "+sfArr.get(i).getElect_ck_dt());
-//			System.out.println("놀이시설 점검 날짜 : "+sfArr.get(i).getPlyg_ck_dt());
-//			System.out.println(sfsum.size()+"총점 : "+sfsum.get(i));
-//			System.out.println("-----------------------------------");
-
 		}
 	
 		return 0;
 	}
 	
-	public ArrayList<Integer> sumSanitary() {
+	public int insertSanitary()  throws SQLException, InterruptedException {
 		ArrayList<SanitaryVO> snArr = selectSanitaryinfo();
 		ArrayList<Integer> snsum = new ArrayList<Integer>();
 		//ArrayList<KinderinfoVO> kinderArr = selectKinderinfo();
@@ -310,19 +340,35 @@ import lab.java.model.SanitaryVO;
 			}
 			
 			snsum.add(snscore);
-//			System.out.println("유치원 아이디: "+snArr.get(i).getKindername());
-//			System.out.println("실내공기질 점검일자: "+snArr.get(i).getArql_chk_dt());
-//			System.out.println("정기소독 점검일자: "+snArr.get(i).getFxtm_dsnf_chk_dt());
-//			System.out.println("미세먼지 검사일자 : "+snArr.get(i).getMdst_chk_dt());
-//			System.out.println("조도관리 검사일자 : "+snArr.get(i).getIlmn_chk_dt());
-//			System.out.println("총점 : "+snscore);
-//			System.out.println("-----------------------------------");
-		}
 			
-		return snsum;
+			String sql = "update sanitary set score2="+snsum.get(i)+" where kindername='"+snArr.get(i).getKindername()+"'";
+			
+			try {
+				con=dbCon();
+				stat = con.createStatement(); 
+				stat.executeUpdate(sql);	
+				System.out.println(snsum.size());
+
+	         
+			} catch (Exception e) {
+			e.getMessage();
+			}  try {
+		        if (con != null && !con.isClosed())
+	            {
+	            con.close();
+	            Thread.sleep(1000);
+	             }
+	        }
+	    catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+		}
+	
+		return 0;
 	}
 	
-	public ArrayList<Integer> sumBuild() {
+	public int insertBuild()  throws SQLException, InterruptedException {
 		ArrayList<ClassAreaVO> buildArr = selectBuildinfo();
 		ArrayList<Integer> buildsum = new ArrayList<Integer>();
 		//ArrayList<KinderinfoVO> kinderArr = selectKinderinfo();
@@ -350,86 +396,93 @@ import lab.java.model.SanitaryVO;
 			}
 			
 			buildsum.add(bscore);
-//			System.out.println("유치원 아이디: "+buildArr.get(i).getKindername());
-//			System.out.println("체육장 보유여부: "+buildArr.get(i).getPhgrindrarea());
-//			System.out.println("보건/위생시설 보유여부: "+buildArr.get(i).getHlsparea());
-//			System.out.println("조리실/급식공간 보유여부 : "+buildArr.get(i).getKtchmssparea());
-//			System.out.println("총점 : "+bscore);
-//			System.out.println("-----------------------------------");
+			String sql = "update classarea set score3="+buildsum.get(i)+" where kindername='"+buildArr.get(i).getKindername()+"'";
+			
+			try {
+				con=dbCon();
+				stat = con.createStatement(); 
+				stat.executeUpdate(sql);	
+				System.out.println(buildsum.size());
+
+	         
+			} catch (Exception e) {
+			e.getMessage();
+			}  try {
+		        if (con != null && !con.isClosed())
+	            {
+	            con.close();	
+	            Thread.sleep(1000);
+	             }
+	        }
+	    catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
 		}
-		return buildsum;
+	
+		return 0;
 	}
 	
 	
-	public int insertSafety(SafetyVO vo) {
-				int rsint=0;
-				ArrayList<SafetyVO> sfArr = selectSafetyinfo();
-				int sum;
-				String sql = "insert into safety(score1)"
-						+ " values (?)";
-			
-				try {
-					for(int i =0; i<sfArr.size();i++) {
-				//	sum = insertSafety().get(i);
-					con=dbCon();
-					pstat = con.prepareStatement(sql);
-					
-					//pstat.setInt(1, sum);
-					
-					rsint = pstat.executeUpdate();
-					
-					if (rsint > 0) {
-						return 1;
-					}
-					}
-				} catch (Exception e) {
-					e.printStackTrace();
-				} finally {
-					dbClose(con, pstat, rs);
-				}
-
-				return 0;
-			}
-//	public int updateTotal() {
-//		int sum = 0;
-//		int rsint = 0;
-//		
-//		for(int i=0; i<=525; i++) {
-//			
-//		sum = sumSafety().get(i);
-//	
-//		String sql = "UPDATE kinderinfo a" + 
-//				"SET a.total =" +sum+ 
-//				"WHERE a.kindername=(" + 
-//				"                   SELECT" + 
-//				"                    b.kindername" + 
-//				"                   FROM safety b" + 
-//				"                   WHERE b.kindername=a.kindername" + 
-//				"                    );";
-//		try {
-//			con = dbCon();
-//			stat = con.createStatement();
-//			rs=stat.executeQuery(sql);
-//			
-//		
-//				KinderInfoVO kinder = new KinderInfoVO();
-//            
-//             rsint= kinder.setTotal(sum);
-//		
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			dbClose(con, pstat, rs);
-//		}
-//
-//		return 0;
-//	}
-//	}
+	public int updateTotal() throws InterruptedException {
+		ArrayList<SafetyVO> sfArr = selectSafetyinfo();
+		ArrayList<SanitaryVO> snArr = selectSanitaryinfo();
+		ArrayList<ClassAreaVO> buildArr = selectBuildinfo();
 		
+		HashMap<String,Integer> total = new HashMap<String,Integer>();
+		int sum = 0;
+		
+		for(int i = 0;i<sfArr.size();i++) {
+			for(int j = 0;j<snArr.size();j++) {
+				if((sfArr.get(i).getKindername().equals(snArr.get(j).getKindername()))) {
+					for(int k=0;k<buildArr.size();k++) {
+						if((buildArr.get(k).getKindername().equals(snArr.get(j).getKindername()))) {
+							sum = sfArr.get(i).getScore1()+snArr.get(j).getScore2()+buildArr.get(k).getScore3();
+							
+							total.put(buildArr.get(k).getKindername(), sum);
+							break;
+						}
+					}								
+				}
+			}
+		}
+		
+		for ( String name : total.keySet()) {
+			String sql = "update kinderinfo set total= "+total.get(name)+"where kindername ='"+name+"'";
+			
+			try {
+				con=dbCon();
+				stat = con.createStatement(); 
+				stat.executeUpdate(sql);	
+				System.out.println(total.size());
+				
+			} catch (Exception e) {
+				e.getMessage();
+			}  try {
+		        if (con != null && !con.isClosed())
+	            {
+	            con.close();	
+	            Thread.sleep(1000);
+	             }
+	        }
+	    catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+		}
+		
+		return 0;
+	}
+	
+
+
 	public static void main(String[] args) throws SQLException, InterruptedException {
 		
 				ScoreTest st = new ScoreTest();
-			st.insertSafety();
+				//st.insertSafety();
+				//st.insertSanitary();
+				//st.insertBuild();
+				st.updateTotal();
 				//ArrayList<KinderinfoVO> kinderArr = st.insertKinderscore();
 
 	}

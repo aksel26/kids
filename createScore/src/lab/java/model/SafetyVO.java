@@ -30,14 +30,14 @@ public class SafetyVO {
    private String cctv_ist_total; // CCTV �� ��ġ��
    private String cctv_ist_in; //CCTV �ǹ� �� ��ġ��
    private String cctv_ist_out;
-   private String score1;
+   private int score1;
    
    
    
-   public String getScore1() {
+   public int getScore1() {
 	return score1;
 }
-public void setScore1(String score1) {
+public void setScore1(int score1) {
 	this.score1 = score1;
 }
 public String getSafetyid() {
