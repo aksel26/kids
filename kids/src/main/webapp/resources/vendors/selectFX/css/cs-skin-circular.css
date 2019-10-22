@@ -1,7 +1,8 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('../fonts/icomoon/icomoon.eot?-rdnm34');
-	src:url('../fonts/icomoon/icomoon.eot?#iefix-rdnm34') format('embedded-opentype'),
+	src: url('../fonts/icomoon/icomoon.eot?-rdnm34');
+	src: url('../fonts/icomoon/icomoon.eot?#iefix-rdnm34')
+		format('embedded-opentype'),
 		url('../fonts/icomoon/icomoon.woff?-rdnm34') format('woff'),
 		url('../fonts/icomoon/icomoon.ttf?-rdnm34') format('truetype'),
 		url('../fonts/icomoon/icomoon.svg?-rdnm34#icomoon') format('svg');
@@ -17,7 +18,7 @@ div.cs-skin-circular {
 	margin-top: 3em;
 }
 
-.cs-skin-circular > span {
+.cs-skin-circular>span {
 	background: transparent;
 	width: 100px;
 	height: 100px;
@@ -31,10 +32,13 @@ div.cs-skin-circular {
 }
 
 @media screen and (max-width: 30em) {
-	.cs-skin-circular > span { width: 80px; height: 80px; }
+	.cs-skin-circular>span {
+		width: 80px;
+		height: 80px;
+	}
 }
 
-.cs-skin-circular > span::after {
+.cs-skin-circular>span::after {
 	font-family: 'icomoon';
 	content: '\e00f';
 	right: 0;
@@ -42,22 +46,22 @@ div.cs-skin-circular {
 	text-indent: 0;
 }
 
-.cs-skin-circular.cs-active > span::after {
-	-webkit-transform: translate3d(0,-50%,0);
-	transform: translate3d(0,-50%,0);
+.cs-skin-circular.cs-active>span::after {
+	-webkit-transform: translate3d(0, -50%, 0);
+	transform: translate3d(0, -50%, 0);
 }
 
-.cs-skin-circular > span[style]::after {
-	content:'';
+.cs-skin-circular>span[style]::after {
+	content: '';
 }
 
 .cs-skin-circular .cs-selected span::after {
 	content: '';
 }
 
-.cs-skin-circular.cs-active > span {
-	-webkit-transform: scale3d(0.75,0.75,1);
-	transform: scale3d(0.75,0.75,1);
+.cs-skin-circular.cs-active>span {
+	-webkit-transform: scale3d(0.75, 0.75, 1);
+	transform: scale3d(0.75, 0.75, 1);
 }
 
 .cs-skin-circular .cs-options {
@@ -80,8 +84,7 @@ div.cs-skin-circular {
 	transition: opacity 0.3s;
 }
 
-.cs-skin-circular .cs-options ul,
-.cs-skin-circular .cs-options li  {
+.cs-skin-circular .cs-options ul, .cs-skin-circular .cs-options li {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -110,14 +113,37 @@ div.cs-skin-circular {
 	opacity: 0.7;
 }
 
-.cs-skin-circular .cs-options li:first-child { background-image: url(../img/1.png); }
-.cs-skin-circular .cs-options li:nth-child(2) { background-image: url(../img/2.png); }
-.cs-skin-circular .cs-options li:nth-child(3) { background-image: url(../img/3.png); }
-.cs-skin-circular .cs-options li:nth-child(4) { background-image: url(../img/4.png); }
-.cs-skin-circular .cs-options li:nth-child(5) { background-image: url(../img/5.png); }
-.cs-skin-circular .cs-options li:nth-child(6) { background-image: url(../img/6.png); }
-.cs-skin-circular .cs-options li:nth-child(7) { background-image: url(../img/7.png); }
-.cs-skin-circular .cs-options li:nth-child(8) { background-image: url(../img/8.png); }
+.cs-skin-circular .cs-options li:first-child {
+	background-image: url(../img/1.png);
+}
+
+.cs-skin-circular .cs-options li:nth-child(2) {
+	background-image: url(../img/2.png);
+}
+
+.cs-skin-circular .cs-options li:nth-child(3) {
+	background-image: url(../img/3.png);
+}
+
+.cs-skin-circular .cs-options li:nth-child(4) {
+	background-image: url(../img/4.png);
+}
+
+.cs-skin-circular .cs-options li:nth-child(5) {
+	background-image: url(../img/5.png);
+}
+
+.cs-skin-circular .cs-options li:nth-child(6) {
+	background-image: url(../img/6.png);
+}
+
+.cs-skin-circular .cs-options li:nth-child(7) {
+	background-image: url(../img/7.png);
+}
+
+.cs-skin-circular .cs-options li:nth-child(8) {
+	background-image: url(../img/8.png);
+}
 
 .cs-skin-circular.cs-active .cs-options li:first-child {
 	-webkit-transform: translate3d(0, -160px, 0);

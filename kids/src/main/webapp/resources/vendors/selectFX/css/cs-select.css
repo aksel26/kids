@@ -17,7 +17,8 @@ div.cs-select {
 }
 
 div.cs-select:focus {
-	outline: none; /* For better accessibility add a style for this in your skin */
+	outline: none;
+	/* For better accessibility add a style for this in your skin */
 }
 
 .cs-select select {
@@ -35,12 +36,11 @@ div.cs-select:focus {
 }
 
 /* Placeholder and selected option */
-.cs-select > span {
+.cs-select>span {
 	padding-right: 3em;
 }
 
-.cs-select > span::after,
-.cs-select .cs-selected span::after {
+.cs-select>span::after, .cs-select .cs-selected span::after {
 	speak: none;
 	position: absolute;
 	top: 50%;
@@ -50,7 +50,7 @@ div.cs-select:focus {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.cs-select > span::after {
+.cs-select>span::after {
 	content: '\25BE';
 	right: 1em;
 }
@@ -60,7 +60,7 @@ div.cs-select:focus {
 	margin-left: 1em;
 }
 
-.cs-select.cs-active > span::after {
+.cs-select.cs-active>span::after {
 	-webkit-transform: translateY(-50%) rotate(180deg);
 	transform: translateY(-50%) rotate(180deg);
 }
@@ -102,6 +102,6 @@ div.cs-active {
 	padding-left: 1em;
 }
 
-.cs-select li.cs-optgroup > span {
+.cs-select li.cs-optgroup>span {
 	cursor: default;
 }

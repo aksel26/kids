@@ -24,13 +24,13 @@ public class SanitaryVO {
 	private String cmcnt;
 	private String mas_mspl_dclr_yn;
 	private String page;
-	private int score2;
+	private double score2;
 	
 
-	public int getScore2() {
+	public double getScore2() {
 		return score2;
 	}
-	public void setScore2(int score2) {
+	public void setScore2(double score2) {
 		this.score2 = score2;
 	}
 	public String getKinderinfoId() {

@@ -37,10 +37,13 @@ public class MainController {
 	@RequestMapping(value="/index.do", method = RequestMethod.GET)
 	public ModelAndView sayHello(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
+		List<KinderInfoVO> ranklist = null;
+
+
+		ranklist = service.getRank();
+		mav.addObject("rankSet",ranklist);
+
 		mav.setViewName("index");
-		
-		
-		
 		
 		return mav;
 			

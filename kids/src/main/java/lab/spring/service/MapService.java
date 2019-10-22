@@ -30,6 +30,6 @@ public interface MapService {
 	public List<SanitaryVO> getSanitaryList(HashMap<String, String> sanitary_arr);
 	public List<ClassAreaVO> getBuildinfoList(HashMap<String, String> build_arr);
 	public List<EnvironVO> getEnvironList(HashMap<String, String> env_arr);
-
+	public List<KinderInfoVO> getRank();
 
 }

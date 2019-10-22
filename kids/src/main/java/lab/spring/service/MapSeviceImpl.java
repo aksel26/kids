@@ -41,9 +41,6 @@ public class MapSeviceImpl implements MapService{
 		return dao.findSearchList(keyword);
 	}
 	
-	
-
-
 	public UserVO login(String uid, String upwd) {
 		// TODO Auto-generated method stub
 		return dao.login(uid, upwd);
@@ -74,5 +71,9 @@ public class MapSeviceImpl implements MapService{
 	public List<EnvironVO> getEnvironList(HashMap<String, String> env_arr) {
 		// TODO Auto-generated method stub
 		return dao.getEnvironList(env_arr);
+	}
+	
+	public List<KinderInfoVO> getRank(){
+		return dao.getRank();
 	}
 }

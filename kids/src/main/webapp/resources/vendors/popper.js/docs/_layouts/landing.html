@@ -7,24 +7,15 @@
 -->
 <html>
 
-  {% include head.html %}
+{% include head.html %}
 
-  <body class="landing">
-    <script>window.document.body.classList.add('is-loading');</script>
+<body class="landing">
+	<script>window.document.body.classList.add('is-loading');</script>
 
-    <!-- Page Wrapper -->
-    <div id="page-wrapper">
+	<!-- Page Wrapper -->
+	<div id="page-wrapper">{% include header.html %} {{ content }} {%
+		include footer.html %} {% include scripts.html %}</div>
 
-      {% include header.html %}
-
-      {{ content }}
-
-      {% include footer.html %}
-
-      {% include scripts.html %}
-
-    </div>
-
-  </body>
+</body>
 
 </html>

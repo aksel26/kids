@@ -97,5 +97,8 @@ public class DataDAO {
 		return envList;
 
 	}
-
+	
+	public List<KinderInfoVO> getRank(){
+		return sqlSession.selectList("lab.mybatis.user.UserMapper.getRank");
+	}
 }

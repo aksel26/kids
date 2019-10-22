@@ -21,14 +21,14 @@ public class ClassAreaVO {
 	private String hlsparea; //보건시설
 	private String ktchmssparea; //조리시설
 	private String otsparea; //기타시설
-	private int score3;
+	private double score3;
 	
 	
 
-	public int getScore3() {
+	public double getScore3() {
 		return score3;
 	}
-	public void setScore3(int score3) {
+	public void setScore3(double score3) {
 		this.score3 = score3;
 	}
 	public String getClassid() {

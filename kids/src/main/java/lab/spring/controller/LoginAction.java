@@ -23,54 +23,54 @@ import lab.spring.service.MapService;
 
 @Controller
 public class LoginAction {
-	
-	@Autowired
-	MapService service;
-	
-	/*
-	@RequestMapping(value = "/login.do",method=RequestMethod.GET)
-	public String form() {
-		System.out.println("�α��� GET���");
-		return "page-login";
-	}
-	*/
-	
-	@RequestMapping(value = "/login.do",method=RequestMethod.POST)
-	public ModelAndView login(@RequestParam(value ="userid",required=false)String uid,
-								@RequestParam(value = "userpwd", required=false)String upwd,
-								HttpSession session, HttpServletResponse response) throws IOException {
-		ModelAndView mav = new ModelAndView();
-		UserVO vo = null;
-		vo = service.login(uid, upwd);
-		
-		
-		if(vo!=null) {
-			PrintWriter out = response.getWriter();
-			session.setAttribute("authInfo", vo);
-			
-			mav.setViewName("index");
-			response.sendRedirect("index.do");
-			
-		}
-		
-		else {
-			
-			PrintWriter out = response.getWriter();
-			out.println("<script>alert('다시 입력해 주세요'); document.location.href=\"index.do\";</script>");  					     
-			out.close();	
-			mav.setViewName("index");
-			response.sendRedirect("index.do");
-		} 
-			
-		
-		return mav;
-	}
-	
-	@RequestMapping(value="/logout.do")
-		public String logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:/index.do";
-	}
-	
-	
+   
+   @Autowired
+   MapService service;
+   
+   /*
+   @RequestMapping(value = "/login.do",method=RequestMethod.GET)
+   public String form() {
+      System.out.println("�α��� GET���");
+      return "page-login";
+   }
+   */
+   
+   @RequestMapping(value = "/login.do",method=RequestMethod.POST)
+   public ModelAndView login(@RequestParam(value ="userid",required=false)String uid,
+                        @RequestParam(value = "userpwd", required=false)String upwd,
+                        HttpSession session, HttpServletResponse response) throws IOException {
+      ModelAndView mav = new ModelAndView();
+      UserVO vo = null;
+      vo = service.login(uid, upwd);
+      
+      
+      if(vo!=null) {
+         PrintWriter out = response.getWriter();
+         session.setAttribute("authInfo", vo);
+         
+         mav.setViewName("index");
+         response.sendRedirect("index.do");
+         
+      }
+      
+      else {
+         
+         PrintWriter out = response.getWriter();
+         out.println("<script>window.alert('다시 입력해 주세요'); window.location.href=\"index.do\";</script>");                      
+         out.close();   
+         mav.setViewName("index");
+//         response.sendRedirect("index.do");
+      } 
+         
+      
+      return mav;
+   }
+   
+   @RequestMapping(value="/logout.do")
+      public String logout(HttpSession session) {
+      session.invalidate();
+      return "redirect:/index.do";
+   }
+   
+   
 }

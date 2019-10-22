@@ -149,7 +149,7 @@ import lab.java.model.SanitaryVO;
                    String  fxtm_dsnf_chk_dt = rs.getString(3);
                    String mdst_chk_dt = rs.getString(4);
                    String ilmn_chk_dt = rs.getString(5);
-                   int score2=rs.getInt(6);
+                   double score2=rs.getDouble(6);
                    
                    sn.setKindername(kindername);
                    sn.setArql_chk_dt(arql_chk_dt);
@@ -190,7 +190,7 @@ import lab.java.model.SanitaryVO;
                    String phgrindrarea = rs.getString(2);
                    String  hlsparea = rs.getString(3);
                    String ktchmssparea = rs.getString(4);
-                   int score3=rs.getInt(5);
+                   double score3=rs.getDouble(5);
             
                    
                    build.setKindername(kindername);
@@ -429,8 +429,8 @@ import lab.java.model.SanitaryVO;
 		ArrayList<SanitaryVO> snArr = selectSanitaryinfo();
 		ArrayList<ClassAreaVO> buildArr = selectBuildinfo();
 		
-		HashMap<String,Integer> total = new HashMap<String,Integer>();
-		int sum = 0;
+		HashMap<String,Double> total = new HashMap<String,Double>();
+		double sum = 0;
 		
 		for(int i = 0;i<sfArr.size();i++) {
 			for(int j = 0;j<snArr.size();j++) {
