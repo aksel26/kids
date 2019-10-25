@@ -28,6 +28,7 @@
    href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800'
    rel='stylesheet' type='text/css'>
  <link rel="stylesheet" href="resources/assets/css/detail.css">
+ <script src="https://kit.fontawesome.com/a166115fd2.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script type="text/javascript"
@@ -35,11 +36,39 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 
+<style>
+<!-- 별점만들기 스타일소스  -->
+*{margin:0; padding:0;}
+.star{
+  display:inline-block;
+  width: 30px;height: 60px;
+  cursor: pointer;
+  padding-left: 30px;
+}
+.star_left{
+  background: url(http://gahyun.wooga.kr/main/img/testImg/star.png) no-repeat 0 0; 
+  background-size: 120%; 
+  margin-right: 0px;
+}
+.star.on{
+  background-image: url(http://gahyun.wooga.kr/main/img/testImg/star_on.png);
+}
+</style>
 </head>
 
 <body>
+<aside id="left-panel" class="left-panel">
+      <nav class="navbar navbar-expand-sm navbar-default">
+         <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+               <li class="active"><a href="index.do"> 
+               <img id="title_img"alt="엄마의 지도" src="resources/images/title.png" width ="130%" height="130%">
+               </a>
+               </li>
+          
  	<!-- Left Panel -->
 	 <%@ include file="./widget.jsp" %>
+
 
   <div class="page-wrapper">
             <!-- ============================================================== -->
@@ -51,18 +80,30 @@
                 <!-- ============================================================== -->
                <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-											</div>
-											<div class="breadcomb-ctn">
-												<h2>OO유치원</h2>
+                             
+											<div class="namespace">
+												<h2>${kindername}<i class="far fa-kiss-wink-heart"></i></h2>
 												<p>주소?전화번호?홈페이지?</p>
 											</div>
-										</div>
+<div class="star-box">
+  <span class="star star_left"></span>
+  <span class="star star_left"></span>
+  <span class="star star_left"></span>
+ <span class="star star_left"></span>
+ <span class="star star_left"></span>
+</div>
                                     </div>
                     </div>
                 </div>
-             
+             <script>
+$(".star").on('click',function(){
+	   var idx = $(this).index();
+	   $(".star").removeClass("on");
+	     for(var i=0; i<=idx; i++){
+	        $(".star").eq(i).addClass("on");
+	   }
+	 });
+</script>
                 <!-- ============================================================== -->
                 <!-- Yearly Sales -->
                 <!-- ============================================================== -->

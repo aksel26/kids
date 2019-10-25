@@ -31,6 +31,7 @@
 <link
    href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800'
    rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Single+Day&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script type="text/javascript"
@@ -40,7 +41,15 @@
 </head>
 
 <body>
-
+<aside id="left-panel" class="left-panel">
+      <nav class="navbar navbar-expand-sm navbar-default">
+         <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+               <li class="active"><a href="#" onclick=getSafetyArr(2,map);> 
+               <img id="title_img"alt="엄마의 지도" src="resources/images/title.png" width ="130%" height="130%">
+               </a>
+               </li>
+     
    <!-- Left Panel -->
 	 <%@ include file="./widget.jsp" %>
 	 

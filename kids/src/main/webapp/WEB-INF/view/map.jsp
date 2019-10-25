@@ -478,17 +478,18 @@ function getSafetyArr(select,map){
 }
 
 function getiwContent(count,value){//인포 윈도우 얻어오기
-   return '<div style="padding:5px; width : 360px; height : 380px;">' +
+   return '<div style="padding:5px; width : auto; height : auto;">' +
    '<table border=0 cellpadding=0 cellspacing=0>'+'<tr>'+'<td>'+
     '<div id = "clean">'+
    '<div>'+
 
-    '<h3>'+value["kindername"]+'</h3>'+'<br/>'+
+    '<h2>'+value["kindername"]+'</h2>'+'<br/>'+
     '</div>'+ 
     '<div>'+
       '<p>'+value["telno"]+'</p>'+
     '<a href='+value["hpaddr"]+'/>'+value["hpaddr"]+
     '</div>'+
+    '<a href="detail.do?kindername='+value["kindername"]+'&kinderinfoId='+value["kinderinfoId"]+'"/>'+'>>>상세보기'+
     '</div>'+
     '</table>'+
     '</div>'

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lab.spring.model.KinderInfoVO;
@@ -20,12 +21,18 @@ public class DetailController {
 		MapService service;
 		
 		@RequestMapping(value="/detail.do", method = RequestMethod.GET)
-		public ModelAndView detail(HttpServletRequest request) {
+		public ModelAndView detail(@RequestParam(value= "kindername") String kindername,
+									@RequestParam(value= "kinderinfoId") String kinderid,
+									HttpServletRequest request) {
 			ModelAndView mav = new ModelAndView();
+			
+			
 			List<KinderInfoVO> ranklist = null;
 			ranklist = service.getRank();
 			
 			mav.addObject("rankSet",ranklist);
+			mav.addObject("kindername", kindername);
+			mav.addObject("kinderinfoId", kinderid);
 			
 			mav.setViewName("detail");
 			

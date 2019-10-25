@@ -87,3 +87,11 @@
 	-ms-flex-item-align: center !important;
 	align-self: center !important;
 }
+
+.row .namespace {
+	position: relative;
+	display: left;
+	padding: 10px;
+	margin-top: 10px;
+	border-top: 20px;
+}
