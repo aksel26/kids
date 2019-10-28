@@ -37,13 +37,10 @@ public class MapSeviceImpl implements MapService{
 		return dao.findKinderList();
 	}
 	
-	public List<KinderInfoVO> findSerachList(String keyword) {
-		return dao.findSearchList(keyword);
+	public List<KinderInfoVO> findSerachList(String keyword,int flag) {
+		return dao.findSearchList(keyword,flag);
 	}
 	
-	
-
-
 	public UserVO login(String uid, String upwd) {
 		// TODO Auto-generated method stub
 		return dao.login(uid, upwd);
@@ -74,5 +71,9 @@ public class MapSeviceImpl implements MapService{
 	public List<EnvironVO> getEnvironList(HashMap<String, String> env_arr) {
 		// TODO Auto-generated method stub
 		return dao.getEnvironList(env_arr);
+	}
+	
+	public List<KinderInfoVO> getRank(){
+		return dao.getRank();
 	}
 }

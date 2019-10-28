@@ -35,16 +35,28 @@ public class MainController {
 	MapService service;
 	
 	@RequestMapping(value="/index.do", method = RequestMethod.GET)
-	public ModelAndView sayHello(HttpServletRequest request) {
+	public ModelAndView sayHello(HttpServletRequest request) throws IOException {
 		ModelAndView mav = new ModelAndView();
+		List<KinderInfoVO> ranklist = null;
+
+
+		Document doc = Jsoup.connect("https://www.ipipipip.net/index.php?ln=ko").get();
+		Elements item = doc.select(".yourip span");
+		String ip = item.text();
+		
+		mav.addObject("ip",ip);
+		
+		
+		ranklist = service.getRank();
+		mav.addObject("rankSet",ranklist);
+
 		mav.setViewName("index");
-		
-		
-		
 		
 		return mav;
 			
 	}
+
+
 	
 	
 	@RequestMapping(value="/newinfo.do", method = RequestMethod.GET)
@@ -59,19 +71,5 @@ public class MainController {
 		mav.setViewName("newInfo");
 		return mav;
 			
-	}
-	
-	@RequestMapping(value="/keywordSearch.do")
-	@ResponseBody
-	public List<KinderInfoVO> findKeyword(String keyword){	  
-		
-		//System.out.println(keyword);
-		
-		List<KinderInfoVO> KinderList = null;
-		KinderList = service.findSerachList(keyword);
-		
-		
-		
-		return KinderList;
 	}
 	}
