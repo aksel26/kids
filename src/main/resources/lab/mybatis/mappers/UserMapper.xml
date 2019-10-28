@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lab.mybatis.user.UserMapper">
+
+  <select id="getKinderList" resultType="lab.spring.model.KinderInfoVO">
+  	select * from KINDERINFO
+  </select>
+  
+  <select id="login" resultType="lab.spring.model.UserVO" parameterType="hashmap">
+  	select * from userinfo where userid=#{uid} and userpwd=#{upwd}
+  </select>
+
+
+  <select id="findSafety" resultType = "lab.spring.model.SafetyVO" parameterType="hashmap">
+           
+   select * from safety where
+   <if test="fire_avd_dt != null">
+      fire_avd_dt like '2019%'
+   </if>
+   <if test="gas_ck_dt != null">
+   		gas_ck_dt like '2019%'
+   </if>
+   <if test="fire_safe_dt != null">
+   		fire_safe_dt like '2019%'
+   </if>
+   <if test="elect_ck_dt != null">
+   elect_ck_dt like '2019%'
+   </if>
+   <if test="plyg_ck_dt != null">
+   plyg_ck_dt like '2019%'
+   </if>
+
+   
+  </select>
+  
+  <select id = "getCommentList" resultType="lab.spring.model.CommentVO" parameterType="string">
+	select * from KD_COMMENT where KDID = #{kdid}
+  </select>
+  
+    <insert id="addComment" parameterType="lab.spring.model.CommentVO">
+ insert into kd_comment (kdid, writer, idate, contents, score) 
+ values (#{kdid},#{writer},sysdate,#{contents},#{score})
+  </insert>
+  
+  
+   <select id="getSafetyList" resultType="lab.spring.model.SafetyVO" parameterType = "hashmap">
+     select   a.kinderinfoId, a.officeedu, a.subofficeedu, a.kindername, a.establish, a.edate, a.odate,a.addr,a.telno,a.hpaddr,a.opertime,a.POINT_X, a.POINT_Y,
+      		b.fire_avd_dt, b.gas_ck_dt, b.elect_ck_dt, b.PLYG_CK_RS_CD, b.PLYG_CK_DT
+      		
+   from KINDERINFO a, SAFETY b
+   where a.kinderinfoid = b.safetyid
+   
+   <!-- <if test="fire_avd_dt != null"> -->
+   <if test="fire_avd_dt != null">
+      and b.fire_avd_dt like '2019%'
+   </if>
+   
+   <if test="gas_ck_dt != null">
+      and b.gas_ck_dt like '2019%'
+
+   </if>
+   <if test="elect_ck_dt != null">
+      and b.elect_ck_dt like '2019%'
+   </if>
+   <if test="plyg_ck_dt != null">
+      and b.plyg_ck_rs_cd = '적합' and plyg_ck_dt like '2019%'
+   </if>
+  </select>
+  
+  
+   <select id="getSanitaryList" resultType="lab.spring.model.SanitaryVO" parameterType = "hashmap">
+     select   a.kinderinfoId,
+	 a.officeedu,
+	 a.subofficeedu,
+	 a.kindername,
+	 a.establish,
+	 a.edate,
+	 a.odate,
+	 a.addr,
+	 a.telno,
+	 a.hpaddr,
+	 a.opertime,
+     a.POINT_X, a.POINT_Y, b.arql_chk_dt, b.fxtm_dsnf_chk_dt,
+      b.mdst_chk_dt, b.ilmn_chk_dt
+   from KINDERINFO a, SANITARY b
+   where a.kindername=b.kindername
+   <!-- <if test="fire_avd_dt != null"> -->
+   <if test="arql_chk_dt != null">
+     	and b.arql_chk_dt like '2019%'
+   </if>
+   
+   <if test="fxtm_dsnf_chk_dt != null">
+      	and b.fxtm_dsnf_chk_dt like '2019%'
+
+   </if>
+   <if test="mdst_chk_dt != null">
+      	and b.mdst_chk_dt like '2019%'
+   </if>
+   <if test="ilmn_chk_dt != null">
+      	and b.ilmn_chk_dt like '2019%'
+   </if>
+  </select>
+  <select id="getUserInfo" resultType="lab.spring.model.UserVO"> 
+  SELECT userid , username , userpwd , EMAIL , location from userinfo
+   WHERE userid = #{userid} 
+   </select> 
+   
+    <select id="getUserList" resultType="lab.spring.model.UserVO"> 
+  SELECT userid , username , userpwd , EMAIL , location from userinfo
+   </select> 
+   
+    
+    <insert id="insertUser" parameterType="lab.spring.model.UserVO">
+     INSERT INTO userinfo (userid , username , userpwd , EMAIL , location) VALUES ( #{userid} , #{username} , #{userpwd} , #{location} ,#{email} ) 
+     </insert> 
+    
+    <update id="updateUser" parameterType="lab.spring.model.UserVO"> 
+    UPDATE userinfo SET username = #{username} , userpwd = #{userpwd} , EMAIL = #{email} WHERE userid = #{userid} 
+    </update> 
+    
+</mapper>
