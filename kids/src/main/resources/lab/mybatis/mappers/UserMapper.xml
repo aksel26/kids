@@ -216,7 +216,7 @@
 	<select id="getRank"
 	resultType="lab.spring.model.KinderInfoVO">
 
-		SELECT kinderinfoId, kindername, nvl(total,0),
+		SELECT kinderinfoId, kindername, subofficeedu, nvl(total,0),
 		ROW_NUMBER() OVER (ORDER BY nvl(to_number(total),0) desc) AS RANK
 		FROM kinderinfo
 		where ROWNUM &lt;= 10
