@@ -58,3 +58,5 @@ dbinfo.properties
 .springBeans
 .project
 kids/src/main/webapp/WEB-INF/web.xml
+
+*/.DS_Store

@@ -36,8 +36,8 @@ public class MapSeviceImpl implements MapService{
 		return dao.findKinderList();
 	}
 	
-	public List<KinderInfoVO> findSerachList(String keyword) {
-		return dao.findSearchList(keyword);
+	public List<KinderInfoVO> findSerachList(String keyword,int flag) {
+		return dao.findSearchList(keyword,flag);
 	}
 	
 	public UserVO login(String uid, String upwd) {

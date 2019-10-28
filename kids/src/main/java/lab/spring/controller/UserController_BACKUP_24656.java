@@ -16,14 +16,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping; 
 import org.springframework.web.bind.annotation.RequestMethod; 
 import org.springframework.web.bind.annotation.RequestParam;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.ResponseBody;
+=======
+>>>>>>> bf4b9faeb1c12ae0edb1aa1390cbfe03fa14e243
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes; 
 
 
 
 import lab.spring.model.UserVO;
+<<<<<<< HEAD
 import lab.spring.service.UserRegService;
+=======
+
+>>>>>>> bf4b9faeb1c12ae0edb1aa1390cbfe03fa14e243
 import lab.spring.service.UserService; 
 
 @Controller 
@@ -38,23 +45,40 @@ public class UserController {
 	
 	@RequestMapping(value = "/page-register", method=RequestMethod.GET) 
 	public String page_register() throws Exception{
+<<<<<<< HEAD
 		System.out.println("들어감");
 		return "page-register";
 		
 	}
 	
 	@RequestMapping(value = "/page-register1",method=RequestMethod.POST) 
+=======
+		
+		return "page-register";
+	
+	}
+	
+	@RequestMapping(value = "/page-register1",method=RequestMethod.GET) 
+>>>>>>> bf4b9faeb1c12ae0edb1aa1390cbfe03fa14e243
 	
 	public ModelAndView user_register(HttpServletRequest request) throws Exception {
 		 
 		
+<<<<<<< HEAD
 		System.out.println("들어감");
+=======
+		
+>>>>>>> bf4b9faeb1c12ae0edb1aa1390cbfe03fa14e243
 		   String id = request.getParameter("userid");
 		   String pw = request.getParameter("userpwd");
 		   String name = request.getParameter("username");
 		   String email = request.getParameter("email");
 		   String location = request.getParameter("location");
+<<<<<<< HEAD
 		 System.out.println("dd");
+=======
+		
+>>>>>>> bf4b9faeb1c12ae0edb1aa1390cbfe03fa14e243
 		   ModelAndView view = new ModelAndView();
 		   UserVO vo = new UserVO();
 		   
@@ -67,6 +91,7 @@ public class UserController {
 		   
 		   userService.insertUser(vo);
 		   
+<<<<<<< HEAD
 		   System.out.println("dd");
 		   view.setViewName("redirect:/index.do");
 		   return view;
@@ -77,6 +102,11 @@ public class UserController {
 
 
 
+=======
+		   return view;
+	}
+}
+>>>>>>> bf4b9faeb1c12ae0edb1aa1390cbfe03fa14e243
 
 //	@RequestMapping(value = "/getUserList") 
 //	public ModelAndView getUserList() throws Exception{

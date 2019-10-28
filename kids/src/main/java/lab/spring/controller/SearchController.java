@@ -95,8 +95,35 @@ public class SearchController {
 	public List<KinderInfoVO> findKeyword(@RequestBody HashMap<String, String> keyword){	  
 		
 		List<KinderInfoVO> KinderList = null;
-		KinderList = service.findSerachList(keyword.get("keyword"));
 		
+		String gu = keyword.get("keyword");
+		
+		if(gu.equals("광진구")) {gu = "KJ";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("광진구")) {gu = "KJ";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("서초구")) {gu = "SC";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("동작구")) {gu = "DJ";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("양천구")) {gu = "YC";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("용산구")) {gu = "YS";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("서대문구")) {gu = "SM";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("관악구")) {gu = "KW";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("강북구")) {gu = "KB";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("성북구")) {gu = "SB";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("중랑구")) {gu = "JR";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("강남구")) {gu = "KN";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("영등포구")) {gu = "YD";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("종로구")) {gu = "CR";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("강서구")) {gu = "KS";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("강동구")) {gu = "KD";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("성동구")) {gu = "SD";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("도봉구")) {gu = "DB";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("구로구")) {gu = "KR";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("노원구")) {gu = "NW";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("마포구")) {gu = "MP";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("송파구")) {gu = "SP";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("동대문구")) {gu = "DM";KinderList = service.findSerachList(gu,2);}
+		else {
+			KinderList = service.findSerachList(keyword.get("keyword"),1);	
+		}	
 		return KinderList;		
 	}
 		

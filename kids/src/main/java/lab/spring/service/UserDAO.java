@@ -24,7 +24,7 @@ public interface UserDAO {
 	public UserVO getUserInfo(String userid) throws Exception; 
 	public int insertUser(UserVO userVO) throws Exception; 
 	public int updateUser(UserVO userVO) throws Exception; 
-	
+	public int checkOverId(String user_id) throws Exception;
 	
 	
 	

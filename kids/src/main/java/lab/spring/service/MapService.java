@@ -20,7 +20,7 @@ public interface MapService {
 	public int addComment(CommentVO comment);
 	
 	public List<KinderInfoVO> findKinderList();
-	public List<KinderInfoVO> findSerachList(String keyword);
+	public List<KinderInfoVO> findSerachList(String keyword,int flag);
 	
 	
 	public UserVO login(String uid, String upwd);

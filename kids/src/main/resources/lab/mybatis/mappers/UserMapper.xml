@@ -9,11 +9,20 @@
 		select * from KINDERINFO
 	</select>
 
-	<select id="getSearchList"
-		resultType="lab.spring.model.KinderInfoVO" parameterType="string">
-		select * from kinderinfo where kindername like #{keyword}
-	</select>
+	
 
+<!--   키워드와 구로 서치하는 부분 시작 -->
+  
+  <select id="getSearchList" resultType="lab.spring.model.KinderInfoVO" parameterType="string">
+  	select * from kinderinfo where kindername like #{keyword}
+  </select>
+  
+  <select id="getSearcGuhList" resultType="lab.spring.model.KinderInfoVO" parameterType="string">
+  	select * from kinderinfo where kinderinfoid like #{keyword}
+  </select>
+  
+  
+<!--   키워드와 구로 서치하는 부분 끝 -->  
 
 	<select id="login" resultType="lab.spring.model.UserVO"
 		parameterType="hashmap">
@@ -55,6 +64,9 @@
 		values (#{kdid},#{writer},sysdate,#{contents},#{score})
 	</insert>
 
+
+
+
 	<select id="getSafetyList"
 		resultType="lab.spring.model.SafetyVO" parameterType="hashmap">
 		select a.kinderinfoId,
@@ -90,6 +102,11 @@
 			and b.plyg_ck_rs_cd = '적합' and plyg_ck_dt like '2019%'
 		</if>
 	</select>
+
+<insert id="insertUser" parameterType="lab.spring.model.UserVO"> INSERT INTO userinfo (userid , username , userpwd , EMAIL , location) VALUES ( #{userid} , #{username} , #{userpwd} , #{location} ,#{email} ) </insert>
+
+<update id="updateUser" parameterType="lab.spring.model.UserVO"> UPDATE userinfo SET username = #{username} , userpwd = #{userpwd} , EMAIL = #{email} WHERE userid = #{userid} </update>
+
 
 	<select id="getSanitaryList"
 		resultType="lab.spring.model.SanitaryVO" parameterType="hashmap">
@@ -198,10 +215,11 @@
 	
 	<select id="getRank"
 	resultType="lab.spring.model.KinderInfoVO">
-SELECT kinderinfoId, kindername, subofficeedu, nvl(total,0),
-ROW_NUMBER() OVER (ORDER BY nvl(to_number(total),0) desc) AS RANK
-FROM kinderinfo
-where ROWNUM &lt;= 10
+
+		SELECT kinderinfoId, kindername, nvl(total,0),
+		ROW_NUMBER() OVER (ORDER BY nvl(to_number(total),0) desc) AS RANK
+		FROM kinderinfo
+		where ROWNUM &lt;= 10
 	</select>
 	
 	<select id="getBadkinder" resultType="lab.spring.model.KinderInfoVO" parameterType="hashmap">

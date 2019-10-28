@@ -38,28 +38,29 @@ public class LoginAction {
    @RequestMapping(value = "/login.do",method=RequestMethod.POST)
    public ModelAndView login(@RequestParam(value ="userid",required=false)String uid,
                         @RequestParam(value = "userpwd", required=false)String upwd,
-                        HttpSession session, HttpServletResponse response) throws IOException {
+                        HttpSession session,HttpServletResponse response) throws IOException {
       ModelAndView mav = new ModelAndView();
       UserVO vo = null;
       vo = service.login(uid, upwd);
-      
+
+
+
       
       if(vo!=null) {
          PrintWriter out = response.getWriter();
          session.setAttribute("authInfo", vo);
          
-         mav.setViewName("index");
-         response.sendRedirect("index.do");
-         
+         mav.setViewName("redirect:index.do");         
       }
       
       else {
-         
+    	  response.setContentType("text/html; charset=UTF-8");    
          PrintWriter out = response.getWriter();
-         out.println("<script>window.alert('다시 입력해 주세요'); window.location.href=\"index.do\";</script>");                      
+         
+         out.println("<script>window.alert('다시 입력해 주세요'); history.go(-1);	</script>");
          out.close();   
          mav.setViewName("index");
-//         response.sendRedirect("index.do");
+         response.sendRedirect("index.do");
       } 
          
       
