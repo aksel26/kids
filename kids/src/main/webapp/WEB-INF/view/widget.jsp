@@ -34,9 +34,9 @@ display: inline-block;
 /*     transition: .3s ease-out */
 /* } */
 
-/* .waves-effect.waves-light .waves-ripple { */
-/*     background-color: rgba(255,255,255,0.45) */
-/* } */
+.waves-effect.waves-light .waves-ripple { */
+    background-color: rgba(255,255,255,0.45) 
+ }
 
 /* .material-icons { */
 /*     text-rendering: optimizeLegibility; */
@@ -77,7 +77,7 @@ display: inline-block;
 /*     text-transform: uppercase; */
 /*     vertical-align: middle; */
 /*     -webkit-tap-highlight-color: transparent */
-/* } */
+/* } */ */ */
     </style>
     
 

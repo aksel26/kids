@@ -34,7 +34,6 @@ public class UserDAOImpl implements UserDAO{
 
 	
 	
-	@Override
 	public int checkOverId(String user_id) throws Exception {
 		// TODO Auto-generated method stub
 		return 0;

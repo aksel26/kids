@@ -119,18 +119,18 @@ $(".star").on('click',function(){
    				 <div id="body">
 					  <div id="chart"></div>
     					</div>    
-    				<script type="text/javascript" src="resources/assets/js/script.js"></script> 
+    				<script src="resources/assets/js/script.js"></script> 
                              </div>
                             </div>
                         </div>
                     </div>
-                  <div class="col-lg-4">
+                  <div class="col-md-4">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">유치원 상세정보</h5>
                              
                                     <div class="sl-item">
-                                       	<table border=0 cellpadding=0 cellspacing=0>
+                                       	<table border=0 cellpadding=10% cellspacing=10%>
    	<tr>
     <td align=center bgcolor="E6ECDE" height="35">유치원명</td>
     <td align=center bgcolor="ffffff">${badkinder.kindername}</td>
@@ -140,7 +140,7 @@ $(".star").on('click',function(){
     <td width=240 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.officeedu}</td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">교육지원청명</td>
+    <td width=200 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">교육지원청명</td>
     <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.subofficeedu}</td>
     </tr>
     <tr>
@@ -153,11 +153,11 @@ $(".star").on('click',function(){
     </tr>
     <tr>
     <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">주소</td>
-    <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.addr}</td>
+    <td width=400 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.addr}</td>
     </tr>
     <tr>
     <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">전화번호</td>
-    <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">'${badkinder.telno}</td>
+    <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.telno}</td>
     </tr>
     <tr>
     <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">홈페이지</td>
