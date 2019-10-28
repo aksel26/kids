@@ -256,7 +256,7 @@ display: inline-block;
 		  		<tr>
 		  		<td></td>
  		  	<td>${status.count}.</td>
-			<td><a href="detail.do?kindername=${rank.kindername}&kinderinfoId=${rank.kinderinfoId}">${rank.kindername}</a></td>
+			<td><a href="detail.do?kindername=${rank.kindername}&kinderinfoId=${rank.kinderinfoId}&subofficeedu=${rank.subofficeedu}">${rank.kindername}</a></td>
 				</tr>
 			</c:forEach>
 		</table>

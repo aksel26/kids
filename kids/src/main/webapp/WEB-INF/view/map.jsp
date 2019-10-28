@@ -489,7 +489,7 @@ function getiwContent(count,value){//인포 윈도우 얻어오기
       '<p>'+value["telno"]+'</p>'+
     '<a href='+value["hpaddr"]+'/>'+value["hpaddr"]+
     '</div>'+
-    '<a href="detail.do?kindername='+value["kindername"]+'&kinderinfoId='+value["kinderinfoId"]+'"/>'+'>>>상세보기'+
+    '<a href="detail.do?kindername='+value["kindername"]+'&kinderinfoId='+value["kinderinfoId"]+'&subofficeedu='+value["subofficeedu"]+'"/>'+'>>>상세보기'+
     '</div>'+
     '</table>'+
     '</div>'

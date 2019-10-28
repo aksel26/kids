@@ -101,4 +101,16 @@ public class DataDAO {
 	public List<KinderInfoVO> getRank(){
 		return sqlSession.selectList("lab.mybatis.user.UserMapper.getRank");
 	}
+	
+	public KinderInfoVO getBadkinder(String kindername, String subofficeedu){
+		HashMap<String, String> hm = new HashMap<String, String>();
+		hm.put("kindername", kindername);
+		hm.put("subofficeedu", subofficeedu);
+		for(String key : hm.keySet()) {
+			System.out.print(key+":");
+			System.out.println(hm.get(key));
+		}
+		return sqlSession.selectOne("lab.mybatis.user.UserMapper.getBadkinder", hm);
+	
+	}
 }

@@ -31,5 +31,6 @@ public interface MapService {
 	public List<ClassAreaVO> getBuildinfoList(HashMap<String, String> build_arr);
 	public List<EnvironVO> getEnvironList(HashMap<String, String> env_arr);
 	public List<KinderInfoVO> getRank();
+	public KinderInfoVO getBadkinder(String kindername, String subofficeedu);
 
 }

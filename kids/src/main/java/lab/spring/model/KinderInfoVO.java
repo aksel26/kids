@@ -25,9 +25,74 @@ public class KinderInfoVO {
 	private String POINT_Y;
 	private String POINT_X;
 	private String total;
+	private String bad_oper;
+	private String bad_program;
+	private String bad_meal;
+	private String bad_care;
+	private String bad_emp;
+	private String bad_tax;
+	private String bad_build;
+	private String bad_money;
+	private String image;
 	
 	
 	
+	
+	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public String getBad_oper() {
+		return bad_oper;
+	}
+	public void setBad_oper(String bad_oper) {
+		this.bad_oper = bad_oper;
+	}
+	public String getBad_program() {
+		return bad_program;
+	}
+	public void setBad_program(String bad_program) {
+		this.bad_program = bad_program;
+	}
+	public String getBad_meal() {
+		return bad_meal;
+	}
+	public void setBad_meal(String bad_meal) {
+		this.bad_meal = bad_meal;
+	}
+	public String getBad_care() {
+		return bad_care;
+	}
+	public void setBad_care(String bad_care) {
+		this.bad_care = bad_care;
+	}
+	public String getBad_emp() {
+		return bad_emp;
+	}
+	public void setBad_emp(String bad_emp) {
+		this.bad_emp = bad_emp;
+	}
+	public String getBad_tax() {
+		return bad_tax;
+	}
+	public void setBad_tax(String bad_tax) {
+		this.bad_tax = bad_tax;
+	}
+	public String getBad_build() {
+		return bad_build;
+	}
+	public void setBad_build(String bad_build) {
+		this.bad_build = bad_build;
+	}
+	public String getBad_money() {
+		return bad_money;
+	}
+	public void setBad_money(String bad_money) {
+		this.bad_money = bad_money;
+	}
 	public String getTotal() {
 		return total;
 	}
@@ -179,13 +244,17 @@ public class KinderInfoVO {
 	}
 	@Override
 	public String toString() {
-		return "KinderInfoVO [kinderinfoId=" + kinderinfoId + ", subofficeedu=" + subofficeedu + ", kindername="
-				+ kindername + ", establish=" + establish + ", edate=" + edate + ", odate=" + odate + ", addr=" + addr
-				+ ", telno=" + telno + ", hpaddr=" + hpaddr + ", opertime=" + opertime + ", clcnt3=" + clcnt3
-				+ ", clcnt4=" + clcnt4 + ", clcnt5=" + clcnt5 + ", mixclcnt=" + mixclcnt + ", shclcnt=" + shclcnt
-				+ ", ppcnt3=" + ppcnt3 + ", ppcnt4=" + ppcnt4 + ", ppcnt5=" + ppcnt5 + ", mixppcnt=" + mixppcnt
-				+ ", shppcnt=" + shppcnt + "]";
+		return "KinderInfoVO [kinderinfoId=" + kinderinfoId + ", officeedu=" + officeedu + ", subofficeedu="
+				+ subofficeedu + ", kindername=" + kindername + ", establish=" + establish + ", edate=" + edate
+				+ ", odate=" + odate + ", addr=" + addr + ", telno=" + telno + ", hpaddr=" + hpaddr + ", opertime="
+				+ opertime + ", clcnt3=" + clcnt3 + ", clcnt4=" + clcnt4 + ", clcnt5=" + clcnt5 + ", mixclcnt="
+				+ mixclcnt + ", shclcnt=" + shclcnt + ", ppcnt3=" + ppcnt3 + ", ppcnt4=" + ppcnt4 + ", ppcnt5=" + ppcnt5
+				+ ", mixppcnt=" + mixppcnt + ", shppcnt=" + shppcnt + ", POINT_Y=" + POINT_Y + ", POINT_X=" + POINT_X
+				+ ", total=" + total + ", bad_oper=" + bad_oper + ", bad_program=" + bad_program + ", bad_meal="
+				+ bad_meal + ", bad_care=" + bad_care + ", bad_emp=" + bad_emp + ", bad_tax=" + bad_tax + ", bad_build="
+				+ bad_build + ", bad_money=" + bad_money + "]";
 	}
+
 
 	
 	

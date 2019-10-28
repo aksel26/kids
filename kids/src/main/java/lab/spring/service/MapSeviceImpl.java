@@ -21,7 +21,6 @@ import lab.spring.model.UserVO;
 public class MapSeviceImpl implements MapService{
 	
 
-
 	@Autowired
 	private DataDAO dao;
 	
@@ -76,4 +75,13 @@ public class MapSeviceImpl implements MapService{
 	public List<KinderInfoVO> getRank(){
 		return dao.getRank();
 	}
+
+	public KinderInfoVO getBadkinder(String kindername, String subofficeedu) {
+		// TODO Auto-generated method stub
+		return dao.getBadkinder(kindername, subofficeedu);
+	}
+
+
+	
+	
 }
