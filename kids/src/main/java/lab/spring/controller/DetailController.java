@@ -43,17 +43,7 @@ public class DetailController {
 			
 			
 			
-			RConnection r = new RConnection();
-	        REXP x = null;
-	    	
-	        
-	        
-	    	r.eval("try(jpeg('test.jpg', quality=100))");
-	    	r.eval("kdid <- \"KN033\"");
-	    	r.eval("source('F:/Rworkspace/R1day/commentanalysis.R')");
-	    	r.eval("wordcloudp(sentence)");
-	    	r.eval("graphics.off()");
-	    	x=r.eval("r=readBin('test.jpg','raw',1024*1024);unlink('test.jpg');r");
+			
 			
 			
 			
@@ -63,7 +53,6 @@ public class DetailController {
 			mav.addObject("kinderinfoId", kinderid);
 			
 			mav.addObject("badkinder", vo);
-			mav.addObject("cloud",x.asBytes());
 			
 			mav.setViewName("detail");
 			
@@ -158,6 +147,19 @@ public class DetailController {
 		
 		
 		return vo;
+	}
+	public byte[] getCloud() throws RserveException, REXPMismatchException {
+		RConnection r = new RConnection();
+        REXP x = null;
+    	
+    	r.eval("try(jpeg('test.jpg', quality=100))");
+    	r.eval("kdid <- \"KN033\"");
+    	r.eval("source('F:/Rworkspace/R1day/commentanalysis.R')");
+    	r.eval("wordcloudp(sentence)");
+    	r.eval("graphics.off()");
+    	x=r.eval("r=readBin('test.jpg','raw',1024*1024);unlink('test.jpg');r");
+		
+    	return x.asBytes();
 	}
 
 	}

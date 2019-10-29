@@ -1,4 +1,7 @@
+
+<%@page import="lab.spring.controller.DetailController"%>
 <%@page import="lab.spring.controller.Popo"%>
+<%@page import="com.sun.org.apache.xml.internal.security.utils.Base64"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -62,10 +65,8 @@
 <body>
 
 <%
-	Popo p = new Popo();
-	int a = p.add();
+	DetailController popo = new DetailController();
 %>
-<h1>${a}</h1>
 <aside id="left-panel" class="left-panel">
       <nav class="navbar navbar-expand-sm navbar-default">
          <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -74,7 +75,6 @@
                <img id="title_img"alt="엄마의 지도" src="resources/images/title.png" width ="130%" height="130%">
                </a>
                </li>
-          
  	<!-- Left Panel -->
 	 <%@ include file="./widget.jsp" %>
 
@@ -254,7 +254,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Messages (5 New)</h5>
                                 
-                                 <img src="data:image/jpg;base64,${cloud}"/>
+                                 <img src="data:image/jpg;base64, <%=Base64.encode(popo.getCloud())%>" />
                             </div>
                         </div>
                     </div>
@@ -280,6 +280,9 @@
       src="resources/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
    <script src="resources/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 <script>
+
+console.log("${a}");
+
 $(document).ready(function(){
 	SearchID("${kinderinfoId}");
 	console.log("업데이트");
