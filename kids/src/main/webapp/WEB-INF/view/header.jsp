@@ -32,7 +32,7 @@
 <!-- 			crossorigin="anonymous"></script> -->
 
 
-	<div id="right-panel" class="right-panel">
+	<div id="right-panel" class="	">
 		<!--   왼쪽 메뉴 접는 버튼   -->
 		<header id="header" class="header">
 

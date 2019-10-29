@@ -112,10 +112,7 @@ public class DataDAO {
 		HashMap<String, String> hm = new HashMap<String, String>();
 		hm.put("kindername", kindername);
 		hm.put("subofficeedu", subofficeedu);
-		for(String key : hm.keySet()) {
-			System.out.print(key+":");
-			System.out.println(hm.get(key));
-		}
+		
 		return sqlSession.selectOne("lab.mybatis.user.UserMapper.getBadkinder", hm);
 	
 	}

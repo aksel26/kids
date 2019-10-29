@@ -1,3 +1,7 @@
+
+<%@page import="lab.spring.controller.DetailController"%>
+<%@page import="lab.spring.controller.Popo"%>
+<%@page import="com.sun.org.apache.xml.internal.security.utils.Base64"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -59,6 +63,10 @@
 </head>
 
 <body>
+
+<%
+	DetailController popo = new DetailController();
+%>
 <aside id="left-panel" class="left-panel">
       <nav class="navbar navbar-expand-sm navbar-default">
          <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -67,7 +75,6 @@
                <img id="title_img"alt="엄마의 지도" src="resources/images/title.png" width ="130%" height="130%">
                </a>
                </li>
-          
  	<!-- Left Panel -->
 	 <%@ include file="./widget.jsp" %>
 
@@ -97,27 +104,18 @@
                                     </div>
                     </div>
                 </div>
-             <script>
-$(".star").on('click',function(){
-	   var idx = $(this).index();
-	   $(".star").removeClass("on");
-	     for(var i=0; i<=idx; i++){
-	        $(".star").eq(i).addClass("on");
-	   }
-	 });
-</script>
+
                 <!-- ============================================================== -->
                 <!-- Yearly Sales -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-lg-8">
+                    <div class="col-lg-8" >
                         <div class="card oh">
                             <div class="card-body">
-                            
                               <h5 class="card-title">종합지표</h5>   
                                 <div class="d-flex m-b-30 align-items-center no-block"> 
    				 <div id="body">
-					  <div id="chart"></div>
+					  <div id="chart" ></div>
     					</div>    
     				<script src="resources/assets/js/script.js"></script> 
                              </div>
@@ -233,73 +231,30 @@ $(".star").on('click',function(){
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Feeds</h4>
-                            </div>
-                            <ul class="feeds p-b-20">
-                                <li>
-                                    <div class="bg-info"><i class="fa fa-bell-o"></i></div> You have 4 pending tasks. <span class="text-muted">Just Now</span></li>
-                                <li>
-                                    <div class="bg-success"><i class="ti-server"></i></div> Server #1 overloaded.<span class="text-muted">2 Hours ago</span></li>
-                                <li>
-                                    <div class="bg-warning"><i class="ti-shopping-cart"></i></div> New order received.<span class="text-muted">31 May</span></li>
-                                <li>
-                                    <div class="bg-danger"><i class="ti-user"></i></div> New user registered.<span class="text-muted">30 May</span></li>
-                                <li>
-                                    <div class="bg-dark"><i class="fa fa-bell-o"></i></div> New Version just arrived. <span class="text-muted">27 May</span></li>
-                                <li>
-                                    <div class="bg-info"><i class="fa fa-bell-o"></i></div> You have 4 pending tasks. <span class="text-muted">Just Now</span></li>
-                                <li>
-                                    <div class="bg-danger"><i class="ti-user"></i></div> New user registered.<span class="text-muted">30 May</span></li>
-                                <li>
-                                    <div class="bg-dark"><i class="fa fa-bell-o"></i></div> New Version just arrived. <span class="text-muted">27 May</span></li>
-                            </ul>
+                            <div class="card-body"><h4 class="card-title">Feeds</h4></div>
+						
+						<div id=review>
+						</div>
+						<div>
+						<div class="star-box">
+						  <span class="star star_left"></span>
+						  <span class="star star_left"></span>
+						  <span class="star star_left"></span>
+						 <span class="star star_left"></span>
+						 <span class="star star_left"></span>
+						</div>
+						<input id=review_text />
+						<input id=star_point type=hidden>
+						<a onclick="addComment('SD014')">등록</a>
+						</div>						
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Messages (5 New)</h5>
-                                <div class="message-box">
-                                    <div class="message-widget message-scroll">
-                                        <!-- Message -->
-                                        <a href="javascript:void(0)">
-                                            <div class="user-img"> <img src="../assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Pavan kumar</h5> <span class="mail-desc">Lorem Ipsum is simply dummy text of the printing and type setting industry. Lorem Ipsum has been.</span> <span class="time">9:30 AM</span> </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="javascript:void(0)">
-                                            <div class="user-img"> <img src="../assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="javascript:void(0)">
-                                            <div class="user-img"> <span class="round">A</span> <span class="profile-status away pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Arijit Sinh</h5> <span class="mail-desc">Simply dummy text of the printing and typesetting industry.</span> <span class="time">9:08 AM</span> </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="javascript:void(0)">
-                                            <div class="user-img"> <img src="../assets/images/users/4.jpg" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Pavan kumar</h5> <span class="mail-desc">Just see the my admin!</span> <span class="time">9:02 AM</span> </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="javascript:void(0)">
-                                            <div class="user-img"> <img src="../assets/images/users/1.jpg" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Pavan kumar</h5> <span class="mail-desc">Welcome to the Elite Admin</span> <span class="time">9:30 AM</span> </div>
-                                        </a>
-                                        <!-- Message -->
-                                        <a href="javascript:void(0)">
-                                            <div class="user-img"> <img src="../assets/images/users/2.jpg" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
-                                            <div class="mail-contnet">
-                                                <h5>Sonu Nigam</h5> <span class="mail-desc">I've sung a song! See you at</span> <span class="time">9:10 AM</span> </div>
-                                        </a>
-                                    </div>
-                                </div>
+                                
+                                 <img src="data:image/jpg;base64, <%=Base64.encode(popo.getCloud())%>" />
                             </div>
                         </div>
                     </div>
@@ -324,7 +279,51 @@ $(".star").on('click',function(){
    <script
       src="resources/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
    <script src="resources/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+<script>
 
+console.log("${a}");
+
+$(document).ready(function(){
+	SearchID("${kinderinfoId}");
+	console.log("업데이트");
+	console.log("${cloud}");
+});
+
+function SearchID (id){
+	var C1 = document.getElementById("review")
+	C1.innerHTML= "<br>"
+	
+	$.ajax({
+			url:"commentList.do",
+			method:"GET",
+			async:false,
+			traditional : true,
+			data:{
+				'kdid':id
+			},
+			success:function(data){
+				console.log(data);
+				var obj = JSON.parse(data);
+				for(var i = 0;i<Object.keys(obj.result).length;i++){
+		 		var $div = $('<span> '+ obj.result[i][1]["Writer"]+' ('+obj.result[i][2]["Score"]+'점):'+obj.result[i][0]["Contents"]+'</span><hr>');
+		 		$('#review').append($div);
+				};
+				},
+			 	error:function(request,status,error){
+			        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+			    }
+		});
+}
+
+$(".star").on('click',function(){
+	   var idx = $(this).index();
+	   $(".star").removeClass("on");
+	     for(var i=0; i<=idx; i++){
+	        $(".star").eq(i).addClass("on");
+	   }
+		$('#star_point').val(idx+1);
+	 });
+</script>
 </body>
 
 </html>

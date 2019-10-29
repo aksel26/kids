@@ -72,7 +72,7 @@ html, body {
 <div class="map_wrap">
 
 	<div id="map"
-		style="width: 1400px; height: 700px; position: relative; overflow: hidden;"></div>
+		style="width: 1500px; height: 825px; position: relative; overflow: hidden;"></div>
 
 		<div id="menu_wrap" class="bg_white">
 			<div class="option">
