@@ -155,7 +155,7 @@ var score3 = '${score.score3}';
     </tr>
     <tr>
     <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">주소</td>
-    <td width=400 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.addr}</td>
+    <td width=500 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.addr}</td>
     </tr>
     <tr>
     <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">전화번호</td>
