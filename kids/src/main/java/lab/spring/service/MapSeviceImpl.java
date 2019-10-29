@@ -13,6 +13,7 @@ import lab.spring.model.EnvironVO;
 import lab.spring.model.KinderInfoVO;
 import lab.spring.model.SafetyVO;
 import lab.spring.model.SanitaryVO;
+import lab.spring.model.ScoreVO;
 import lab.spring.model.UserVO;
 
 
@@ -79,6 +80,13 @@ public class MapSeviceImpl implements MapService{
 	public KinderInfoVO getBadkinder(String kindername, String subofficeedu) {
 		// TODO Auto-generated method stub
 		return dao.getBadkinder(kindername, subofficeedu);
+	}
+
+	
+	@Override
+	public ScoreVO getScore(String kdid) {
+		// TODO Auto-generated method stub
+		return dao.getScore(kdid);
 	}
 
 

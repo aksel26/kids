@@ -67,6 +67,16 @@
 <%
 	DetailController popo = new DetailController();
 %>
+
+<script>
+var lo = '${kindername}';
+var score1 = '${score.score1}';
+var score2 = '${score.score2}';
+var score3 = '${score.score3}';
+<%-- var cloudimg = <%=Base64.encode(popo.getCloud(request.getAttribute("kinderinfoId").toString()))%>; --%>
+// console.log(cloudimg);
+</script>
+
 <aside id="left-panel" class="left-panel">
       <nav class="navbar navbar-expand-sm navbar-default">
          <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -94,12 +104,6 @@
 												<h2>${kindername}<i class="far fa-kiss-wink-heart"></i></h2>
 												<p>${badkinder.addr}</p>
 											</div>
-<div class="star-box">
-  <span class="star star_left"></span>
-  <span class="star star_left"></span>
-  <span class="star star_left"></span>
- <span class="star star_left"></span>
- <span class="star star_left"></span>
 </div>
                                     </div>
                     </div>
@@ -235,26 +239,24 @@
 						
 						<div id=review>
 						</div>
-						<div>
 						<div class="star-box">
 						  <span class="star star_left"></span>
 						  <span class="star star_left"></span>
 						  <span class="star star_left"></span>
 						 <span class="star star_left"></span>
 						 <span class="star star_left"></span>
-						</div>
-						<input id=review_text />
+						 <input id=review_text />
 						<input id=star_point type=hidden>
-						<a onclick="addComment('SD014')">등록</a>
-						</div>						
+						<a onclick="addComment('${kinderinfoId}')">등록</a>
+						</div>
+						
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Messages (5 New)</h5>
-                                
-                                 <img src="data:image/jpg;base64, <%=Base64.encode(popo.getCloud())%>" />
+                                <h5 class="card-title">Review WordCloud</h5>
+<%--                                  <img src="data:image/jpg;base64, <%=Base64.encode(popo.getCloud(request.getAttribute("kinderinfoId").toString() )) %>" width="500" height="500"/> --%>
                             </div>
                         </div>
                     </div>
@@ -267,9 +269,7 @@
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
-      
     </div>
-     
   <script src="resources/vendors/jquery/dist/jquery.min.js"></script>
    <script src="resources/vendors/popper.js/dist/umd/popper.min.js"></script>
    <script src="resources/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -281,12 +281,8 @@
    <script src="resources/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 <script>
 
-console.log("${a}");
-
 $(document).ready(function(){
 	SearchID("${kinderinfoId}");
-	console.log("업데이트");
-	console.log("${cloud}");
 });
 
 function SearchID (id){
@@ -302,18 +298,69 @@ function SearchID (id){
 				'kdid':id
 			},
 			success:function(data){
+				
 				console.log(data);
+				
 				var obj = JSON.parse(data);
+				var sum = 0 ;
 				for(var i = 0;i<Object.keys(obj.result).length;i++){
 		 		var $div = $('<span> '+ obj.result[i][1]["Writer"]+' ('+obj.result[i][2]["Score"]+'점):'+obj.result[i][0]["Contents"]+'</span><hr>');
 		 		$('#review').append($div);
+		 		sum =sum + parseInt(obj.result[i][2]["Score"]);
 				};
+				var staravg = Math.floor(sum/Object.keys(obj.result).length);
+				
+				for(var i = 1;i<=5;i++){
+					if(i<=staravg){
+						var $div = $('<img  height=50 width=50 src="http://gahyun.wooga.kr/main/img/testImg/star_on.png">');
+						$('.namespace').append($div);
+					}
+					else{
+						var $div = $('<img  height=50 width=50 src="http://gahyun.wooga.kr/main/img/testImg/star.png">');
+						$('.namespace').append($div);
+					}
+				}				
 				},
 			 	error:function(request,status,error){
 			        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
 			    }
 		});
 }
+
+function addComment(id){
+	if(${authInfo eq null}){
+		alert("로그인이 필요한 기능입니다.");	
+	}
+	else{
+		var contents = $('#review_text').val();
+		var star = $('#star_point').val();
+		var kdid = id;
+		var user = "${authInfo.userid}";
+	$.ajax({
+		url:"addCommnet.do",
+		method:"GET",
+		async:false,
+		traditional : true,
+		data:{
+			'kdid':kdid,
+			'contents':contents,
+			'star':star,
+			'user':user
+		},
+		success:function(data){
+			SearchID(id);
+			},
+		 	error:function(request,status,error){
+		        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
+		    }
+	});	
+	}
+}
+
+function returnname(){
+	return ${kindername};
+}
+
 
 $(".star").on('click',function(){
 	   var idx = $(this).index();
@@ -323,6 +370,7 @@ $(".star").on('click',function(){
 	   }
 		$('#star_point').val(idx+1);
 	 });
+
 </script>
 </body>
 

@@ -13,14 +13,8 @@ function searchPlaces() {
         return false;
     }
 	
-    //keywordSearch(keyword);
     getSafetyArr(3,map)
-    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-    //ps.keywordSearch( keyword, placesSearchCB); 
 }
-
-//********************************만든함수
-//**************************************
 
 //장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
@@ -29,8 +23,6 @@ function placesSearchCB(data, status, pagination) {
         
         // 검색 목록과 마커를 표출합니다
         displayPlaces(data);
-       
-
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 
         alert('검색 결과가 존재하지 않습니다.');
@@ -78,8 +70,8 @@ function getListItem(index, places) {
     var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                 '<div class="info">' +
-                '   <h5>' + places["kindername"] + '</h5>';
-
+                '   <h5>' + '<a href="detail.do?kindername='+places["kindername"]+'&kinderinfoId='+places["kinderinfoId"]+'&subofficeedu='+places["subofficeedu"]+'">'+places["kindername"]+'</a>' + '</h5>';
+    
     if (places.road_address_name) {
         itemStr += '    <span>' + places["addr"] + '</span>' +
                     '   <span class="jibun gray">' +  places["addr"]  + '</span>';

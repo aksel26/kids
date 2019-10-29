@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lab.spring.model.KinderInfoVO;
+import lab.spring.model.ScoreVO;
 import lab.spring.service.MapService;
 
 import org.rosuda.REngine.*;
@@ -39,11 +40,27 @@ public class DetailController {
 			
 		
 			vo=XO(vo);
-		
+			
+			ScoreVO score = service.getScore(kinderid);
+			
+			if(score == null) {
+				score = new ScoreVO();
+				score.setScore1(0);
+				score.setScore2(0);
+				score.setScore3(0);
+			}
+			else {
+				
+				score.setScore1(score.getScore1()*10/6*10/12);
+				score.setScore2(score.getScore2()*10/3*10/12);
+				score.setScore3(score.getScore3()*10/1*10/12);
+				
+			}
+			
+
 			
 			
-			
-			
+			mav.addObject("score",score);
 			
 			
 			
@@ -148,17 +165,23 @@ public class DetailController {
 		
 		return vo;
 	}
-	public byte[] getCloud() throws RserveException, REXPMismatchException {
+	public byte[] getCloud(String kdid) throws RserveException, REXPMismatchException {
 		RConnection r = new RConnection();
         REXP x = null;
     	
     	r.eval("try(jpeg('test.jpg', quality=100))");
-    	r.eval("kdid <- \"KN033\"");
+    	String po = "kdid <- \""+kdid+"\"";
+    	r.eval(po);
     	r.eval("source('F:/Rworkspace/R1day/commentanalysis.R')");
-    	r.eval("wordcloudp(sentence)");
+    	r.eval("wordcloudp(sentence,rs_comment_pra)");
     	r.eval("graphics.off()");
     	x=r.eval("r=readBin('test.jpg','raw',1024*1024);unlink('test.jpg');r");
 		
+    	if(x==null) {
+    		String popo="fail";
+    		return popo.getBytes();
+    	}
+    	
     	return x.asBytes();
 	}
 
