@@ -46,15 +46,9 @@
 
 <script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=048d3839f2032025c0d6225330618498&libraries=services,clusterer"></script>
-
-
-
 </head>
 
 <body>
-
-
-
 	<aside id="left-panel" class="left-panel">
 		<nav class="navbar navbar-expand-sm navbar-default">
 			<div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -75,22 +69,15 @@
 
 	<!--  map -->
 	<%@ include file="./map.jsp"%>
-
 	<!-- Right Panel -->
-
 	<script src="resources/vendors/jquery/dist/jquery.min.js"></script>
 	<script src="resources/vendors/popper.js/dist/umd/popper.min.js"></script>
 	<script src="resources/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="resources/assets/js/main.js"></script>
-
 	<script src="resources/vendors/jqvmap/dist/jquery.vmap.min.js"></script>
 	<script
 		src="resources/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
 	<script src="resources/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-	
-	
-
-
 </body>
 
 </html>

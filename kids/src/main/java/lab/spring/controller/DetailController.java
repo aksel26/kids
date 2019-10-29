@@ -2,7 +2,6 @@ package lab.spring.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,9 @@ import org.springframework.web.servlet.ModelAndView;
 import lab.spring.model.KinderInfoVO;
 import lab.spring.service.MapService;
 
+import org.rosuda.REngine.*;
+import org.rosuda.REngine.Rserve.*;
+
 @Controller
 public class DetailController {
 
@@ -25,7 +27,7 @@ public class DetailController {
 		public ModelAndView detail(@RequestParam(value= "kindername") String kindername,
 									@RequestParam(value= "kinderinfoId") String kinderid,
 									@RequestParam(value="subofficeedu") String subofficeedu,
-									HttpServletRequest request) {
+									HttpServletRequest request) throws RserveException, REXPMismatchException {
 		
 			ModelAndView mav = new ModelAndView();
 			KinderInfoVO vo = new KinderInfoVO();
@@ -39,12 +41,29 @@ public class DetailController {
 			vo=XO(vo);
 		
 			
+			
+			
+			RConnection r = new RConnection();
+	        REXP x = null;
+	    	
+	        
+	        
+	    	r.eval("try(jpeg('test.jpg', quality=100))");
+	    	r.eval("kdid <- \"KN033\"");
+	    	r.eval("source('F:/Rworkspace/R1day/commentanalysis.R')");
+	    	r.eval("wordcloudp(sentence)");
+	    	r.eval("graphics.off()");
+	    	x=r.eval("r=readBin('test.jpg','raw',1024*1024);unlink('test.jpg');r");
+			
+			
+			
 			mav.addObject("rankSet",ranklist);
 	
 			mav.addObject("kindername", kindername);
 			mav.addObject("kinderinfoId", kinderid);
 			
 			mav.addObject("badkinder", vo);
+			mav.addObject("cloud",x.asBytes());
 			
 			mav.setViewName("detail");
 			
@@ -137,7 +156,6 @@ public class DetailController {
 			vo.setImage(image4);
 		}
 		
-		System.out.println(total.size());
 		
 		return vo;
 	}
