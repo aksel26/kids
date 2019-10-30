@@ -59,6 +59,17 @@
 .star.on{
   background-image: url(http://gahyun.wooga.kr/main/img/testImg/star_on.png);
 }
+
+.indextag{
+	margin-left: 40px;
+}
+#review {
+width:500px;
+}
+#review tr td{
+width:100px;
+}
+
 </style>
 </head>
 
@@ -73,8 +84,9 @@ var lo = '${kindername}';
 var score1 = '${score.score1}';
 var score2 = '${score.score2}';
 var score3 = '${score.score3}';
-<%-- var cloudimg = <%=Base64.encode(popo.getCloud(request.getAttribute("kinderinfoId").toString()))%>; --%>
-// console.log(cloudimg);
+var check = "1";
+
+var comments;
 </script>
 
 <aside id="left-panel" class="left-panel">
@@ -113,60 +125,60 @@ var score3 = '${score.score3}';
                 <!-- Yearly Sales -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-lg-8" >
+                    <div class="col-lg-6"  >
                         <div class="card oh">
-                            <div class="card-body">
+                            <div class="card-body"  style="height:550px"}>
                               <h5 class="card-title">종합지표</h5>   
                                 <div class="d-flex m-b-30 align-items-center no-block"> 
-   				 <div id="body">
-					  <div id="chart" ></div>
-    					</div>    
+					   				 <div id="body">
+										  <div id="chart" ></div>
+					    			</div>    
     				<script src="resources/assets/js/script.js"></script> 
                              </div>
                             </div>
                         </div>
                     </div>
-                  <div class="col-md-4">
+                  <div class="col-md-6">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body" style="height:550px">
                                 <h5 class="card-title">유치원 상세정보</h5>
                              
                                     <div class="sl-item">
                                        	<table border=0 cellpadding=10% cellspacing=10%>
    	<tr>
-    <td align=center bgcolor="E6ECDE" height="35">유치원명</td>
+    <td align=center bgcolor="E6ECDE" height=52>유치원명</td>
     <td align=center bgcolor="ffffff">${badkinder.kindername}</td>
     </tr> 
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">교육청명</td>
+    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">교육청명</td>
     <td width=240 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.officeedu}</td>
     </tr>
     <tr>
-    <td width=200 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">교육지원청명</td>
+    <td width=200 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">교육지원청명</td>
     <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.subofficeedu}</td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">설립일</td>
+    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">설립일</td>
     <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.edate}</td>
    </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">개원일</td>
+    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">개원일</td>
     <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.odate}</td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">주소</td>
+    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">주소</td>
     <td width=500 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.addr}</td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">전화번호</td>
+    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">전화번호</td>
     <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.telno}</td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">홈페이지</td>
+    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">홈페이지</td>
     <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10"><a href=${badkinder.hpaddr}>${badkinder.hpaddr}</a></td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="35">운영시간</td>
+    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">운영시간</td>
     <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.opertime}</td>
     </tr>
      </table>
@@ -235,10 +247,9 @@ var score3 = '${score.score3}';
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card">
-                            <div class="card-body"><h4 class="card-title">Feeds</h4></div>
-						
-						<div id=review>
-						</div>
+                            <div class="card-body"><h4 class="card-title">Feeds</h4>
+						<table id=review>
+						</table>
 						<div class="star-box">
 						  <span class="star star_left"></span>
 						  <span class="star star_left"></span>
@@ -249,14 +260,22 @@ var score3 = '${score.score3}';
 						<input id=star_point type=hidden>
 						<a onclick="addComment('${kinderinfoId}')">등록</a>
 						</div>
-						
+						</div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
+                        <div class="card" >
+                            <div class="card-body" style="width:1024px;height:1024">
                                 <h5 class="card-title">Review WordCloud</h5>
-<%--                                  <img src="data:image/jpg;base64, <%=Base64.encode(popo.getCloud(request.getAttribute("kinderinfoId").toString() )) %>" width="500" height="500"/> --%>
+                                
+                                <c:if test="${image ne '1' }">
+                                	<img src="data:image/jpeg;base64,${image}"  style="width:700px;height:700px"/>
+                                </c:if>
+                                <c:if test="${image eq '1'}">
+                                	<img src="resources/images/JJANGGU.png"  style="width:300px;height:300px;" />
+                                </c:if>
+                                
+									
                             </div>
                         </div>
                     </div>
@@ -281,13 +300,14 @@ var score3 = '${score.score3}';
    <script src="resources/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 <script>
 
+
 $(document).ready(function(){
 	SearchID("${kinderinfoId}");
 });
 
 function SearchID (id){
 	var C1 = document.getElementById("review")
-	C1.innerHTML= "<br>"
+// 	C1.innerHTML= "<br>"
 	
 	$.ajax({
 			url:"commentList.do",
@@ -298,16 +318,30 @@ function SearchID (id){
 				'kdid':id
 			},
 			success:function(data){
-				
-				console.log(data);
-				
 				var obj = JSON.parse(data);
+				comments = obj;
 				var sum = 0 ;
-				for(var i = 0;i<Object.keys(obj.result).length;i++){
-		 		var $div = $('<span> '+ obj.result[i][1]["Writer"]+' ('+obj.result[i][2]["Score"]+'점):'+obj.result[i][0]["Contents"]+'</span><hr>');
-		 		$('#review').append($div);
-		 		sum =sum + parseInt(obj.result[i][2]["Score"]);
+				
+				
+				for(var i = 0;i<10;i++){
+					
+// 			 		var $div = $('<span id=comment'+i+'> '+ obj.result[i][1]["Writer"]+' ('+obj.result[i][2]["Score"]+'점):'+obj.result[i][0]["Contents"]+'</span><hr>');
+			 		var $div =$('<tr >'+
+			 				'<td id=commentWriter'+i+'  >'+obj.result[i][1]["Writer"]+'</td>'+
+			 				'<td id=commentScore'+i+'  >'+imagemake(obj.result[i][2]["Score"])+'</td>'+
+			 				'<td id=commentContent'+i+' >'+obj.result[i][0]["Contents"]+'</td>'+
+			 				'</tr>');
+			 		$('#review').append($div);
+			 		sum =sum + parseInt(obj.result[i][2]["Score"]);
 				};
+				
+				
+				for(var i = 0;i<10;i++){
+					var $div=$('<a class=indextag onclick="review('+i+')">'+(i+1)+'</a>');
+					$('#review').append($div);
+				}
+				
+				
 				var staravg = Math.floor(sum/Object.keys(obj.result).length);
 				
 				for(var i = 1;i<=5;i++){
@@ -319,12 +353,29 @@ function SearchID (id){
 						var $div = $('<img  height=50 width=50 src="http://gahyun.wooga.kr/main/img/testImg/star.png">');
 						$('.namespace').append($div);
 					}
-				}				
+				}
+				
 				},
 			 	error:function(request,status,error){
 			        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
 			    }
 		});
+}
+
+function imagemake(num){
+	var imagetag1 = '<img  height=25 width=25 src="http://gahyun.wooga.kr/main/img/testImg/star_on.png">';
+	var imagetag2 = '<img  height=25 width=25 src="http://gahyun.wooga.kr/main/img/testImg/star.png">';
+	var result="";
+	for(var i = 1;i<=5;i++){
+		if(i<=num){
+			result += imagetag1;
+		}
+		else{
+			result += imagetag2;
+		}
+	}
+	return result;
+	
 }
 
 function addComment(id){
@@ -356,9 +407,19 @@ function addComment(id){
 	});	
 	}
 }
-
-function returnname(){
-	return ${kindername};
+function review(num){
+	for(var i=0;i<10;i++){
+		
+		var divWriter = document.getElementById("commentWriter"+i);
+		divWriter.innerHTML = comments.result[(num*10)+i][1]["Writer"];
+		
+		var divScore = document.getElementById("commentScore"+i);
+		divScore.innerHTML = imagemake(comments.result[(num*10)+i][2]["Score"]);
+		
+		var divContent = document.getElementById("commentContent"+i);
+		divContent.innerHTML = comments.result[(num*10)+i][0]["Contents"];
+	}
+	
 }
 
 
