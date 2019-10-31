@@ -1,9 +1,10 @@
 
 <%@page import="lab.spring.controller.DetailController"%>
 <%@page import="lab.spring.controller.Popo"%>
-<%@page import="com.sun.org.apache.xml.internal.security.utils.Base64"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html class="no-js" lang="ko">
 <head>
@@ -110,6 +111,7 @@ var check = "1";
 var comments;
 </script>
 
+
 <aside id="left-panel" class="left-panel">
       <nav class="navbar navbar-expand-sm navbar-default">
          <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -118,38 +120,37 @@ var comments;
                <img id="title_img"alt="엄마의 지도" src="resources/images/title.png" width ="130%" height="130%">
                </a>
                </li>
+               
  	<!-- Left Panel -->
 	 <%@ include file="./widget.jsp" %>
+			</ul>
+			</div>
+		</nav>
+	</aside>
+	
+<%@ include file="./header.jsp"%>
 
-
+<article>
   <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-               <div class="row">
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                             
+                    
 											<div class="namespace">
-												<h2>${badkinder.kindername}<i class="far fa-kiss-wink-heart"></i></h2>
-												<p>${badkinder.addr}</p>
+												<h2 style="font-family: 'Gaegu'; display: block; margin-block-start: 1em;
+margin-inline-start: 0px; margin-inline-end: 0px;">${badkinder.kindername}<i class="far fa-kiss-wink-heart"></i></h2>
+												<p style="font-family: 'Gaegu'">${badkinder.addr}</p>
 											</div>
 </div>
-                                    </div>
-                    </div>
+                 
                 </div>
 
                 <!-- ============================================================== -->
                 <!-- Yearly Sales -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-lg-6"  >
+                    <div class="col-lg-7"  >
                         <div class="card oh">
-                            <div class="card-body"  style="height:550px"}>
-                              <h5 class="card-title">종합지표</h5>   
+                            <div class="card-body"  style="height:600px"}>
+                              <h5 class="card-title" style="font-family: 'Hanna'">종합지표</h5>   
                                 <div class="d-flex m-b-30 align-items-center no-block"> 
 					   				 <div id="body">
 										  <div id="chart" ></div>
@@ -159,48 +160,48 @@ var comments;
                             </div>
                         </div>
                     </div>
-                  <div class="col-md-6">
+                  <div class="col-md-5">
                         <div class="card">
-                            <div class="card-body" style="height:550px">
-                                <h5 class="card-title">유치원 상세정보</h5>
+                            <div class="card-body" style="height:600px	">
+                                <h5 class="card-title" style="font-family: 'Hanna'">유치원 상세정보</h5>
                              
                                     <div class="sl-item">
                                        	<table border=0 cellpadding=10% cellspacing=10%>
    	<tr>
-    <td align=center bgcolor="E6ECDE" height=52>유치원명</td>
-    <td align=center bgcolor="ffffff">${badkinder.kindername}</td>
+    <td align=center bgcolor="#fbe204" height="58" style="font-family: 'Gaegu'">유치원명</td>
+    <td align=center bgcolor="ffffff" style="font-family: 'Hanna'">${badkinder.kindername}</td>
     </tr> 
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">교육청명</td>
-    <td width=240 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.officeedu}</td>
+    <td width=100 hegiht=500 align=center bgcolor= "#ffff66" height ="58" style="font-family: 'Gaegu'">교육청명</td>
+    <td width=240 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'">${badkinder.officeedu}</td>
     </tr>
     <tr>
-    <td width=200 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">교육지원청명</td>
-    <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.subofficeedu}</td>
+    <td width=200 hegiht=500 align=center bgcolor= "#fbe204" height ="58" style="font-family: 'Gaegu'">교육지원청명</td>
+    <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'">${badkinder.subofficeedu}</td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">설립일</td>
-    <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.edate}</td>
+    <td width=100 hegiht=500 align=center bgcolor= "#ffff66" height ="58" style="font-family: 'Gaegu'">설립일</td>
+    <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'">${badkinder.edate}</td>
    </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">개원일</td>
-    <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.odate}</td>
+    <td width=100 hegiht=500 align=center bgcolor= "#fbe204" height ="58" style="font-family: 'Gaegu'">개원일</td>
+    <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'">${badkinder.odate}</td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">주소</td>
-    <td width=500 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.addr}</td>
+    <td width=100 hegiht=500 align=center bgcolor= "#ffff66" height ="58" style="font-family: 'Gaegu'">주소</td>
+    <td width=500 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'">${badkinder.addr}</td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">전화번호</td>
-    <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.telno}</td>
+    <td width=100 hegiht=500 align=center bgcolor= "#fbe204" height ="58" style="font-family: 'Gaegu'">전화번호</td>
+    <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'">${badkinder.telno}</td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">홈페이지</td>
-    <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10"><a href=${badkinder.hpaddr}>${badkinder.hpaddr}</a></td>
+    <td width=100 hegiht=500 align=center bgcolor= "#ffff66" height ="58" style="font-family: 'Gaegu'">홈페이지</td>
+    <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'"><a href=${badkinder.hpaddr}>${badkinder.hpaddr}</a></td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "E6ECDE" height ="52">운영시간</td>
-    <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10">${badkinder.opertime}</td>
+    <td width=100 hegiht=500 align=center bgcolor= "#fbe204" height ="58" style="font-family: 'Gaegu'">운영시간</td>
+    <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'">${badkinder.opertime}</td>
     </tr>
      </table>
                                   
@@ -219,8 +220,8 @@ var comments;
                             <div class="card-body">
                                 <div class="d-flex">
                                     <div>
-                                        <h5 class="card-title">비리유치원 분석</h5>
-                                        <h6 class="card-subtitle">참고만 해주세요. </h6>
+                                        <h5 class="card-title" style="font-family: 'Hanna'">비리유치원 분석</h5>
+                                 
                                     </div>
                         
                                 </div>
@@ -230,70 +231,70 @@ var comments;
 											<thead>
 												<tr width="auto">
 													<th class="text-center">#</th>
-													<th>유치원명</th>
-													<th>운영</th>
-													<th>프로그램</th>
-													<th>급식</th>
-													<th>원아관리</th>
-													<th>교직원</th>
-													<th>탈세</th>
-													<th>시설관리</th>
-													<th>비리지수</th>
+													<th style="font-family: 'Gaegu'; font-size: 20px">유치원명</th>
+													<th style="font-family: 'Gaegu'; font-size: 20px">운영</th>
+													<th style="font-family: 'Gaegu'; font-size: 20px">프로그램</th>
+													<th style="font-family: 'Gaegu'; font-size: 20px">급식</th>
+													<th style="font-family: 'Gaegu'; font-size: 20px">원아관리</th>
+													<th style="font-family: 'Gaegu'; font-size: 20px">교직원</th>
+													<th style="font-family: 'Gaegu'; font-size: 20px">탈세</th>
+													<th style="font-family: 'Gaegu'; font-size: 20px">시설관리</th>
+													<th style="font-family: 'Gaegu'; font-size: 20px">비리지수</th>
 												</tr>
 											</thead>
 											<tbody>
 												<tr>
 													<td></td>
-													<td class="txt-oflo">${badkinder.kindername}</td>
-													<td class="CellWithComment">&ensp;${badkinder.bad_oper}
+													<td class="txt-oflo" style="font-family: 'Hanna'">${badkinder.kindername}</td>
+													<td class="CellWithComment" style="font-family: 'Hanna'">&ensp;${badkinder.bad_oper}
 													<c:if test="${badDetail.bad_oper eq null}">
 													</td>
 													</c:if>
 													<c:if test="${badDetail.bad_oper ne null}">
 													<div>
-													<span class="CellComment">${badDetail.bad_oper}</span></td>
+													<span class="CellComment" style="font-family: 'Hanna'">${badDetail.bad_oper}</span></td>
 													</c:if>
-													<td class="CellWithComment">&emsp;&ensp;${badkinder.bad_program}
+													<td class="CellWithComment" style="font-family: 'Hanna'">&emsp;&ensp;${badkinder.bad_program}
 													<c:if test="${badDetail.bad_program eq null}">
 													</td>
 													</c:if>
 													<c:if test="${badDetail.bad_program ne null}">
-													<span class="CellComment">${badDetail.bad_program}</span></td>
+													<span class="CellComment" style="font-family: 'Hanna'">${badDetail.bad_program}</span></td>
 													</c:if>
-													<td class="CellWithComment">&ensp;${badkinder.bad_meal}
+													<td class="CellWithComment" style="font-family: 'Hanna'">&ensp;${badkinder.bad_meal}
 													<c:if test="${badDetail.bad_meal eq null}">
 													</td>
 													</c:if>
 													<c:if test="${badDetail.bad_meal ne null}">
-													<span class="CellComment">${badDetail.bad_meal}</span></td>
+													<span class="CellComment" style="font-family: 'Hanna'">${badDetail.bad_meal}</span></td>
 													</c:if>
-													<td class="CellWithComment">&emsp;&ensp;${badkinder.bad_care}
+													<td class="CellWithComment" style="font-family: 'Hanna'">&emsp;&ensp;${badkinder.bad_care}
 													<c:if test="${badDetail.bad_care eq null}">
 													</td>
 													</c:if>
 													<c:if test="${badDetail.bad_care ne null}">
 													<span class="CellComment" style="max-width:600%;">${badDetail.bad_care}</span></td>
 													</c:if>
-													<td class="CellWithComment">&emsp;${badkinder.bad_emp}
+													<td class="CellWithComment" style="font-family: 'Hanna'">&emsp;${badkinder.bad_emp}
 													<c:if test="${badDetail.bad_emp eq null}">
 													</td>
 													</c:if>
 													<c:if test="${badDetail.bad_emp ne null}">
-													<span class="CellComment" style="max-width:800%;">${badDetail.bad_emp}</span></td>
+													<span class="CellComment" style="max-width:800%; font-family: 'Hanna'">${badDetail.bad_emp}</span></td>
 													</c:if>
-													<td class="CellWithComment">&nbsp;&nbsp;${badkinder.bad_tax}
+													<td class="CellWithComment" style="font-family: 'Hanna'">&nbsp;&nbsp;${badkinder.bad_tax}
 													<c:if test="${badDetail.bad_tax eq null}">
 													</td>
 													</c:if>
 													<c:if test="${badDetail.bad_tax ne null}">
-													<span class="CellComment" style="max-width:600%;">${badDetail.bad_tax}</span></td>
+													<span class="CellComment" style="max-width:600%; font-family: 'Hanna'">${badDetail.bad_tax}</span></td>
 													</c:if>
-													<td class="CellWithComment">&emsp;&ensp;${badkinder.bad_build}
+													<td class="CellWithComment" style="font-family: 'Hanna'">&emsp;&ensp;${badkinder.bad_build}
 													<c:if test="${badDetail.bad_build eq null}">
 													</td>
 													</c:if>
 													<c:if test="${badDetail.bad_build ne null}">
-													<span class="CellComment" style="max-width:300%;">${badDetail.bad_build}</span></td>
+													<span class="CellComment" style="max-width:300%; font-family: 'Hanna'">${badDetail.bad_build}</span></td>
 													</c:if>
 													<td class="txt-oflo">&emsp;<img src=${badkinder.image} width="8%" height="16%"></td>
 												</tr>
@@ -311,7 +312,7 @@ var comments;
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card">
-                            <div class="card-body"><h4 class="card-title">Feeds</h4>
+                            <div class="card-body"><h4 class="card-title" style="font-family: 'Hanna'; font-size: 20px">엄마들의 목소리</h4>
 						<table id=review>
 						</table>
 						<div class="star-box">
@@ -330,7 +331,7 @@ var comments;
                     <div class="col-md-6">
                         <div class="card" >
                             <div class="card-body" style="width:1024px;height:1024">
-                                <h5 class="card-title">Review WordCloud</h5>
+                                <h5 class="card-title" style="font-family: 'Hanna'; font-size: 20px">Review WordCloud</h5>
                                 
                                 <c:if test="${image ne '1' }">
                                 	<img src="data:image/jpeg;base64,${image}"  style="width:700px;height:700px"/>
@@ -351,6 +352,7 @@ var comments;
         <!-- End Page wrapper  -->
         <!-- ============================================================== -->
     </div>
+    </article>
   <script src="resources/vendors/jquery/dist/jquery.min.js"></script>
    <script src="resources/vendors/popper.js/dist/umd/popper.min.js"></script>
    <script src="resources/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -495,6 +497,7 @@ $(".star").on('click',function(){
 	 });
 
 </script>
+
 </body>
 
 </html>

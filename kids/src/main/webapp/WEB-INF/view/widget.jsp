@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+  <head>
     <style>
      .text-wrapper {
   position: auto;
@@ -18,75 +19,17 @@ display: inline-block;
 
 }
 
-/*     .waves-effect { */
-/*     position: relative; */
-/*     cursor: pointer; */
-/*     display: inline-block; */
-/*     overflow: hidden; */
-/*     -webkit-user-select: none; */
-/*     -moz-user-select: none; */
-/*     -ms-user-select: none; */
-/*     user-select: none; */
-/*     -webkit-tap-highlight-color: transparent; */
-/*     vertical-align: middle; */
-/*     z-index: 1; */
-/*     -webkit-transition: .3s ease-out; */
-/*     transition: .3s ease-out */
-/* } */
 
 .waves-effect.waves-light .waves-ripple { */
     background-color: rgba(255,255,255,0.45) 
  }
 
-/* .material-icons { */
-/*     text-rendering: optimizeLegibility; */
-/*     -webkit-font-feature-settings: 'liga'; */
-/*     -moz-font-feature-settings: 'liga'; */
-/*     font-feature-settings: 'liga' */
-/* } */
-
-
-/* .input-field .prefix { */
-/*     position: absolute; */
-/*     width: 3rem; */
-/*     font-size: 2rem; */
-/*     -webkit-transition: color .2s; */
-/*     transition: color .2s; */
-/*     top: .5rem */
-/* } */
-
-/* .input-field .prefix ~ input,.input-field .prefix ~ textarea,.input-field .prefix ~ label,.input-field .prefix ~ .validate ~ label,.input-field .prefix ~ .helper-text,.input-field .prefix ~ .autocomplete-content { */
-/*     margin-left: 3rem; */
-/*     width: 92%; */
-/*     width: calc(100% - 3rem) */
-/* } */
-/* .row .col.s6 { */
-/*     width: 50%; */
-/*     margin-left: auto; */
-/*     left: auto; */
-/*     right: auto */
-/* } */
-
-/* .btn,.btn-large,.btn-small,.btn-flat { */
-/*     border: none; */
-/*     border-radius: 2px; */
-/*     display: inline-block; */
-/*     height: 36px; */
-/*     line-height: 36px; */
-/*     padding: 0 16px; */
-/*     text-transform: uppercase; */
-/*     vertical-align: middle; */
-/*     -webkit-tap-highlight-color: transparent */
-/* } */ */ */
     </style>
-    
-
+    </head>
+    <body>
       
                <h3 class="menu-title">카테고리</h3>
                <!-- /.menu-title -->
-
-
-
 
             <li class="menu-item-has-children dropdown">
                <input id=drop_val type="hidden" value="" />
@@ -255,8 +198,8 @@ display: inline-block;
         .add({
           targets: '.text-wrapper td',
           rotateY: [-90, 0],
-          duration: 2000,
-          delay: (el, i) => 45 * i
+          duration: 5000,
+          delay: (el, i) => 50 * i
         }).add({
           targets: '.text-wrapper',
           opacity: 0,
@@ -315,3 +258,4 @@ display: inline-block;
 <%--             </c:if> --%>
 <!--          </div> -->
 <!--       </header> -->
+</body>

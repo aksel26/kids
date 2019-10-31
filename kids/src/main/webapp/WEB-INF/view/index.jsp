@@ -55,9 +55,11 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#" onclick=getSafetyArr(2,map);>
 							<img id="title_img" alt="엄마의 지도" src="resources/images/title.png"
-							width="130%" height="130%">
-					</a> <!-- Left Panel --> <%@ include file="./widget.jsp"%>
+							 width ="130%" height="130%">
+					</a> <!-- Left Panel -->
+					 
 					</li>
+					<%@ include file="./widget.jsp"%>
 				</ul>
 			</div>
 		</nav>
