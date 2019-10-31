@@ -31,27 +31,19 @@ public class DetailController {
 		
 			ModelAndView mav = new ModelAndView();
 			KinderInfoVO vo = new KinderInfoVO();
+			KinderInfoVO vo2 = new KinderInfoVO();
 			
 			List<KinderInfoVO> ranklist = null;
 			ranklist = service.getRank();
 			
 			vo=service.getBadkinder(kindername, subofficeedu);
-			
+			vo2=service.getBadkinder(kindername, subofficeedu);
 		
 			vo=XO(vo);
-		
-			
-			
-			
-			
-			
-			
 			
 			mav.addObject("rankSet",ranklist);
 	
-			mav.addObject("kindername", kindername);
-			mav.addObject("kinderinfoId", kinderid);
-			
+			mav.addObject("badDetail", vo2);
 			mav.addObject("badkinder", vo);
 			
 			mav.setViewName("detail");
@@ -151,16 +143,25 @@ public class DetailController {
 	public byte[] getCloud() throws RserveException, REXPMismatchException {
 		RConnection r = new RConnection();
         REXP x = null;
+        System.out.println("성");
     	
     	r.eval("try(jpeg('test.jpg', quality=100))");
+    	System.out.println("성");
     	r.eval("kdid <- \"KN033\"");
-    	r.eval("source('F:/Rworkspace/R1day/commentanalysis.R')");
+    	System.out.println("성");
+    	r.eval("source('/Users/minji/kids/Rfile/commentanalysis.R')");
+    	System.out.println("성");
     	r.eval("wordcloudp(sentence)");
     	r.eval("graphics.off()");
     	x=r.eval("r=readBin('test.jpg','raw',1024*1024);unlink('test.jpg');r");
-		
+		System.out.println("성");
     	return x.asBytes();
 	}
-
+	
+	public static void main(String[] args) throws REXPMismatchException, REngineException {
+		DetailController rs = new DetailController();
+	      System.out.println(rs.getCloud());
+	      
+	   }
 	}
 

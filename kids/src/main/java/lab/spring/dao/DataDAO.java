@@ -60,6 +60,7 @@ public class DataDAO {
 		return sqlSession.selectList("lab.mybatis.user.UserMapper.getKinderList");
 	}
 	
+	
 	public List<KinderInfoVO> findSearchList(String keyword,int flag){
 		
 		if(flag==1) {

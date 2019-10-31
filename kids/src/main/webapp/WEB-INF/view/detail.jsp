@@ -59,14 +59,31 @@
 .star.on{
   background-image: url(http://gahyun.wooga.kr/main/img/testImg/star_on.png);
 }
+
+ .CellWithComment{position:relative;}
+
+ .CellComment
+        {
+ 		 visibility: hidden;
+            width: 500px;
+            position:absolute; 
+            z-index:100;
+            text-align: center;
+            opacity: 0.4;
+            transition: opacity 1s;
+            border-radius: 6px;
+            background-color: #d0d0e1;
+            padding:3px;
+            top:-30px; 
+            left:0px;
+        }   
+ .CellWithComment:hover span.CellComment {visibility: visible; opacity: 1;}
 </style>
 </head>
 
 <body>
 
-<%
-	DetailController popo = new DetailController();
-%>
+
 <aside id="left-panel" class="left-panel">
       <nav class="navbar navbar-expand-sm navbar-default">
          <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -91,7 +108,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                              
 											<div class="namespace">
-												<h2>${kindername}<i class="far fa-kiss-wink-heart"></i></h2>
+												<h2>${badkinder.kindername}<i class="far fa-kiss-wink-heart"></i></h2>
 												<p>${badkinder.addr}</p>
 											</div>
 <div class="star-box">
@@ -207,14 +224,57 @@
 											<tbody>
 												<tr>
 													<td></td>
-													<td class="txt-oflo">${kindername}</td>
-													<td class="txt-oflo">&ensp;${badkinder.bad_oper}</td>
-													<td class="txt-oflo">&emsp;&ensp;${badkinder.bad_program}</td>
-													<td class="txt-oflo">&ensp;${badkinder.bad_meal}</td>
-													<td class="txt-oflo">&emsp;&ensp;${badkinder.bad_care}</td>
-													<td class="txt-oflo">&emsp;${badkinder.bad_emp}</td>
-													<td class="txt-oflo">&nbsp;&nbsp;${badkinder.bad_tax}</td>
-													<td class="txt-oflo">&emsp;&ensp;${badkinder.bad_build}</td>
+													<td class="txt-oflo">${badkinder.kindername}</td>
+													<td class="CellWithComment">&ensp;${badkinder.bad_oper}
+													<c:if test="${badDetail.bad_oper eq null}">
+													</td>
+													</c:if>
+													<c:if test="${badDetail.bad_oper ne null}">
+													<div>
+													<span class="CellComment">${badDetail.bad_oper}</span></td>
+													</c:if>
+													<td class="CellWithComment">&emsp;&ensp;${badkinder.bad_program}
+													<c:if test="${badDetail.bad_program eq null}">
+													</td>
+													</c:if>
+													<c:if test="${badDetail.bad_program ne null}">
+													<span class="CellComment">${badDetail.bad_program}</span></td>
+													</c:if>
+													<td class="CellWithComment">&ensp;${badkinder.bad_meal}
+													<c:if test="${badDetail.bad_meal eq null}">
+													</td>
+													</c:if>
+													<c:if test="${badDetail.bad_meal ne null}">
+													<span class="CellComment">${badDetail.bad_meal}</span></td>
+													</c:if>
+													<td class="CellWithComment">&emsp;&ensp;${badkinder.bad_care}
+													<c:if test="${badDetail.bad_care eq null}">
+													</td>
+													</c:if>
+													<c:if test="${badDetail.bad_care ne null}">
+													<span class="CellComment" style="max-width:600%;">${badDetail.bad_care}</span></td>
+													</c:if>
+													<td class="CellWithComment">&emsp;${badkinder.bad_emp}
+													<c:if test="${badDetail.bad_emp eq null}">
+													</td>
+													</c:if>
+													<c:if test="${badDetail.bad_emp ne null}">
+													<span class="CellComment" style="max-width:800%;">${badDetail.bad_emp}</span></td>
+													</c:if>
+													<td class="CellWithComment">&nbsp;&nbsp;${badkinder.bad_tax}
+													<c:if test="${badDetail.bad_tax eq null}">
+													</td>
+													</c:if>
+													<c:if test="${badDetail.bad_tax ne null}">
+													<span class="CellComment" style="max-width:600%;">${badDetail.bad_tax}</span></td>
+													</c:if>
+													<td class="CellWithComment">&emsp;&ensp;${badkinder.bad_build}
+													<c:if test="${badDetail.bad_build eq null}">
+													</td>
+													</c:if>
+													<c:if test="${badDetail.bad_build ne null}">
+													<span class="CellComment" style="max-width:300%;">${badDetail.bad_build}</span></td>
+													</c:if>
 													<td class="txt-oflo">&emsp;<img src=${badkinder.image} width="8%" height="16%"></td>
 												</tr>
 
@@ -254,7 +314,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Messages (5 New)</h5>
                                 
-                                 <img src="data:image/jpg;base64, <%=Base64.encode(popo.getCloud())%>" />
+                                 
                             </div>
                         </div>
                     </div>

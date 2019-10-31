@@ -624,25 +624,37 @@ function getSafetyArr(select,map){
 	}
 
 function getiwContent(count,value){//인포 윈도우 얻어오기
-    return  '<div class="wrap">' + 
-		     '    <div class="info">' + 
-		     '        <div class="title">' + 
-		     			value["kindername"] + 
-		     '        </div>' + 
-		     '        <div class="body">' + 
-		     '            <div class="img">' +
-		     '                <img src="resources/images/baby.png" width="73" height="70">' +
-		     '           </div>' + 
-		     '            <div class="desc">' + 
-		     '				<p style="font-family: Hanna; color:black; text-align:center;">'+value["telno"]+'</p>'+
-			 '				<a style="font-family: Hanna; color:blue; text-align:center;" href='+value["hpaddr"]+'/>'+value["hpaddr"]+'<br/>'+
-			 '				<a style="font-family: Hanna; text-align:center;" href="detail.do?kindername='+value["kindername"]+'&kinderinfoId='+value["kinderinfoId"]+'&subofficeedu='+value["subofficeedu"]+'"/>'+'>>>상세보기'+
-		     '            </div>' + 
-		     '        </div>' + 
-		     '    </div>' +    
-		     '</div>';
+	
+	var tag = '<div class="wrap">' + 
+    '    <div class="info">' + 
+    '        <div class="title">' + 
+    			value["kindername"] + 
+    '        </div>' + 
+    '        <div class="body">' + 
+    '            <div class="img">' +
+    '                <img src="resources/images/baby.png" width="73" height="70">' +
+    '           </div>' + 
+    '            <div class="desc">' + 
+    '				<p style="font-family: Hanna; color:black; text-align:center;">'+value["telno"]+'</p>';
+	
+      if(value["hpaddr"]==null){
+    	  tag += '				<a style="font-family: Hanna; color:blue; text-align:center;"/>홈페이지가 없어요<br/>';
+      }
+      else{
+    	  tag += '				<a style="font-family: Hanna; color:blue; text-align:center;" href='+value["hpaddr"]+'/>'+value["hpaddr"]+'<br/>'
+      }
+      
+      tag +='				<a style="font-family: Hanna; text-align:center;" href="detail.do?kindername='+value["kindername"]+'&kinderinfoId='+value["kinderinfoId"]+'&subofficeedu='+value["subofficeedu"]+'"/>'+'>>>상세보기'+
+	     '            </div>' + 
+	     '        </div>' + 
+	     '    </div>' +    
+	     '</div>';
+		     
+	
+	     return tag;
     
            }
+           
 //**********************************************************************************
 
 
