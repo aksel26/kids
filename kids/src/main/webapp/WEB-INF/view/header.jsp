@@ -70,7 +70,6 @@
 							</div>
 						</form>
 					</div>
-
 				</c:if>
 
 				<c:if test="${authInfo.userid ne null}">	         

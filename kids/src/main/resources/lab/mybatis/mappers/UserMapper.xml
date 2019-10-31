@@ -60,7 +60,7 @@
 
 	<select id="getCommentList"
 		resultType="lab.spring.model.CommentVO" parameterType="string">
-		select * from KD_COMMENT where KDID = #{kdid}
+		select * from KD_COMMENT where KDID = #{kdid} order by rownum desc
 	</select>
 
 	<insert id="addComment"

@@ -3,7 +3,13 @@
 .header{
    width:150%
    }
-
+.form-control{
+	width:130px
+	
+}
+.input-field col s1{
+	width:400px;
+}
 .main-menu {
    margin-top: 15px;
    width: 98%;

@@ -59,15 +59,16 @@ public class CommentAction extends HttpServlet  {
 	public void addComment(
 			HttpServletRequest request,
 			String contents,
-			String kdid
+			String kdid,
+			String user,
+			String star
 			) {
-		HttpSession session = request.getSession();
-		UserVO vo = (UserVO)session.getAttribute("authInfo");
+		
 		
 		CommentVO comment = new CommentVO();
 		comment.setKdid(kdid);
-		comment.setScore("3.0");
-		comment.setWriter(vo.getUserid());
+		comment.setScore(star);
+		comment.setWriter(user);
 		comment.setContents(contents);
 		
 		service.addComment(comment);

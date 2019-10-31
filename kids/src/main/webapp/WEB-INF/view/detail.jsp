@@ -61,13 +61,27 @@
 }
 
 .indextag{
-	margin-left: 40px;
+	margin-left: 50px;
 }
 #review {
-width:500px;
+width:700px;
 }
-#review tr td{
+#review tr{
+margin-bottom: 30px;
+border-bottom: 1px solid #444444;
+padding: 30px;
+height:50px;
+}
+
+#review tr .td1{
 width:100px;
+align-content: center;
+}
+#review tr .td2{
+
+}
+#review tr .td3{
+width:300px;
 }
 
 </style>
@@ -87,6 +101,7 @@ var score3 = '${score.score3}';
 var check = "1";
 
 var comments;
+var staravg;
 </script>
 
 <aside id="left-panel" class="left-panel">
@@ -115,6 +130,11 @@ var comments;
 											<div class="namespace">
 												<h2>${kindername}<i class="far fa-kiss-wink-heart"></i></h2>
 												<p>${badkinder.addr}</p>
+												<img  id=star1 height=50 width=50 src="http://gahyun.wooga.kr/main/img/testImg/star.png">
+												<img  id=star2 height=50 width=50 src="http://gahyun.wooga.kr/main/img/testImg/star.png">
+												<img  id=star3 height=50 width=50 src="http://gahyun.wooga.kr/main/img/testImg/star.png">
+												<img  id=star4 height=50 width=50 src="http://gahyun.wooga.kr/main/img/testImg/star.png">
+												<img  id=star5 height=50 width=50 src="http://gahyun.wooga.kr/main/img/testImg/star.png">
 											</div>
 </div>
                                     </div>
@@ -248,18 +268,36 @@ var comments;
                     <div class="col-md-6">
                         <div class="card">
                             <div class="card-body"><h4 class="card-title">Feeds</h4>
-						<table id=review>
+                            <br>
+						<table id=review >
 						</table>
+						<br>
+						
+						<table id=review_order >
+					
+						</table>
+						
+						<br>
+						<table>
+						<tr>
+						<td style="align:center;padding-top: 20px;	">
 						<div class="star-box">
-						  <span class="star star_left"></span>
-						  <span class="star star_left"></span>
-						  <span class="star star_left"></span>
+						  <span class="star star_left on"></span>
+						  <span class="star star_left on"></span>
+						  <span class="star star_left on"></span>
 						 <span class="star star_left"></span>
 						 <span class="star star_left"></span>
-						 <input id=review_text />
-						<input id=star_point type=hidden>
-						<a onclick="addComment('${kinderinfoId}')">등록</a>
 						</div>
+						</td>
+						<td><input id=review_text style="width:300px;margin-left:50px"/></td>
+						<td >
+						<input id=star_point type=hidden value="3">
+						<a onclick="addComment('${kinderinfoId}')" style="margin-left:50px; cursor:pointer" >등록</a></td>
+						</tr>
+						</table>
+						
+						
+						
 						</div>
                         </div>
                     </div>
@@ -306,8 +344,8 @@ $(document).ready(function(){
 });
 
 function SearchID (id){
-	var C1 = document.getElementById("review")
-// 	C1.innerHTML= "<br>"
+	var C1 = document.getElementById("review");
+	
 	
 	$.ajax({
 			url:"commentList.do",
@@ -322,38 +360,27 @@ function SearchID (id){
 				comments = obj;
 				var sum = 0 ;
 				
+				showReview(obj,0);
 				
-				for(var i = 0;i<10;i++){
+				var length = Object.keys(obj.result).length;
+				var maxAtag =length/10;
+				if( maxAtag > 10){
+					maxAtag = 10;
+				}
+				
+				$('#review_order').empty();
+				for(var i = 0;i<maxAtag;i++){
+					var $div=$('<a class=indextag onclick="review('+i+')" style="cursor:pointer">'+(i+1)+'</a>');
+					$('#review_order').append($div);
 					
-// 			 		var $div = $('<span id=comment'+i+'> '+ obj.result[i][1]["Writer"]+' ('+obj.result[i][2]["Score"]+'점):'+obj.result[i][0]["Contents"]+'</span><hr>');
-			 		var $div =$('<tr >'+
-			 				'<td id=commentWriter'+i+'  >'+obj.result[i][1]["Writer"]+'</td>'+
-			 				'<td id=commentScore'+i+'  >'+imagemake(obj.result[i][2]["Score"])+'</td>'+
-			 				'<td id=commentContent'+i+' >'+obj.result[i][0]["Contents"]+'</td>'+
-			 				'</tr>');
-			 		$('#review').append($div);
-			 		sum =sum + parseInt(obj.result[i][2]["Score"]);
-				};
-				
-				
-				for(var i = 0;i<10;i++){
-					var $div=$('<a class=indextag onclick="review('+i+')">'+(i+1)+'</a>');
-					$('#review').append($div);
 				}
 				
-				
-				var staravg = Math.floor(sum/Object.keys(obj.result).length);
-				
-				for(var i = 1;i<=5;i++){
-					if(i<=staravg){
-						var $div = $('<img  height=50 width=50 src="http://gahyun.wooga.kr/main/img/testImg/star_on.png">');
-						$('.namespace').append($div);
-					}
-					else{
-						var $div = $('<img  height=50 width=50 src="http://gahyun.wooga.kr/main/img/testImg/star.png">');
-						$('.namespace').append($div);
-					}
+				for(var j=0;j<Object.keys(obj.result).length;j++){
+					sum =sum + parseInt(obj.result[j][2]["Score"]);
 				}
+				
+				staravg = Math.floor(sum/Object.keys(obj.result).length);
+				starmake(staravg);
 				
 				},
 			 	error:function(request,status,error){
@@ -361,7 +388,63 @@ function SearchID (id){
 			    }
 		});
 }
+function review(num){
+	showReview(comments,num);
+}
 
+function showReview(obj,num){
+	
+	var maxValue =10;
+	var length = Object.keys(obj.result).length; 
+	var maxValue = length%(10*num)
+	
+// 	if(num == 0 ){
+// 		if(length<10){
+// 			maxValue = length;	
+// 		}
+// 		else{
+// 			maxValue = 10;
+// 		}
+// 	}
+// 	else{
+// 		if(length>=(num+1)*10){
+// 			maxValue = 10;	
+// 		}
+// 		else{
+// 			maxValue = maxValue%10;	
+// 		}
+// 	}
+	if(length>=(num+1)*10){
+		maxValue = 10;	
+	}
+	else{
+		maxValue = length%10;	
+	}
+	
+	$('#review').empty();
+	for(var i = 0;i<maxValue;i++){
+ 		var $div =$('<tr style="margin-bottom: 30px;border-bottom: 1px solid #444444; padding: 30px;">'+
+ 				'<td id=commentWriter'+i+'  class=td1>'+obj.result[(num*10)+i][1]["Writer"]+'</td>'+
+ 				'<td id=commentScore'+i+'   class=td2 style="width:150px;">'+imagemake(obj.result[(num*10)+i][2]["Score"])+'</td>'+
+ 				'<td id=commentContent'+i+'  class=td3>'+obj.result[(num*10)+i][0]["Contents"]+'</td>'+
+ 				'<hr>'+
+ 				'</tr>');
+ 		$('#review').append($div);
+	};
+}
+//세부 홈페이지 상단에 보여지는 별
+function starmake(staravg){
+	for(var i = 1;i<=5;i++){
+		if(i<=staravg){
+			document.getElementById("star"+i).src = 'http://gahyun.wooga.kr/main/img/testImg/star_on.png'
+		}
+		else{
+			document.getElementById("star"+i).src = 'http://gahyun.wooga.kr/main/img/testImg/star.png'
+		}
+	}
+}
+
+//댓글 내부에 들어가는 별
 function imagemake(num){
 	var imagetag1 = '<img  height=25 width=25 src="http://gahyun.wooga.kr/main/img/testImg/star_on.png">';
 	var imagetag2 = '<img  height=25 width=25 src="http://gahyun.wooga.kr/main/img/testImg/star.png">';
@@ -399,7 +482,7 @@ function addComment(id){
 			'user':user
 		},
 		success:function(data){
-			SearchID(id);
+			SearchID(kdid);
 			},
 		 	error:function(request,status,error){
 		        alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
@@ -407,20 +490,7 @@ function addComment(id){
 	});	
 	}
 }
-function review(num){
-	for(var i=0;i<10;i++){
-		
-		var divWriter = document.getElementById("commentWriter"+i);
-		divWriter.innerHTML = comments.result[(num*10)+i][1]["Writer"];
-		
-		var divScore = document.getElementById("commentScore"+i);
-		divScore.innerHTML = imagemake(comments.result[(num*10)+i][2]["Score"]);
-		
-		var divContent = document.getElementById("commentContent"+i);
-		divContent.innerHTML = comments.result[(num*10)+i][0]["Contents"];
-	}
-	
-}
+
 
 
 $(".star").on('click',function(){
@@ -429,7 +499,8 @@ $(".star").on('click',function(){
 	     for(var i=0; i<=idx; i++){
 	        $(".star").eq(i).addClass("on");
 	   }
-		$('#star_point').val(idx+1);
+		var pp = $('#star_point').val(idx+1);
+		
 	 });
 
 </script>

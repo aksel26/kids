@@ -179,25 +179,5 @@ public class DetailController {
 		
 		return vo;
 	}
-	public byte[] getCloud(String kdid) throws RserveException, REXPMismatchException {
-		RConnection r = new RConnection();
-        REXP x = null;
-    	
-    	r.eval("try(jpeg('test.jpg', quality=100))");
-    	String po = "kdid <- \""+kdid+"\"";
-    	r.eval(po);
-    	r.eval("source('F:/Rworkspace/R1day/commentanalysis.R')");
-    	r.eval("wordcloudp(sentence,rs_comment_pra)");
-    	r.eval("graphics.off()");
-    	x=r.eval("r=readBin('test.jpg','raw',512*512);unlink('test.jpg');r");
-		
-    	if(x==null) {
-    		String popo="fail";
-    		return popo.getBytes();
-    	}
-    	
-    	return x.asBytes();
-	}
-
-	}
+}
 
