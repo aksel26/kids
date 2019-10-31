@@ -102,8 +102,11 @@ align-content: center;
 
 }
 #review tr .td3{
+text-align:inherit;
 width:300px;
 }
+
+
 
 
 </style>
@@ -373,15 +376,18 @@ var staravg;
                     </div>
                     <div class="col-md-6">
                         <div class="card" >
-                            <div class="card-body" style="width:1024px;height:1024">
+                            <div class="card-body" style="width:1024px;height:1024;">
+                            
                                 <h5 class="card-title" style="font-family: 'Hanna'; font-size: 20px">Review WordCloud</h5>
-                                
+                                <div style="text-align:inherit;">
                                 <c:if test="${image ne '1' }">
                                 	<img src="data:image/jpeg;base64,${image}"  style="width:700px;height:700px"/>
                                 </c:if>
                                 <c:if test="${image eq '1'}">
                                 	<img src="resources/images/JJANGGU.png"  style="width:300px;height:300px;" />
                                 </c:if>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -437,12 +443,15 @@ function SearchID (id){
 					maxAtag = 10;
 				}
 				
-				$('#review_order').empty();
-				for(var i = 0;i<maxAtag;i++){
-					var $div=$('<a class=indextag onclick="review('+i+')" style="cursor:pointer">'+(i+1)+'</a>');
-					$('#review_order').append($div);
-					
+				if(length>10){
+					$('#review_order').empty();
+					for(var i = 0;i<maxAtag;i++){
+						var $div=$('<a class=indextag onclick="review('+i+')" style="cursor:pointer">'+(i+1)+'</a>');
+						$('#review_order').append($div);
+						
+					}	
 				}
+				
 				
 				for(var j=0;j<Object.keys(obj.result).length;j++){
 					sum =sum + parseInt(obj.result[j][2]["Score"]);
