@@ -10,8 +10,8 @@
 <!--    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" -->
 <!--    crossorigin="anonymous"> -->
 
-<!-- <script src="https://kit.fontawesome.com/30d97172a4.js" -->
-<!--    crossorigin="anonymous"></script> -->
+<script src="https://kit.fontawesome.com/30d97172a4.js"
+   crossorigin="anonymous"></script>
 
 
 
@@ -34,29 +34,30 @@
 
    <div id="right-panel" class="   ">
       <!--   왼쪽 메뉴 접는 버튼   -->
-      <header id="header" class="header">
+      <header id="header" class="header" style="width: 1400px;">
+      
 
-         <div id="col-sm-1" class="col-sm-1" width="10%">
+         <div id="col-sm-7" class="col-sm-7" width="10%">
             <a id="menuToggle" class="menutoggle pull-left"></a>
          </div>
 
          <div id="LOL" align="right"
-            style="width: 85%; font-family: hanna; word-spacing: 13px;">
+            style="width: 85%; width:1400px; font-family: hanna; word-spacing: 13px;">
 
             <c:if test="${authInfo.userid eq null}">
 
                <div class="row">
                   <form action="login.do" method="post"
-                     style="height: 25px; width: 300px;" class="col s12">
+                     style="height: 70px; width: 600px;" class="col s12">
 
-                     <div class="row">
-<!--                         <i class="fas fa-child fa-2x"></i> -->
+                     <div class="row" style="height: 30px;width: 1330px;margin-top: 15px;">
+                        <i class="fas fa-child fa-2x"></i>
                         <div class="input-field col s2">
                            <input type="text" class="form-control" name="userid"
                               placeholder="아이디">
 
                         </div>
-<!--                         <i class="fas fa-user-lock fa-2x"></i> -->
+                        <i class="fas fa-user-lock fa-2x"></i>
                         <div class="input-field col s2">
                            <input type="password" class="form-control" name="userpwd"
                               placeholder="비밀번호">

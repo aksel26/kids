@@ -988,11 +988,11 @@
 }
 
 .teal.lighten-5 {
-  background-color: #e0f2f1 !important;
+  background-color: #ffff00 !important;
 }
 
 .teal-text.text-lighten-5 {
-  color: #e0f2f1 !important;
+  color: #ffff00!important;
 }
 
 .teal.lighten-4 {
@@ -4451,7 +4451,10 @@ nav .input-field label {
   left: 0;
 }
 
-nav .input-field label i {
+nav .
+
+
+ label i {
   color: rgba(255, 255, 255, 0.7);
   -webkit-transition: color .3s;
   transition: color .3s;
@@ -5233,6 +5236,7 @@ small {
 .btn-flat {
   font-size: 14px;
   outline: 0;
+  
 }
 
 .btn i, .btn-large i, .btn-small i,
@@ -5250,9 +5254,10 @@ small {
 }
 
 .btn, .btn-large, .btn-small {
+  
   text-decoration: none;
-  color: #fff;
-  background-color: #26a69a;
+  color: #000000;
+  background-color: #ffff00;
   text-align: center;
   letter-spacing: .5px;
   -webkit-transition: background-color .2s ease-out;
@@ -5261,7 +5266,7 @@ small {
 }
 
 .btn:hover, .btn-large:hover, .btn-small:hover {
-  background-color: #2bbbad;
+  background-color: #b5d6fb;
 }
 
 .btn-floating {
@@ -5274,7 +5279,7 @@ small {
   height: 40px;
   line-height: 40px;
   padding: 0;
-  background-color: #26a69a;
+  background-color: #ffff00;
   border-radius: 50%;
   -webkit-transition: background-color .3s;
   transition: background-color .3s;
@@ -5283,7 +5288,7 @@ small {
 }
 
 .btn-floating:hover {
-  background-color: #26a69a;
+  background-color: #d5e4f9;
 }
 
 .btn-floating:before {
@@ -6504,6 +6509,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   position: relative;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  width:171px;
 }
 
 .input-field.inline {
@@ -6532,6 +6538,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   top: 0;
   left: 0;
   font-size: 1rem;
+  
   cursor: text;
   -webkit-transition: color .2s ease-out, -webkit-transform .2s ease-out;
   transition: color .2s ease-out, -webkit-transform .2s ease-out;
@@ -7179,6 +7186,7 @@ select {
   line-height: 3rem;
   width: 100%;
   font-size: 16px;
+  font-family:Gaegu;
   margin: 0 0 8px 0;
   padding: 0;
   display: block;
