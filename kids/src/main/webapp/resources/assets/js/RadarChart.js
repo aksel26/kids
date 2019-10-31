@@ -12,8 +12,8 @@ var RadarChart = {
   draw: function(id, d, options){
   var cfg = {
 	 radius: 5,
-	 w: 500,
-	 h: 500,
+	 w: 600,
+	 h: 600,
 	 factor: 1,
 	 factorLegend: .85,
 	 levels: 3,
@@ -80,7 +80,7 @@ var RadarChart = {
 	   .attr("x", function(d){return levelFactor*(1-cfg.factor*Math.sin(0));})
 	   .attr("y", function(d){return levelFactor*(1-cfg.factor*Math.cos(0));})
 	   .attr("class", "legend")
-	   .style("font-family", "sans-serif")
+	   .style("font-family", "Hanna")
 	   .style("font-size", "10px")
 	   .attr("transform", "translate(" + (cfg.w/2-levelFactor + cfg.ToRight) + ", " + (cfg.h/2-levelFactor) + ")")
 	   .attr("fill", "#737373")
@@ -107,11 +107,11 @@ var RadarChart = {
 	axis.append("text")
 		.attr("class", "legend")
 		.text(function(d){return d})
-		.style("font-family", "sans-serif")
-		.style("font-size", "11px")
+		.style("font-family", "Hanna")
+		.style("font-size", "20px") //안전위생시설 지표 폰트
 		.attr("text-anchor", "middle")
 		.attr("dy", "1.5em")
-		.attr("transform", function(d, i){return "translate(0, -10)"})
+		.attr("transform", function(d, i){return "translate(0, -25)"})
 		.attr("x", function(d, i){return cfg.w/2*(1-cfg.factorLegend*Math.sin(i*cfg.radians/total))-60*Math.sin(i*cfg.radians/total);})
 		.attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-20*Math.cos(i*cfg.radians/total);});
 
@@ -215,6 +215,6 @@ var RadarChart = {
 	//Tooltip
 	tooltip = g.append('text')
 			   .style('opacity', 0)
-			   .style('font-family', 'sans-serif')
+			  .style("font-family", "Hanna")
 			   .style('font-size', '13px');
   }};

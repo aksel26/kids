@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<head>
+<script type="test/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 
 <style>
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:100%;height:500px;}
-#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;} 
+#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:20px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;} 
 .bg_white {background:#fff;}
 #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
 #menu_wrap .option{text-align: center;}
@@ -62,17 +64,14 @@
 /* 	border-radius: 5px; */
 /* } */
 
-html, body {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
 </style>
+</head>
+<body>
+<article>
 <div class="map_wrap">
 
 	<div id="map"
-		style="width: 1500px; height: 825px; position: relative; overflow: hidden;"></div>
+		style="width: 100%; height: 180%; position:relative; overflow: hidden;"></div>
 
 		<div id="menu_wrap" class="bg_white">
 			<div class="option">
@@ -89,10 +88,8 @@ html, body {
 		</div>
 	</div>
 
+</article>
 
-<head>
-<script type="test/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-</head>
 
 
 <script>
@@ -624,28 +621,41 @@ function getSafetyArr(select,map){
 	}
 
 function getiwContent(count,value){//인포 윈도우 얻어오기
-    return  '<div class="wrap">' + 
-		     '    <div class="info">' + 
-		     '        <div class="title">' + 
-		     			value["kindername"] + 
-		     '        </div>' + 
-		     '        <div class="body">' + 
-		     '            <div class="img">' +
-		     '                <img src="resources/images/baby.png" width="73" height="70">' +
-		     '           </div>' + 
-		     '            <div class="desc">' + 
-		     '				<p style="font-family: Hanna; color:black; text-align:center;">'+value["telno"]+'</p>'+
-			 '				<a style="font-family: Hanna; color:blue; text-align:center;" href='+value["hpaddr"]+'/>'+value["hpaddr"]+'<br/>'+
-			 '				<a style="font-family: Hanna; text-align:center;" href="detail.do?kindername='+value["kindername"]+'&kinderinfoId='+value["kinderinfoId"]+'&subofficeedu='+value["subofficeedu"]+'"/>'+'>>>상세보기'+
-		     '            </div>' + 
-		     '        </div>' + 
-		     '    </div>' +    
-		     '</div>';
+	
+	var tag = '<div class="wrap">' + 
+    '    <div class="info">' + 
+    '        <div class="title">' + 
+    			value["kindername"] + 
+    '        </div>' + 
+    '        <div class="body">' + 
+    '            <div class="img">' +
+    '                <img src="resources/images/baby.png" width="73" height="70">' +
+    '           </div>' + 
+    '            <div class="desc">' + 
+    '				<p style="font-family: Hanna; color:black; text-align:center;">'+value["telno"]+'</p>';
+	
+      if(value["hpaddr"]==null){
+    	  tag += '				<a style="font-family: Hanna; color:blue; text-align:center;"/>홈페이지가 없어요<br/>';
+      }
+      else{
+    	  tag += '				<a style="font-family: Hanna; color:blue; text-align:center;" href='+value["hpaddr"]+'/>'+value["hpaddr"]+'<br/>'
+      }
+      
+      tag +='				<a style="font-family: Hanna; text-align:center;" href="detail.do?kindername='+value["kindername"]+'&kinderinfoId='+value["kinderinfoId"]+'&subofficeedu='+value["subofficeedu"]+'"/>'+'>>>상세보기'+
+	     '            </div>' + 
+	     '        </div>' + 
+	     '    </div>' +    
+	     '</div>';
+		     
+	
+	     return tag;
     
            }
+           
 //**********************************************************************************
 
 
 </script>
+</body>
 <!-- 	<script src="./resources/assets/js/index_modules/getCategory.js" charset="UTF-8"></script> -->
 	<script src="./resources/assets/js/index_modules/search_map.js" charset="UTF-8"></script>

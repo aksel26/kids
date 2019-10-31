@@ -1,5 +1,5 @@
-var w = 500,
-	h = 500;
+var w = 600,
+	h = 600;
 
 var colorscale = d3.scale.category10();
 
@@ -70,7 +70,7 @@ var legend = svg.append("g")
 	  .data(LegendOptions)
 	  .enter()
 	  .append("rect")
-	  .attr("x", w - 65)
+	  .attr("x", w-110)
 	  .attr("y", function(d, i){ return i * 20;})
 	  .attr("width", 10)
 	  .attr("height", 10)
@@ -81,9 +81,10 @@ var legend = svg.append("g")
 	  .data(LegendOptions)
 	  .enter()
 	  .append("text")
-	  .attr("x", w - 52)
-	  .attr("y", function(d, i){ return i * 20 + 9;})
-	  .attr("font-size", "11px")
+	  .attr("x", w - 96)
+	  .attr("y", function(d, i){ return i * 20 +11;})
+	  .attr("font-size", "15px") //평균-유치원값 글자 폰
+	  .style("font-family", "Hanna")
 	  .attr("fill", "#737373")
 	  .text(function(d) { return d; })
 	  ;	

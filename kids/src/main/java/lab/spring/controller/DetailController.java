@@ -34,15 +34,16 @@ public class DetailController {
 		
 			ModelAndView mav = new ModelAndView();
 			KinderInfoVO vo = new KinderInfoVO();
+			KinderInfoVO vo2 = new KinderInfoVO();
 			
 			List<KinderInfoVO> ranklist = null;
 			ranklist = service.getRank();
 			
 			vo=service.getBadkinder(kindername, subofficeedu);
-			
+			vo2=service.getBadkinder(kindername, subofficeedu);
 		
 			vo=XO(vo);
-			
+
 			ScoreVO score = service.getScore(kinderid);
 			
 			if(score == null) {
@@ -56,7 +57,6 @@ public class DetailController {
 				score.setScore2(score.getScore2()*10/3*10/12);
 				score.setScore3(score.getScore3()*10/1*10/12);
 			}
-			
 			
 			
 			try {
@@ -85,6 +85,7 @@ public class DetailController {
 				mav.addObject("kindername", kindername);
 				mav.addObject("kinderinfoId", kinderid);
 				mav.addObject("badkinder", vo);
+				mav.addObject("badDetail", vo2);
 				mav.setViewName("detail");
 				return mav;
 			}
@@ -179,5 +180,11 @@ public class DetailController {
 		
 		return vo;
 	}
+
 }
+
+
+
+	
+
 

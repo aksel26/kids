@@ -39,10 +39,10 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 		List<KinderInfoVO> ranklist = null;
 
-
 		Document doc = Jsoup.connect("https://www.ipipipip.net/index.php?ln=ko").get();
 		Elements item = doc.select(".yourip span");
 		String ip = item.text();
+
 		
 		mav.addObject("ip",ip);
 		
