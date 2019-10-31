@@ -10,6 +10,7 @@ import lab.spring.model.EnvironVO;
 import lab.spring.model.KinderInfoVO;
 import lab.spring.model.SafetyVO;
 import lab.spring.model.SanitaryVO;
+import lab.spring.model.ScoreVO;
 import lab.spring.model.UserVO;
 
 
@@ -32,5 +33,7 @@ public interface MapService {
 	public List<EnvironVO> getEnvironList(HashMap<String, String> env_arr);
 	public List<KinderInfoVO> getRank();
 	public KinderInfoVO getBadkinder(String kindername, String subofficeedu);
+	
+	public ScoreVO getScore(String kdid);
 
 }

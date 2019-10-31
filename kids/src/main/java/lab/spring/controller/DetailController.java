@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import lab.spring.model.KinderInfoVO;
+import lab.spring.model.ScoreVO;
 import lab.spring.service.MapService;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.rosuda.REngine.*;
 import org.rosuda.REngine.Rserve.*;
 
@@ -23,11 +25,12 @@ public class DetailController {
 		@Autowired
 		MapService service;
 		
+		@SuppressWarnings("finally")
 		@RequestMapping(value="/detail.do", method = RequestMethod.GET)
 		public ModelAndView detail(@RequestParam(value= "kindername") String kindername,
 									@RequestParam(value= "kinderinfoId") String kinderid,
 									@RequestParam(value="subofficeedu") String subofficeedu,
-									HttpServletRequest request) throws RserveException, REXPMismatchException {
+									HttpServletRequest request) {
 		
 			ModelAndView mav = new ModelAndView();
 			KinderInfoVO vo = new KinderInfoVO();
@@ -40,20 +43,57 @@ public class DetailController {
 			vo2=service.getBadkinder(kindername, subofficeedu);
 		
 			vo=XO(vo);
+
+			ScoreVO score = service.getScore(kinderid);
 			
-			mav.addObject("rankSet",ranklist);
-	
-			mav.addObject("badDetail", vo2);
-			mav.addObject("badkinder", vo);
+			if(score == null) {
+				score = new ScoreVO();
+				score.setScore1(0);
+				score.setScore2(0);
+				score.setScore3(0);
+			}
+			else {
+				score.setScore1(score.getScore1()*10/6*10/12);
+				score.setScore2(score.getScore2()*10/3*10/12);
+				score.setScore3(score.getScore3()*10/1*10/12);
+			}
 			
-			mav.setViewName("detail");
 			
-			return mav;
+			try {
+				RConnection r = new RConnection();
+		        REXP x = null;
+				r.eval("try(jpeg('test.png', quality=100))");
+		    	String po = "kdid <- \""+kinderid+"\"";
+		    	r.eval(po);
+		    	r.eval("source('F:/Rworkspace/R1day/commentanalysis.R')");
+		    	r.eval("wordcloudp(sentence)");
+		    	r.eval("graphics.off()");
+		    	x=r.eval("r=readBin('test.png','raw',1024*1024);unlink('test.png');r");
 				
+		    	String base64Encoded = new String(Base64.encodeBase64(x.asBytes()),"UTF-8");
+		    	
+				mav.addObject("image",base64Encoded);
+
+			}
+			catch(Exception e) {
+				System.out.println(e.getMessage());
+				mav.addObject("image",1);
+			}
+			finally {
+				mav.addObject("score",score);
+				mav.addObject("rankSet",ranklist);
+				mav.addObject("kindername", kindername);
+				mav.addObject("kinderinfoId", kinderid);
+				mav.addObject("badkinder", vo);
+				mav.addObject("badDetail", vo2);
+				mav.setViewName("detail");
+				return mav;
+			}
+			
 		}
 		
 	public KinderInfoVO XO(KinderInfoVO vo) {
-		ArrayList<Integer> total = new ArrayList(); 
+		ArrayList<Integer> total = new ArrayList<Integer>(); 
 		int cnt=0;
 		String image1="resources/images/red.png";
 		String image2="resources/images/orange.png";
@@ -140,21 +180,25 @@ public class DetailController {
 		
 		return vo;
 	}
-	public byte[] getCloud() throws RserveException, REXPMismatchException {
+	public byte[] getCloud(String kdid) throws RserveException, REXPMismatchException {
 		RConnection r = new RConnection();
         REXP x = null;
         System.out.println("성");
     	
     	r.eval("try(jpeg('test.jpg', quality=100))");
-    	System.out.println("성");
-    	r.eval("kdid <- \"KN033\"");
-    	System.out.println("성");
-    	r.eval("source('/Users/minji/kids/Rfile/commentanalysis.R')");
-    	System.out.println("성");
-    	r.eval("wordcloudp(sentence)");
+
+    	String po = "kdid <- \""+kdid+"\"";
+    	r.eval(po);
+    	r.eval("source('F:/Rworkspace/R1day/commentanalysis.R')");
+    	r.eval("wordcloudp(sentence,rs_comment_pra)");
     	r.eval("graphics.off()");
-    	x=r.eval("r=readBin('test.jpg','raw',1024*1024);unlink('test.jpg');r");
-		System.out.println("성");
+    	x=r.eval("r=readBin('test.jpg','raw',512*512);unlink('test.jpg');r");
+		
+    	if(x==null) {
+    		String popo="fail";
+    		return popo.getBytes();
+    	}
+
     	return x.asBytes();
 	}
 	

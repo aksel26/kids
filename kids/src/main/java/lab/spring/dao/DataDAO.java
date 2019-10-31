@@ -23,7 +23,7 @@ import lab.spring.model.KinderInfoVO;
 import lab.spring.model.MealVO;
 import lab.spring.model.SafetyVO;
 import lab.spring.model.SanitaryVO;
-
+import lab.spring.model.ScoreVO;
 import lab.spring.model.CommentVO;
 import lab.spring.model.KinderInfoVO;
 import lab.spring.model.MealVO;
@@ -115,6 +115,9 @@ public class DataDAO {
 		hm.put("subofficeedu", subofficeedu);
 		
 		return sqlSession.selectOne("lab.mybatis.user.UserMapper.getBadkinder", hm);
+	}
 	
+	public ScoreVO getScore(String kdid) {
+		return sqlSession.selectOne("lab.mybatis.user.UserMapper.getScore",kdid);
 	}
 }

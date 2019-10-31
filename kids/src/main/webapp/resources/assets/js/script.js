@@ -1,23 +1,27 @@
-var w = 400,
-	h = 400;
+var w = 500,
+	h = 500;
 
 var colorscale = d3.scale.category10();
 
 //Legend titles
-var LegendOptions = ['평균','세명유치원'];
+
+
+var LegendOptions = ['평균',lo];
+
+
 
 //Data
 var d = [
 		  [
-			{axis:"안전",value:0.20},
-			{axis:"시설",value:0.25},
-			{axis:"위생",value:0.32}
+			{axis:"안전",value:0.73},
+			{axis:"시설",value:0.69},
+			{axis:"위생",value:0.77}
 		  ]
 		  ,
 		  [
-			{axis:"안전",value:0.35},
-			{axis:"시설",value:0.40},
-			{axis:"위생",value:0.42}
+			{axis:"안전",value:score1/100},
+			{axis:"시설",value:score2/100},
+			{axis:"위생",value:score3/100}
 		  ]
 		];
 
@@ -25,8 +29,8 @@ var d = [
 var mycfg = {
   w: w,
   h: h,
-  maxValue: 0.6,
-  levels: 6,
+  maxValue: 1.0,
+  levels: 10,
   ExtraWidthX: 300
 }
 
