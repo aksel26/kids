@@ -201,11 +201,6 @@ public class DetailController {
 
     	return x.asBytes();
 	}
-	
-	public static void main(String[] args) throws REXPMismatchException, REngineException {
-		DetailController rs = new DetailController();
-	      System.out.println(rs.getCloud());
-	      
-	   }
+
 	}
 
