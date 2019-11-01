@@ -85,7 +85,7 @@
 	margin-left: 50px;
 }
 #review {
-width:700px;
+width:600px;
 }
 #review tr{
 margin-bottom: 30px;

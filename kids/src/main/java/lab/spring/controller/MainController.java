@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -24,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import lab.spring.model.CommentVO;
 import lab.spring.model.KinderInfoVO;
+import lab.spring.model.UserVO;
 import lab.spring.service.MapService;
 
 
@@ -35,19 +37,22 @@ public class MainController {
 	MapService service;
 	
 	@RequestMapping(value="/index.do", method = RequestMethod.GET)
-	public ModelAndView sayHello(HttpServletRequest request) throws IOException {
+	public ModelAndView sayHello(HttpServletRequest request,HttpSession session) throws IOException {
 		ModelAndView mav = new ModelAndView();
 		List<KinderInfoVO> ranklist = null;
+		UserVO vo = new UserVO();
 
 		Document doc = Jsoup.connect("https://www.ipipipip.net/index.php?ln=ko").get();
 		Elements item = doc.select(".yourip span");
 		String ip = item.text();
+		if(session.getAttribute("rankflag")==null || session.getAttribute("rankflag").toString().length() <= 1) {
+			session.setAttribute("rankflag", "0");
+		}
 
-		
 		mav.addObject("ip",ip);
 		
 		
-		ranklist = service.getRank();
+		ranklist = service.getRank(session.getAttribute("rankflag").toString());
 		mav.addObject("rankSet",ranklist);
 
 		mav.setViewName("index");

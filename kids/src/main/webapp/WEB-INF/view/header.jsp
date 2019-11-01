@@ -35,11 +35,7 @@
    <div id="right-panel" class="   ">
       <!--   왼쪽 메뉴 접는 버튼   -->
       <header id="header" class="header" style="width: 1400px;">
-      
-
-         <div id="col-sm-7" class="col-sm-7" width="10%">
-            <a id="menuToggle" class="menutoggle pull-left"></a>
-         </div>
+  
 
          <div id="LOL" align="right"
             style="width: 85%; width:1400px; font-family: hanna; word-spacing: 13px;">

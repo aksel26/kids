@@ -53,7 +53,7 @@
 		<nav class="navbar navbar-expand-sm navbar-default">
 			<div id="main-menu" class="main-menu collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#" onclick=getSafetyArr(2,map);>
+					<li class="active"><a href="#" onclick=getSafetyArr(2,map)>
 							<img id="title_img" alt="엄마의 지도" src="resources/images/title.png"
 							 width ="130%" height="130%">
 					</a> <!-- Left Panel -->
@@ -64,7 +64,7 @@
 			</div>
 		</nav>
 	</aside>
-
+	
 	<%@ include file="./header.jsp"%>
 
 	<!--  map -->

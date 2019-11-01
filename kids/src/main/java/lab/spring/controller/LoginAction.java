@@ -49,7 +49,7 @@ public class LoginAction {
       if(vo!=null) {
          PrintWriter out = response.getWriter();
          session.setAttribute("authInfo", vo);
-         
+         session.setAttribute("rankflag", vo.getLocation());
          mav.setViewName("redirect:index.do");         
       }
       

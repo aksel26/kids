@@ -105,8 +105,90 @@ public class DataDAO {
 
 	}
 	
-	public List<KinderInfoVO> getRank(){
-		return sqlSession.selectList("lab.mybatis.user.UserMapper.getRank");
+	public List<KinderInfoVO> getRank(String flag){
+		HashMap<String, String> hm = new HashMap<>();
+		if(flag.equals("0")) {
+			hm.put("flag", null);
+		}else if(flag.equals("영등포구")) {
+		flag="YD%";
+		hm.put("flag", flag);
+		}
+		else if(flag.equals("종로구")) {
+			flag="CR%";
+			hm.put("flag", flag);
+		}else if(flag.equals("중구")) {
+			flag="JG%";
+			hm.put("flag", flag);
+		}else if(flag.equals("용산구")) {
+			flag="YS%";
+			hm.put("flag", flag);
+		}else if(flag.equals("성동구")) {
+			flag="SD%";
+			hm.put("flag", flag);
+		}else if(flag.equals("광진구")) {
+			flag="KJ%";
+			hm.put("flag", flag);
+		}else if(flag.equals("동대문구")) {
+			flag="DM%";
+			hm.put("flag", flag);
+		}else if(flag.equals("중랑구")) {
+			flag="JR%";
+			hm.put("flag", flag);
+		}else if(flag.equals("성북구")) {
+			flag="SB%";
+			hm.put("flag", flag);
+		}else if(flag.equals("강북구")) {
+			flag="KB%";
+			hm.put("flag", flag);
+		}else if(flag.equals("도봉구")) {
+			flag="DB%";
+			hm.put("flag", flag);
+		}else if(flag.equals("노원구")) {
+			flag="NW%";
+			hm.put("flag", flag);
+		}else if(flag.equals("은평구")) {
+			flag="YP%";
+			hm.put("flag", flag);
+		}else if(flag.equals("서대문구")) {
+			flag="SM%";
+			hm.put("flag", flag);
+		}else if(flag.equals("마포구")) {
+			flag="MP%";
+			hm.put("flag", flag);
+		}else if(flag.equals("양천구")) {
+			flag="YC%";
+			hm.put("flag", flag);
+		}else if(flag.equals("강서구")) {
+			flag="KS%";
+			hm.put("flag", flag);
+		}else if(flag.equals("구로구")) {
+			flag="KR%";
+			hm.put("flag", flag);
+		}else if(flag.equals("금천구")) {
+			flag="KC%";
+			hm.put("flag", flag);
+		}else if(flag.equals("동작구")) {
+			flag="DJ%";
+			hm.put("flag", flag);
+		}else if(flag.equals("관악구")) {
+			flag="KW%";
+			hm.put("flag", flag);
+		}else if(flag.equals("서초구")) {
+			flag="SC%";
+			hm.put("flag", flag);
+		}else if(flag.equals("강남구")) {
+			flag="KN%";
+			hm.put("flag", flag);
+		}else if(flag.equals("송파구")) {
+			flag="SP%";
+			hm.put("flag", flag);
+		}else if(flag.equals("강동구")) {
+			flag="KD%";
+			hm.put("flag", flag);
+		}
+	
+		return sqlSession.selectList("lab.mybatis.user.UserMapper.getRank", hm);
+		
 	}
 	
 	public KinderInfoVO getBadkinder(String kindername, String subofficeedu){
