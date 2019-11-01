@@ -113,6 +113,7 @@
  	VALUES ( #{userid} , #{username} , #{userpwd} ,#{email} , #{location},#{POINT_X},#{POINT_Y}) 
  </insert>
 
+
 <update id="updateUser" parameterType="lab.spring.model.UserVO"> UPDATE userinfo SET username = #{username} , userpwd = #{userpwd} , EMAIL = #{email} WHERE userid = #{userid} </update>
 
 
@@ -222,12 +223,15 @@
 	</select>
 	
 	<select id="getRank"
-	resultType="lab.spring.model.KinderInfoVO">
+	resultType="lab.spring.model.KinderInfoVO" parameterType="string">
 
 		SELECT kinderinfoId, kindername, subofficeedu, nvl(total,0),
 		ROW_NUMBER() OVER (ORDER BY nvl(to_number(total),0) desc) AS RANK
 		FROM kinderinfo
 		where ROWNUM &lt;= 10
+		<if test="flag != null">
+		and kinderinfoid like #{flag}
+		</if>
 	</select>
 	
 	<select id="getBadkinder" resultType="lab.spring.model.KinderInfoVO" parameterType="hashmap">

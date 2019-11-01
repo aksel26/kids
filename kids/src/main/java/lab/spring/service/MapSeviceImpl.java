@@ -73,8 +73,8 @@ public class MapSeviceImpl implements MapService{
 		return dao.getEnvironList(env_arr);
 	}
 	
-	public List<KinderInfoVO> getRank(){
-		return dao.getRank();
+	public List<KinderInfoVO> getRank(String flag){
+		return dao.getRank(flag);
 	}
 
 	public KinderInfoVO getBadkinder(String kindername, String subofficeedu) {

@@ -3,6 +3,7 @@ package lab.spring.controller;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,14 +31,14 @@ public class DetailController {
 		public ModelAndView detail(@RequestParam(value= "kindername") String kindername,
 									@RequestParam(value= "kinderinfoId") String kinderid,
 									@RequestParam(value="subofficeedu") String subofficeedu,
-									HttpServletRequest request) {
+									HttpServletRequest request, HttpSession session) {
 		
 			ModelAndView mav = new ModelAndView();
 			KinderInfoVO vo = new KinderInfoVO();
 			KinderInfoVO vo2 = new KinderInfoVO();
 			
 			List<KinderInfoVO> ranklist = null;
-			ranklist = service.getRank();
+			ranklist = service.getRank(session.getAttribute("rankflag").toString());
 			
 			vo=service.getBadkinder(kindername, subofficeedu);
 			vo2=service.getBadkinder(kindername, subofficeedu);
@@ -102,7 +103,7 @@ public class DetailController {
 		
 		
 		if(vo.getBad_oper() == null) {
-			vo.setBad_oper("X");
+			vo.setBad_oper("양호");
 		}else {
 			vo.setBad_oper("O");
 			cnt++;
@@ -110,7 +111,7 @@ public class DetailController {
 		}
 		
 		if(vo.getBad_program() == null) {
-			vo.setBad_program("X");
+			vo.setBad_program("양호");
 		}else {
 			vo.setBad_program("O");
 			cnt++;
@@ -118,7 +119,7 @@ public class DetailController {
 		}
 		
 		if(vo.getBad_meal() == null) {
-			vo.setBad_meal("X");
+			vo.setBad_meal("양호");
 		}else {
 			vo.setBad_meal("O");
 			cnt++;
@@ -126,7 +127,7 @@ public class DetailController {
 		}
 		
 		if(vo.getBad_care() == null) {
-			vo.setBad_care("X");
+			vo.setBad_care("양호");
 		}else {
 			vo.setBad_care("O");
 			cnt++;
@@ -134,7 +135,7 @@ public class DetailController {
 		}
 		
 		if(vo.getBad_emp() == null) {
-			vo.setBad_emp("X");
+			vo.setBad_emp("양호");
 		}else {
 			vo.setBad_emp("O");
 			cnt++;
@@ -142,7 +143,7 @@ public class DetailController {
 		}
 		
 		if(vo.getBad_tax() == null) {
-			vo.setBad_tax("X");
+			vo.setBad_tax("양호");
 		}else {
 			vo.setBad_tax("O");
 			cnt++;
@@ -150,7 +151,7 @@ public class DetailController {
 		}
 		
 		if(vo.getBad_build() == null) {
-			vo.setBad_build("X");
+			vo.setBad_build("양호");
 		}else {
 			vo.setBad_build("O");
 			cnt++;
@@ -158,7 +159,7 @@ public class DetailController {
 		}
 		
 		if(vo.getBad_money() == null) {
-			vo.setBad_money("X");
+			vo.setBad_money("양호");
 		}else {
 			vo.setBad_money("O");
 			cnt++;

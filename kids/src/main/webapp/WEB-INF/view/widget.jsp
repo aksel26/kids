@@ -175,7 +175,7 @@ display: inline-block;
         
         
    
-            <h3 class="menu-title">유치원 순위</h3>
+            <h3 class="menu-title" style="font-size:19px"><a style="color:#ff0066;">우리동네</a> 유치원 순위</h3>
             <!-- /.menu-title -->
  
          <form action="/action_page.php">
