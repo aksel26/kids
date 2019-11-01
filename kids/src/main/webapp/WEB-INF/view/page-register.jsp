@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ page import="lab.spring.dao.UserDAOImpl" %>
+
 <!doctype html>
 <script type="text/javascript"></script>
 
@@ -18,17 +19,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <link
-   href="https://fonts.googleapis.com/css?family=Gaegu:700&display=swap"
-   rel="stylesheet">
-<link rel="stylesheet" href="resources/assets/css/style2.css">
+	href="https://fonts.googleapis.com/css?family=Gaegu:700&display=swap"
+	rel="stylesheet">
+<!-- <link rel="stylesheet" href="resources/assets/css/style2.css"> -->
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+</style>
 <link rel="stylesheet" href="resources/assets/css/materialize.css">
 
 <link
-   href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800'
-   rel='stylesheet' type='text/css'>
+	href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800'
+	rel='stylesheet' type='text/css'>
 <link
-   href="https://fonts.googleapis.com/css?family=Single+Day&display=swap"
-   rel="stylesheet">
+	href="https://fonts.googleapis.com/css?family=Single+Day&display=swap"
+	rel="stylesheet">
 </head>     
 
 
@@ -41,24 +45,24 @@
  
   if(!document.getElementById("username").value){ 
   
-     sweetAlert("Oops...", "이름을 입력해주세요!", "error"); return false; } 
+	  sweetAlert("Oops...", "이름을 입력해주세요!", "error"); return false; } 
   
   
   if(!document.getElementById("userid").value){
   
-     sweetAlert("Oops...", "ID를 입력해주세요!", "error"); return false; }
+	  sweetAlert("Oops...", "ID를 입력해주세요!", "error"); return false; }
   
   if(!document.getElementById("userpwd").value){
-     
-     sweetAlert("Oops...", "비밀번호를 입력해주세요!", "error"); return false; } 
+	  
+	  sweetAlert("Oops...", "비밀번호를 입력해주세요!", "error"); return false; } 
   
   if(!document.getElementById("email").value){
-     
-     sweetAlert("Oops...", "email을 입력해주세요!", "error"); return false; }
+	  
+	  sweetAlert("Oops...", "email을 입력해주세요!", "error"); return false; }
   
   if(!document.getElementById("location").value){
-     
-     sweetAlert("Oops...", "지역을 입력해주세요!", "error"); return false; } 
+	  
+	  sweetAlert("Oops...", "지역을 입력해주세요!", "error"); return false; } 
   
    
    
@@ -73,15 +77,15 @@
 <!--  //#########################  ID 확인    ############################# -->
  
 <!-- //  function openConfirmID(inputid){ -->
-    
-<!-- //     if(document.getElementById("userid").value==""){ -->
-       
-<!-- //        alert("아이디를 입력하세요") -->
-<!-- //        return; -->
-<!-- //     } -->
-    
-<!-- //     url="confirmid2.jsp?id="+document.getElementById("userid").value -->
-<!-- //     window.open(url,"confirm","toolbar=no, location=no, status=no, menubar=no, scrollbar=no, resizable=no, width=30, height=180"); -->
+	 
+<!-- // 	 if(document.getElementById("userid").value==""){ -->
+		 
+<!-- // 		 alert("아이디를 입력하세요") -->
+<!-- // 		 return; -->
+<!-- // 	 } -->
+	 
+<!-- // 	 url="confirmid2.jsp?id="+document.getElementById("userid").value -->
+<!-- // 	 window.open(url,"confirm","toolbar=no, location=no, status=no, menubar=no, scrollbar=no, resizable=no, width=30, height=180"); -->
 <!-- //  } -->
 
  
@@ -91,71 +95,71 @@
 console.log($('#userid'))
 $(document).ready(function(){
 
-   $("#userid").blur(function() {
-      console.log($('#userid'))
-      // id = "id_reg" / name = "userId"
-      var user_id = $('#userid').val();
-      console.log(user_id)
-      
-      $.ajax({
-         url : '${pageContext.request.contextPath}/idCheck.do?userId='+ user_id,
-               
-         type : 'get',
-         
-         success : function(data) {
-            console.log("1 = 중복o / 0 = 중복x : "+ data);                     
-            
-            if (data == 1) {
-                  // 1 : 아이디가 중복되는 문구
-                  $("#id_check").text("사용중인 아이디입니다 :p");
-                  $("#id_check").css("color", "red");
-                  $("#id_check").css("text-align", "center");
-                  $("#reg_submit").attr("disabled", true);
-               } else if(data==0) {
-                  if(user_id==""){
-                     $("#id_check").text("아이디를 입력하세요:p");
-                     $("#id_check").css("color", "red");
-                     $("#id_check").css("text-align", "center");
-                     $("#reg_submit").attr("disabled", true);
-                     
-                  }else{
-                     
-                     $("#id_check").text("사용가능한 아이디입니다 :p");
-                     $("#id_check").css("color", "blue");
-                     $("#id_check").css("text-align", "center");
-                     $("#reg_submit").attr("disabled", false);   
-                  }
-                  
-               }
-   
-            }, error : function() {
-                  console.log("실패");
-            }
-         });
-      });
+	$("#userid").blur(function() {
+		console.log($('#userid'))
+		// id = "id_reg" / name = "userId"
+		var user_id = $('#userid').val();
+		console.log(user_id)
+		
+		$.ajax({
+			url : '${pageContext.request.contextPath}/idCheck.do?userId='+ user_id,
+					
+			type : 'get',
+			
+			success : function(data) {
+				console.log("1 = 중복o / 0 = 중복x : "+ data);							
+				
+				if (data == 1) {
+						// 1 : 아이디가 중복되는 문구
+						$("#id_check").text("사용중인 아이디입니다 :p");
+						$("#id_check").css("color", "red");
+						$("#id_check").css("text-align", "center");
+						$("#reg_submit").attr("disabled", true);
+					} else if(data==0) {
+						if(user_id==""){
+							$("#id_check").text("아이디를 입력하세요:p");
+							$("#id_check").css("color", "red");
+							$("#id_check").css("text-align", "center");
+							$("#reg_submit").attr("disabled", true);
+							
+						}else{
+							
+							$("#id_check").text("사용가능한 아이디입니다 :p");
+							$("#id_check").css("color", "blue");
+							$("#id_check").css("text-align", "center");
+							$("#reg_submit").attr("disabled", false);	
+						}
+						
+					}
+	
+				}, error : function() {
+						console.log("실패");
+				}
+			});
+		});
 
 });
 
 $(function(){
 
-   //비밀번호 확인
-      $('#password_a').blur(function(){
-         if($('#userpwd').val() != $('#password_a').val()){
-             if($('#password_a').val()!=''){
-                $("#pwd_check").css("color", "red");
-               $("#pwd_check").css("text-align", "center");
-               $("#pwd_check").text("비밀번호가 일치하지 않습니다. :p");
-               $("#reg_submit").attr("disabled", true);
-                 $('#password_a').val('');
-                $('#password_a').focus();
-             }
-          }
-          else{
-             $("#reg_submit").attr("disabled", false);
-            $("#pwd_check").text("");
-          }
-      })        
-   });
+	//비밀번호 확인
+		$('#password_a').blur(function(){
+		   if($('#userpwd').val() != $('#password_a').val()){
+		    	if($('#password_a').val()!=''){
+		    		$("#pwd_check").css("color", "red");
+					$("#pwd_check").css("text-align", "center");
+					$("#pwd_check").text("비밀번호가 일치하지 않습니다. :p");
+					$("#reg_submit").attr("disabled", true);
+		    	    $('#password_a').val('');
+		          $('#password_a').focus();
+		       }
+		    }
+ 		   else{
+ 			   $("#reg_submit").attr("disabled", false);
+ 			  $("#pwd_check").text("");
+ 		   }
+		})  	   
+	});
 
 
 
@@ -166,9 +170,9 @@ $(document).ready(function(){
  
 
 
-   
+	
 </script>
-   
+	
 
  
  
@@ -179,14 +183,14 @@ $(document).ready(function(){
             
 <style>
 body{
-   display: table-cell;
-   vertical-align: middle;
-/*      background-color: #e0f2f1 !imsportant;  */
+	display: table-cell;
+	vertical-align: middle;
+/*   	background-color: #e0f2f1 !imsportant;  */
 background-image: url('resources/images/children.jpg');
  min-height: 50%;
     background-position: center;
     background-size: cover;
-   
+	
 }
 
 html {
@@ -275,8 +279,8 @@ html, body {
           <input id="userid" name="userid" type="text"/>
           <label for="userid">아이디</label>
           <div class="check_font" id="id_check"></div>
-             
-<!--                 <input type="button" name="confirm_id" value="중복확인" Onclick="openConfirmID(this.form)"/> -->
+          	
+<!--           		<input type="button" name="confirm_id" value="중복확인" Onclick="openConfirmID(this.form)"/> -->
         </div>
       </div>
 
@@ -308,7 +312,7 @@ html, body {
           <i class="material-icons prefix">vpn_key</i>
           <input id="password_a" name="cpassword" type="password" />
 <!--           <div class="check_font" id="pw_check"></div> -->
-         <label for="password_a">Password</label>
+			<label for="password_a">Password</label>
         </div>
       </div>
       
@@ -317,38 +321,16 @@ html, body {
           <!-- <i class="mdi-social-person-outline prefix"></i> -->
           <i class="material-icons prefix">map</i>
 <!--           <input id="location" name="location" type="text"/> -->
-            <select id="location" name="location" type="text">
-            <option value="" disabled selected>지역선택</option>
-            <option value="광진구">광진구</option>
-            <option value="서초구">서초구</option>
-            <option value="동작구">동작구</option>
-            <option value="양천구">양천구</option>
-            <option value="용산구">용산구</option>
-            <option value="서대문구">서대문구</option>
-            <option value="관악구">관악구</option>
-            <option value="강북구">강북구</option>
-            <option value="성북구">성북구</option>
-            <option value="중랑구">중랑구</option>
-            <option value="강남구">강남구</option>
-            <option value="영등포구">영등포구</option>
-            <option value="종로구">종로구</option>
-            <option value="강서구">강서구</option>
-            <option value="강동구">강동구</option>
-            <option value="성동구">성동구</option>
-            <option value="도봉구">도봉구</option>
-            <option value="구로구">구로구</option>
-            <option value="노원구">노원구</option>
-            <option value="마포구">마포구</option>
-            <option value="송파구">송파구</option>
-            <option value="동대문구">동대문구</option>
-           </select>
-           
-           
-           
-           
-           
-           
-             <label>지역선택</label>
+	         <select id="location" name="location" type="text">
+		      <option value="" disabled selected>지역선택</option>
+		      <option value="강남구">강남구</option>
+		      <option value="강서구">강서구</option>
+		      <option value="강동구">강동구</option>
+		      <option value="강북구">강북구</option>
+		      <option value="관악구">관악구</option>
+		      <option value="노원구">노원구</option>
+	 		 </select>
+   			 <label>지역선택</label>
         </div>
       </div>
 
