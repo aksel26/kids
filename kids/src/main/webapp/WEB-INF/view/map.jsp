@@ -185,53 +185,25 @@ function ip_result(){
 			geoData = JSON.parse(this.responseText);
 			default_x=geoData.lat;
 			default_y=geoData.lon;
-			
-			console.log("1");
 			}
-		
 	};
 }
 
 $(document).ready(function(){
+	if("${authInfo.userid}"==""){
+		ip_result();
+	}
+	else{
+		default_x="${authInfo.POINT_X}";
+		default_y="${authInfo.POINT_Y}";
+	}
 	
-	ip_result();
-
 	setTimeout(()=>{
-		default_setting();	
-		getSafetyArr(1,map);
+		default_setting();
+		getSafetyArr(1,map);	
 		
 	}, 1000);	
 });
-
-// function addComment(n){
-//    if(${authInfo eq null}){
-//       alert("로그인이 필요한 기능입니다.");   
-//    }
-//    else{
-//       var contents = $('#contents').val();
-//       var kdid = IDList[n];
-      
-      
-//    $.ajax({
-//       url:"addCommnet.do",
-//       method:"GET",
-//       async:false,
-//       traditional : true,
-//       data:{
-//          'kdid':kdid,
-//          'contents':contents
-//       },
-//       success:function(data){
-         
-//          reviewFunction(n);
-//          },
-//           error:function(request,status,error){
-//               alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-//           }
-//    });
-   
-//    }
-// }
 
 function reviewFunction(n){   //리뷰
    SearchID(IDList[n],n)
@@ -241,7 +213,6 @@ function scoreFunction(n){   //점수
    var C1 = document.getElementById("clean")
    C1.innerHTML=NameList[n]
 }
-
 
 //인포윈도우를 표시하는 클로저를 만드는 함수입니다 
 function makeOverListener(map, marker, infowindow) { 

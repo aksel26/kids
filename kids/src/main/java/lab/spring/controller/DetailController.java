@@ -46,7 +46,6 @@ public class DetailController {
 			vo=XO(vo);
 
 			ScoreVO score = service.getScore(kinderid);
-			
 			if(score == null) {
 				score = new ScoreVO();
 				score.setScore1(0);
@@ -58,18 +57,22 @@ public class DetailController {
 				score.setScore2(score.getScore2()*10/3*10/12);
 				score.setScore3(score.getScore3()*10/1*10/12);
 			}
-			
-			
 			try {
 				RConnection r = new RConnection();
 		        REXP x = null;
-				r.eval("try(jpeg('test.png', quality=100))");
+		        System.out.println(kinderid);
+				r.eval("try(jpeg('test.jpg', quality=100))");
 		    	String po = "kdid <- \""+kinderid+"\"";
 		    	r.eval(po);
-		    	r.eval("source(/Users/minji/kids/Rfile/commentanalysis.R')");
+
+//		    	r.eval("source(/Users/minji/kids/Rfile/commentanalysis.R')");
+
+		    	r.eval("setwd(\"F:/Rworkspace/R1day\")");
+		    	r.eval("source('F:/Rworkspace/R1day/commentanalysis.R')");
 		    	r.eval("wordcloudp(sentence)");
 		    	r.eval("graphics.off()");
-		    	x=r.eval("r=readBin('test.png','raw',1024*1024);unlink('test.png');r");
+		    	x=r.eval("r=readBin('test.jpg','raw',1024*1024);unlink('test.jpg');r");
+		    	
 				
 		    	String base64Encoded = new String(Base64.encodeBase64(x.asBytes()),"UTF-8");
 		    	
@@ -181,64 +184,56 @@ public class DetailController {
 		
 		return vo;
 	}
-//	public byte[] getCloud() throws REXPMismatchException {
-//	      
-//	      REXP x = null;
-//	      String kinderid = "KN028";
-//	      
-//	      try {
-//	         System.out.println("-1");
-//	         RConnection r = new RConnection();
-//	         System.out.println("0");
-//	           
-//	           System.out.println(kinderid);
-//	         r.eval("try(jpeg('test.jpg', quality=100))");
-//
-//	         //r.eval("require(KoNLP)");
-//	         //r.eval("require(rJava)");
-//	         //r.eval("require(devtools)");
-//	         //r.eval("require(wordcloud)");
-//	         //r.eval("require(webshot)");
-//	         //r.eval("library(htmlwidgets)");
-//	         
-//	         System.out.println("1");
-//	         String po = "kdid <- \'"+kinderid+"\'";
-//	          r.eval(po);
-//	                    
-//	          r.eval("setwd(\"/Users/minji\")");
-//	          x = r.eval("getwd()");
-//	          System.out.println(x.asString());
-//	          
-//	          r.eval("source('/Users/minji/kids/Rfile/commentanalysis.R')");
-//	          
-//	          
-//	          System.out.println("3");
-//	          r.eval("wordcloudp(sentence)");
-//	          System.out.println("4");
-//	          r.eval("graphics.off()");
-//	          System.out.println("5");
-//	          x=r.eval("r=readBin('test.jpg','raw',512*512);unlink('test.jpg');r");
-//	          System.out.println("6");
-//	         
-//	          String base64Encoded = new String(Base64.encodeBase64(x.asBytes()),"UTF-8");
-//	          
-//	          System.out.println("성공");
-//	      }
-//	      catch(Exception e) {
-//	         System.out.println(e.getMessage());
-//	      }
-//	      
-//	      return x.asBytes();
-//	   }
-//	   
-//	   public static void main(String[] args) throws REXPMismatchException, REngineException {
-//	       
-//	       
-//	      DetailController rs = new DetailController();
-//	      rs.getCloud();
-//	   
-//
-//	}
+
+	public byte[] getCloud() throws REXPMismatchException {
+		
+		REXP x = null;
+		String kinderid = "KN028";
+		
+		try {
+			System.out.println("-1");
+			RConnection r = new RConnection();
+			System.out.println("0");
+	        
+	        System.out.println(kinderid);
+			r.eval("try(jpeg('test.jpg', quality=100))");
+			
+			System.out.println("1");
+			String po = "kdid <- \'"+kinderid+"\'";
+	    	r.eval(po);
+	    		    	
+	    	r.eval("setwd(\"F:/Rworkspace/R1day\")");	    	
+	    	r.eval("source('F:/Rworkspace/R1day/commentanalysis.R')");
+	    	
+	    	
+	    	System.out.println("3");
+	    	r.eval("wordcloudp(sentence)");
+	    	System.out.println("4");
+	    	r.eval("graphics.off()");
+	    	System.out.println("5");
+	    	x=r.eval("r=readBin('test.jpg','raw',512*512);unlink('test.jpg');r");
+	    	System.out.println("6");
+			
+	    	String base64Encoded = new String(Base64.encodeBase64(x.asBytes()),"UTF-8");
+	    	
+	    	System.out.println("성공");
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return x.asBytes();
+	}
+	
+	public static void main(String[] args) throws REXPMismatchException, REngineException {
+    	
+    	
+		DetailController rs = new DetailController();
+		rs.getCloud();
+	
+
+}
+
 }
 
 
@@ -246,3 +241,4 @@ public class DetailController {
 	
 
 
+	

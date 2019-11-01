@@ -1,6 +1,5 @@
 
 <%@page import="lab.spring.controller.DetailController"%>
-<%@page import="lab.spring.controller.Popo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -601,7 +600,6 @@ $(".star").on('click',function(){
 	        $(".star").eq(i).addClass("on");
 	   }
 		var pp = $('#star_point').val(idx+1);
-		
 	 });
 
 </script>

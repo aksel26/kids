@@ -44,10 +44,10 @@ public class LoginAction {
       vo = service.login(uid, upwd);
 
 
-
+      
       
       if(vo!=null) {
-         PrintWriter out = response.getWriter();
+         
          session.setAttribute("authInfo", vo);
          session.setAttribute("rankflag", vo.getLocation());
          mav.setViewName("redirect:index.do");         
