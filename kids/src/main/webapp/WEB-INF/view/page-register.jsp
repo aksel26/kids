@@ -20,7 +20,10 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Gaegu:700&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="resources/assets/css/style2.css">
+<!-- <link rel="stylesheet" href="resources/assets/css/style2.css"> -->
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+</style>
 <link rel="stylesheet" href="resources/assets/css/materialize.css">
 
 <link
