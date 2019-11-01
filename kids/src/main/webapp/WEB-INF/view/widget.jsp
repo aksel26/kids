@@ -23,6 +23,24 @@ display: inline-block;
 .waves-effect.waves-light .waves-ripple { */
     background-color: rgba(255,255,255,0.45) 
  }
+ .CellWithComment{position:relative;}
+
+ .CellComment
+        {
+ 		 visibility: hidden;
+            width: 550px;
+            position:absolute; 
+            z-index:100;
+            text-align:center;
+            opacity: 0.4;
+            transition: opacity 1s;
+            border-radius: 6px;
+            background-color: #ffbf80;
+            padding:3px;
+            top:-30px; 
+            left:0px;
+        }   
+ .CellWithComment:hover span.CellComment {visibility: visible; opacity: 1;}
 
     </style>
     </head>
@@ -175,7 +193,9 @@ display: inline-block;
         
         
    
-            <h3 class="menu-title" style="font-size:19px"><a style="color:#ff0066;">우리동네</a> 유치원 순위</h3>
+            <h3 class="menu-title" style="font-size:17px"><a style="color:#ff0066;">우리동네</a> 유치원 순위<a class="CellWithComment" style="font-family: 'Hanna'"><i class="fas fa-question-circle" style="font-size:2px"><span class="CellComment" style="font-size:15px">
+           <b style="color:#b30000">안전점수</b>+<b style="color:#b30000">위생점수</b>+<b style="color:#b30000">시설점수</b>의 총합으로 산출된 결과입니다.</span></i></a></h3>
+          
             <!-- /.menu-title -->
  
          <form action="/action_page.php">
@@ -214,48 +234,4 @@ display: inline-block;
       </nav>
    </aside>
    
-<!--    <div id="right-panel" class="right-panel"> -->
-<!--         왼쪽 메뉴 접는 버튼   -->
-<!--  <header id="header" class="header"> -->
-<!--          <div  id="col-sm-7" class="col-sm-7" width="10%"> -->
-<!--             <a id="menuToggle" class="menutoggle pull-left"><i -->
-<!--                class="fa fa fa-tasks"></i></a> -->
-<!--          </div> -->
-<!--             <div id = "LOL" align ="right"  style ="width: 85%; font-family:hanna; word-spacing:13px;"> -->
-               
-<%--              <c:if test="${authInfo.userid eq null}"> --%>
-<!--                <form action="login.do" method ="post" style="height: 25px;width: 600px;"> -->
-
-<!--                      <div class="row"> -->
-<!--                        <div class="input-field col s6"> -->
-<!--                          <i class="material-icons prefix">account_circle</i> -->
-<!--                          <input id="icon_prefix" type="text" class="validate" name="userid"> -->
-<!--                          <label for="icon_prefix">아이디</label> -->
-<!--                        </div> -->
-<!--                        <div class="input-field col s6"> -->
-<!--                          <i class="material-icons prefix">lock_outline</i> -->
-<!--                          <input id="icon_telephone" type="password" class="validate" name="userpwd" > -->
-<!--                          <label for="icon_telephone">패스워드</label> -->
-<!--                        </div> -->
-         
-
-<!--                       <button class="btn waves-effect waves-light"  type="submit"  id="login" name="action" >로그인 -->
-                      
-<!--                       </button> -->
-<!--             <a href="./page-register.do" class="btn btn-primary">회원가입</a> -->
-<!--             </div> -->
-<!--             </form> -->
-<%--             </c:if> --%>
-            
-            
-<%--             <c:if test="${authInfo.userid ne null}"> --%>
-            
-<%--                ${authInfo.userid}님 환영합니다. --%>
-               
-<!--                <form action="logout.do" method ="post"> -->
-<!--                <input type="submit" id="logout" value="로그아웃" /> -->
-<!--                </form> -->
-<%--             </c:if> --%>
-<!--          </div> -->
-<!--       </header> -->
 </body>

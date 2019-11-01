@@ -238,6 +238,29 @@ var staravg;
                 </div>
                 <!-- ============================================================== -->
                 <!-- News -->
+                      <div class="row">
+                    <div class="col-lg-4"  >
+                        <div class="card oh">
+                            <div class="card-body" }>
+                              <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
+							</div>
+						</div>  
+						</div>
+						  <div class="col-lg-4"  >
+                        <div class="card oh">
+                            <div class="card-body"}>
+                              <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
+							</div>
+						</div>  
+						</div>
+						  <div class="col-lg-4"  >
+                        <div class="card oh">
+                            <div class="card-body"}>
+                              <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
+							</div>
+						</div>  
+						</div>
+						</div>
                 <!-- ============================================================== -->
                 <div class="row">
                     <!-- column -->

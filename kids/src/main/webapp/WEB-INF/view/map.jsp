@@ -89,9 +89,6 @@
 	</div>
 
 </article>
-
-
-
 <script>
 
 var count;
@@ -245,32 +242,6 @@ function scoreFunction(n){   //점수
    C1.innerHTML=NameList[n]
 }
 
-// function SearchID (n,count){//리뷰보기를 누르면 목록을 받아오는 부분
-//    var C1 = document.getElementById("clean")
-//    C1.innerHTML= "<br>"
-   
-//    $.ajax({
-//          url:"commentList.do",
-//          method:"GET",
-//          async:false,
-//          traditional : true,
-//          data:{
-//             'kdid':n
-//          },
-//          success:function(data){
-//             var obj = JSON.parse(data);
-//             for(var i = 0;i<Object.keys(obj.result).length;i++){
-//              var $div = $('<span> '+ obj.result[i][1]["Writer"]+' ('+obj.result[i][2]["Score"]+'점):'+obj.result[i][0]["Contents"]+'</span><hr>');
-//              $('#clean').append($div);
-//             };
-//             },
-//              error:function(request,status,error){
-//                  alert("code = "+ request.status + " message = " + request.responseText + " error = " + error); // 실패 시 처리
-//              }
-//       });
-//    var $div = $("<input type='button' value='등 록' id = but style='font-family: Hanna;' onclick='reviewAddFunction(" + count + ");' >");
-//       $('#clean').append($div);
-// }
 
 //인포윈도우를 표시하는 클로저를 만드는 함수입니다 
 function makeOverListener(map, marker, infowindow) { 
@@ -313,6 +284,9 @@ function selectVal(flag){
 	}
 	else if(flag==4){
 		$('#drop_val').val('4');
+	}
+	else{
+		$('#drop_val').val('0');
 	}
 }
 
@@ -368,10 +342,11 @@ function getSafetyArr(select,map){
 	                 
 	                
 	             }); // 체크된 것만 뽑아 배열에 push
-	         }else if($('#drop_val').val()==null){
+	         }else  if($('#drop_val').val()==0){
+	        	 
+	              var sevletDo = './search.do/allSearch.do';  
 	            
-	                  getSafetyArr(1, map);
-	                 
+	                  
 	              }; // 체크된 것만 뽑아 배열에 push
 	      
 	      
