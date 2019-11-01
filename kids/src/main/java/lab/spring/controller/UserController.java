@@ -38,7 +38,6 @@ public class UserController {
 	
 	@RequestMapping(value = "/page-register", method=RequestMethod.GET) 
 	public String page_register() throws Exception{
-		System.out.println("들어감");
 		return "page-register";
 		
 	}
@@ -48,13 +47,12 @@ public class UserController {
 	public ModelAndView user_register(HttpServletRequest request) throws Exception {
 		 
 		
-		System.out.println("들어감");
 		   String id = request.getParameter("userid");
 		   String pw = request.getParameter("userpwd");
 		   String name = request.getParameter("username");
 		   String email = request.getParameter("email");
 		   String location = request.getParameter("location");
-		 System.out.println("dd");
+
 		   ModelAndView view = new ModelAndView();
 		   UserVO vo = new UserVO();
 		   
@@ -63,11 +61,34 @@ public class UserController {
 		   vo.setUsername(name);
 		   vo.setEmail(email);
 		   vo.setLocation(location);
-		   System.out.println(vo.toString());
+		   
+		   if(location.equals("광진구")) {vo.setPOINT_X("37.545249");vo.setPOINT_Y("127.083211");}
+			else if(location.equals("서초구")) {vo.setPOINT_X("37.495774");vo.setPOINT_Y("127.006647");}
+			else if(location.equals("동작구")) {vo.setPOINT_X("37.503169");vo.setPOINT_Y("126.951332");}
+			else if(location.equals("양천구")) {vo.setPOINT_X("37.522783");vo.setPOINT_Y("126.855652");}
+			else if(location.equals("용산구")) {vo.setPOINT_X("37.536252");vo.setPOINT_Y("126.982931");}
+			else if(location.equals("서대문구")) {vo.setPOINT_X("37.575935");vo.setPOINT_Y("126.935828");}
+			else if(location.equals("관악구")){vo.setPOINT_X("37.481487");vo.setPOINT_Y("126.940439");}
+			else if(location.equals("강북구")){vo.setPOINT_X("37.634510");vo.setPOINT_Y("127.021930");}
+			else if(location.equals("성북구")){vo.setPOINT_X("37.598600");vo.setPOINT_Y("127.022138");}
+			else if(location.equals("중랑구")) {vo.setPOINT_X("37.598088");vo.setPOINT_Y("127.092722");}
+			else if(location.equals("강남구")) {vo.setPOINT_X("37.503173");vo.setPOINT_Y("127.050169");}
+			else if(location.equals("영등포구")) {vo.setPOINT_X("37.517285");vo.setPOINT_Y("126.907831");}
+			else if(location.equals("종로구")) {vo.setPOINT_X("37.584256");vo.setPOINT_Y("126.972959");}
+			else if(location.equals("강서구")) {vo.setPOINT_X("37.554956");vo.setPOINT_Y("126.832973");}
+			else if(location.equals("강동구")) {vo.setPOINT_X("37.544944");vo.setPOINT_Y("127.142351");}
+			else if(location.equals("성동구")) {vo.setPOINT_X("37.554541");vo.setPOINT_Y("127.041052");}
+			else if(location.equals("도봉구")) {vo.setPOINT_X("37.661328");vo.setPOINT_Y("127.035878");}
+			else if(location.equals("구로구")) {vo.setPOINT_X("37.498454");vo.setPOINT_Y("126.856539");}
+			else if(location.equals("노원구")) {vo.setPOINT_X("37.650681");vo.setPOINT_Y("127.068601");}
+			else if(location.equals("마포구")) {vo.setPOINT_X("37.559956");vo.setPOINT_Y("126.907613");}
+			else if(location.equals("송파구")) {vo.setPOINT_X("37.504126");vo.setPOINT_Y("127.115071");}
+			else if(location.equals("동대문구")) {vo.setPOINT_X("37.581223");vo.setPOINT_Y("127.056578");}
+
+		   
 		   
 		   userService.insertUser(vo);
 		   
-		   System.out.println("dd");
 		   view.setViewName("redirect:/index.do");
 		   return view;
 		   
@@ -76,33 +97,4 @@ public class UserController {
 	}
 
 
-
-
-//	@RequestMapping(value = "/getUserList") 
-//	public ModelAndView getUserList() throws Exception{
-//		
-//		ModelAndView mav= new ModelAndView();
-//		
-//		List<UserVO> list =userService.getUserList();
-//
-//		return mav;
-		
-		
-//		logger.info("getUserList()"); 
-		
-		 
-		
-	
-
-	
-//	@RequestMapping(value = "/page-register", method = RequestMethod.POST) 
-//	
-//	public String insertUser(
-//			
-//			@ModelAttribute("userVO")
-//			
-//			UserVO userVO , RedirectAttributes rttr) throws Exception { 
-//		
-//		userService.insertUser(userVO); return "page-register"; }
-//	}
 

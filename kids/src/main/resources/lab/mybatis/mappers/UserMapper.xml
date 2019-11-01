@@ -108,7 +108,10 @@
 		</if>
 	</select>
 
-<insert id="insertUser" parameterType="lab.spring.model.UserVO"> INSERT INTO userinfo (userid , username , userpwd , EMAIL , location) VALUES ( #{userid} , #{username} , #{userpwd} , #{location} ,#{email} ) </insert>
+<insert id="insertUser" parameterType="lab.spring.model.UserVO">
+ INSERT INTO userinfo (userid , username , userpwd , EMAIL , location,POINT_X,POINT_Y) 
+ 	VALUES ( #{userid} , #{username} , #{userpwd} ,#{email} , #{location},#{POINT_X},#{POINT_Y}) 
+ </insert>
 
 <update id="updateUser" parameterType="lab.spring.model.UserVO"> UPDATE userinfo SET username = #{username} , userpwd = #{userpwd} , EMAIL = #{email} WHERE userid = #{userid} </update>
 
