@@ -1,6 +1,6 @@
 <%@page import="lab.spring.service.MemberDAO"%> 
-  <%@page import="lab.spring.dao.UserDAO"%>  
-  <%@ page language="java" contentType="text/html; charset=utf-8"  
+<%@page import="lab.spring.dao.UserDAO"%>  
+<%@ page language="java" contentType="text/html; charset=utf-8"  
   	pageEncoding="utf-8"%>  
   <META http-equiv="Expires" content="-1">  
   <META http-equiv="Pragma" content="no-cache">  

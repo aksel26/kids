@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    <%@ page import="lab.spring.dao.UserDAOImpl" %>
+<%@ page import="lab.spring.dao.UserDAOImpl" %>
 <!doctype html>
 <script type="text/javascript"></script>
 
