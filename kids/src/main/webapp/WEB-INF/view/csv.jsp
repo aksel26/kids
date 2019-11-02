@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
+<script type="test/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js" type="text/JavaScript"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-    <script src="https://d3js.org/d3.v3.min.js"></script>
-    <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js" type="text/JavaScript"></script>
+<h1>가능한가??</h1>    
+    
+    
     <script>
         var width = 960,
             height = 500
@@ -16,42 +21,15 @@
         var svg = d3.select("body").append("svg")
             .attr("width", width)
             .attr("height", height);
-        
-        
-        
-        function CSVParse(data){
-        	
-        	var splitData = data.split('|');
-        	
-        	var header = splitData[0].split(',');
-
-        	var result={};
-        	
-        	for(var i = 1;i<splitData.length;i++){
-        		data = splitData[i].split(',');
-        		
-        		var array={};
-        		array.text = data[0];
-        		array.frequency = data[1];
-        		
-        		result[i-1] =array;
-        	}
-        	return result;
-        }
-        
-        
-//         gogo(CSVParse("${data1}"));
-        
-//         function gogo(data) {
-//         	console.log(typeof(data))
-//         	console.log(data)
-//             showCloud(data)
-//             setInterval(function(){
-//                  showCloud(data)
-//             },2000) 
-//         }
-        
-        d3.csv("${data1}",function (data) {
+      
+    	  wordScale = d3.scale.linear().domain([0, 100]).range([0, 150]).clamp(true);
+          var keywords = ["자리야", "트레이서", "한조"]
+          var svg = d3.select("svg")
+                      .append("g")
+                      .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+	
+	setTimeout(()=>{
+		d3.csv("resources/images/worddata2.csv",function (data) {
         	console.log(typeof(data))
         	console.log(data)
         	
@@ -61,17 +39,8 @@
             },2000) 
         }
         );
-        
-  
-        //scale.linear: 선형적인 스케일로 표준화를 시킨다. 
-        //domain: 데이터의 범위, 입력 크기
-        //range: 표시할 범위, 출력 크기 
-        //clamp: domain의 범위를 넘어간 값에 대하여 domain의 최대값으로 고정시킨다.
-        wordScale = d3.scale.linear().domain([0, 100]).range([0, 150]).clamp(true);
-        var keywords = ["자리야", "트레이서", "한조"]
-        var svg = d3.select("svg")
-                    .append("g")
-                    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+	}, 3000);      
+      
 
         function showCloud(data) {
             d3.layout.cloud().size([width, height])

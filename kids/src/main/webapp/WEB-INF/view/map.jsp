@@ -151,7 +151,7 @@ function default_setting(){
 	markerList = []; // 마커 보이기,숨기기용 배열
 	tempList =[];
 
-	default_level = 6;
+	default_level = 5;
 	
 	mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	mapOption = { 
@@ -161,7 +161,6 @@ function default_setting(){
 
 	markers = [];
 	map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-	console.log("2");
 
 	markerImageSize = new kakao.maps.Size(40, 42),markerImageOptions = {offset : new kakao.maps.Point(20, 42)};
 	

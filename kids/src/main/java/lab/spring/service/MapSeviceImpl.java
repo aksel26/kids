@@ -15,6 +15,7 @@ import lab.spring.model.SafetyVO;
 import lab.spring.model.SanitaryVO;
 import lab.spring.model.ScoreVO;
 import lab.spring.model.UserVO;
+import lab.spring.model.detailGraphVO;
 
 
 
@@ -89,7 +90,8 @@ public class MapSeviceImpl implements MapService{
 		return dao.getScore(kdid);
 	}
 
-
-	
-	
+	@Override
+	public detailGraphVO getDetailGraph(String kdid) {
+		return dao.getDetailGraph(kdid);
+	}
 }

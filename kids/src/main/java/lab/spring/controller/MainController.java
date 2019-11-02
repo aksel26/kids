@@ -1,11 +1,16 @@
 package lab.spring.controller;
 
 
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +19,9 @@ import javax.servlet.http.HttpSession;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.snu.ids.ha.index.Keyword;
+import org.snu.ids.ha.index.KeywordExtractor;
+import org.snu.ids.ha.index.KeywordList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,29 +75,95 @@ public class MainController {
 		ModelAndView mav = new ModelAndView();
 		
 		
-		StringBuffer result = new StringBuffer("");
+		List<CommentVO> commentList = service.findCommentList("KN027");
+		HashMap<String, Integer> hm = wordCount(commentList);
 		
-		result.append("text,frequency|");
-		result.append("자리야,80|");
-		result.append("트레이서,100|");
-		result.append("한조,20|");
-		result.append("솔져,60|");
-		result.append("시메트라,50|");
-		result.append("윈스턴,30|");
-		result.append("라인하르트,30|");
-		result.append("아나,20|");
-		result.append("맥크리,20|");
-		result.append("메르시,20|");
-		result.append("이원호,20|");
-		result.append("김민지,20|");
-		result.append("김현민,20|");
-		result.append("준바,20|");
-		result.append("로드호그,20|");
-		result.append("정크랫,20");
-				 
-				
-		mav.addObject("data1",result.toString());
+		
+		try {
+			BufferedWriter fw = new BufferedWriter(
+					new OutputStreamWriter(
+							new FileOutputStream("F:\\Github\\kids\\kids\\src\\main\\webapp\\resources\\images\\worddata2.csv"),"UTF-8"));
+			
+			fw.write("text,frequency\r\n");
+			
+			for(String key : hm.keySet()) {
+				fw.write(key+","+hm.get(key)+"\r\n");
+			}
+			
+			fw.flush();
+			fw.close();
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 		mav.setViewName("csv");
 		return mav;
 	}	
+	
+	
+	
+	public HashMap<String, Integer> wordCount(List<CommentVO> ls) {
+		
+		HashMap<String, Integer> hm = new HashMap<>();
+		
+		
+		
+		HashSet<String> arr2 = new HashSet<String>();
+		
+		//HashSet 중복 제거
+		for(int i = 0 ; i<ls.size();i++) {
+
+			String[] split = ls.get(i).getContents().split(" ");
+			
+			for(int j = 0;j<split.length;j++) {
+				
+				arr2.add(split[j]);
+			
+			}
+		}
+		
+		//HashMap
+		ArrayList<String> arr3 = new ArrayList<>(arr2);
+		
+		for(int i = 0;i<arr3.size();i++) {
+			hm.put(arr3.get(i), 0);
+		}
+		
+		for(int i = 0 ; i<ls.size();i++) {
+			String[] split = ls.get(i).getContents().split(" ");
+			for(int j = 0;j<split.length;j++) {
+				hm.replace(split[j], hm.get(split[j])+1 );
+			}
+		}
+		
+		return hm;
+		
+	}
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	}

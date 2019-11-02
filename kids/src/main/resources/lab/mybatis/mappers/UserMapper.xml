@@ -239,4 +239,19 @@
 	from kinderinfo 
 	where kindername = #{kindername} and subofficeedu = #{subofficeedu}
 	</select>
+	
+	<select id ="getDetailGraph" resultType="lab.spring.model.detailGraphVO" parameterType="string">
+	select 
+	round(a.ppcnt3/a.clcnt3) child3,
+	round(a.ppcnt4/a.clcnt4) child4,
+	round(a.ppcnt5/a.clcnt5) child5,
+	round(substr(b.clsrarea,1,length(b.clsrarea)-1)/(a.ppcnt3+a.ppcnt4+a.ppcnt5)) as area,
+	round((a.ppcnt3+a.ppcnt4+a.ppcnt5)/(d.hdst_thcnt+d.asps_thcnt+d.gnrl_thcnt+d.spcn_thcnt+d.ntcnt+d.ntrt_thcnt+d.shcnt_thcnt)) as teacher,
+	c.opra_vhcnt as bus
+	from kinderinfo a,classarea b,schoolBus c,teacher d
+	where a.kinderinfoid = b.kinderinfoid and a.kinderinfoid = c.kinderinfoid and a.kinderinfoid = d.kinderinfoid
+	and a.kinderinfoid = #{kdid}
+	</select>
+	
+	
 </mapper>
