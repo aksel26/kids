@@ -453,7 +453,10 @@ function SearchID (id){
 				'kdid':id
 			},
 			success:function(data){
+				
+				
 				var obj = JSON.parse(data);
+				
 				comments = obj;
 				var sum = 0 ;
 				

@@ -61,20 +61,35 @@ public class MainController {
 			
 	}
 
-
 	
-	
-	@RequestMapping(value="/newinfo.do", method = RequestMethod.GET)
-	public ModelAndView newinfo() throws IOException {
+	@RequestMapping(value="/csv.do", method = RequestMethod.GET)
+	public ModelAndView csv() throws IOException {
 		ModelAndView mav = new ModelAndView();
 		
-		Document doc = Jsoup.connect("https://www.ipipipip.net/index.php?ln=ko").get();
-		Elements item = doc.select(".yourip span");
-		String ip = item.text();
 		
-		mav.addObject("ip",ip);
-		mav.setViewName("newInfo");
+		StringBuffer result = new StringBuffer("");
+		
+		result.append("text,frequency|");
+		result.append("자리야,80|");
+		result.append("트레이서,100|");
+		result.append("한조,20|");
+		result.append("솔져,60|");
+		result.append("시메트라,50|");
+		result.append("윈스턴,30|");
+		result.append("라인하르트,30|");
+		result.append("아나,20|");
+		result.append("맥크리,20|");
+		result.append("메르시,20|");
+		result.append("이원호,20|");
+		result.append("김민지,20|");
+		result.append("김현민,20|");
+		result.append("준바,20|");
+		result.append("로드호그,20|");
+		result.append("정크랫,20");
+				 
+				
+		mav.addObject("data1",result.toString());
+		mav.setViewName("csv");
 		return mav;
-			
-	}
+	}	
 	}
