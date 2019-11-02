@@ -110,11 +110,22 @@ var RadarChart = {
 		.style("font-family", "Hanna")
 		.style("font-size", "20px") //안전위생시설 지표 폰트
 		.attr("text-anchor", "middle")
+		
 		.attr("dy", "1.5em")
 		.attr("transform", function(d, i){return "translate(0, -25)"})
 		.attr("x", function(d, i){return cfg.w/2*(1-cfg.factorLegend*Math.sin(i*cfg.radians/total))-60*Math.sin(i*cfg.radians/total);})
 		.attr("y", function(d, i){return cfg.h/2*(1-Math.cos(i*cfg.radians/total))-20*Math.cos(i*cfg.radians/total);});
-
+//	
+//	axis.append("a")
+//		.attr("class", "CommentWithComment")
+//		.style("font-family", "Hanna")
+//	axis.append("i")
+//		.attr("class", "fas fa-question-circle")
+//		.style("font-size", "2px")
+//	axis.append("span")
+//		.attr("class", "CellComment")
+//		.style("font-size","15px")
+		
  
 	d.forEach(function(y, x){
 	  dataValues = [];

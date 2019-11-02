@@ -169,7 +169,7 @@ var staravg;
                 </div>
 
                 <!-- ============================================================== -->
-                <!-- Yearly Sales -->
+                <!-- 스파이더 차트 -->
                 <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-lg-7"  >
@@ -185,6 +185,10 @@ var staravg;
                             </div>
                         </div>
                     </div>
+                    
+                <!-- ============================================================== -->
+                <!-- 유치원 상세정보 -->
+                <!-- ============================================================== -->
                   <div class="col-md-5">
                         <div class="card">
                             <div class="card-body" style="height:600px	">
@@ -236,8 +240,38 @@ var staravg;
                     </div>
                 </div>
                 <!-- ============================================================== -->
-                <!-- News -->
+                <!-- 그래프 6개 -->
+                <!-- ============================================================== -->
                       <div class="row">
+                    <div class="col-lg-4"  >
+                        <div class="card oh">
+                            <div class="card-body" }>
+                              <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
+                              
+                              <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
+                              <div>
+                              
+                              </div>
+							</div>
+						</div>  
+						</div>
+						  <div class="col-lg-4"  >
+                        <div class="card oh">
+                            <div class="card-body"}>
+                              <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
+							</div>
+						</div>  
+						</div>
+						  <div class="col-lg-4"  >
+                        <div class="card oh">
+                            <div class="card-body"}>
+                              <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
+							</div>
+						</div>  
+						</div>
+						</div>
+                <!-- ============================================================== -->
+                 <div class="row">
                     <div class="col-lg-4"  >
                         <div class="card oh">
                             <div class="card-body" }>
@@ -260,7 +294,7 @@ var staravg;
 						</div>  
 						</div>
 						</div>
-                <!-- ============================================================== -->
+				<!-- ============================================================== -->
                 <div class="row">
                     <!-- column -->
                     <div class="col-12">

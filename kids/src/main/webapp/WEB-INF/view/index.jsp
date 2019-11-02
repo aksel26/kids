@@ -47,24 +47,37 @@
 <script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=048d3839f2032025c0d6225330618498&libraries=services,clusterer"></script>
 </head>
+<style>
+body{
+/* 	display: table-cell; */
+	vertical-align: middle;
+/*   	background-color: #e0f2f1 !imsportant;  */
+background-image: url('resources/images/back.jpg');
+ min-height: 100%;
+    background-position: center;
+    background-size:contain;
 
+    background-height:auto;
+	
+}
+</style>
 <body>
 	<aside id="left-panel" class="left-panel">
 		<nav class="navbar navbar-expand-sm navbar-default">
 			<div id="main-menu" class="main-menu collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#" onclick=getSafetyArr(2,map)>
+					<li class="active"><a href="#" onclick=getSafetyArr(2,map);>
+
 							<img id="title_img" alt="엄마의 지도" src="resources/images/title.png"
-							 width ="130%" height="130%">
-					</a> <!-- Left Panel -->
-					 
+							width="130%" height="130%">
+
+					</a> <!-- Left Panel --> <%@ include file="./widget.jsp"%>
 					</li>
-					<%@ include file="./widget.jsp"%>
 				</ul>
 			</div>
 		</nav>
 	</aside>
-	
+
 	<%@ include file="./header.jsp"%>
 
 	<!--  map -->
