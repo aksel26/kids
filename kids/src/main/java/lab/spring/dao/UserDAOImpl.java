@@ -25,15 +25,21 @@ public class UserDAOImpl implements UserDAO{
 		return sqlSession.selectOne("lab.mybatis.user.UserMapper.getUserInfo", uid); }
 
 	public int insertUser(UserVO userVO) throws Exception { 
-		return sqlSession.insert("lab.mybatis.user.UserMapper.insertUser", userVO); 
-	} 
+
+		
+		return sqlSession.insert("lab.mybatis.user.UserMapper.insertUser", userVO); } 
 	
 	public int updateUser(UserVO userVO) throws Exception { 
-		return sqlSession.update("lab.mybatis.user.UserMapper.updateUser", userVO); 
-	}
+		
+		return sqlSession.update("lab.mybatis.user.UserMapper.updateUser", userVO); }
 
+	
+	
 	public int checkOverId(String user_id) throws Exception {
+		// TODO Auto-generated method stub
 		return 0;
 	} 
-}
+	
+	
+	}
 

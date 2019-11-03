@@ -42,6 +42,11 @@
 <script src="resources/assets/js/RadarChart.js"></script>
 <script src="resources/assets/js/graph.js"></script>
 <script src="resources/assets/js/graph2.js"></script>
+
+<script src="./resources/assets/js/index_modules/wordcloud.js" charset="UTF-8"></script>
+<!-- wordcloud추가 -->
+<script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js" type="text/JavaScript"></script>
+
 <style>
 <!-- 별점만들기 스타일소스  -->
 *{margin:0; padding:0;}
@@ -104,8 +109,6 @@ align-content: center;
 text-align:inherit;
 width:300px;
 }
-
-
 	.zt-skill-bar {
         color: #fff;
         font-family:'Hanna';
@@ -197,16 +200,15 @@ width:300px;
 
 <body>
 
-<%
-	DetailController popo = new DetailController();
-%>
-
 <script>
 var lo = '${kindername}';
 var score1 = '${score.score1}';
 var score2 = '${score.score2}';
 var score3 = '${score.score3}';
 var check = "1";
+
+var positive = '${positive}';
+var negative = '${negative}';
 
 var comments;
 var staravg;
@@ -256,7 +258,7 @@ var staravg;
                 <!-- 스파이더 차트 -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-lg-7"  >
+                    <div class="col-lg-6"  >
                         <div class="card oh">
                             <div class="card-body"  style="height:600px"}>
                               <h5 class="card-title" style="font-family: 'Hanna'">종합지표</h5>   
@@ -264,7 +266,7 @@ var staravg;
 					   				 <div id="body">
 										  <div id="chart" ></div>
 					    			</div>    
-    				<script src="resources/assets/js/script.js"></script> 
+    								<script src="resources/assets/js/script.js"></script> 
                              </div>
                             </div>
                         </div>
@@ -273,7 +275,7 @@ var staravg;
                 <!-- ============================================================== -->
                 <!-- 유치원 상세정보 -->
                 <!-- ============================================================== -->
-                  <div class="col-md-5">
+                  <div class="col-md-6">
                         <div class="card">
                             <div class="card-body" style="height:600px	">
                                 <h5 class="card-title" style="font-family: 'Hanna'">유치원 상세정보</h5>
@@ -281,39 +283,39 @@ var staravg;
                                     <div class="sl-item">
                                        	<table border=0 cellpadding=10% cellspacing=10%>
    	<tr>
-    <td align=center bgcolor="#fbe204" height="58" style="font-family: 'Gaegu'">유치원명</td>
+    <td align=center bgcolor="#fbe204" height="58" style="font-family: 'Gaegu'"><font size="4px">유치원명</font></td>
     <td align=center bgcolor="ffffff" style="font-family: 'Hanna'">${badkinder.kindername}</td>
     </tr> 
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "#ffff66" height ="58" style="font-family: 'Gaegu'">교육청명</td>
+    <td width=100 hegiht=500 align=center bgcolor= "#ffff66" height ="58" style="font-family: 'Gaegu'"><font size="4px">교육청명</font></td>
     <td width=240 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'">${badkinder.officeedu}</td>
     </tr>
     <tr>
-    <td width=200 hegiht=500 align=center bgcolor= "#fbe204" height ="58" style="font-family: 'Gaegu'">교육지원청명</td>
+    <td width=200 hegiht=500 align=center bgcolor= "#fbe204" height ="58" style="font-family: 'Gaegu'"><font size="4px">교육지원청명</font></td>
     <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'">${badkinder.subofficeedu}</td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "#ffff66" height ="58" style="font-family: 'Gaegu'">설립일</td>
+    <td width=100 hegiht=500 align=center bgcolor= "#ffff66" height ="58" style="font-family: 'Gaegu'"><font size="4px">설립일</font></td>
     <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'">${badkinder.edate}</td>
    </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "#fbe204" height ="58" style="font-family: 'Gaegu'">개원일</td>
+    <td width=100 hegiht=500 align=center bgcolor= "#fbe204" height ="58" style="font-family: 'Gaegu'"><font size="4px">개원일</font></td>
     <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'">${badkinder.odate}</td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "#ffff66" height ="58" style="font-family: 'Gaegu'">주소</td>
+    <td width=100 hegiht=500 align=center bgcolor= "#ffff66" height ="58" style="font-family: 'Gaegu'"><font size="4px">주소</font></td>
     <td width=500 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'">${badkinder.addr}</td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "#fbe204" height ="58" style="font-family: 'Gaegu'">전화번호</td>
+    <td width=100 hegiht=500 align=center bgcolor= "#fbe204" height ="58" style="font-family: 'Gaegu'"><font size="4px">전화번호</font></td>
     <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'">${badkinder.telno}</td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "#ffff66" height ="58" style="font-family: 'Gaegu'">홈페이지</td>
+    <td width=100 hegiht=500 align=center bgcolor= "#ffff66" height ="58" style="font-family: 'Gaegu'"><font size="4px">홈페이지</font></td>
     <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'"><a href=${badkinder.hpaddr}>${badkinder.hpaddr}</a></td>
     </tr>
     <tr>
-    <td width=100 hegiht=500 align=center bgcolor= "#fbe204" height ="58" style="font-family: 'Gaegu'">운영시간</td>
+    <td width=100 hegiht=500 align=center bgcolor= "#fbe204" height ="58" style="font-family: 'Gaegu'"><font size="4px">운영시간</font></td>
     <td width=100 hegiht=500 align=center bgcolor= "ffffff" style="padding-left:10; font-family: 'Hanna'">${badkinder.opertime}</td>
     </tr>
      </table>
@@ -522,14 +524,9 @@ var staravg;
                         <div class="card" >
                             <div class="card-body" style="width:1024px;height:1024;">
                             
-                                <h5 class="card-title" style="font-family: 'Hanna'; font-size: 20px">Review WordCloud</h5>
-                                <div style="text-align:inherit;">
-                                <c:if test="${image ne '1' }">
-                                	<img src="data:image/jpeg;base64,${image}"  style="width:700px;height:700px"/>
-                                </c:if>
-                                <c:if test="${image eq '1'}">
-                                	<img src="resources/images/JJANGGU.png"  style="width:300px;height:300px;" />
-                                </c:if>
+<!--                                 <h5 class="card-title" style="font-family: 'Hanna'; font-size: 20px">Review WordCloud</h5> -->
+                                <div  style="text-align:inherit;">
+                                <svg id = "mycloud"></svg>
                                 </div>
                                 
                             </div>
@@ -575,7 +572,10 @@ function SearchID (id){
 				'kdid':id
 			},
 			success:function(data){
+				
+				
 				var obj = JSON.parse(data);
+				
 				comments = obj;
 				var sum = 0 ;
 				
@@ -620,22 +620,6 @@ function showReview(obj,num){
 	var length = Object.keys(obj.result).length; 
 	var maxValue = length%(10*num)
 	
-// 	if(num == 0 ){
-// 		if(length<10){
-// 			maxValue = length;	
-// 		}
-// 		else{
-// 			maxValue = 10;
-// 		}
-// 	}
-// 	else{
-// 		if(length>=(num+1)*10){
-// 			maxValue = 10;	
-// 		}
-// 		else{
-// 			maxValue = maxValue%10;	
-// 		}
-// 	}
 	if(length>=(num+1)*10){
 		maxValue = 10;	
 	}
@@ -685,7 +669,8 @@ function imagemake(num){
 
 function addComment(id){
 	if(${authInfo eq null}){
-		alert("로그인이 필요한 기능입니다.");	
+		alert("로그인이 필요한 기능입니다.");
+		$("#userid").focus();
 	}
 	else{
 		var contents = $('#review_text').val();
@@ -704,6 +689,7 @@ function addComment(id){
 			'user':user
 		},
 		success:function(data){
+			$('#review_text').val("");
 			SearchID(kdid);
 			},
 		 	error:function(request,status,error){
@@ -723,6 +709,10 @@ $(".star").on('click',function(){
 	   }
 		var pp = $('#star_point').val(idx+1);
 	 });
+
+
+
+
 
 </script>
 

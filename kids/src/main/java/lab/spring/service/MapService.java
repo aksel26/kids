@@ -12,6 +12,7 @@ import lab.spring.model.SafetyVO;
 import lab.spring.model.SanitaryVO;
 import lab.spring.model.ScoreVO;
 import lab.spring.model.UserVO;
+import lab.spring.model.detailGraphVO;
 
 
 
@@ -35,5 +36,7 @@ public interface MapService {
 	public KinderInfoVO getBadkinder(String kindername, String subofficeedu);
 	
 	public ScoreVO getScore(String kdid);
+	
+	public detailGraphVO getDetailGraph(String kdid);
 
 }

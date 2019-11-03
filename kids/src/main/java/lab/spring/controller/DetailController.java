@@ -1,6 +1,11 @@
 package lab.spring.controller;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import lab.spring.model.CommentVO;
 import lab.spring.model.KinderInfoVO;
 import lab.spring.model.ScoreVO;
+import lab.spring.model.detailGraphVO;
 import lab.spring.service.MapService;
 
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -36,15 +43,20 @@ public class DetailController {
 			ModelAndView mav = new ModelAndView();
 			KinderInfoVO vo = new KinderInfoVO();
 			KinderInfoVO vo2 = new KinderInfoVO();
+			detailGraphVO detailvo = new detailGraphVO();
 			
 			List<KinderInfoVO> ranklist = null;
-			ranklist = service.getRank(session.getAttribute("rankflag").toString());
+			
+			if(session.getAttribute("rankflag") != null) {
+				ranklist = service.getRank(session.getAttribute("rankflag").toString());
+			}
+			
 			
 			vo=service.getBadkinder(kindername, subofficeedu);
 			vo2=service.getBadkinder(kindername, subofficeedu);
-		
+			detailvo = service.getDetailGraph(kinderid);
+			
 			vo=XO(vo);
-
 			ScoreVO score = service.getScore(kinderid);
 			if(score == null) {
 				score = new ScoreVO();
@@ -57,42 +69,49 @@ public class DetailController {
 				score.setScore2(score.getScore2()*10/3*10/12);
 				score.setScore3(score.getScore3()*10/1*10/12);
 			}
-			try {
-				RConnection r = new RConnection();
-		        REXP x = null;
-		        System.out.println(kinderid);
-				r.eval("try(jpeg('test.jpg', quality=100))");
-		    	String po = "kdid <- \""+kinderid+"\"";
-		    	r.eval(po);
-
-//		    	r.eval("source(/Users/minji/kids/Rfile/commentanalysis.R')");
-
-		    	r.eval("setwd(\"F:/Rworkspace/R1day\")");
-		    	r.eval("source('F:/Rworkspace/R1day/commentanalysis.R')");
-		    	r.eval("wordcloudp(sentence)");
-		    	r.eval("graphics.off()");
-		    	x=r.eval("r=readBin('test.jpg','raw',1024*1024);unlink('test.jpg');r");
-		    	
-				
-		    	String base64Encoded = new String(Base64.encodeBase64(x.asBytes()),"UTF-8");
-		    	
-				mav.addObject("image",base64Encoded);
-
-			}
-			catch(Exception e) {
-				System.out.println(e.getMessage());
-				mav.addObject("image",1);
-			}
-			finally {
-				mav.addObject("score",score);
-				mav.addObject("rankSet",ranklist);
-				mav.addObject("kindername", kindername);
-				mav.addObject("kinderinfoId", kinderid);
-				mav.addObject("badkinder", vo);
-				mav.addObject("badDetail", vo2);
-				mav.setViewName("detail");
-				return mav;
-			}
+			
+			
+			String positive="";
+			String negative="";
+			
+			
+			//긍부정 단어 받아오기
+			try{
+	            File file = new File("F:\\positive.txt");
+	            FileReader filereader = new FileReader(file);
+	            BufferedReader bufReader = new BufferedReader(filereader);
+	            positive = bufReader.readLine();
+	            
+	            
+	            file = new File("F:\\negative.txt");
+	            filereader = new FileReader(file);
+	            bufReader = new BufferedReader(filereader);
+	            negative = bufReader.readLine();
+	            
+	            filereader.close();
+	        }catch(Exception e) {
+	        	System.out.println(e.getMessage());
+	        }
+			
+			
+			//긍부정 단어 
+			mav.addObject("positive",positive);
+			mav.addObject("negative",negative);
+			
+			//스파이더 차트에 사용 할 3가지 점수
+			mav.addObject("score",score);
+			
+			
+			mav.addObject("rankSet",ranklist);
+			mav.addObject("kindername", kindername);
+			mav.addObject("kinderinfoId", kinderid);
+			mav.addObject("badkinder", vo);
+			mav.addObject("badDetail", vo2);
+			
+			//6가지 그래프에 사용 할 vo
+			mav.addObject("graph",detailvo);
+			mav.setViewName("detail");
+			return mav;
 			
 		}
 		
@@ -168,8 +187,6 @@ public class DetailController {
 			cnt++;
 			total.add(cnt);
 		}
-		
-		
 
 		if(total.size()>=5) {
 			vo.setImage(image1);
@@ -180,60 +197,8 @@ public class DetailController {
 		}else {
 			vo.setImage(image4);
 		}
-		
-		
 		return vo;
 	}
-
-	public byte[] getCloud() throws REXPMismatchException {
-		
-		REXP x = null;
-		String kinderid = "KN028";
-		
-		try {
-			System.out.println("-1");
-			RConnection r = new RConnection();
-			System.out.println("0");
-	        
-	        System.out.println(kinderid);
-			r.eval("try(jpeg('test.jpg', quality=100))");
-			
-			System.out.println("1");
-			String po = "kdid <- \'"+kinderid+"\'";
-	    	r.eval(po);
-	    		    	
-	    	r.eval("setwd(\"F:/Rworkspace/R1day\")");	    	
-	    	r.eval("source('F:/Rworkspace/R1day/commentanalysis.R')");
-	    	
-	    	
-	    	System.out.println("3");
-	    	r.eval("wordcloudp(sentence)");
-	    	System.out.println("4");
-	    	r.eval("graphics.off()");
-	    	System.out.println("5");
-	    	x=r.eval("r=readBin('test.jpg','raw',512*512);unlink('test.jpg');r");
-	    	System.out.println("6");
-			
-	    	String base64Encoded = new String(Base64.encodeBase64(x.asBytes()),"UTF-8");
-	    	
-	    	System.out.println("성공");
-		}
-		catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-		
-		return x.asBytes();
-	}
-	
-	public static void main(String[] args) throws REXPMismatchException, REngineException {
-    	
-    	
-		DetailController rs = new DetailController();
-		rs.getCloud();
-	
-
-}
-
 }
 
 

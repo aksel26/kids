@@ -1,11 +1,16 @@
 package lab.spring.controller;
 
 
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.HashSet;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +19,9 @@ import javax.servlet.http.HttpSession;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.snu.ids.ha.index.Keyword;
+import org.snu.ids.ha.index.KeywordExtractor;
+import org.snu.ids.ha.index.KeywordList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,6 +53,8 @@ public class MainController {
 		Document doc = Jsoup.connect("https://www.ipipipip.net/index.php?ln=ko").get();
 		Elements item = doc.select(".yourip span");
 		String ip = item.text();
+		
+		
 		if(session.getAttribute("rankflag")==null || session.getAttribute("rankflag").toString().length() <= 1) {
 			session.setAttribute("rankflag", "0");
 		}
@@ -61,20 +71,101 @@ public class MainController {
 			
 	}
 
+	
+	@RequestMapping(value="/csv.do", method = RequestMethod.GET)
+	public ModelAndView csv() throws IOException {
+		ModelAndView mav = new ModelAndView();
+		
+		
+		List<CommentVO> commentList = service.findCommentList("KN027");
+		HashMap<String, Integer> hm = wordCount(commentList);
+		
+		
+		try {
+			BufferedWriter fw = new BufferedWriter(
+					new OutputStreamWriter(
+							new FileOutputStream("F:\\Github\\kids\\kids\\src\\main\\webapp\\resources\\images\\worddata2.csv"),"UTF-8"));
+			
+			fw.write("text,frequency\r\n");
+			
+			for(String key : hm.keySet()) {
+				fw.write(key+","+hm.get(key)+"\r\n");
+			}
+			
+			fw.flush();
+			fw.close();
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		mav.setViewName("csv");
+		return mav;
+	}	
+	
+	
+	
+	public HashMap<String, Integer> wordCount(List<CommentVO> ls) {
+		
+		HashMap<String, Integer> hm = new HashMap<>();
+		
+		
+		
+		HashSet<String> arr2 = new HashSet<String>();
+		
+		//HashSet 중복 제거
+		for(int i = 0 ; i<ls.size();i++) {
+
+			String[] split = ls.get(i).getContents().split(" ");
+			
+			for(int j = 0;j<split.length;j++) {
+				
+				arr2.add(split[j]);
+			
+			}
+		}
+		
+		//HashMap
+		ArrayList<String> arr3 = new ArrayList<>(arr2);
+		
+		for(int i = 0;i<arr3.size();i++) {
+			hm.put(arr3.get(i), 0);
+		}
+		
+		for(int i = 0 ; i<ls.size();i++) {
+			String[] split = ls.get(i).getContents().split(" ");
+			for(int j = 0;j<split.length;j++) {
+				hm.replace(split[j], hm.get(split[j])+1 );
+			}
+		}
+		
+		return hm;
+		
+	}
+	
+	
 
 	
 	
-	@RequestMapping(value="/newinfo.do", method = RequestMethod.GET)
-	public ModelAndView newinfo() throws IOException {
-		ModelAndView mav = new ModelAndView();
-		
-		Document doc = Jsoup.connect("https://www.ipipipip.net/index.php?ln=ko").get();
-		Elements item = doc.select(".yourip span");
-		String ip = item.text();
-		
-		mav.addObject("ip",ip);
-		mav.setViewName("newInfo");
-		return mav;
-			
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	}

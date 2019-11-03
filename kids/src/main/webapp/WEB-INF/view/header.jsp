@@ -10,8 +10,7 @@
 <!-- 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" -->
 <!-- 	crossorigin="anonymous"> -->
 
-<script src="https://kit.fontawesome.com/30d97172a4.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/30d97172a4.js" crossorigin="anonymous"></script>
 
 
 
@@ -49,7 +48,7 @@
 							<div class="row" style="height: 30px;width: 1330px;margin-top: 60px;">
 								<i class="fas fa-child fa-2x"></i>
 								<div class="input-field col s2">
-									<input type="text" class="form-control" name="userid"
+									<input type="text" id ="userid" class="form-control" name="userid"
 										placeholder="아이디">
 
 								</div>

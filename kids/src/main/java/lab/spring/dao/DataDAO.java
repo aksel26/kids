@@ -30,6 +30,7 @@ import lab.spring.model.MealVO;
 import lab.spring.model.SafetyVO;
 import lab.spring.model.TeacherVO;
 import lab.spring.model.UserVO;
+import lab.spring.model.detailGraphVO;
 
 @Repository
 public class DataDAO {
@@ -201,5 +202,9 @@ public class DataDAO {
 	
 	public ScoreVO getScore(String kdid) {
 		return sqlSession.selectOne("lab.mybatis.user.UserMapper.getScore",kdid);
+	}
+	
+	public detailGraphVO getDetailGraph(String kdid) {
+		return sqlSession.selectOne("lab.mybatis.user.UserMapper.getDetailGraph",kdid);
 	}
 }
