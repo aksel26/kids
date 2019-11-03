@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -27,30 +28,22 @@ public class LoginAction {
    @Autowired
    MapService service;
    
-   /*
-   @RequestMapping(value = "/login.do",method=RequestMethod.GET)
-   public String form() {
-      System.out.println("�α��� GET���");
-      return "page-login";
-   }
-   */
-   
    @RequestMapping(value = "/login.do",method=RequestMethod.POST)
    public ModelAndView login(@RequestParam(value ="userid",required=false)String uid,
                         @RequestParam(value = "userpwd", required=false)String upwd,
-                        HttpSession session,HttpServletResponse response) throws IOException {
+                        HttpSession session,HttpServletResponse response,
+                        HttpServletRequest request) throws IOException {
       ModelAndView mav = new ModelAndView();
       UserVO vo = null;
       vo = service.login(uid, upwd);
-
-
-      
       
       if(vo!=null) {
-         
          session.setAttribute("authInfo", vo);
          session.setAttribute("rankflag", vo.getLocation());
-         mav.setViewName("redirect:index.do");         
+         
+         
+         //request.getHeader("Referer").toString() << 이전 페이지 받아오기
+         mav.setViewName("redirect:"+request.getHeader("Referer").toString());         
       }
       
       else {

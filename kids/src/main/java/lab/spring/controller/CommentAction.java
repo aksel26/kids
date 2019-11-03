@@ -44,7 +44,7 @@ public class CommentAction extends HttpServlet  {
 		try {
 			BufferedWriter fw = new BufferedWriter(
 					new OutputStreamWriter(
-							new FileOutputStream("F:\\Github\\kids\\kids\\src\\main\\webapp\\resources\\images\\worddata2.csv"),"UTF-8"));
+							new FileOutputStream("F:\\Github\\kids\\kids\\src\\main\\webapp\\resources\\images\\worddata3.csv"),"utf-8"));
 			
 			fw.write("text,frequency\r\n");
 			
@@ -124,7 +124,7 @@ public HashMap<String, Integer> wordCount(List<CommentVO> ls) {
 		
 		for(int i = 0 ; i<ls.size();i++) {
 			
-			String[] split = ls.get(i).getContents().split(" ");
+			String[] split = ls.get(i).getContents().split("\\s|\\,|\\.");
 			
 			for(int j = 0;j<split.length;j++) {
 				
@@ -151,7 +151,7 @@ public HashMap<String, Integer> wordCount(List<CommentVO> ls) {
 		
 
 		for(int i = 0 ; i<ls.size();i++) {
-			String[] split = ls.get(i).getContents().split(" ");
+			String[] split = ls.get(i).getContents().split("\\s|\\.|\\,");
 			for(int j = 0;j<split.length;j++) {
 				for(int k = 0;k<worr.size();k++) {
 					if(split[j].contains(worr.get(k))) {

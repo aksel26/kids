@@ -19,8 +19,8 @@ var svg = d3.select("#mycloud")
 
 setTimeout(()=>{
 	
-d3.csv("resources/images/worddata2.csv",function (data) {
-
+d3.csv("resources/images/worddata3.csv",function (data) {
+console.log(data);
 showCloud(data)
 setInterval(function(){
      showCloud(data)

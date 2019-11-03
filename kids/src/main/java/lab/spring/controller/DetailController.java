@@ -46,7 +46,11 @@ public class DetailController {
 			detailGraphVO detailvo = new detailGraphVO();
 			
 			List<KinderInfoVO> ranklist = null;
-			ranklist = service.getRank(session.getAttribute("rankflag").toString());
+			
+			if(session.getAttribute("rankflag") != null) {
+				ranklist = service.getRank(session.getAttribute("rankflag").toString());
+			}
+			
 			
 			vo=service.getBadkinder(kindername, subofficeedu);
 			vo2=service.getBadkinder(kindername, subofficeedu);
@@ -71,6 +75,7 @@ public class DetailController {
 			String negative="";
 			
 			
+			//긍부정 단어 받아오기
 			try{
 	            File file = new File("F:\\positive.txt");
 	            FileReader filereader = new FileReader(file);
@@ -89,16 +94,21 @@ public class DetailController {
 	        }
 			
 			
-			
+			//긍부정 단어 
 			mav.addObject("positive",positive);
 			mav.addObject("negative",negative);
 			
+			//스파이더 차트에 사용 할 3가지 점수
 			mav.addObject("score",score);
+			
+			
 			mav.addObject("rankSet",ranklist);
 			mav.addObject("kindername", kindername);
 			mav.addObject("kinderinfoId", kinderid);
 			mav.addObject("badkinder", vo);
 			mav.addObject("badDetail", vo2);
+			
+			//6가지 그래프에 사용 할 vo
 			mav.addObject("graph",detailvo);
 			mav.setViewName("detail");
 			return mav;
@@ -177,8 +187,6 @@ public class DetailController {
 			cnt++;
 			total.add(cnt);
 		}
-		
-		
 
 		if(total.size()>=5) {
 			vo.setImage(image1);
@@ -189,17 +197,8 @@ public class DetailController {
 		}else {
 			vo.setImage(image4);
 		}
-		
-		
 		return vo;
 	}
-
-	
-	
-
-	
-
-
 }
 
 

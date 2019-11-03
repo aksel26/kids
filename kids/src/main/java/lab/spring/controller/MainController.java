@@ -53,6 +53,8 @@ public class MainController {
 		Document doc = Jsoup.connect("https://www.ipipipip.net/index.php?ln=ko").get();
 		Elements item = doc.select(".yourip span");
 		String ip = item.text();
+		
+		
 		if(session.getAttribute("rankflag")==null || session.getAttribute("rankflag").toString().length() <= 1) {
 			session.setAttribute("rankflag", "0");
 		}

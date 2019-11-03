@@ -173,7 +173,7 @@ var staravg;
                 <!-- 스파이더 차트 -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-lg-7"  >
+                    <div class="col-lg-6"  >
                         <div class="card oh">
                             <div class="card-body"  style="height:600px"}>
                               <h5 class="card-title" style="font-family: 'Hanna'">종합지표</h5>   
@@ -181,7 +181,7 @@ var staravg;
 					   				 <div id="body">
 										  <div id="chart" ></div>
 					    			</div>    
-    				<script src="resources/assets/js/script.js"></script> 
+    								<script src="resources/assets/js/script.js"></script> 
                              </div>
                             </div>
                         </div>
@@ -190,7 +190,7 @@ var staravg;
                 <!-- ============================================================== -->
                 <!-- 유치원 상세정보 -->
                 <!-- ============================================================== -->
-                  <div class="col-md-5">
+                  <div class="col-md-6">
                         <div class="card">
                             <div class="card-body" style="height:600px	">
                                 <h5 class="card-title" style="font-family: 'Hanna'">유치원 상세정보</h5>
@@ -435,7 +435,7 @@ var staravg;
                         <div class="card" >
                             <div class="card-body" style="width:1024px;height:1024;">
                             
-                                <h5 class="card-title" style="font-family: 'Hanna'; font-size: 20px">Review WordCloud</h5>
+<!--                                 <h5 class="card-title" style="font-family: 'Hanna'; font-size: 20px">Review WordCloud</h5> -->
                                 <div  style="text-align:inherit;">
                                 <svg id = "mycloud"></svg>
                                 </div>
@@ -580,7 +580,8 @@ function imagemake(num){
 
 function addComment(id){
 	if(${authInfo eq null}){
-		alert("로그인이 필요한 기능입니다.");	
+		alert("로그인이 필요한 기능입니다.");
+		$("#userid").focus();
 	}
 	else{
 		var contents = $('#review_text').val();
@@ -599,6 +600,7 @@ function addComment(id){
 			'user':user
 		},
 		success:function(data){
+			$('#review_text').val("");
 			SearchID(kdid);
 			},
 		 	error:function(request,status,error){
