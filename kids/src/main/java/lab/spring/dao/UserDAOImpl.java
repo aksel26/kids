@@ -25,6 +25,7 @@ public class UserDAOImpl implements UserDAO{
 		return sqlSession.selectOne("lab.mybatis.user.UserMapper.getUserInfo", uid); }
 
 	public int insertUser(UserVO userVO) throws Exception { 
+
 		
 		return sqlSession.insert("lab.mybatis.user.UserMapper.insertUser", userVO); } 
 	

@@ -1,4 +1,3 @@
-
 <%@page import="lab.spring.controller.DetailController"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -41,12 +40,12 @@
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="resources/assets/js/RadarChart.js"></script>
+<script src="resources/assets/js/graph.js"></script>
+<script src="resources/assets/js/graph2.js"></script>
 
 <script src="./resources/assets/js/index_modules/wordcloud.js" charset="UTF-8"></script>
 <!-- wordcloud추가 -->
-<script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js" type="text/JavaScript"></script>
-
 
 <style>
 <!-- 별점만들기 스타일소스  -->
@@ -110,6 +109,92 @@ align-content: center;
 text-align:inherit;
 width:300px;
 }
+	.zt-skill-bar {
+        color: #fff;
+        font-family:'Hanna';
+        font-size: 20px;
+        line-height: 25px;
+        height: 25px;
+        margin-bottom: 5px;
+
+        background-color: rgba(0,0,0,0.1);
+
+        -webkit-border-radius: 2px;
+           -moz-border-radius: 2px;
+            -ms-border-radius: 2px;
+                border-radius: 2px;
+
+    }
+
+    .zt-skill-bar * {
+        webkit-transition: all 2s ease;
+          -moz-transition: all 2s ease;
+           -ms-transition: all 2s ease;
+            -o-transition: all 2s ease;
+               transition: all 2s ease;
+    }
+
+    .zt-skill-bar div {
+        background-color: #ffc600;
+        position: relative;
+        padding-left: 25px;
+        width: 0;
+
+        -webkit-border-radius: 2px;
+           -moz-border-radius: 2px;
+           -ms-border-radius: 2px;
+                border-radius: 2px;
+    }
+
+    .zt-skill-bar span {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        padding: 0 5px 0 10px;
+        background-color: #1a1a1a;
+
+        -webkit-border-radius: 0 2px 2px 0;
+           -moz-border-radius: 0 2px 2px 0;
+            -ms-border-radius: 0 2px 2px 0;
+                border-radius: 0 2px 2px 0;
+    }
+
+    .zt-skill-bar span:before {
+        content: "";
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        top: 50%;
+        left: -3px;
+        margin-top: -3px;
+        background-color: #1a1a1a;
+
+        -webkit-transform: rotate(45deg);
+           -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+    }
+    
+       .bar {
+            fill: #5f89ad;
+        }
+        
+        .axis {
+            font-size: 13px;
+        }
+        
+        .axis path,
+        .axis line {
+            fill: none;
+            display: none;
+        }
+        
+        .label {
+            font-size: 13px;
+        }
+
 </style>
 </head>
 
@@ -246,20 +331,24 @@ var staravg;
                       <div class="row">
                     <div class="col-lg-4"  >
                         <div class="card oh">
-                            <div class="card-body" }>
+                            <div class="card-body">
                               <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
                               
                               <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
-                              <div>
-                              
-                              </div>
+                              <hr>
+                              <div class="zt-skill-bar"><div data-width="88" style="">${badkinder.kindername}<span>88%</span></div></div>
+								<div class="zt-skill-bar"><div data-width="92" style="">서울시 공시정보<span>92%</span></div></div>
 							</div>
 						</div>  
 						</div>
-						  <div class="col-lg-4"  >
+						  <div class="col-lg-4">
                         <div class="card oh">
-                            <div class="card-body"}>
+                            <div class="card-body">
                               <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
+                              
+                              <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
+                              <hr>
+                      <div id="graphic"></div>
 							</div>
 						</div>  
 						</div>
