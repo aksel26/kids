@@ -332,7 +332,7 @@ var staravg;
                     <div class="col-lg-4"  >
                         <div class="card oh">
                             <div class="card-body">
-                              <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
+                              <h5 class="card-title" style="font-family: 'Hanna'">3세 원아수</h5>
                               
                               <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
                               <hr>
@@ -344,8 +344,7 @@ var staravg;
 						  <div class="col-lg-4">
                         <div class="card oh">
                             <div class="card-body">
-                              <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
-                              
+                              <h5 class="card-title" style="font-family: 'Hanna'">4세 원아수</h5>
                               <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
                               <hr>
                       <div id="graphic"></div>
