@@ -41,8 +41,6 @@ public class LoginAction {
          session.setAttribute("authInfo", vo);
          session.setAttribute("rankflag", vo.getLocation());
          
-         
-         //request.getHeader("Referer").toString() << 이전 페이지 받아오기
          mav.setViewName("redirect:"+request.getHeader("Referer").toString());         
       }
       

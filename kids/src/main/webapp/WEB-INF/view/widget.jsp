@@ -204,13 +204,14 @@ display: inline-block;
 		  		<tr>
 		  		<td></td>
  		  	<td>${status.count}.</td>
-			<td><a href="detail.do?kindername=${rank.kindername}&kinderinfoId=${rank.kinderinfoId}&subofficeedu=${rank.subofficeedu}">${rank.kindername}</a></td>
+			<td><a id =rankA onclick="onlyLogin('${rank.kindername}','${rank.kinderinfoId}','${rank.subofficeedu}',1)" style="cursor:pointer"> ${rank.kindername}</a></td>
 				</tr>
 			</c:forEach>
 		</table>
       </form>
             
              <script>
+             
       var textWrapper = document.querySelector('.text-wrapper td');
       textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<td>");
 
