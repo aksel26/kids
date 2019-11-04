@@ -52,15 +52,17 @@ function draw(words) {
         .append("text")
         .style("font-family", "Hanna")
         .style("fill", function (d) {
-           if(keywords.indexOf(d.text) > -1){
-              return "#0064CD"
-           }
-           else if(negativeWord.indexOf(d.text) > -1 ){
-              return "#CD1039"
-           }
-           else{
-              return "#dcdcdc"
-           }
+
+        	if(keywords.indexOf(d.text) > -1){
+        		return "#0064CD"
+        	}
+        	else if(negativeWord.indexOf(d.text) > -1 ){
+        		return "#CD1039"
+        	}
+        	else{
+        		return "#dcdcdc"
+        	}
+
         })
         .style("fill-opacity", .5)
         .attr("text-anchor", "middle") 

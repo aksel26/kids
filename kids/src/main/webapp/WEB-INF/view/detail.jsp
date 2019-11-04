@@ -651,7 +651,9 @@ else if(child3 == 0){
    child3 = 50;
 }
 else if(child3 < 35){
-   child3 = 50;
+
+	child3 = 50;
+
 }
 
 
@@ -673,7 +675,6 @@ else if(child4 < 35){
 }
 
 
-
 if(child5 > 100){
    child5 = 100;
 }
@@ -687,7 +688,7 @@ else if(child5 == 0){
    child5 = 50;
 }
 else if(child5 < 35){
-   child5 = 50;
+	child5 = 50;
 }
 
 
@@ -704,9 +705,11 @@ else if(area == 0){
    element.innerHTML = "";
    area = 50;
 }
+
 else if(area < 35){
-   area = 50;
+	area = 50;
 }
+
 
 
 
@@ -724,6 +727,9 @@ else if(teacher == 0){
 }
 else if(teacher < 35){
    teacher = 50;
+}
+else if(teacher < 35){
+	teacher = 50;
 }
 if(bus>100){
    bus=100;
