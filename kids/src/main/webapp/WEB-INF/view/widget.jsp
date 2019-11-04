@@ -35,9 +35,9 @@ display: inline-block;
             opacity: 0.4;
             transition: opacity 1s;
             border-radius: 6px;
-            background-color: #ffbf80;
+            background-color: #b3b3cc;
             padding:3px;
-            top:-30px; 
+            top:-30px; 	
             left:0px;
         }   
  .CellWithComment:hover span.CellComment {visibility: visible; opacity: 1;}
@@ -46,7 +46,9 @@ display: inline-block;
     </head>
     <body>
       
-               <h3 class="menu-title">카테고리</h3>
+               <h3 class="menu-title">카테고리<a class="CellWithComment"><i class="fas fa-question-circle" style="font-size:2px"><span class="CellComment" width=700px style="font-size:15px" >
+           <img src="resources/images/공립(단설)빨강.png" width=40px height=40px/><b style="font-family:'Hanna'">공립(단설)</b><img src="resources/images/공립(병설)빨강.png" width=40px height=40px/><b style="font-family:'Hanna'">공립(병설)</b><img src="resources/images/사립(법인).png" width=40px height=40px/>
+           <b style="font-family:'Hanna'">사립(법인)</b><img src="resources/images/사립(사인).png"width=40px height=40px/><b style="font-family:'Hanna'">사립(사인)</b></span></i></a></h3>
                <!-- /.menu-title -->
 
             <li class="menu-item-has-children dropdown">
@@ -194,7 +196,7 @@ display: inline-block;
         
    
             <h3 class="menu-title" style="font-size:17px"><a style="color:#ff0066;">우리동네</a> 유치원 순위<a class="CellWithComment" style="font-family: 'Hanna'"><i class="fas fa-question-circle" style="font-size:2px"><span class="CellComment" style="font-size:15px">
-           <b style="color:#b30000">안전점수</b>+<b style="color:#b30000">위생점수</b>+<b style="color:#b30000">시설점수</b>의 총합으로 산출된 결과입니다.</span></i></a></h3>
+           <b style="color:#800040">안전점수</b>+<b style="color:#800040">위생점수</b>+<b style="color:#800040">시설점수</b>의 총합으로 산출된 결과입니다.</span></i></a></h3>
           
             <!-- /.menu-title -->
  
