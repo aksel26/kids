@@ -3,6 +3,8 @@ package lab.spring.controller;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -39,7 +41,7 @@ public class DetailController {
 			@RequestParam(value = "kinderinfoId") String kinderid,
 			@RequestParam(value = "subofficeedu") String subofficeedu, HttpServletRequest request,
 			HttpSession session) {
-
+		
 		ModelAndView mav = new ModelAndView();
 		KinderInfoVO vo = new KinderInfoVO();
 		KinderInfoVO vo2 = new KinderInfoVO();
@@ -50,7 +52,7 @@ public class DetailController {
 		if (session.getAttribute("rankflag") != null) {
 			ranklist = service.getRank(session.getAttribute("rankflag").toString());
 		}
-
+		
 		vo = service.getBadkinder(kindername, subofficeedu);
 		vo2 = service.getBadkinder(kindername, subofficeedu);
 		detailvo = service.getDetailGraph(kinderid);
@@ -73,12 +75,14 @@ public class DetailController {
 
 		// 긍부정 단어 받아오기
 		try {
-			File file = new File("/Users/minji/kids/kids/positive.txt");
+//			File file = new File("/Users/minji/kids/kids/positive.txt");
+			File file = new File("F:positive.txt");
 			FileReader filereader = new FileReader(file);
 			BufferedReader bufReader = new BufferedReader(filereader);
 			positive = bufReader.readLine();
 
-			file = new File("/Users/minji/kids/kids/negative.txt");
+//			file = new File("/Users/minji/kids/kids/negative.txt");
+			file = new File("F:negative.txt");
 			filereader = new FileReader(file);
 			bufReader = new BufferedReader(filereader);
 			negative = bufReader.readLine();

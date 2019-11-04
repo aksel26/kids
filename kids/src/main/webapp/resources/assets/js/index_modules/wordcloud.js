@@ -19,7 +19,7 @@ var svg = d3.select("#mycloud")
 
 setTimeout(()=>{
 	
-d3.csv("resources/images/worddata2.csv",function (data) {
+d3.csv("resources/images/worddata3.csv",function (data) {
 console.log(data);
 showCloud(data)
 setInterval(function(){
@@ -50,16 +50,16 @@ function draw(words) {
     //Entering words
     cloud.enter()
         .append("text")
-        .style("font-family", "overwatch")
+        .style("font-family", "Hanna")
         .style("fill", function (d) {
         	if(keywords.indexOf(d.text) > -1){
-        		return "#3CB4FF"
+        		return "#0064CD"
         	}
         	else if(negativeWord.indexOf(d.text) > -1 ){
-        		return "#FF7DC8"
+        		return "#CD1039"
         	}
         	else{
-        		return "#405275"
+        		return "#dcdcdc"
         	}
         })
         .style("fill-opacity", .5)

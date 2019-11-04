@@ -37,17 +37,13 @@ public class CommentAction extends HttpServlet  {
 		List<CommentVO> commentList = service.findCommentList(kdid);
 		
 		HashMap<String, Integer> hm = wordCount(commentList);
-		
-//		for(String key : hm.keySet()) {
-//			System.out.println(key + " : " + hm.get(key));
-//		}
 		try {
 			BufferedWriter fw = new BufferedWriter(
 					new OutputStreamWriter(
 
-							//new FileOutputStream("/Users/minji/kids/kids/src/main/webapp/resources/images/worddata3.csv"),"utf-8"));
+//							new FileOutputStream("/Users/minji/kids/kids/src/main/webapp/resources/images/worddata3.csv"),"utf-8"));
 
-							new FileOutputStream("F:\\Github\\kids\\kids\\src\\main\\webapp\\resources\\images\\worddata2.csv"),"utf-8"));
+							new FileOutputStream("F:\\Github\\kids\\kids\\src\\main\\webapp\\resources\\images\\worddata3.csv"),"utf-8"));
 
 			
 			fw.write("text,frequency\r\n");
@@ -106,7 +102,7 @@ public HashMap<String, Integer> wordCount(List<CommentVO> ls) {
 		
 		try{
             //파일 객체 생성
-            File file = new File("/Users/minji/Downloads/words.txt");
+            File file = new File("F:words.txt");
             //입력 스트림 생성
             FileReader filereader = new FileReader(file);
             
@@ -116,6 +112,7 @@ public HashMap<String, Integer> wordCount(List<CommentVO> ls) {
             while((line = bufReader.readLine()) != null){
             	hs.add(line);
             }
+            
             filereader.close();
         }catch(Exception e) {
         	System.out.println(e.getMessage());
@@ -151,6 +148,9 @@ public HashMap<String, Integer> wordCount(List<CommentVO> ls) {
 		int weight = 1;
 		if(arr3.size()<15) {
 			weight = 40;
+		}
+		else if(arr3.size()>=15 || arr3.size()<=30){
+			weight = 30;
 		}
 		
 
