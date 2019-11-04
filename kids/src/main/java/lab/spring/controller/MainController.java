@@ -19,9 +19,6 @@ import javax.servlet.http.HttpSession;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.snu.ids.ha.index.Keyword;
-import org.snu.ids.ha.index.KeywordExtractor;
-import org.snu.ids.ha.index.KeywordList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -84,7 +81,7 @@ public class MainController {
 		try {
 			BufferedWriter fw = new BufferedWriter(
 					new OutputStreamWriter(
-							new FileOutputStream("F:\\Github\\kids\\kids\\src\\main\\webapp\\resources\\images\\worddata2.csv"),"UTF-8"));
+							new FileOutputStream("/Users/minji/kids/kids/src/main/webapp/resources/images/worddata3.csv"),"UTF-8"));
 			
 			fw.write("text,frequency\r\n");
 			
@@ -142,30 +139,4 @@ public class MainController {
 		return hm;
 		
 	}
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	}
