@@ -638,6 +638,7 @@ else{
 	element.innerHTML = "  부적합";
 }
 
+
 if(child3 > 100){
 	child3 = 100;
 }
@@ -651,9 +652,10 @@ else if(child3 == 0){
 	
 	child3 = 50;
 }
-if(child3<50){
-	child
+else if(child3 < 35){
+	child3 = 50;
 }
+
 
 
 if(child4 > 100){
@@ -668,6 +670,12 @@ else if(child4 == 0){
 	element.innerHTML = "";
 	child4= 50;
 }
+else if(child4 < 35){
+	child4 = 50;
+}
+
+
+
 if(child5 > 100){
 	child5 = 100;
 }
@@ -680,6 +688,12 @@ else if(child5 == 0){
 	element.innerHTML = "";
 	child5 = 50;
 }
+else if(child5 < 35){
+	child5 = 50;
+}
+
+
+
 if(area>100){
 	area=100;
 }
@@ -692,6 +706,12 @@ else if(area == 0){
 	element.innerHTML = "";
 	area = 50;
 }
+else if(area < 35){
+	area = 50;
+}
+
+
+
 if(teacher>100){
 	teacher=100;
 }
@@ -702,6 +722,9 @@ else if(teacher == 0){
 	
 	element = document.getElementById("teacher-span");
 	element.innerHTML = "";
+	teacher = 50;
+}
+else if(teacher < 35){
 	teacher = 50;
 }
 if(bus>100){
