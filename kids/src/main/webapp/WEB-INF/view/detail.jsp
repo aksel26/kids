@@ -336,7 +336,7 @@ var staravg;
                               <h6 id =child3-text style="padding-left:35%; font-family: 'Hanna'; font-size:200%;"></h6>
                               <hr>
                             
-                              <div class="zt-skill-bar"><div id=child3-bar data-width="" style="">${badkinder.kindername}<span id=child3-span>${graph.child3}명</span></div></div>
+                              <div class="zt-skill-bar"><div id=child3-bar data-width="${graph.child3 * (80/20)}"style="">${badkinder.kindername}<span id=child3-span>${graph.child3}명</span></div></div>
 								<div class="zt-skill-bar"><div data-width="80" style="">서울시 공시정보<span>20명</span></div></div>
 							</div>
 						</div>  
@@ -651,6 +651,11 @@ else if(child3 == 0){
 	
 	child3 = 50;
 }
+if(child3<50){
+	child
+}
+
+
 if(child4 > 100){
 	child4 = 100;
 }
@@ -703,12 +708,8 @@ if(bus>100){
 	bus=100;
 }
 else if(bus == 0){
-	var element = document.getElementById("bus-text");
-	element.style.color = "#000000";
-	element.innerHTML = "데이터가 없습니다";
-	
 	element = document.getElementById("bus-span");
-	element.innerHTML = "";
+	element.innerHTML = "0대";
 	bus=50 ;
 }
 
