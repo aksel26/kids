@@ -37,7 +37,6 @@ public class CommentAction extends HttpServlet  {
 		List<CommentVO> commentList = service.findCommentList(kdid);
 		
 		HashMap<String, Integer> hm = wordCount(commentList);
-		
 //		for(String key : hm.keySet()) {
 //			System.out.println(key + " : " + hm.get(key));
 //		}
@@ -46,9 +45,6 @@ public class CommentAction extends HttpServlet  {
 					new OutputStreamWriter(
 
 						new FileOutputStream("/Users/minji/kids/kids/src/main/webapp/resources/images/worddata3.csv"),"utf-8"));
-
-//							new FileOutputStream("F:\\Github\\kids\\kids\\src\\main\\webapp\\resources\\images\\worddata2.csv"),"utf-8"));
-
 			
 			fw.write("text,frequency\r\n");
 			

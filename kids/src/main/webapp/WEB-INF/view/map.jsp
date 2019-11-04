@@ -169,15 +169,15 @@ function default_setting(){
 
 	markerImageSize = new kakao.maps.Size(40, 42),markerImageOptions = {offset : new kakao.maps.Point(20, 42)};
 	
-	markerImage1 = new kakao.maps.MarkerImage("resources/images/사립(법인).png", markerImageSize, markerImageOptions);
-	markerImage2 = new kakao.maps.MarkerImage("resources/images/사립(사인).png", markerImageSize, markerImageOptions);
-	markerImage3 = new kakao.maps.MarkerImage("resources/images/공립(단설)빨강.png", markerImageSize, markerImageOptions);
-	markerImage4 = new kakao.maps.MarkerImage("resources/images/공립(병설)빨강.png", markerImageSize, markerImageOptions);
+	markerImage1 = new kakao.maps.MarkerImage("resources/images/private1.png", markerImageSize, markerImageOptions);
+	markerImage2 = new kakao.maps.MarkerImage("resources/images/private2.png", markerImageSize, markerImageOptions);
+	markerImage3 = new kakao.maps.MarkerImage("resources/images/public1.png", markerImageSize, markerImageOptions);
+	markerImage4 = new kakao.maps.MarkerImage("resources/images/public2.png", markerImageSize, markerImageOptions);
 	
-	markerImage1n = new kakao.maps.MarkerImage("resources/images/사립(법인)-dark.png", markerImageSize, markerImageOptions);
-	markerImage2n = new kakao.maps.MarkerImage("resources/images/사립(사인)-dark.png", markerImageSize, markerImageOptions);
-	markerImage3n = new kakao.maps.MarkerImage("resources/images/공립(단설)빨강-dark.png", markerImageSize, markerImageOptions);
-	markerImage4n = new kakao.maps.MarkerImage("resources/images/공립(병설)빨강-dark.png", markerImageSize, markerImageOptions);
+	markerImage1n = new kakao.maps.MarkerImage("resources/images/private1-dark.png", markerImageSize, markerImageOptions);
+	markerImage2n = new kakao.maps.MarkerImage("resources/images/private2-dark.png", markerImageSize, markerImageOptions);
+	markerImage3n = new kakao.maps.MarkerImage("resources/images/public1-dark.png", markerImageSize, markerImageOptions);
+	markerImage4n = new kakao.maps.MarkerImage("resources/images/public2-dark.png", markerImageSize, markerImageOptions);
 	
 	zoomControl = new kakao.maps.ZoomControl(); 
 	map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
