@@ -333,10 +333,11 @@ var staravg;
                         <div class="card oh">
                             <div class="card-body">
                               <h5 class="card-title" style="font-family: 'Hanna'">3세 원아수</h5>
-                              <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
+                              <h6 id =child3-text style="padding-left:35%; font-family: 'Hanna'; font-size:200%;"></h6>
                               <hr>
-                              <div class="zt-skill-bar"><div data-width="88" style="">${badkinder.kindername}<span>${graph.child3}명</span></div></div>
-								<div class="zt-skill-bar"><div data-width="50" style="">서울시 공시정보<span>20명</span></div></div>
+                            
+                              <div class="zt-skill-bar"><div id=child3-bar data-width="" style="">${badkinder.kindername}<span id=child3-span>${graph.child3}명</span></div></div>
+								<div class="zt-skill-bar"><div data-width="80" style="">서울시 공시정보<span>20명</span></div></div>
 							</div>
 						</div>  
 						</div>
@@ -344,10 +345,11 @@ var staravg;
                         <div class="card oh">
                             <div class="card-body">
                               <h5 class="card-title" style="font-family: 'Hanna'">4세 원아수</h5>
-                              <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
+                              <h6 id =child4-text style="padding-left:35%; font-family: 'Hanna'; font-size:200%;"></h6>
                               <hr>
-                              <div class="zt-skill-bar"><div data-width="88" style="">${badkinder.kindername}<span>${graph.child4}명</span></div></div>
-								<div class="zt-skill-bar"><div data-width="50" style="">서울시 공시정보<span>25명</span></div></div>
+                              <div class="zt-skill-bar"><div id=child4-bar data-width="${graph.child4 * (80/25)}" style="">${badkinder.kindername}
+                              <span id=child4-span>${graph.child4}명</span></div></div>
+								<div class="zt-skill-bar"><div data-width="80" style="">서울시 공시정보<span>25명</span></div></div>
 							</div>
 						</div>  
 						</div>
@@ -355,10 +357,11 @@ var staravg;
                         <div class="card oh">
                             <div class="card-body"}>
                               <h5 class="card-title" style="font-family: 'Hanna'">5세 원아수 </h5>
-                              <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
+                              <h6 id =child5-text  style="padding-left:35%; font-family: 'Hanna'; font-size:200%;"></h6>
                               <hr>
-                              <div class="zt-skill-bar"><div data-width="88" style="">${badkinder.kindername}<span>${graph.child5}명</span></div></div>
-								<div class="zt-skill-bar"><div data-width="50" style="">서울시 공시정보<span>30명</span></div></div>
+                              <div class="zt-skill-bar"><div id=child5-bar data-width="${graph.child5 * (80/30)}" style="">${badkinder.kindername}
+                              <span id=child5-span>${graph.child5}명</span></div></div>
+								<div class="zt-skill-bar"><div data-width="80" style="">서울시 공시정보<span>30명</span></div></div>
 							</div>
 						</div>  
 						</div>
@@ -369,9 +372,10 @@ var staravg;
                         <div class="card oh">
                             <div class="card-body" }>
                               <h5 class="card-title" style="font-family: 'Hanna'">아이당 평수</h5>
-                              <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
+                              <h6 id=area-text style="padding-left:35%; font-family: 'Hanna'; font-size:200%;"></h6>
                               <hr>
-                              <div class="zt-skill-bar"><div data-width="88" style="">${badkinder.kindername}<span>${graph.area}㎡</span></div></div>
+                              <div class="zt-skill-bar"><div id=area-bar data-width="${graph.area * (50/2.2)}" style="">${badkinder.kindername}
+                              <span id=area-span>${graph.area}㎡</span></div></div>
 								<div class="zt-skill-bar"><div data-width="50" style="">서울시 공시정보<span>2.2㎡</span></div></div>
                               
 							</div>
@@ -381,19 +385,21 @@ var staravg;
                         <div class="card oh">
                             <div class="card-body"}>
                               <h5 class="card-title" style="font-family: 'Hanna'">선생님당 아이수 </h5>
-                              <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
+                              <h6 id=teacher-text style="padding-left:35%; font-family: 'Hanna'; font-size:200%;"></h6>
                               <hr>
-                              <div class="zt-skill-bar"><div data-width="75" style="">${badkinder.kindername}<span>${graph.teacher}명</span></div></div>
-							</div>
+                              <div class="zt-skill-bar"><div id=teacher-bar data-width="${graph.teacher *(80/18)}" style="">${badkinder.kindername}
+                              <span id=teacher-span>${graph.teacher}명</span></div></div>
+								<div class="zt-skill-bar"><div data-width="80" style="">서울시 공시정보<span>18명</span></div></div>
+								</div>
 						</div>  
 						</div>
 						  <div class="col-lg-4"  >
                         <div class="card oh">
                             <div class="card-body"}>
                               <h5 class="card-title" style="font-family: 'Hanna'">보유 버스 수 </h5>
-                              <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
                               <hr>
-                              <div class="zt-skill-bar"><div data-width="60" style="">${badkinder.kindername}<span>${graph.bus}대</span></div></div>
+                              <div class="zt-skill-bar"><div id=bus-bar data-width="${graph.bus *(50/2)}" style="">${badkinder.kindername}
+                              <span id=bus-span>${graph.bus}대</span></div></div>
 							</div>
 						</div>  
 						</div>
@@ -537,9 +543,7 @@ var staravg;
                     <div class="col-md-6">
                         <div class="card" >
                             <div class="card-body" style="width:1024px;height:1024;">
-                            
-<!--                                 <h5 class="card-title" style="font-family: 'Hanna'; font-size: 20px">Review WordCloud</h5> -->
-                                <div  style="text-align:inherit;">
+	                                <div  style="text-align:inherit;">
                                 <svg id = "mycloud"></svg>
                                 </div>
                                 
@@ -569,9 +573,160 @@ var staravg;
 <script>
 
 
+var child3 = "${graph.child3 * (80/20)}";
+var child4 = "${graph.child4 * (80/25)}";
+var child5 = "${graph.child5 * (80/30)}";
+var area ="${graph.area * (50/2.2)}"; 
+var teacher = "${graph.teacher *(80/18)}";
+var bus = "${graph.bus *(50/2)}";
+
+console.log(child3);
+
+
+if(child3 < 80){
+	var element = document.getElementById("child3-text");
+	element.style.color = "#339933";
+	element.innerHTML = "   적합";
+}
+else{
+	var element = document.getElementById("child3-text");
+	element.style.color = "#F70C00";
+	element.innerHTML = "  부적합";
+}
+
+if(child4 < 80){
+	var element = document.getElementById("child4-text");
+	element.style.color = "#339933";
+	element.innerHTML = "   적합";
+}
+else{
+	var element = document.getElementById("child4-text");
+	element.style.color = "#F70C00";
+	element.innerHTML = "  부적합";
+}
+
+if(child5 < 80){
+	var element = document.getElementById("child5-text");
+	element.style.color = "#339933";
+	element.innerHTML = "   적합";
+}
+else{
+	var element = document.getElementById("child5-text");
+	element.style.color = "#F70C00";
+	element.innerHTML = "  부적합";
+}
+
+if(area > 50){
+	var element = document.getElementById("area-text");
+	element.style.color = "#339933";
+	element.innerHTML = "   적합";
+}
+else{
+	var element = document.getElementById("area-text");
+	element.style.color = "#F70C00";
+	element.innerHTML = "  부적합";
+}
+
+if(teacher < 80){
+	var element = document.getElementById("teacher-text");
+	element.style.color = "#339933";
+	element.innerHTML = "   적합";
+}
+else{
+	var element = document.getElementById("teacher-text");
+	element.style.color = "#F70C00";
+	element.innerHTML = "  부적합";
+}
+
+if(child3 > 100){
+	child3 = 100;
+}
+else if(child3 == 0){
+	var element = document.getElementById("child3-text");
+	element.style.color = "#000000";
+	element.innerHTML = "데이터가 없습니다";
+	
+	element = document.getElementById("child3-span");
+	element.innerHTML = "";
+	
+	child3 = 50;
+}
+if(child4 > 100){
+	child4 = 100;
+}
+else if(child4 == 0){
+	var element = document.getElementById("child4-text");
+	element.style.color = "#000000";
+	element.innerHTML = "데이터가 없습니다";
+	
+	element = document.getElementById("child4-span");
+	element.innerHTML = "";
+	child4= 50;
+}
+if(child5 > 100){
+	child5 = 100;
+}
+else if(child5 == 0){
+	var element = document.getElementById("child5-text");
+	element.style.color = "#000000";
+	element.innerHTML = "데이터가 없습니다";
+	
+	element = document.getElementById("child5-span");
+	element.innerHTML = "";
+	child5 = 50;
+}
+if(area>100){
+	area=100;
+}
+else if(area == 0){
+	var element = document.getElementById("area-text");
+	element.style.color = "#000000";
+	element.innerHTML = "데이터가 없습니다";
+	
+	element = document.getElementById("area-span");
+	element.innerHTML = "";
+	area = 50;
+}
+if(teacher>100){
+	teacher=100;
+}
+else if(teacher == 0){
+	var element = document.getElementById("teacher-text");
+	element.style.color = "#000000";
+	element.innerHTML = "데이터가 없습니다";
+	
+	element = document.getElementById("teacher-span");
+	element.innerHTML = "";
+	teacher = 50;
+}
+if(bus>100){
+	bus=100;
+}
+else if(bus == 0){
+	var element = document.getElementById("bus-text");
+	element.style.color = "#000000";
+	element.innerHTML = "데이터가 없습니다";
+	
+	element = document.getElementById("bus-span");
+	element.innerHTML = "";
+	bus=50 ;
+}
+
+$("#child3-bar").attr("data-width",child3);
+$("#child4-bar").attr("data-width",child4);
+$("#child5-bar").attr("data-width",child5);
+$("#area-bar").attr("data-width",area);
+$("#teacher-bar").attr("data-width",teacher);
+$("#bus-bar").attr("data-width",bus);
+
+
+
 $(document).ready(function(){
 	SearchID("${kinderinfoId}");
 });
+
+
+
 
 function SearchID (id){
 	var C1 = document.getElementById("review");

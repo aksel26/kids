@@ -99,7 +99,6 @@ public class SearchController {
 		String gu = keyword.get("keyword");
 		
 		if(gu.equals("광진구")) {gu = "KJ";KinderList = service.findSerachList(gu,2);}
-		else if(gu.equals("광진구")) {gu = "KJ";KinderList = service.findSerachList(gu,2);}
 		else if(gu.equals("서초구")) {gu = "SC";KinderList = service.findSerachList(gu,2);}
 		else if(gu.equals("동작구")) {gu = "DJ";KinderList = service.findSerachList(gu,2);}
 		else if(gu.equals("양천구")) {gu = "YC";KinderList = service.findSerachList(gu,2);}
@@ -121,6 +120,7 @@ public class SearchController {
 		else if(gu.equals("마포구")) {gu = "MP";KinderList = service.findSerachList(gu,2);}
 		else if(gu.equals("송파구")) {gu = "SP";KinderList = service.findSerachList(gu,2);}
 		else if(gu.equals("동대문구")) {gu = "DM";KinderList = service.findSerachList(gu,2);}
+		else if(gu.equals("공립") || gu.equals("사립")) {KinderList = service.findSerachList(gu,3);}
 		else {
 			KinderList = service.findSerachList(keyword.get("keyword"),1);	
 		}	

@@ -20,6 +20,10 @@
   <select id="getSearcGuhList" resultType="lab.spring.model.KinderInfoVO" parameterType="string">
   	select * from kinderinfo where kinderinfoid like #{keyword}
   </select>
+  
+  <select id="getEstablish" resultType="lab.spring.model.KinderInfoVO" parameterType="string">
+  	select * from kinderinfo where establish like #{keyword}
+  </select>  
 <!--   키워드와 구로 서치하는 부분 끝 -->  
 
 <!-- 각 분야별로 스코어 받아오는 부분 시작-->
