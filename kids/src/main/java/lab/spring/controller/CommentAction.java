@@ -103,6 +103,7 @@ public HashMap<String, Integer> wordCount(List<CommentVO> ls) {
 		try{
             //파일 객체 생성
             File file = new File("F:words.txt");
+            //File file = new File("/Users/minji/Downloads/words.txt");
             //입력 스트림 생성
             FileReader filereader = new FileReader(file);
             
