@@ -332,30 +332,33 @@ var staravg;
                     <div class="col-lg-4"  >
                         <div class="card oh">
                             <div class="card-body">
-                              <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
-                              
+                              <h5 class="card-title" style="font-family: 'Hanna'">3세 원아수</h5>
                               <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
                               <hr>
-                              <div class="zt-skill-bar"><div data-width="88" style="">${badkinder.kindername}<span>88%</span></div></div>
-								<div class="zt-skill-bar"><div data-width="92" style="">서울시 공시정보<span>92%</span></div></div>
+                              <div class="zt-skill-bar"><div data-width="88" style="">${badkinder.kindername}<span>${graph.child3}명</span></div></div>
+								<div class="zt-skill-bar"><div data-width="50" style="">서울시 공시정보<span>20명</span></div></div>
 							</div>
 						</div>  
 						</div>
 						  <div class="col-lg-4">
                         <div class="card oh">
                             <div class="card-body">
-                              <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
-                              
+                              <h5 class="card-title" style="font-family: 'Hanna'">4세 원아수</h5>
                               <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
                               <hr>
-                      <div id="graphic"></div>
+                              <div class="zt-skill-bar"><div data-width="88" style="">${badkinder.kindername}<span>${graph.child4}명</span></div></div>
+								<div class="zt-skill-bar"><div data-width="50" style="">서울시 공시정보<span>25명</span></div></div>
 							</div>
 						</div>  
 						</div>
 						  <div class="col-lg-4"  >
                         <div class="card oh">
                             <div class="card-body"}>
-                              <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
+                              <h5 class="card-title" style="font-family: 'Hanna'">5세 원아수 </h5>
+                              <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
+                              <hr>
+                              <div class="zt-skill-bar"><div data-width="88" style="">${badkinder.kindername}<span>${graph.child5}명</span></div></div>
+								<div class="zt-skill-bar"><div data-width="50" style="">서울시 공시정보<span>30명</span></div></div>
 							</div>
 						</div>  
 						</div>
@@ -365,21 +368,32 @@ var staravg;
                     <div class="col-lg-4"  >
                         <div class="card oh">
                             <div class="card-body" }>
-                              <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
+                              <h5 class="card-title" style="font-family: 'Hanna'">아이당 평수</h5>
+                              <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
+                              <hr>
+                              <div class="zt-skill-bar"><div data-width="88" style="">${badkinder.kindername}<span>${graph.area}㎡</span></div></div>
+								<div class="zt-skill-bar"><div data-width="50" style="">서울시 공시정보<span>2.2㎡</span></div></div>
+                              
 							</div>
 						</div>  
 						</div>
 						  <div class="col-lg-4"  >
                         <div class="card oh">
                             <div class="card-body"}>
-                              <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
+                              <h5 class="card-title" style="font-family: 'Hanna'">선생님당 아이수 </h5>
+                              <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
+                              <hr>
+                              <div class="zt-skill-bar"><div data-width="75" style="">${badkinder.kindername}<span>${graph.teacher}명</span></div></div>
 							</div>
 						</div>  
 						</div>
 						  <div class="col-lg-4"  >
                         <div class="card oh">
                             <div class="card-body"}>
-                              <h5 class="card-title" style="font-family: 'Hanna'">블라블라 원아수 그래프 </h5>
+                              <h5 class="card-title" style="font-family: 'Hanna'">보유 버스 수 </h5>
+                              <h6 style="padding-left:35%; font-family: 'Hanna'; font-size:200%; color:#339933;">적합/부적합</h6>
+                              <hr>
+                              <div class="zt-skill-bar"><div data-width="60" style="">${badkinder.kindername}<span>${graph.bus}대</span></div></div>
 							</div>
 						</div>  
 						</div>

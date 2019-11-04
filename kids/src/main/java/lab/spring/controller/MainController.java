@@ -56,7 +56,7 @@ public class MainController {
 			session.setAttribute("rankflag", "0");
 		}
 
-		mav.addObject("ip",ip);
+		mav.addObject("ip",ip);//ip 넣어주기
 		
 		
 		ranklist = service.getRank(session.getAttribute("rankflag").toString());

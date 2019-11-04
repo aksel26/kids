@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger; 
 import org.slf4j.LoggerFactory;
@@ -44,7 +45,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/page-register1",method=RequestMethod.POST) 
 	
-	public ModelAndView user_register(HttpServletRequest request) throws Exception {
+	public ModelAndView user_register(HttpServletRequest request,HttpSession session) throws Exception {
 		 
 		
 		   String id = request.getParameter("userid");
@@ -86,6 +87,8 @@ public class UserController {
 			else if(location.equals("동대문구")) {vo.setPOINT_X("37.581223");vo.setPOINT_Y("127.056578");}
 
 		   
+		   
+		   session.setAttribute("authInfo", vo);
 		   
 		   userService.insertUser(vo);
 		   

@@ -70,7 +70,11 @@ function getListItem(index, places) {
     var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                 '<div class="info">' +
-                '   <h5>' + '<a href="detail.do?kindername='+places["kindername"]+'&kinderinfoId='+places["kinderinfoId"]+'&subofficeedu='+places["subofficeedu"]+'">'+places["kindername"]+'</a>' + '</h5>';
+                '   <h5>' + '<a id=searchA onclick=onlyLogin(\''+places["kindername"]+'\',\''+places["kinderinfoId"]+'\',\''+places["subofficeedu"]+'\',3)>'+places["kindername"]+'</a>' + '</h5>';
+    
+//    places["kindername"]
+//    places["kinderinfoId"]
+//    places["subofficeedu"]
     
     if (places.road_address_name) {
         itemStr += '    <span>' + places["addr"] + '</span>' +

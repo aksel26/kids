@@ -44,7 +44,11 @@ public class CommentAction extends HttpServlet  {
 		try {
 			BufferedWriter fw = new BufferedWriter(
 					new OutputStreamWriter(
-							new FileOutputStream("/Users/minji/kids/kids/src/main/webapp/resources/images/worddata3.csv"),"utf-8"));
+
+							//new FileOutputStream("/Users/minji/kids/kids/src/main/webapp/resources/images/worddata3.csv"),"utf-8"));
+
+							new FileOutputStream("F:\\Github\\kids\\kids\\src\\main\\webapp\\resources\\images\\worddata2.csv"),"utf-8"));
+
 			
 			fw.write("text,frequency\r\n");
 			

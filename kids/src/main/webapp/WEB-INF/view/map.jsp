@@ -129,6 +129,11 @@ var markerImage2;
 var markerImage3;
 var markerImage4;
 
+var markerImage1n;
+var markerImage2n;
+var markerImage3n;
+var markerImage4n;
+
 //줌 컨트롤
 var zoomControl;
 
@@ -168,6 +173,11 @@ function default_setting(){
 	markerImage2 = new kakao.maps.MarkerImage("resources/images/사립(사인).png", markerImageSize, markerImageOptions);
 	markerImage3 = new kakao.maps.MarkerImage("resources/images/공립(단설)빨강.png", markerImageSize, markerImageOptions);
 	markerImage4 = new kakao.maps.MarkerImage("resources/images/공립(병설)빨강.png", markerImageSize, markerImageOptions);
+	
+	markerImage1n = new kakao.maps.MarkerImage("resources/images/사립(법인)-dark.png", markerImageSize, markerImageOptions);
+	markerImage2n = new kakao.maps.MarkerImage("resources/images/사립(사인)-dark.png", markerImageSize, markerImageOptions);
+	markerImage3n = new kakao.maps.MarkerImage("resources/images/공립(단설)빨강-dark.png", markerImageSize, markerImageOptions);
+	markerImage4n = new kakao.maps.MarkerImage("resources/images/공립(병설)빨강-dark.png", markerImageSize, markerImageOptions);
 	
 	zoomControl = new kakao.maps.ZoomControl(); 
 	map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
@@ -232,12 +242,25 @@ function hideMarkers() {
     setMarkerList(null);    
 }
 
-function imageChange(n){
-   if(n=="공립(병설)") { markerImage = markerImage4; }
-   else if(n=="공립(단설)") { markerImage = markerImage3; }
-   else if(n=="사립(사인)") { markerImage = markerImage2; }
-   else if(n=="사립(법인)") { markerImage = markerImage1; }
-   return markerImage;
+function imageChange(n,flag){
+	
+	if(flag == 0){//닫힘
+		if(n=="공립(병설)") { markerImage = markerImage4n; }
+	   else if(n=="공립(단설)") { markerImage = markerImage3n; }
+	   else if(n=="사립(사인)") { markerImage = markerImage2n; }
+	   else if(n=="사립(법인)") { markerImage = markerImage1n; }
+	   return markerImage;
+		
+	}
+	else{//열림
+		if(n=="공립(병설)") { markerImage = markerImage4; }
+	    else if(n=="공립(단설)") { markerImage = markerImage3; }
+	    else if(n=="사립(사인)") { markerImage = markerImage2; }
+	    else if(n=="사립(법인)") { markerImage = markerImage1; }
+	    return markerImage;
+		
+	}
+   
 }
 
 //******************************getCategory***********************************************
@@ -345,10 +368,10 @@ function getSafetyArr(select,map){
 	        async:false,
 	        success: function(data) {
 	        	
-	        if(select ==3){
+	        	var d = new Date();
+	        	var current = d.getHours()*60+d.getMinutes();
 	        	
-	        	console.log("들어감");
-
+	        if(select ==3){
 	    		displayPlaces(data);
 	    		var keyword = document.getElementById('keyword').value;
 	    		var moveLatLon;
@@ -374,7 +397,7 @@ function getSafetyArr(select,map){
 	    		else if(keyword=="노원구"){moveLatLon = new kakao.maps.LatLng(37.650681,127.068601);map.setCenter(moveLatLon);map.setLevel(level);}
 	    		else if(keyword=="마포구"){moveLatLon = new kakao.maps.LatLng(37.559956,126.907613);map.setCenter(moveLatLon);map.setLevel(level);}
 	    		else if(keyword=="송파구"){moveLatLon = new kakao.maps.LatLng(37.504126,127.115071);map.setCenter(moveLatLon);map.setLevel(level);}
-	    		else if(keyword=="동대문구"){console.log("동대문구 들어감");moveLatLon = new kakao.maps.LatLng(37.581223,127.056578);map.setCenter(moveLatLon);map.setLevel(level);}
+	    		else if(keyword=="동대문구"){moveLatLon = new kakao.maps.LatLng(37.581223,127.056578);map.setCenter(moveLatLon);map.setLevel(level);}
 	    	
 	        }	
 			 markerList = []; // 마커 보이기,숨기기용 배열
@@ -399,12 +422,18 @@ function getSafetyArr(select,map){
 	            var markerImage; // 마크 이미지 바꾸기
 	           
 	            
+	            var time = value["opertime"].split('~');
+	           	var flag = return_timeflag(time,current);
+	            
+	            
+	            
+	            
 	            
 	            var marker = new kakao.maps.Marker({
 	                map: map, // 마커를 표시할 지도
 	                position: new kakao.maps.LatLng(point_x,point_y), // 마커를 표시할 위치
 	                title :value["kindername"], // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-	                image :  imageChange(value["establish"]), // 마커 이미지 
+	                image :  imageChange(value["establish"],flag), // 마커 이미지 
 	                clickable : true
 	            });
 	        
@@ -586,7 +615,7 @@ function getiwContent(count,value){//인포 윈도우 얻어오기
     	  tag += '				<a style="font-family: Hanna; color:blue; text-align:center;" href='+value["hpaddr"]+'/>'+value["hpaddr"]+'<br/>'
       }
       
-      tag +='				<a style="font-family: Hanna; text-align:center;" href="detail.do?kindername='+value["kindername"]+'&kinderinfoId='+value["kinderinfoId"]+'&subofficeedu='+value["subofficeedu"]+'"/>'+'>>>상세보기'+
+      tag +='				<a id=detailA style="font-family: Hanna; text-align:center;" onclick=onlyLogin(\''+value["kindername"]+'\',\''+value["kinderinfoId"]+'\',\''+value["subofficeedu"]+'\',2) />'+'>>>상세보기'+
 	     '            </div>' + 
 	     '        </div>' + 
 	     '    </div>' +    
@@ -596,7 +625,48 @@ function getiwContent(count,value){//인포 윈도우 얻어오기
 	     return tag;
     
            }
-           
+function onlyLogin(name,id,subo,select){
+	 
+	 if(${authInfo.userid eq null}){
+		 alert("로그인이 필요한 기능입니다.");
+	 }
+	 else{
+		 if(select == 1){
+			 $("#rankA").attr("href","detail.do?kindername="+name+"&kinderinfoId="+id+"&subofficeedu="+subo);	 
+		 }
+		 else if(select == 2){
+			 $("#detailA").attr("href","detail.do?kindername="+name+"&kinderinfoId="+id+"&subofficeedu="+subo);
+// 			 $("#detailA").get(0).click();
+		 }
+		 else if(select == 3){
+			 $("#searchA").attr("href","detail.do?kindername="+name+"&kinderinfoId="+id+"&subofficeedu="+subo);
+		 }
+	 }	 
+}
+
+function return_timeflag(time,current){
+	
+	 var flag ="";
+     var otime = time[0].split("시");
+     var ctime = time[1].split("시");
+     
+     var otime_h = otime[0];
+     var otime_m = otime[1].substr(0,2);
+    	var open =  Number(otime_h*60)+Number(otime_m);
+    
+     
+     var ctime_h = ctime[0];
+     var ctime_m = ctime[1].substr(0,2);
+     var close = Number(ctime_h*60)+Number(ctime_m);
+     
+     
+     if( open < current && current < close){//열림
+     	return 1;
+     }
+     else{
+     	return 0;//닫힘
+     }
+}
 //**********************************************************************************
 
 
