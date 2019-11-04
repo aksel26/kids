@@ -206,7 +206,7 @@ display: inline-block;
 		  		<tr>
 		  		<td></td>
  		  	<td>${status.count}.</td>
-			<td><a id =rankA onclick="onlyLogin('${rank.kindername}','${rank.kinderinfoId}','${rank.subofficeedu}',1)" style="cursor:pointer"> ${rank.kindername}</a></td>
+			<td><a id =rankA${status.index} onclick="onlyLogin('${rank.kindername}','${rank.kinderinfoId}','${rank.subofficeedu}',1,${status.index})" style="cursor:pointer"> ${rank.kindername}</a></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -229,6 +229,24 @@ display: inline-block;
           duration: 2000,
           delay: 2000
         });
+      
+      function onlyLogin(name,id,subo,select,tagid){
+    	  
+    		 if(${authInfo.userid eq null}){
+    			 alert("로그인이 필요한 기능입니다.");
+    		 }
+    		 else{
+    			 if(select == 1){
+    				 $("#rankA"+tagid).attr("href","detail.do?kindername="+name+"&kinderinfoId="+id+"&subofficeedu="+subo);	 
+    			 }
+    			 else if(select == 2){
+    				 $("#detailA").attr("href","detail.do?kindername="+name+"&kinderinfoId="+id+"&subofficeedu="+subo);
+    			 }
+    			 else if(select == 3){
+    				 $("#searchA"+tagid).attr("href","detail.do?kindername="+name+"&kinderinfoId="+id+"&subofficeedu="+subo);
+    			 }
+    		 }	 
+    	}
       </script> 
         
             	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>

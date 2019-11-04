@@ -64,12 +64,17 @@ public class DataDAO {
 	
 	public List<KinderInfoVO> findSearchList(String keyword,int flag){
 		
-		if(flag==1) {
-			return sqlSession.selectList("lab.mybatis.user.UserMapper.getSearchList","%"+keyword+"%");	
+		if(flag==3) {//1 : 일반 검색
+			return sqlSession.selectList("lab.mybatis.user.UserMapper.getEstablish",keyword+"%");	
 		}
-		else{
+		else if(flag == 2){//2 : 구별 검색
 			return sqlSession.selectList("lab.mybatis.user.UserMapper.getSearcGuhList",keyword+"%");
 		}
+		else {
+			return sqlSession.selectList("lab.mybatis.user.UserMapper.getSearchList","%"+keyword+"%");
+		}
+		
+		
 	}
 	
 	

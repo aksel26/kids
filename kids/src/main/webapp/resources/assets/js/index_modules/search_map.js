@@ -70,7 +70,7 @@ function getListItem(index, places) {
     var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                 '<div class="info">' +
-                '   <h5>' + '<a id=searchA onclick=onlyLogin(\''+places["kindername"]+'\',\''+places["kinderinfoId"]+'\',\''+places["subofficeedu"]+'\',3)>'+places["kindername"]+'</a>' + '</h5>';
+                '   <h5>' + '<a id=searchA'+index+' style="cursor:pointer;" onclick=onlyLogin(\''+places["kindername"]+'\',\''+places["kinderinfoId"]+'\',\''+places["subofficeedu"]+'\',3,'+index+')>'+places["kindername"]+'</a>' + '</h5>';
     
 //    places["kindername"]
 //    places["kinderinfoId"]

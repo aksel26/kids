@@ -615,7 +615,7 @@ function getiwContent(count,value){//인포 윈도우 얻어오기
     	  tag += '				<a style="font-family: Hanna; color:blue; text-align:center;" href='+value["hpaddr"]+'/>'+value["hpaddr"]+'<br/>'
       }
       
-      tag +='				<a id=detailA style="font-family: Hanna; text-align:center;" onclick=onlyLogin(\''+value["kindername"]+'\',\''+value["kinderinfoId"]+'\',\''+value["subofficeedu"]+'\',2) />'+'>>>상세보기'+
+      tag +='				<a id=detailA style="font-family: Hanna; text-align:center; cursor:pointer;" onclick=onlyLogin(\''+value["kindername"]+'\',\''+value["kinderinfoId"]+'\',\''+value["subofficeedu"]+'\',2) />'+'>>>상세보기'+
 	     '            </div>' + 
 	     '        </div>' + 
 	     '    </div>' +    
@@ -625,24 +625,7 @@ function getiwContent(count,value){//인포 윈도우 얻어오기
 	     return tag;
     
            }
-function onlyLogin(name,id,subo,select){
-	 
-	 if(${authInfo.userid eq null}){
-		 alert("로그인이 필요한 기능입니다.");
-	 }
-	 else{
-		 if(select == 1){
-			 $("#rankA").attr("href","detail.do?kindername="+name+"&kinderinfoId="+id+"&subofficeedu="+subo);	 
-		 }
-		 else if(select == 2){
-			 $("#detailA").attr("href","detail.do?kindername="+name+"&kinderinfoId="+id+"&subofficeedu="+subo);
-// 			 $("#detailA").get(0).click();
-		 }
-		 else if(select == 3){
-			 $("#searchA").attr("href","detail.do?kindername="+name+"&kinderinfoId="+id+"&subofficeedu="+subo);
-		 }
-	 }	 
-}
+
 
 function return_timeflag(time,current){
 	
