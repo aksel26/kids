@@ -234,6 +234,7 @@ display: inline-block;
     	  
     		 if(${authInfo.userid eq null}){
     			 alert("로그인이 필요한 기능입니다.");
+    			 $("#userid").focus();
     		 }
     		 else{
     			 if(select == 1){

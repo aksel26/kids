@@ -151,7 +151,6 @@ public HashMap<String, Integer> wordCount(List<CommentVO> ls) {
 			weight = 40;
 		}
 		
-		
 
 		for(int i = 0 ; i<ls.size();i++) {
 			String[] split = ls.get(i).getContents().split("\\s|\\.|\\,");
