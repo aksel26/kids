@@ -543,7 +543,7 @@ var staravg;
                     <div class="col-md-6">
                         <div class="card" >
                             <div class="card-body" style="width:1024px;height:1024;">
-	                                <div  style="text-align:inherit;">
+	                             <div id=imageArea style="text-align:inherit;">
                                 <svg id = "mycloud"></svg>
                                 </div>
                                 
@@ -579,9 +579,6 @@ var child5 = "${graph.child5 * (80/30)}";
 var area ="${graph.area * (50/2.2)}"; 
 var teacher = "${graph.teacher *(80/18)}";
 var bus = "${graph.bus *(50/2)}";
-
-console.log(child3);
-
 
 if(child3 < 80){
 	var element = document.getElementById("child3-text");
