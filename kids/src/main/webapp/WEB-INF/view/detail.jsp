@@ -234,13 +234,14 @@ var staravg;
 <%@ include file="./header.jsp"%>
 
 <article>
+<hr>
   <div class="page-wrapper">
             <div class="container-fluid">
                     
 											<div class="namespace">
                         
-												<h2 style="font-family: 'Gaegu'; display: block; margin-block-start: 1em;margin-inline-start: 0px; margin-inline-end: 0px;">${badkinder.kindername}<i class="far fa-kiss-wink-heart"></i></h2>
-												<p style="font-family: 'Gaegu'">${badkinder.addr}</p>
+												<h2 style="font-family: 'Gaegu'; display: block; margin-block-start: 1em;margin-inline-start: 0px; margin-inline-end: 0px;"><i class="fas fa-school"></i>&nbsp;${badkinder.kindername}</h2>
+												<p style="font-family: 'Gaegu'">&emsp;&ensp;&emsp;&ensp;<i class="fas fa-address-book"></i>&nbsp;${badkinder.addr}</p>
 												<img  id=star1 height=50 width=50 src="http://gahyun.wooga.kr/main/img/testImg/star.png">
 												<img  id=star2 height=50 width=50 src="http://gahyun.wooga.kr/main/img/testImg/star.png">
 												<img  id=star3 height=50 width=50 src="http://gahyun.wooga.kr/main/img/testImg/star.png">
@@ -412,8 +413,10 @@ var staravg;
                             <div class="card-body">
                                 <div class="d-flex">
                                     <div>
-                                        <h5 class="card-title" style="font-family: 'Hanna'">비리유치원 분석</h5>
-                                 
+                                        <h5 class="card-title" style="font-family: 'Hanna'">비리유치원 분석 &emsp;&emsp;&emsp;<img src="resources/images/red.png" width=30px height=30px/><b style="font-size:15px;">5개 이상</b><img src="resources/images/orange.png"  width=30px height=30px/><b style="font-size:15px;">3개 이상</b>
+                                        <img src="resources/images/yellow.png" width=30px height=30px/><b style="font-size:15px;">2개 이상</b> <img src="resources/images/green.png" width=30px height=30px/><b style="font-size:15px;">1개 이상</b></h5>
+                 
+                                
                                     </div>
                         
                                 </div>

@@ -27,7 +27,7 @@ setInterval(function(){
 },3000) 
 }
 );
-}, 4500);      
+}, 6000);      
 
 
 function showCloud(data) {

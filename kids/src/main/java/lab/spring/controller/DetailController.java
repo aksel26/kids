@@ -75,14 +75,14 @@ public class DetailController {
 
 		// 긍부정 단어 받아오기
 		try {
-//			File file = new File("/Users/minji/kids/kids/positive.txt");
-			File file = new File("F:positive.txt");
+			File file = new File("/Users/minji/kids/kids/positive.txt");
+			//File file = new File("F:positive.txt");
 			FileReader filereader = new FileReader(file);
 			BufferedReader bufReader = new BufferedReader(filereader);
 			positive = bufReader.readLine();
 
-//			file = new File("/Users/minji/kids/kids/negative.txt");
-			file = new File("F:negative.txt");
+			file = new File("/Users/minji/kids/kids/negative.txt");
+			//file = new File("F:negative.txt");
 			filereader = new FileReader(file);
 			bufReader = new BufferedReader(filereader);
 			negative = bufReader.readLine();
