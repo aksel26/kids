@@ -47,8 +47,8 @@ display: inline-block;
     <body>
       
                <h3 class="menu-title">카테고리<a class="CellWithComment"><i class="fas fa-question-circle" style="font-size:2px"><span class="CellComment" width=700px style="font-size:15px" >
-           <img src="resources/images/공립(단설)빨강.png" width=40px height=40px/><b style="font-family:'Hanna'">공립(단설)</b><img src="resources/images/공립(병설)빨강.png" width=40px height=40px/><b style="font-family:'Hanna'">공립(병설)</b><img src="resources/images/사립(법인).png" width=40px height=40px/>
-           <b style="font-family:'Hanna'">사립(법인)</b><img src="resources/images/사립(사인).png"width=40px height=40px/><b style="font-family:'Hanna'">사립(사인)</b></span></i></a></h3>
+           <img src="resources/images/public1.png" width=40px height=40px/><b style="font-family:'Hanna'">공립(단설)</b><img src="resources/images/public2.png" width=40px height=40px/><b style="font-family:'Hanna'">공립(병설)</b><img src="resources/images/private1.png" width=40px height=40px/>
+           <b style="font-family:'Hanna'">사립(법인)</b><img src="resources/images/private2.png"width=40px height=40px/><b style="font-family:'Hanna'">사립(사인)</b></span></i></a></h3>
                <!-- /.menu-title -->
 
             <li class="menu-item-has-children dropdown">

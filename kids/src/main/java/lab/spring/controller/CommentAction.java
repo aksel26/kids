@@ -41,9 +41,9 @@ public class CommentAction extends HttpServlet  {
 			BufferedWriter fw = new BufferedWriter(
 					new OutputStreamWriter(
 
-//							new FileOutputStream("/Users/minji/kids/kids/src/main/webapp/resources/images/worddata3.csv"),"utf-8"));
+							new FileOutputStream("/Users/minji/kids/kids/src/main/webapp/resources/images/worddata3.csv"),"utf-8"));
 
-							new FileOutputStream("F:\\Github\\kids\\kids\\src\\main\\webapp\\resources\\images\\worddata3.csv"),"utf-8"));
+	//						new FileOutputStream("F:\\Github\\kids\\kids\\src\\main\\webapp\\resources\\images\\worddata3.csv"),"utf-8"));
 
 			
 			fw.write("text,frequency\r\n");
@@ -102,8 +102,8 @@ public HashMap<String, Integer> wordCount(List<CommentVO> ls) {
 		
 		try{
             //파일 객체 생성
-            File file = new File("F:words.txt");
-            //File file = new File("/Users/minji/Downloads/words.txt");
+            //File file = new File("F:words.txt");
+            File file = new File("/Users/minji/Downloads/words.txt");
             //입력 스트림 생성
             FileReader filereader = new FileReader(file);
             
@@ -166,10 +166,5 @@ public HashMap<String, Integer> wordCount(List<CommentVO> ls) {
 		
 		return hm;
 	}
-
-	
-
-
-	
-
 }
+

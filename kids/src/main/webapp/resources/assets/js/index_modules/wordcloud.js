@@ -18,7 +18,7 @@ var svg = d3.select("#mycloud")
 
 
 setTimeout(()=>{
-	
+   
 d3.csv("resources/images/worddata3.csv",function (data) {
 if(data.length==0){
 	
@@ -55,6 +55,7 @@ function draw(words) {
         .append("text")
         .style("font-family", "Hanna")
         .style("fill", function (d) {
+
         	if(keywords.indexOf(d.text) > -1){
         		return "#0064CD"
         	}
@@ -64,6 +65,7 @@ function draw(words) {
         	else{
         		return "#dcdcdc"
         	}
+
         })
         .style("fill-opacity", .5)
         .attr("text-anchor", "middle") 
@@ -84,4 +86,3 @@ function draw(words) {
 }
 }
 });
-

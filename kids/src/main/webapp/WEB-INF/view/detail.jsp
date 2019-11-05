@@ -258,7 +258,7 @@ var staravg;
                 <!-- 스파이더 차트 -->
                 <!-- ============================================================== -->
                 <div class="row">
-                    <div class="col-lg-6"  >
+                    <div class="col-lg-7"  >
                         <div class="card oh">
                             <div class="card-body"  style="height:600px"}>
                               <h5 class="card-title" style="font-family: 'Hanna'">종합지표</h5>   
@@ -275,7 +275,7 @@ var staravg;
                 <!-- ============================================================== -->
                 <!-- 유치원 상세정보 -->
                 <!-- ============================================================== -->
-                  <div class="col-md-6">
+                  <div class="col-md-5">
                         <div class="card">
                             <div class="card-body" style="height:600px	">
                                 <h5 class="card-title" style="font-family: 'Hanna'">유치원 상세정보</h5>
@@ -389,7 +389,7 @@ var staravg;
                               <hr>
                               <div class="zt-skill-bar"><div id=teacher-bar data-width="${graph.teacher *(80/18)}" style="">${badkinder.kindername}
                               <span id=teacher-span>${graph.teacher}명</span></div></div>
-								<div class="zt-skill-bar"><div data-width="80" style="">서울시 공시정보<span>18명</span></div></div>
+								<div class="zt-skill-bar"><div data-width="80" style="">OECD 국가 평균<span>18명</span></div></div>
 								</div>
 						</div>  
 						</div>
@@ -571,8 +571,6 @@ var staravg;
       src="resources/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
    <script src="resources/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
 <script>
-
-
 var child3 = "${graph.child3 * (80/20)}";
 var child4 = "${graph.child4 * (80/25)}";
 var child5 = "${graph.child5 * (80/30)}";
@@ -581,109 +579,110 @@ var teacher = "${graph.teacher *(80/18)}";
 var bus = "${graph.bus *(50/2)}";
 
 if(child3 < 80){
-	var element = document.getElementById("child3-text");
-	element.style.color = "#339933";
-	element.innerHTML = "   적합";
+   var element = document.getElementById("child3-text");
+   element.style.color = "#339933";
+   element.innerHTML = "   적합";
 }
 else{
-	var element = document.getElementById("child3-text");
-	element.style.color = "#F70C00";
-	element.innerHTML = "  부적합";
+   var element = document.getElementById("child3-text");
+   element.style.color = "#F70C00";
+   element.innerHTML = "  부적합";
 }
 
 if(child4 < 80){
-	var element = document.getElementById("child4-text");
-	element.style.color = "#339933";
-	element.innerHTML = "   적합";
+   var element = document.getElementById("child4-text");
+   element.style.color = "#339933";
+   element.innerHTML = "   적합";
 }
 else{
-	var element = document.getElementById("child4-text");
-	element.style.color = "#F70C00";
-	element.innerHTML = "  부적합";
+   var element = document.getElementById("child4-text");
+   element.style.color = "#F70C00";
+   element.innerHTML = "  부적합";
 }
 
 if(child5 < 80){
-	var element = document.getElementById("child5-text");
-	element.style.color = "#339933";
-	element.innerHTML = "   적합";
+   var element = document.getElementById("child5-text");
+   element.style.color = "#339933";
+   element.innerHTML = "   적합";
 }
 else{
-	var element = document.getElementById("child5-text");
-	element.style.color = "#F70C00";
-	element.innerHTML = "  부적합";
+   var element = document.getElementById("child5-text");
+   element.style.color = "#F70C00";
+   element.innerHTML = "  부적합";
 }
 
 if(area > 50){
-	var element = document.getElementById("area-text");
-	element.style.color = "#339933";
-	element.innerHTML = "   적합";
+   var element = document.getElementById("area-text");
+   element.style.color = "#339933";
+   element.innerHTML = "   적합";
 }
 else{
-	var element = document.getElementById("area-text");
-	element.style.color = "#F70C00";
-	element.innerHTML = "  부적합";
+   var element = document.getElementById("area-text");
+   element.style.color = "#F70C00";
+   element.innerHTML = "  부적합";
 }
 
 if(teacher < 80){
-	var element = document.getElementById("teacher-text");
-	element.style.color = "#339933";
-	element.innerHTML = "   적합";
+   var element = document.getElementById("teacher-text");
+   element.style.color = "#339933";
+   element.innerHTML = "   적합";
 }
 else{
-	var element = document.getElementById("teacher-text");
-	element.style.color = "#F70C00";
-	element.innerHTML = "  부적합";
+   var element = document.getElementById("teacher-text");
+   element.style.color = "#F70C00";
+   element.innerHTML = "  부적합";
 }
 
 
 if(child3 > 100){
-	child3 = 100;
+   child3 = 100;
 }
 else if(child3 == 0){
-	var element = document.getElementById("child3-text");
-	element.style.color = "#000000";
-	element.innerHTML = "데이터가 없습니다";
-	
-	element = document.getElementById("child3-span");
-	element.innerHTML = "";
-	
-	child3 = 50;
+   var element = document.getElementById("child3-text");
+   element.style.color = "#000000";
+   element.innerHTML = "데이터가 없습니다";
+   
+   element = document.getElementById("child3-span");
+   element.innerHTML = "";
+   
+   child3 = 50;
 }
 else if(child3 < 35){
+
 	child3 = 50;
+
 }
 
 
 
 if(child4 > 100){
-	child4 = 100;
+   child4 = 100;
 }
 else if(child4 == 0){
-	var element = document.getElementById("child4-text");
-	element.style.color = "#000000";
-	element.innerHTML = "데이터가 없습니다";
-	
-	element = document.getElementById("child4-span");
-	element.innerHTML = "";
-	child4= 50;
+   var element = document.getElementById("child4-text");
+   element.style.color = "#000000";
+   element.innerHTML = "데이터가 없습니다";
+   
+   element = document.getElementById("child4-span");
+   element.innerHTML = "";
+   child4= 50;
 }
 else if(child4 < 35){
-	child4 = 50;
+   child4 = 50;
 }
-
 
 
 if(child5 > 100){
-	child5 = 100;
+   child5 = 100;
 }
 else if(child5 == 0){
-	var element = document.getElementById("child5-text");
-	element.style.color = "#000000";
-	element.innerHTML = "데이터가 없습니다";
-	
-	element = document.getElementById("child5-span");
-	element.innerHTML = "";
-	child5 = 50;
+   var element = document.getElementById("child5-text");
+   element.style.color = "#000000";
+   element.innerHTML = "데이터가 없습니다";
+   
+   element = document.getElementById("child5-span");
+   element.innerHTML = "";
+   child5 = 50;
 }
 else if(child5 < 35){
 	child5 = 50;
@@ -692,45 +691,50 @@ else if(child5 < 35){
 
 
 if(area>100){
-	area=100;
+   area=100;
 }
 else if(area == 0){
-	var element = document.getElementById("area-text");
-	element.style.color = "#000000";
-	element.innerHTML = "데이터가 없습니다";
-	
-	element = document.getElementById("area-span");
-	element.innerHTML = "";
-	area = 50;
+   var element = document.getElementById("area-text");
+   element.style.color = "#000000";
+   element.innerHTML = "데이터가 없습니다";
+   
+   element = document.getElementById("area-span");
+   element.innerHTML = "";
+   area = 50;
 }
+
 else if(area < 35){
 	area = 50;
 }
 
 
 
+
 if(teacher>100){
-	teacher=100;
+   teacher=100;
 }
 else if(teacher == 0){
-	var element = document.getElementById("teacher-text");
-	element.style.color = "#000000";
-	element.innerHTML = "데이터가 없습니다";
-	
-	element = document.getElementById("teacher-span");
-	element.innerHTML = "";
-	teacher = 50;
+   var element = document.getElementById("teacher-text");
+   element.style.color = "#000000";
+   element.innerHTML = "데이터가 없습니다";
+   
+   element = document.getElementById("teacher-span");
+   element.innerHTML = "";
+   teacher = 50;
+}
+else if(teacher < 35){
+   teacher = 50;
 }
 else if(teacher < 35){
 	teacher = 50;
 }
 if(bus>100){
-	bus=100;
+   bus=100;
 }
 else if(bus == 0){
-	element = document.getElementById("bus-span");
-	element.innerHTML = "0대";
-	bus=50 ;
+   element = document.getElementById("bus-span");
+   element.innerHTML = "0대";
+   bus=50 ;
 }
 
 $("#child3-bar").attr("data-width",child3);
@@ -743,7 +747,7 @@ $("#bus-bar").attr("data-width",bus);
 
 
 $(document).ready(function(){
-	SearchID("${kinderinfoId}");
+   SearchID("${kinderinfoId}");
 });
 
 
