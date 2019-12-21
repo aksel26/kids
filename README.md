@@ -13,9 +13,14 @@
 
 #### 구성원 및 역할
 
-- 김민지
-- 김현민
-- 이원호
+- 김민지 (경제학과) 
+  : 팀장, 프로젝트 관리 & 순위 알고리즘 개발
+  
+- 김현민 (산업공학과)
+  : Display 개발 & UI 기획 및 개발
+  
+- 이원호 (컴퓨터공학과)
+  : 워드클라우드 개발 & 감정분석
 
 #### 개발 일정
 
@@ -57,10 +62,21 @@
 <img width="744" alt="스크린샷 2019-12-22 오전 12 29 25" src="https://user-images.githubusercontent.com/50945713/71310067-0ef45300-2453-11ea-99c2-85c7f1cbd84d.png">
 
 ### 구현 화면
+<img width="884" alt="스크린샷 2019-12-22 오전 12 48 36" src="https://user-images.githubusercontent.com/50945713/71310227-e8371c00-2454-11ea-8647-b6f4ce1dfc8d.png">
+<img width="951" alt="1" src="https://user-images.githubusercontent.com/50945713/71310169-5e874e80-2454-11ea-8a9e-222857055091.png">
+<img width="953" alt="2" src="https://user-images.githubusercontent.com/50945713/71310171-68a94d00-2454-11ea-98ac-b5204efd689a.png">
+<img width="954" alt="3" src="https://user-images.githubusercontent.com/50945713/71310176-6e069780-2454-11ea-9687-338ff4f5e330.png">
+<img width="954" alt="4" src="https://user-images.githubusercontent.com/50945713/71310179-719a1e80-2454-11ea-8522-c688db155e15.png">
+
 
 ### 기대효과 및 보완점
 
 #### 기대효과
+- 학부모 입장 : 신뢰도 있는 정보 제공으로 더욱 수월한 유치원 선택이 가능학게 함으로써 니즈를 충족할 수 있다.
+- 유치원 입장 : 객관적인 자료를 통해 운영에 있어 경각심을 일깨워 줄 수 있고, 투명한 운영을 할 수 있다.
 
 #### 보완점
+- 유치원 대기 수를 파악할 수 있는 데이터를 수집하여 제공(각 유치원 대기 수 데이터)
+- 유치원의 최대 수용 인원을 계산하여 현재 이 유치원에 입원할 수 있는지를 실시간으로 제공(수용 인원 데이터)
+- 원비에 대한 정보 제공(유치원 비용에 대한 데이터)
 
